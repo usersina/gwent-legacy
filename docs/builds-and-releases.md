@@ -42,7 +42,10 @@ Unity -batchmode -projectPath GwentCardGame -executeMethod Gwent.EditorTools.Gwe
 - **Web**: compressed with a fallback, so any static host serves it (GitHub Pages does, see [Releases](#releases)). In a browser
   Hard thinks a few milliseconds a frame (there is no other thread), Quit is gone, the display settings are a Fullscreen switch,
   decks are stored in the browser (for that site's address), and Multiplayer offers nothing yet: a browser can't host or find games
-  on a network, and online play is still to come.
+  on a network, and online play is still to come. The page (`Assets/WebGLTemplates/GwentLegacy`) is the game alone over the whole
+  window. In a phone's browser a tap goes fullscreen and turns to landscape where the browser allows it (Android); an iPhone's
+  Safari can't, so the page asks for the phone to be turned and, once, suggests Add to Home Screen. Its manifest
+  (`TemplateData/manifest.webmanifest`) opens the game fullscreen and in landscape from a home screen.
 - **Images** are kept to sizes that are multiples of 4 so they compress on every platform (a card at 380x591 would ship
   uncompressed, four times larger).
 - **The cards' images** are about twice the size the battle draws them at 1920x1080, sharp up to 4K: the full art 672x1048,

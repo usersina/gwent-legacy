@@ -16,6 +16,12 @@ namespace Gwent.Core
         private const bool SimulateTouch = false;
     #endif
 
+        // Fingers are zooming the battle's board or moving it about (BoardZoom): their presses are no taps, nor long presses
+        public static bool MovingBoard;
+
+        // Screen pixels to a millimetre (Screen.dpi, or a phone's usual 160 dpi where the platform doesn't say)
+        public static float PixelsPerMm { get { float dpi = UnityEngine.Screen.dpi; return (dpi > 0 ? dpi : 160) / 25.4f; } }
+
         // Right click or Escape: close popups
         public static bool CancelPressed()
         {

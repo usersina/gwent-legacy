@@ -44,6 +44,10 @@ MonoBehaviour:
   iconMuted: {fileID: 21300000, guid: 0052e42b01575173fa8fcc9695cb2abd, type: 3}
   iconCheck: {fileID: 21300000, guid: c3de172601e3bf5d389a62b479310e43, type: 3}
   iconClose: {fileID: 21300000, guid: 20bf0efa6babe1818fa671c9eda2231b, type: 3}
+  iconZoomOut: {fileID: 21300000, guid: 276b8d8e1cea410eaa73c1cc78e1464f, type: 3}
+  iconTalk: {fileID: 21300000, guid: a547650b324b4d27a9c34935a7b1b4d1, type: 3}
+  iconLock: {fileID: 21300000, guid: 131f84260a80495c954c5753fecf1d8c, type: 3}
+  iconUnlock: {fileID: 21300000, guid: 7ca17c6488354dd793a703d123f0282c, type: 3}
   softShadow: {fileID: 21300000, guid: 7d0cda7be02823c7d8759f7bf3548013, type: 3}
   glowRing: {fileID: 21300000, guid: 9add077e035209d588c8dc6d288356f0, type: 3}
   leaderReady: {fileID: 21300000, guid: 9aa5796da9e2898eca470dede03cb193, type: 3}

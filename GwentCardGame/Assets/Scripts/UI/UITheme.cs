@@ -47,6 +47,10 @@ namespace Gwent.UI
         public Sprite iconMuted;     // silenced
         public Sprite iconCheck;     // keep (the deck builder's pencil while naming a deck)
         public Sprite iconClose;     // leave, nothing changed (its trash while naming)
+        public Sprite iconZoomOut;   // the battle's board back whole, after a pinch zoomed it in
+        public Sprite iconTalk;      // the quick chat's mark on your portrait (a LAN battle)
+        public Sprite iconLock;      // the zoomed board's lock, shut: taps on the board do nothing
+        public Sprite iconUnlock;    // the same, open
         public Sprite softShadow; // soft blurred rounded rectangle (card shadows, glows)
         public Sprite glowRing;   // a glow around a rectangle, clear inside (nine-sliced, reaching 32 px out)
         public Sprite leaderReady; // the leader ability's crown, glowing: the leader is lifted and the crown uses it

@@ -70,18 +70,21 @@ namespace Gwent.UI
             foreach (Graphic graphic in panel.GetComponentsInChildren<Graphic>())
                 graphic.raycastTarget = false; // never steals the hover from the control
 
-            // Above the control's top edge, kept on screen
+            // Above the control's top edge, kept on screen; below its bottom edge when there is no room above (a control at
+            // the top of the screen: the battle's menu button and "?")
             RectTransform target = (RectTransform)transform;
             Vector3[] corners = new Vector3[4];
             target.GetWorldCorners(corners);
             Canvas canvas = target.GetComponentInParent<Canvas>().rootCanvas;
             Camera camera = canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera;
-            Vector2 top = RectTransformUtility.WorldToScreenPoint(camera, (corners[1] + corners[2]) / 2);
-            Vector2 local;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(root, top, null, out local);
+            Vector2 top, bottom;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(root, RectTransformUtility.WorldToScreenPoint(camera, (corners[1] + corners[2]) / 2), null, out top);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(root, RectTransformUtility.WorldToScreenPoint(camera, (corners[0] + corners[3]) / 2), null, out bottom);
             float half_width = root.rect.width / 2;
+            bool above = top.y + Gap + size.y <= root.rect.height / 2 - 8;
+            Vector2 local = above ? top + new Vector2(0, Gap) : bottom - new Vector2(0, Gap);
             local.x = Mathf.Clamp(local.x, -half_width + size.x / 2 + 8, half_width - size.x / 2 - 8);
-            panel.Place(new Vector2(0.5f, 0.5f), local + new Vector2(0, Gap), size, new Vector2(0.5f, 0f));
+            panel.Place(new Vector2(0.5f, 0.5f), local, size, new Vector2(0.5f, above ? 0f : 1f));
             shown = panel.gameObject;
         }
 

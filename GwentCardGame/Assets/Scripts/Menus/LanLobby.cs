@@ -611,9 +611,23 @@ namespace Gwent.Menus
                 Refresh();
             }
 
-            // Escape: out of the room (the lobby stays: false), else out of the lobby (true)
+            // Escape, one step back: the host's details or the join-by-address row closed, else out of the room (the lobby
+            // stays: false), else out of the lobby (true)
             public bool Escape()
             {
+                if (detailsOpen && details.style.display != DisplayStyle.None)
+                {
+                    detailsOpen = false;
+                    detailsButton.text = "Details";
+                    Refresh();
+                    return false;
+                }
+                if (Session == null && addressRow.style.display != DisplayStyle.None)
+                {
+                    Show(addressRow, false);
+                    Show(addressLink, true);
+                    return false;
+                }
                 if (Session == null || leaving)
                     return true;
                 Session.Leave();

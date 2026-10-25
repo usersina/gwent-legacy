@@ -61,6 +61,30 @@ namespace Gwent.UI
             return rect;
         }
 
+        // A phone: its menus, dialogs and the battle's corner buttons a size larger, so that their text and targets have
+        // the size an eye and a finger need on a small screen (a 24-unit caption is some 1.5 mm there, a 46-unit button 3).
+        // Measured on the screen's short side: a phone's is some 65 to 75 mm, which takes the most; a tablet's is twice
+        // that, which takes none. A browser doesn't tell the screen's size: there, a phone's long shape takes the most.
+        private const float PhoneShortSideMm = 90;
+        private const float MaxPhoneScale = 1.3f;
+        private const float MaxMenuScale = 1.3f;       // the menu size setting on top of it, as far as the layouts allow
+
+        public static float PhoneScale
+        {
+            get
+            {
+                if (!GameInput.IsTouch)
+                    return 1;
+                float short_side = Mathf.Max(1, Mathf.Min(Screen.width, Screen.height));
+                float mm = Screen.dpi > 0 && !GameSettings.IsWeb ? short_side / GameInput.PixelsPerMm
+                    : Mathf.Max(Screen.width, Screen.height) / short_side >= 1.7f ? 70 : 140;
+                return Mathf.Clamp(PhoneShortSideMm / mm, 1, MaxPhoneScale);
+            }
+        }
+
+        // The size of the menus and dialogs: the setting's, a phone's larger
+        public static float MenuScale { get { return Mathf.Min(GameSettings.MenuScale * PhoneScale, MaxMenuScale); } }
+
         // On a touch screen, a small control takes a finger's press over a larger square around it (an invisible image
         // under it, which its clicks reach): the battle's menu button, crowns and pass button
         public static void GrowTouchArea(RectTransform control, Vector2 size)

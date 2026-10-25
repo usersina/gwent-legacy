@@ -10,7 +10,8 @@
   the crown.
 - Assets/WebGLTemplates/GwentLegacy (the web page): TemplateData/favicon.ico, the crown alone (16 to 64), faintly
   outlined so it reads on a light tab bar too; TemplateData/apple-touch-icon.png (180), Android's tile as a phone shows it,
-  for a home screen; thumbnail.png (128), the same, for the editor's template list.
+  for a home screen; TemplateData/icon-192.png and icon-512.png, the same for the web app manifest (Android's home screen
+  and its splash); thumbnail.png (128), the same, for the editor's template list.
 
 tools/app-icons.py [project dir, default GwentCardGame]
 """
@@ -251,5 +252,7 @@ if __name__ == "__main__":
     os.makedirs(os.path.join(WEB, "TemplateData"), exist_ok=True)
     favicon(c).save(os.path.join(WEB, "TemplateData", "favicon.ico"), sizes=[(16, 16), (32, 32), (48, 48), (64, 64)])
     tile(background, foreground, 180).save(os.path.join(WEB, "TemplateData", "apple-touch-icon.png"))
+    for size in (192, 512):
+        tile(background, foreground, size).save(os.path.join(WEB, "TemplateData", "icon-%d.png" % size))
     tile(background, foreground, 128).save(os.path.join(WEB, "thumbnail.png"))
     print("written to", OUT, "and", WEB)

@@ -1,18 +1,189 @@
-body { padding: 0; margin: 0 }
-#unity-container { position: absolute }
-#unity-container.unity-desktop { left: 50%; top: 50%; transform: translate(-50%, -50%) }
-#unity-container.unity-mobile { position: fixed; width: 100%; height: 100% }
-.unity-mobile #unity-fullscreen-container { width: 100%; height: 100% }
-#unity-fullscreen-container { position: relative; }
-#unity-canvas { position: absolute; width: 100%; height: 100%; background: {{{ BACKGROUND_COLOR }}} }
-#unity-loading-container { position: absolute; width: 100%; height: 100%; backdrop-filter: blur(5px); display: none; }
-#unity-loading-bar { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
-#unity-logo { width: 154px; height: 130px; background: url('unity-logo-{{{ SPLASH_SCREEN_STYLE.toLowerCase() }}}.png') no-repeat center }
-#unity-progress-bar-empty { width: 141px; height: 18px; margin-top: 10px; margin-left: 6.5px; background: url('progress-bar-empty-{{{ SPLASH_SCREEN_STYLE.toLowerCase() }}}.png') no-repeat center }
-#unity-progress-bar-full { width: 0%; height: 18px; margin-top: 10px; background: url('progress-bar-full-{{{ SPLASH_SCREEN_STYLE.toLowerCase() }}}.png') no-repeat center }
-#unity-footer { position: relative }
-.unity-mobile #unity-footer { display: none }
-#unity-logo-title-footer { float:left; width: 102px; height: 38px; background: url('unity-logo-title-footer.png') no-repeat center }
-#unity-build-title { float: right; margin-right: 10px; line-height: 38px; font-family: arial; font-size: 18px }
-#unity-fullscreen-button { cursor:pointer; float: right; width: 38px; height: 38px; background: url('fullscreen-button.png') no-repeat center }
-#unity-warning { position: absolute; left: 50%; top: 5%; transform: translate(-50%); background: white; padding: 10px; display: none }
+/* The game over the whole window, on its own dark background: no page, margin or scroll bar around it */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #16120E;
+  color: #ECE1C9;
+  font-family: Georgia, "Times New Roman", serif;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+  overscroll-behavior: none;
+}
+
+#unity-container {
+  position: fixed;
+  inset: 0;
+  background: #16120E;
+}
+
+/* The page takes no gesture of its own (no zoom, no scroll): pinches and drags are the game's */
+#unity-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #16120E;
+  touch-action: none;
+  outline: none;
+}
+
+/* Loading: the crown and a thin gold bar, in the middle */
+#unity-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  background: #16120E;
+}
+
+#unity-loading-icon {
+  width: 120px;
+  height: 120px;
+  border-radius: 26px;
+  background: url('apple-touch-icon.png') center / cover;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+
+#unity-progress {
+  width: min(320px, 60vw);
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(201, 164, 92, 0.2);
+  overflow: hidden;
+}
+
+#unity-progress-full {
+  width: 0%;
+  height: 100%;
+  background: #C9A45C;
+  transition: width 0.2s;
+}
+
+#unity-warning {
+  position: absolute;
+  left: 50%;
+  top: 4%;
+  transform: translate(-50%);
+  max-width: 80vw;
+  display: none;
+  z-index: 3;
+}
+
+#unity-warning > div {
+  margin-bottom: 8px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #C9A45C;
+  background: rgba(32, 26, 21, 0.96);
+  font-size: 16px;
+}
+
+#unity-warning > div.error {
+  border-color: #C0574A;
+}
+
+/* A phone held upright: the game plays in landscape */
+#rotate {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: #16120E;
+  text-align: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+@media (orientation: portrait) {
+  .mobile #rotate {
+    display: flex;
+  }
+}
+
+/* A phone drawn in gold lines, turning onto its side */
+#rotate-phone {
+  width: 54px;
+  height: 92px;
+  margin-bottom: 18px;
+  border: 3px solid #C9A45C;
+  border-radius: 10px;
+  box-sizing: border-box;
+  position: relative;
+  animation: rotate-phone 2.4s ease-in-out infinite;
+}
+
+#rotate-phone::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  width: 14px;
+  height: 3px;
+  margin-left: -7px;
+  border-radius: 2px;
+  background: #C9A45C;
+}
+
+@keyframes rotate-phone {
+  0%, 25% { transform: rotate(0deg); }
+  55%, 100% { transform: rotate(-90deg); }
+}
+
+#rotate-title {
+  font-size: 22px;
+  letter-spacing: 1px;
+  color: #E3C27E;
+}
+
+#rotate-detail {
+  font-size: 15px;
+  color: #B9AD95;
+}
+
+/* An iPhone, once: how to play full screen there (the home screen) */
+#ios-hint {
+  position: absolute;
+  left: 50%;
+  top: 12px;
+  transform: translate(-50%, -150%);
+  z-index: 1;
+  max-width: 90vw;
+  padding: 8px 12px 8px 16px;
+  border: 1px solid #C9A45C;
+  border-radius: 20px;
+  background: rgba(32, 26, 21, 0.94);
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+#ios-hint.shown {
+  transform: translate(-50%, 0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#ios-hint b {
+  color: #E3C27E;
+  font-weight: normal;
+}
+
+#ios-hint-close {
+  margin-left: 12px;
+  color: #C9A45C;
+  font-size: 18px;
+}

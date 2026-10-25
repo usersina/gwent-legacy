@@ -134,6 +134,30 @@ namespace Gwent.Battle
             }
         }
 
+        // The ability's state in a few words, for the player sheet (PlayerSheet): and whether it is good news for its side
+        public string StateText(out bool usable)
+        {
+            usable = false;
+            if (cancelled)
+                return "Cancelled by the other leader";
+            if (type == Row.LeaderPassive)
+                return "Passive: always in effect";
+            if (used)
+                return "Used";
+            usable = ready;
+            return ready ? (IsPlayers ? "Ready to use" : "Not used yet") : "Not used yet, not this round";
+        }
+
+        // The crown's picture (gold), for the player sheet
+        public Sprite CrownSprite
+        {
+            get
+            {
+                Image face = ActivateButton.targetGraphic as Image;
+                return plainFace != null ? plainFace : face != null ? face.sprite : null;
+            }
+        }
+
         private string TooltipText()
         {
             string whose = IsPlayers ? "Leader ability" : "Opponent's leader ability";

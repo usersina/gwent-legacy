@@ -4,12 +4,13 @@ using Gwent.Rules;
 using Gwent.UI;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Gwent.Battle
 {
     // A player's panel on the battle board: portrait, name, faction, hand count, life gems and total score
-    public class SidePanel : MonoBehaviour
+    public class SidePanel : MonoBehaviour, IPointerClickHandler
     {
         public Sprite redRuby;
         public Sprite greyRuby;
@@ -66,6 +67,20 @@ namespace Gwent.Battle
             handCountText = transform.Find("HandCount").Find("Number").GetComponent<TextMeshProUGUI>();
             rubyLeft = transform.Find("RubyL").GetComponent<Image>();
             rubyRight = transform.Find("RubyR").GetComponent<Image>();
+        }
+
+        // The band's background, the whole band's place (the player sheet opens beside it)
+        public RectTransform Band
+        {
+            get { return (RectTransform)transform.Find("Cover"); }
+        }
+
+        // A tap or a click anywhere on the band (its background, name, faction, gems, score; in a LAN battle your portrait
+        // is the quick chat's): this side's sheet, everything about it at a glance
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (eventData.button == PointerEventData.InputButton.Left)
+                PlayerSheet.Open(isPlayers);
         }
 
         // The round picture (what a LAN battle's chat bubbles come out of; a click on yours opens the talk: ChatView)

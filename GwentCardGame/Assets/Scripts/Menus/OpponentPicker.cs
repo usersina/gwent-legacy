@@ -35,6 +35,13 @@ namespace Gwent.Menus
                     focus = entry;
             }
             root.Q<Button>("Button Close").clicked += () => UIScreens.Close(root);
+            // The keys move the focus through the list: it scrolls to the focused opponent
+            ScrollView scroll = root.Q<ScrollView>("Entries");
+            scroll.RegisterCallback<FocusInEvent>(e =>
+            {
+                if (e.target is VisualElement focused && focused != scroll)
+                    scroll.ScrollTo(focused);
+            });
             root.schedule.Execute(() => UIScreens.Focus(focus));
         }
 

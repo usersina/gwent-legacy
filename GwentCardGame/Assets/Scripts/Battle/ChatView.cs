@@ -44,6 +44,7 @@ namespace Gwent.Battle
         private EndScreen end;
         private bool endShown;  // the end screen's scoreboard is up: bubbles and the quick lines come out of it
         private GameObject badge, endBadge;
+        private GameObject mark, endMark; // the quick chat's speech bubble on the portrait's corner
         private GameObject panel;  // the chat window
         private GameObject quick;  // the quick lines
         private float panelWidth;  // the window's: your hand's
@@ -68,7 +69,15 @@ namespace Gwent.Battle
             lan.Heard += view.Heard;
             RectTransform picture = mine.Picture;
             picture.GetComponent<Image>().raycastTarget = true;
-            view.badge = view.Badge(picture);
+            view.badge = view.Badge(picture, out view.mark);
+            // On a phone the portrait takes a finger over a larger circle (behind the badge and the mark, which keep theirs)
+            if (GameInput.IsTouch)
+            {
+                Image area = UIKit.NewImage(picture.parent, "TalkArea", UITheme.Current.circle, Color.clear, true);
+                area.rectTransform.Place(new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(140, 140));
+                area.rectTransform.localPosition = picture.localPosition;
+                area.transform.SetAsFirstSibling();
+            }
             PortraitClick click = picture.parent.gameObject.AddComponent<PortraitClick>();
             click.view = view;
             click.badge = view.badge.transform;
@@ -92,10 +101,9 @@ namespace Gwent.Battle
             {
                 // The session is over (the other player left): nothing more to say
                 CloseAll();
-                if (badge != null)
-                    Destroy(badge);
-                if (endBadge != null)
-                    Destroy(endBadge);
+                foreach (GameObject talk in new[] { badge, endBadge, mark, endMark })
+                    if (talk != null)
+                        Destroy(talk);
                 return;
             }
             RectTransform scored = battle.IsBattleOver && end != null ? end.Portrait(true) : null;
@@ -108,7 +116,7 @@ namespace Gwent.Battle
                     if (bubble != null)
                         Destroy(bubble);
                 scored.GetComponent<Image>().raycastTarget = true;
-                endBadge = Badge(scored);
+                endBadge = Badge(scored, out endMark);
                 PortraitClick click = scored.gameObject.AddComponent<PortraitClick>();
                 click.view = this;
                 click.badge = endBadge.transform;
@@ -141,8 +149,10 @@ namespace Gwent.Battle
 
         //----------------------------------------The badge----------------------------------------//
         // A small "..." bubble on a portrait's top left: the chat window (the portrait itself is the quick lines'); it swells
-        // under the pointer
-        private GameObject Badge(RectTransform picture)
+        // under the pointer, and its tooltip says so with its key (T). On a phone, a finger's area about twice its size, mostly
+        // out from the portrait. And the quick chat's mark (mark): a speech bubble on the portrait's bottom right; the
+        // portrait's tooltip and the mark's say what they open, with the key (E)
+        private GameObject Badge(RectTransform picture, out GameObject mark)
         {
             UITheme theme = UITheme.Current;
             RectTransform rect = GoldPanel(picture.parent, "TalkBadge");
@@ -156,7 +166,53 @@ namespace Gwent.Battle
             dots.raycastTarget = false;
             dots.rectTransform.Stretch(0, 0, 0, 8 * scale);
             rect.gameObject.AddComponent<BadgeClick>().view = this;
+            if (GameInput.IsTouch)
+            {
+                Image area = UIKit.NewImage(rect, "TouchArea", null, Color.clear, true);
+                area.rectTransform.Place(new Vector2(0.5f, 0.5f), new Vector2(-12, 10) * scale, new Vector2(80, 66) * scale);
+                area.transform.SetAsFirstSibling();
+            }
+            rect.gameObject.AddComponent<UITooltip>().text = () => "Chat window" + KeyName("T");
+            // The board portrait's silver ring lies over it and takes the pointer: the tooltip is the ring's there
+            Transform ring = picture.parent.Find("Border");
+            GameObject hovered = ring != null ? ring.gameObject : picture.gameObject;
+            if (hovered.GetComponent<UITooltip>() == null)
+                hovered.AddComponent<UITooltip>().text = () => "Quick chat" + KeyName("E");
+            mark = TalkMark(picture, scale);
             return rect.gameObject;
+        }
+
+        // The quick chat's mark: a gold-ringed speech bubble against the portrait's ring at its bottom right (clear of the
+        // name beside it), a button for the quick lines too, as the portrait is
+        private GameObject TalkMark(RectTransform picture, float scale)
+        {
+            UITheme theme = UITheme.Current;
+            Vector2 size = picture.rect.size;
+            Image disc = UIKit.NewImage(picture.parent, "TalkMark", theme.circle, UITheme.WithAlpha(theme.panelRaised, 1), true);
+            disc.rectTransform.Place(new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(40, 40) * scale);
+            disc.rectTransform.localPosition = picture.localPosition + new Vector3(size.x * 0.3f, -size.y * 0.36f, 0);
+            Image ring = UIKit.NewImage(disc.transform, "Ring", theme.ring, theme.gold);
+            ring.raycastTarget = false;
+            ring.rectTransform.Stretch();
+            Image icon = UIKit.NewImage(disc.transform, "Icon", theme.iconTalk, theme.goldBright);
+            icon.raycastTarget = false;
+            icon.preserveAspect = true;
+            icon.rectTransform.Stretch(9 * scale, 9 * scale, 9 * scale, 9 * scale);
+            if (GameInput.IsTouch)
+            {
+                Image area = UIKit.NewImage(disc.transform, "TouchArea", null, Color.clear, true);
+                area.rectTransform.Place(new Vector2(0.5f, 0.5f), new Vector2(8, -8) * scale, new Vector2(70, 70) * scale);
+                area.transform.SetAsFirstSibling();
+            }
+            disc.gameObject.AddComponent<MarkClick>().view = this;
+            disc.gameObject.AddComponent<UITooltip>().text = () => "Quick chat" + KeyName("E");
+            return disc.gameObject;
+        }
+
+        // A key's name after a tooltip's words, on a keyboard (a phone has none)
+        private static string KeyName(string key)
+        {
+            return GameInput.IsTouch ? "" : " (" + key + ")";
         }
 
         // A raised panel (opaque) with a gold outline: the badge's, the bubbles' and the quick lines' look
@@ -322,6 +378,7 @@ namespace Gwent.Battle
             float top = y + (HeaderHeight - UIKit.RoundSize) / 2;
             Button close = UIKit.RoundButton(box, "Close", "\u00D7", null, Close);
             TopLeft((RectTransform)close.transform, panelWidth - Pad - UIKit.RoundSize - 4, top, UIKit.RoundSize, UIKit.RoundSize);
+            UIKit.GrowTouchArea((RectTransform)close.transform, new Vector2(UIKit.RoundSize + 10, 70)); // a finger's, not over the speaker's
             Image icon = null;
             Button speaker = UIKit.RoundButton(box, "Mute", null, lan.Muted ? theme.iconMuted : theme.iconSpeaker, () =>
             {
@@ -331,6 +388,7 @@ namespace Gwent.Battle
             });
             icon = speaker.transform.Find("Icon").GetComponent<Image>();
             TopLeft((RectTransform)speaker.transform, panelWidth - Pad - 2 * UIKit.RoundSize - 14, top, UIKit.RoundSize, UIKit.RoundSize);
+            UIKit.GrowTouchArea((RectTransform)speaker.transform, new Vector2(UIKit.RoundSize + 10, 70));
         }
 
         // "Chat", and while the other player is muted, so
@@ -630,7 +688,8 @@ namespace Gwent.Battle
                 Destroy(bubbles[side]);
             UITheme theme = UITheme.Current;
 
-            CardMotion.ToLayout(CardMotion.ScreenRect(Anchor(me, out Way way)), out Vector2 center, out Vector2 size);
+            RectTransform anchor = Anchor(me, out Way way);
+            CardMotion.ToLayout(CardMotion.ScreenRect(anchor), out Vector2 center, out Vector2 size);
             RectTransform root = UIKit.Rect("Said", UIOverlay.FixedRoot);
             TextMeshProUGUI label = UIKit.Text(root, text, UIKit.TextStyle.Body, TextAlignmentOptions.Center);
             label.fontSize = way == Way.Left ? 27 : 25;
@@ -662,6 +721,7 @@ namespace Gwent.Battle
                 inward = down ? Vector2.down : Vector2.up;
             }
             root.Place(new Vector2(0.5f, 0.5f), at, bubble, pivot);
+            root.gameObject.AddComponent<FollowPortrait>().Init(anchor, way);
             Point(root, pivot, point_offset, inward, () => GoldPanel(root, "Body").Stretch());
             label.transform.SetAsLastSibling();
             label.rectTransform.Stretch(BubblePad, BubblePad, 0, 2);
@@ -669,9 +729,10 @@ namespace Gwent.Battle
             CanvasGroup group = root.gameObject.AddComponent<CanvasGroup>();
             group.blocksRaycasts = false;
             group.alpha = 0;
-            root.localScale = Vector3.one * 0.85f;
+            float grown = UIKit.PhoneScale; // a phone's a size larger, from its side at the portrait
+            root.localScale = Vector3.one * 0.85f * grown;
             LMotion.Create(0f, 1f, 0.2f).WithEase(Ease.OutBack).WithScheduler(MotionScheduler.UpdateIgnoreTimeScale)
-                .Bind(x => { group.alpha = Mathf.Clamp01(x); root.localScale = Vector3.one * Mathf.LerpUnclamped(0.85f, 1f, x); })
+                .Bind(x => { group.alpha = Mathf.Clamp01(x); root.localScale = Vector3.one * Mathf.LerpUnclamped(0.85f, 1f, x) * grown; })
                 .AddTo(root.gameObject);
             GameObject go = root.gameObject;
             float shown = Mathf.Clamp(2.5f + 0.06f * text.Length, 3f, 8f);
@@ -694,6 +755,37 @@ namespace Gwent.Battle
             point.raycastTarget = false;
             point.rectTransform.Place(side, offset + inward, new Vector2(20, 20));
             point.rectTransform.localEulerAngles = new Vector3(0, 0, 45);
+        }
+
+        // A bubble keeps to its portrait's edge as the board moves under it (zoomed in or out by a pinch, BoardZoom)
+        private sealed class FollowPortrait : MonoBehaviour
+        {
+            private RectTransform anchor, root;
+            private Way way;
+            private Vector2 start, startAt;
+
+            public void Init(RectTransform portrait, Way side)
+            {
+                anchor = portrait;
+                way = side;
+                root = (RectTransform)transform;
+                start = Edge();
+                startAt = root.anchoredPosition;
+            }
+
+            // The portrait's side the bubble comes out of (its point's place), in the overlay's layout
+            private Vector2 Edge()
+            {
+                CardMotion.ToLayout(CardMotion.ScreenRect(anchor), out Vector2 center, out Vector2 size);
+                return way == Way.Left ? new Vector2(center.x - size.x / 2, center.y)
+                    : new Vector2(center.x, center.y + (way == Way.Down ? -size.y : size.y) / 2);
+            }
+
+            private void LateUpdate()
+            {
+                if (anchor != null)
+                    root.anchoredPosition = startAt + Edge() - start;
+            }
         }
 
         //----------------------------------------Clicks----------------------------------------//
@@ -723,6 +815,18 @@ namespace Gwent.Battle
         }
 
         // The portrait's "..." badge: the chat window
+        // The quick chat's mark: the quick lines, as the portrait
+        private sealed class MarkClick : MonoBehaviour, IPointerClickHandler
+        {
+            public ChatView view;
+
+            public void OnPointerClick(PointerEventData e)
+            {
+                if (e.button == PointerEventData.InputButton.Left && view != null)
+                    view.ToggleQuick();
+            }
+        }
+
         private sealed class BadgeClick : MonoBehaviour, IPointerClickHandler
         {
             public ChatView view;

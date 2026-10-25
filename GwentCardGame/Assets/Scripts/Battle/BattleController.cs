@@ -106,15 +106,57 @@ namespace Gwent.Battle
         }
 
         // The board on any screen: the 1920 x 1080 layout whole in the middle (the canvas fits it), the table's wood
-        // covering the rest; on a touch screen the menu button takes a finger over a larger square
+        // covering the rest; on a touch screen the menu button takes a finger over a larger square, and on a phone it is
+        // a size larger (UIKit.PhoneScale), its corner where it was, as are the buttons beside and under it; the pinch zoom
         private void LayOutForScreen()
         {
             GameObject table = GameObject.Find("Main Canvas/Background");
             if (table != null)
                 ((RectTransform)table.transform).Cover(16f / 9f);
             GameObject menu = GameObject.Find("Main Canvas/PauseButton");
+            float phone = UIKit.PhoneScale;
             if (menu != null)
-                UIKit.GrowTouchArea((RectTransform)menu.transform, new Vector2(120, 120));
+            {
+                RectTransform menu_rect = (RectTransform)menu.transform;
+                UIKit.GrowTouchArea(menu_rect, new Vector2(120, 120));
+                menu_rect.anchoredPosition += menu_rect.rect.size / 2 * new Vector2(1, -1) * (phone - 1);
+                menu_rect.localScale = new Vector3(phone, phone, 1);
+            }
+            // Two fingers zoom the board in; a button (or Escape) brings it back whole
+            GameObject canvas = GameObject.Find("Main Canvas");
+            if (canvas != null)
+                BoardZoom.Attach(canvas.GetComponent<Canvas>(), menu != null ? (RectTransform)menu.transform : null);
+
+            // The "?" beside the menu button: How to play, over the battle
+            if (canvas != null && menu != null)
+            {
+                RectTransform menu_rect = (RectTransform)menu.transform;
+                Button help = UIKit.RoundButton(canvas.transform, "HelpButton", "?", null, OpenRules, 46, true);
+                RectTransform rect = (RectTransform)help.transform;
+                rect.Place(new Vector2(0.5f, 0.5f), menu_rect.anchoredPosition + new Vector2(70 * phone, 0), new Vector2(46, 46));
+                rect.localScale = new Vector3(phone, phone, 1);
+                rect.SetSiblingIndex(menu_rect.GetSiblingIndex() + 1); // under the pickers and the end screen
+                UIKit.GrowTouchArea(rect, new Vector2(70, 110)); // not over the menu button's
+                help.gameObject.AddComponent<UITooltip>().text = () => "How to play";
+                // The round button's text sits a little high for a "×"; a "?" is centred as it is
+                help.GetComponentInChildren<TMPro.TextMeshProUGUI>().rectTransform.Stretch(0, 2, 2.4f, 0);
+            }
+        }
+
+        // The "?": the rules page of the main menu (How to play) over the battle. The battle waits while it is open, as under
+        // the pause menu; a LAN battle goes on, on the other device too
+        private void OpenRules()
+        {
+            if (UIOverlay.HasModal || IsBattleOver)
+                return;
+            bool stop = lan == null;
+            if (stop)
+                Time.timeScale = 0f;
+            Gwent.Menus.RulesPage.Open(() =>
+            {
+                if (stop && this != null && !Gwent.Menus.PauseMenu.IsOpen)
+                    Time.timeScale = GameSettings.GameTimeScale;
+            });
         }
 
         private void OnDestroy()
@@ -257,6 +299,10 @@ namespace Gwent.Battle
         private BattleSide Info(bool is_player) { return is_player ? PlayerInfo : EnemyInfo; }
         private BattleSide Opponent(bool is_player) { return is_player ? EnemyInfo : PlayerInfo; }
         private BoardView.FieldView View(bool is_player) { return board.View(is_player); }
+
+        // A side's leader slot and side panel (the player sheet reads them)
+        public LeaderSlot LeaderOf(bool is_player) { return View(is_player).Leader; }
+        public SidePanel PanelOf(bool is_player) { return View(is_player).Stats; }
 
         public bool IsPlayerActionAllowed
         {
@@ -1024,6 +1070,7 @@ namespace Gwent.Battle
         {
             BattleLog.End(outcome, gave_up);
             battleState = outcome;
+            BoardZoom.ZoomOut(); // the end screen over the whole board
             CloseAway();
             BattleBanner.Clear(); // a notice under way (the other's turn, as it gave up) does not show over the end
             CardShowcase.Clear();
@@ -1215,10 +1262,20 @@ namespace Gwent.Battle
 
         // Escape (the back button on Android) puts a selected card (or the chosen leader) back first, as in The Witcher 3;
         // otherwise it pauses
+        // Escape (Android's Back) steps back one level: a card or leader put back; a picker's choice given up, as its × does
+        // (asked first where something is lost), or a look closed; the whole board again; the end screen left for the main
+        // menu; otherwise the pause menu (the redraw, who goes first and a LAN notice have nothing to step back to)
         private void OnEscape()
         {
+            BattlePickers pickers = Panel != null && Panel.activeInHierarchy ? Panel.GetComponent<BattlePickers>() : null;
             if ((selectedCard != null || LeaderSelected) && IsPlayerActionAllowed)
                 PutBackSelectedCard();
+            else if (pickers != null && pickers.Picker != null && pendingAction == PendingAction.PanelChoice)
+                pickers.Picker.BandButton.onClick.Invoke();
+            else if (BoardZoom.Zoomed)
+                BoardZoom.ZoomOut(); // the whole board first, then the menu
+            else if (IsBattleOver && PostGame != null && PostGame.activeInHierarchy)
+                PostGame.GetComponent<EndScreen>().ToMainMenu();
             else
                 PauseMenu.Open();
         }
