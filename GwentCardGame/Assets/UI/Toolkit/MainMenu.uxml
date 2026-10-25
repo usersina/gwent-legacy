@@ -11,8 +11,17 @@
             <Gwent.UI.MenuEntry name="Item Settings" text="Settings" />
             <Gwent.UI.MenuEntry name="Item Quit" text="Quit game" />
         </ui:VisualElement>
-        <ui:Label name="Note" text="Fan project, not affiliated with CD PROJEKT RED" class="caption main-menu__note" picking-mode="Ignore" />
-        <!-- The version and build (MainMenu fills it in), across from the note -->
-        <ui:Label name="Build" class="caption main-menu__build" picking-mode="Ignore" />
+        <!-- A newer build is out (shown once the update check finds one, top right): opens what's new and Update -->
+        <Gwent.UI.DialogButton name="Button Update" class="button--secondary main-menu__update" />
+        <!-- The bottom right corner: the version and build (MainMenu fills them in; the commit links to it on GitHub), and under
+             them, small, the fan project's note -->
+        <ui:VisualElement name="Corner" class="main-menu__corner" picking-mode="Ignore">
+            <ui:VisualElement class="main-menu__build" picking-mode="Ignore">
+                <ui:Label name="Build" class="caption" picking-mode="Ignore" />
+                <ui:Label name="Commit" class="caption main-menu__commit" />
+                <ui:Label name="Build end" class="caption" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:Label name="Note" text="Fan project, not affiliated with CD PROJEKT RED" class="caption main-menu__note" picking-mode="Ignore" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

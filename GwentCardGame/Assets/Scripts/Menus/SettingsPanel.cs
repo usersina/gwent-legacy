@@ -373,6 +373,8 @@ namespace Gwent.Menus
             }, DifficultyCaptions[(int)GameSettings.AiDifficulty]);
             about = page.Q("Row Difficulty").Q<Label>("Caption");
             SwitchRow(page, "Censored artwork", "Covered versions of some cards' art", GameSettings.CensoredArt, on => GameSettings.CensoredArt = on);
+            SwitchRow(page, "Check for updates", "On launch, from the game's page on GitHub", GameSettings.CheckForUpdates,
+                on => GameSettings.CheckForUpdates = on);
             return speed.Left;
         }
 

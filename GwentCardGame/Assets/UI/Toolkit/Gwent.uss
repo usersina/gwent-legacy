@@ -110,17 +110,56 @@
     height: 440px;
 }
 
-.main-menu__note {
-    position: absolute;
-    left: 156px;
-    bottom: 48px;
-}
-
-/* The version and build, in the bottom right corner across from the note */
-.main-menu__build {
+/* The bottom right corner: the version and build on a line (the commit a link), the fan project's note centred under them,
+   small */
+.main-menu__corner {
     position: absolute;
     right: 156px;
-    bottom: 48px;
+    bottom: 40px;
+    align-items: center;
+}
+
+.main-menu__build {
+    flex-direction: row;
+    align-items: center;
+}
+
+.main-menu__build > .caption {
+    padding: 0;
+    margin: 0;
+}
+
+.main-menu__commit {
+    color: var(--gold);
+    transition-property: color;
+    transition-duration: 0.12s;
+}
+
+.main-menu__build > .main-menu__commit:hover {
+    color: var(--gold-bright);
+}
+
+.main-menu__note {
+    font-size: 14px;
+    padding: 0;
+    margin: 6px 0 0 0;
+}
+
+/* A newer build is out: in the top right corner, where the key art leaves room, its right edge in line with the version's
+   (the body font: its width is measured right, as the headings' spaced capitals' isn't; .unity-button too, to win over the
+   buttons' own size and font, further down) */
+.unity-button.main-menu__update {
+    position: absolute;
+    right: 156px;
+    top: 48px;
+    width: auto;
+    height: 58px;
+    padding: 0 28px 2px 28px;
+    -unity-font-definition: var(--body-font);
+    font-size: 26px;
+    letter-spacing: 0;
+    background-color: rgba(20, 16, 12, 0.72);
+    display: none;
 }
 
 /*---------------------------------------- Dialogs ----------------------------------------*/
@@ -1467,6 +1506,98 @@
 
 /* A question's two answers look alike; the selected one (the safe one as it opens; the arrows, Tab or a click move it)
    is filled with gold, as a dialog's choice is: Enter presses it */
+/*---------------------------------------- Update ----------------------------------------*/
+/* A newer build: its notes scroll in the middle, the download's bar and the status under them */
+.update {
+    width: 1100px;
+    max-height: 96%;
+    padding: 34px 60px 36px 60px;
+    align-items: center;
+}
+
+.update__ornament {
+    margin: 14px 0 10px 0;
+}
+
+.update__detail {
+    margin-bottom: 18px;
+}
+
+.update__notes {
+    width: 100%;
+    height: 460px;
+    flex-shrink: 1;
+}
+
+.update__notes .unity-scroll-view__content-container {
+    padding-right: 24px;
+}
+
+/* (in the notes: to win over the rules' title and line margins) */
+.update__notes .update__heading {
+    margin: 18px 0 8px 0;
+}
+
+/* A point: its bullet, then its text, wrapped under itself */
+.update__notes .update__point {
+    flex-direction: row;
+    margin-bottom: 6px;
+}
+
+.update__bullet {
+    width: 30px;
+    flex-shrink: 0;
+    -unity-text-align: upper-left;
+    color: var(--gold);
+}
+
+.update__notes .update__point > .update__text {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+/* A point under a point: further in */
+.update__notes .update__point--sub {
+    padding-left: 30px;
+}
+
+.update__notes .update__paragraph {
+    margin-bottom: 10px;
+}
+
+.update__progress {
+    width: 100%;
+    height: 8px;
+    margin-top: 20px;
+    border-radius: 4px;
+    background-color: rgba(201, 164, 92, 0.2);
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.update__bar {
+    width: 0;
+    height: 100%;
+    background-color: var(--gold);
+}
+
+.update__status {
+    margin: 12px 0 18px 0;
+    white-space: normal;
+    -unity-text-align: middle-center;
+    font-size: 26px;
+    color: var(--text-muted);
+}
+
+.update__buttons {
+    flex-direction: row;
+    justify-content: center;
+}
+
+.update__buttons > .button {
+    margin: 0 20px;
+}
+
 .unity-button.confirm__choice:focus {
     background-color: var(--gold);
     border-color: var(--gold);

@@ -106,6 +106,10 @@ Main menu or pause menu > **Settings**:
   buttons; a smaller menu size still shrinks them.
 - **Game > Game speed** (Slow, Normal, Fast) sets how fast cards move, notices pass and the opponent plays.
 - **Game > Difficulty** (Easy, Normal, Hard) sets how well the opponent plays (see [The AI](ai.md)).
+- **Game > Check for updates** (on by default) looks for a newer version as the game starts. When there is one, the main
+  menu says so in its top right corner; it opens what's new and **Update**, which reloads the page in a browser, installs the new
+  version on Android (Android asks you to confirm), and on a computer replaces the game's files and restarts it. Settings and
+  decks stay.
 - **Game > Censored artwork** (on by default) shows covered versions of the cards' art that has them, and of the main menu's
   key art. It switches at once, everywhere on screen, even in the middle of a battle.
 - **Graphics** has a preset (Low, Medium, High; Custom once you change one) over how many particles the effects emit, and each

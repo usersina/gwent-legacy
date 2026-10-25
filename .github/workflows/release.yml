@@ -1,6 +1,7 @@
 # Every push to main is a release: the tests, then the five builds, then the one GitHub release ("latest") replaced by
 # the new one, its notes taken from the newest section of CHANGELOG.md, and the web build published on GitHub Pages
-# (https://usersina.github.io/gwent-legacy/, the repository's Pages source set to GitHub Actions). Nothing is
+# (https://usersina.github.io/gwent-legacy/, the repository's Pages source set to GitHub Actions), with the update feed
+# beside it (version.json: the build number, the notes, each archive's link, size and checksum; the game checks it). Nothing is
 # published unless all of it succeeds, and a push whose CHANGELOG.md has no new section since the last release is not
 # released at all: its run only checks the changelog, skips the rest and passes.
 #
@@ -113,7 +114,7 @@ jobs:
           targetPlatform: ${{ matrix.target }}
           # The game's own build: GwentBuild builds and packages it into Builds/<version>/GwentLegacy-<platform>.*
           buildMethod: Gwent.EditorTools.GwentBuild.BuildAllBatch
-          customParameters: -buildTargets ${{ matrix.name }} -buildStamp ${{ needs.prepare.outputs.build_stamp }}
+          customParameters: -buildTargets ${{ matrix.name }} -buildStamp ${{ needs.prepare.outputs.build_stamp }} -buildNumber ${{ needs.prepare.outputs.version_code }}
           versioning: None
           androidVersionCode: ${{ needs.prepare.outputs.version_code }}
           androidKeystoreName: ${{ matrix.name == 'android' && secrets.ANDROID_KEYSTORE_BASE64 != '' && 'gwentlegacy.keystore' || '' }}
@@ -153,12 +154,23 @@ jobs:
           path: assets
       - name: Notes
         run: python3 .github/scripts/release_notes.py CHANGELOG.md assets "$GITHUB_REPOSITORY" > notes.md
+      # The update feed, made from the archives as released (an asset too: a feed for any copy of the game)
+      - name: Update feed
+        run: |
+          python3 .github/scripts/version_json.py CHANGELOG.md assets "$GITHUB_REPOSITORY" \
+            "${{ needs.prepare.outputs.version_code }}" "$GITHUB_SHA" > version.json
+          cat version.json | head -c 600
+      - uses: actions/upload-artifact@v4
+        with:
+          name: version
+          path: version.json
+          retention-days: 3
       - name: Replace the release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release delete latest --cleanup-tag --yes || true
-          gh release create latest assets/* \
+          gh release create latest assets/* version.json \
             --target "$GITHUB_SHA" \
             --title "Gwent Legacy" \
             --notes-file notes.md \
@@ -180,11 +192,16 @@ jobs:
         with:
           name: build-web
           path: web
+      - uses: actions/download-artifact@v4
+        with:
+          name: version
+          path: feed
       - name: Unpack the web build
         run: |
           mkdir site
           unzip -q web/GwentLegacy-Web.zip -d site
           test -f site/index.html
+          cp feed/version.json site/version.json
           du -sh site
       - uses: actions/upload-pages-artifact@v3
         with:

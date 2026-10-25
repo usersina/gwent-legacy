@@ -68,6 +68,7 @@ MonoBehaviour:
   settings: {fileID: 9197481963319205126, guid: 56ee6535a2f93a299933304d2b220249, type: 3}
   pauseMenu: {fileID: 9197481963319205126, guid: 307009fbc2e3406d78749c3ca88134bc, type: 3}
   confirmDialog: {fileID: 9197481963319205126, guid: 9ee83f16e03a5e4409b3004117d49e24, type: 3}
+  updateDialog: {fileID: 9197481963319205126, guid: 05fc18857a5e4c7caa4ba661eb78871f, type: 3}
   toast: {fileID: 9197481963319205126, guid: ef6b4d4f61306d3049f8caa83c158f95, type: 3}
   rulesPage: {fileID: 9197481963319205126, guid: 76fa8843591236b9394c96e10802e52a, type: 3}
   cursorDefault: {fileID: 2800000, guid: cbcb12b56ba765b95ad7887bec99e252, type: 3}
