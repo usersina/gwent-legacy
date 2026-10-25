@@ -4,6 +4,61 @@ Every push to `main` is a release: it replaces the one GitHub release, `latest`,
 notes. A push to `main` is only released when this file has a new section since the last release: add one, headed by the
 date, before pushing.
 
+## 2026-10-25
+
+Easier on a phone and in a browser: the web version fills the screen in landscape, the board zooms with two fingers, every
+side's details are a tap away, the rules open mid-battle, and phones get larger menus and buttons. Esc and Android's Back
+button now step back one thing at a time on every screen.
+
+### In a browser
+
+- The game fills the whole window, with no white around it. On a phone the first tap goes full screen and turns it
+  sideways where the browser allows; held upright, the page asks to turn the phone. On an iPhone, a one-time note tells how
+  to play full screen (Add to Home Screen).
+- The page loads on the game's colours, with its crown and a gold bar, and can be added to a home screen as an app.
+
+### Battles
+
+- **Zoom:** on a touch screen, two fingers zoom the board in (up to 2.5 times) and move it. Zoomed in, one finger moves it
+  too, and a double tap on the table zooms in there or back out. A magnifier under the menu button (or Back) brings the
+  whole board back.
+- **Lock:** zoomed in, a padlock under the magnifier locks the board: taps on it do nothing, to look around without playing
+  a card by accident. Zooming out unlocks it.
+- **A side at a glance:** a tap or click on a side's band (portrait, name, gems, score) opens its sheet: its faction's
+  ability, its leader's ability and whether it can still be used, and its cards in hand, deck and discard pile.
+- **The rules mid-battle:** a **?** beside the menu button opens How to play; the battle waits meanwhile (a LAN battle goes
+  on).
+- **Quick chat (LAN):** a speech-bubble mark on your portrait shows where the quick lines open; a finger takes the portrait,
+  the mark and the chat badge over larger areas. The keys (E, T) are in their tooltips, and chat bubbles follow the portrait
+  when the board is zoomed.
+- Tooltips near the top of the screen open below their control instead of off the screen.
+
+### Esc and Back, everywhere
+
+- One press steps back one thing: a dialog or window closes, a chosen card goes back, a picker's choice is given up (asked
+  first where something is lost) or a look closes, the board zooms out; then the pause menu. On the end screen it goes to
+  the main menu.
+- On the main menu, it asks to quit (not in a browser). It used to do nothing.
+- In the deck builder it closes a card's details, the name being typed or the deck list one at a time, before going back to
+  the main menu; a card's details sometimes didn't close on Esc at all.
+- In the LAN lobby it closes the host's details and the join-by-address row before leaving the room or the lobby.
+
+### On a phone
+
+- Menus, dialogs, the chat window, the player sheet and the card pickers start a size larger, measured on the screen (a
+  tablet's stay as they were), as large as the largest **Menu size**; a smaller **Menu size** still shrinks them. The
+  dialogs' × is larger.
+- The opponent list scrolls when it doesn't fit the screen (a phone, or the largest **Menu size** anywhere): its last row
+  was cut off.
+- The battle's menu button, **?**, magnifier and padlock are a size larger, and so are chat bubbles; the chat window's ×
+  and mute take a finger over larger areas.
+- A phone with a camera cutout shows the game to the screen's edge on that side too: it had a black strip there.
+- The redraw's and the pickers' cards stay clear of their title band, which the larger cards covered.
+
+### How to play
+
+- Its Controls topic covers zooming, the lock, the player sheet, the **?** and stepping back with Esc or Back.
+
 ## 2026-10-20
 
 Every screen fits a 16:10 screen, and the battle's menu is easier to reach: a bigger button at the top left, and a way to
