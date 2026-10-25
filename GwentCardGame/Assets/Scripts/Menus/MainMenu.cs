@@ -25,6 +25,7 @@ namespace Gwent.Menus
             Gwent.Net.LanSession.ForgetBattle(); // a LAN battle that closed is no battle to load any more
             GameAudio.PlayMenuMusic();
             UIScreens.Show("MainMenu", UITheme.Current.mainMenu, Bind);
+            UIOverlay.SetEscapeAction(AskQuit);
             CoverWithKeyArt();
             // The leaders' faces, for the opponent picker, the LAN lobby and How to play: loading while the menu is on,
             // they are there when those open (released with the menu)
@@ -129,6 +130,14 @@ namespace Gwent.Menus
         public void OpenSettings()
         {
             SettingsPanel.Open(() => Focus("Item Settings"));
+        }
+
+        // Escape (Android's Back) with nothing over the menu: the last step back is leaving the game, asked first (a second
+        // press answers Cancel). Not in a browser: its tab is closed, not quit
+        private void AskQuit()
+        {
+            if (!GameSettings.IsWeb)
+                UIOverlay.Confirm("Quit the game?", "Quit", "Cancel", QuitGame);
         }
 
         public void QuitGame()

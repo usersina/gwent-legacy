@@ -21,6 +21,7 @@ namespace Gwent.UI
         private const float Spacing = 245;     // between side cards
         private const float FrontGap = 45;     // extra room on each side of the front card
         private const float SideScale = 0.74f;
+        private const float BandBottom = 208;  // the band's lower edge, under the screen's top
         private const int VisibleSide = 3;     // cards shown on each side of the front one
 
         private static int keyFrame = -1;
@@ -61,8 +62,16 @@ namespace Gwent.UI
 
         // The carousel's strip on a parent (a soft dark pool behind the cards separates them from the board) and the
         // place of the front card's description
+        // On a short screen (a phone's larger menu size, or a large one chosen), the cards go down, as far as needed to
+        // stay clear of the band at the top
         protected static T Create<T>(Transform parent, Vector2 center) where T : CardCarousel
         {
+            Canvas canvas = parent.GetComponentInParent<Canvas>();
+            if (canvas != null)
+            {
+                float top = ((RectTransform)canvas.rootCanvas.transform).rect.height / 2 - BandBottom - 12;
+                center.y = Mathf.Min(center.y, top - CardHeight / 2);
+            }
             RectTransform root = UIKit.Rect("CardCarousel", parent).Place(new Vector2(0.5f, 0.5f), center, new Vector2(1920, CardHeight + 60));
             Image backdrop = UIKit.NewImage(root, "Backdrop", UITheme.Current.radial, new Color(0, 0, 0, 0.75f));
             backdrop.rectTransform.Place(new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(2300, CardHeight + 260));
@@ -82,7 +91,7 @@ namespace Gwent.UI
             band.anchorMin = new Vector2(0, 1);
             band.anchorMax = new Vector2(1, 1);
             band.pivot = new Vector2(0.5f, 0.5f);
-            band.anchoredPosition = new Vector2(0, -150);
+            band.anchoredPosition = new Vector2(0, -BandBottom + 58);
             band.sizeDelta = new Vector2(0, 116);
             foreach (float edge in new[] { 0f, 1f })
             {

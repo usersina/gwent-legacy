@@ -50,6 +50,12 @@ namespace Gwent.UI
         {
             if (press == null || showing)
                 return;
+            // The board is being zoomed or moved: no hold
+            if (GameInput.MovingBoard)
+            {
+                press = null;
+                return;
+            }
             // A finger that moves is scrolling or dragging, not holding
             if ((press.position - pressedOn).magnitude > Slop())
             {

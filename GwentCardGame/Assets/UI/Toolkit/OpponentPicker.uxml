@@ -1,11 +1,12 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Toolkit/Gwent.uss" />
-    <!-- Before a battle: who to play against, two a row (the entries are OpponentEntry.uxml, one per AI deck) -->
+    <!-- Before a battle: who to play against, two a row (the entries are OpponentEntry.uxml, one per AI deck); they scroll
+         where the screen is too short for them all (a phone, a large menu size) -->
     <ui:VisualElement name="Dimmer" class="dimmer">
         <ui:VisualElement name="Panel" class="panel opponent-picker">
             <ui:Label text="Choose your opponent" class="title" />
             <ui:VisualElement class="ornament opponent-picker__ornament" />
-            <ui:VisualElement name="Entries" class="opponent-picker__entries" />
+            <ui:ScrollView name="Entries" class="opponent-picker__entries scroll" vertical-scroller-visibility="Auto" horizontal-scroller-visibility="Hidden" />
             <Gwent.UI.DialogButton name="Button Close" text="×" class="button--close" />
         </ui:VisualElement>
     </ui:VisualElement>

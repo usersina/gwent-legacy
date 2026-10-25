@@ -177,6 +177,8 @@ namespace Gwent.EditorTools
             private bool pickerChecked;
             private bool leaderChecked;
             private bool pileChecked;
+            private bool pinchChecked;
+            private bool sheetChecked;
             private bool endScreenChecked;
             private int roundEndChecked;
             private readonly HashSet<int> turnsChecked = new HashSet<int>();
@@ -221,7 +223,7 @@ namespace Gwent.EditorTools
             {
                 Running = true;
                 savedBattleDeck = PlayerPrefs.GetString("playerDeckPath", "");
-                savedOpponent = OpponentDecks.Chosen;
+                savedOpponent = PlayerPrefs.HasKey("opponentDeck") ? OpponentDecks.Chosen : null; // null: none was chosen
                 savedDifficulty = PlayerPrefs.HasKey("aiDifficulty") ? (int)GameSettings.AiDifficulty : -1;
                 savedTouch = GameInput.SimulateTouch;
                 GameInput.SimulateTouch = false;
@@ -311,8 +313,9 @@ namespace Gwent.EditorTools
                 if (!EditorApplication.isPlaying)
                     return;
                 // Real-time input runs at normal speed, like a person playing (the game speed check sets its own; the pause
-                // menu and a discard pile stop time)
-                if (!PauseMenu.IsOpen && !DiscardViewer.IsOpen && (inputCheck == null || !inputCheck.OwnsTimeScale))
+                // menu, a discard pile, a player's sheet and the rules page stop time)
+                if (!PauseMenu.IsOpen && !DiscardViewer.IsOpen && !Gwent.Battle.PlayerSheet.IsOpen && UIScreens.Find("Item The battle") == null
+                    && (inputCheck == null || !inputCheck.OwnsTimeScale))
                     Time.timeScale = inputCheck != null ? 1f : TimeScale;
 
                 try
@@ -572,6 +575,18 @@ namespace Gwent.EditorTools
                 {
                     speedChecked = true;
                     inputCheck = new InputCheck(c, InputScenario.GameSpeed, (ok, what) => Check(ok, what, "game speed"));
+                    return;
+                }
+                if (!sheetChecked)
+                {
+                    sheetChecked = true;
+                    inputCheck = new InputCheck(c, InputScenario.PlayerSheet, (ok, what) => Check(ok, what, "player sheet"));
+                    return;
+                }
+                if (!pinchChecked && c.PlayerInfo.HandList.Count > 0)
+                {
+                    pinchChecked = true;
+                    inputCheck = new InputCheck(c, InputScenario.PinchZoom, (ok, what) => Check(ok, what, "pinch zoom"));
                     return;
                 }
                 if (!pileChecked && (c.PlayerInfo.DiscardList.Count >= 2 || c.EnemyInfo.DiscardList.Count >= 2))
@@ -1088,11 +1103,17 @@ namespace Gwent.EditorTools
                     PlayerPrefs.DeleteKey("playerDeckPath");
                 else
                     PlayerPrefs.SetString("playerDeckPath", savedBattleDeck);
-                OpponentDecks.Chosen = savedOpponent;
+                // Keys the player never had are deleted (not left empty), and the deletions saved: a batch run's editor
+                // quits without saving them
+                if (savedOpponent == null)
+                    PlayerPrefs.DeleteKey("opponentDeck");
+                else
+                    OpponentDecks.Chosen = savedOpponent;
                 if (savedDifficulty < 0)
                     PlayerPrefs.DeleteKey("aiDifficulty");
                 else
                     GameSettings.AiDifficulty = (AiDifficulty)savedDifficulty;
+                PlayerPrefs.Save();
                 DeckStorage.BattleDeckPath = null;
                 GameInput.SimulateTouch = savedTouch;
                 EditorApplication.update -= Tick;
@@ -1191,7 +1212,15 @@ namespace Gwent.EditorTools
             DeckBuilder,              // double-clicks add and remove cards and are refused past the copy and special limits,
                                       // a held press (touch) shows a card, the leader picker, the header's faction arrows,
                                       // the deck dropdown, a card dragged into the deck and out of it, a vertical drag scrolls
-            MainMenuSettings,         // hovering moves the highlight, Settings opens, the volume slider works, Escape closes
+            PlayerSheet,              // a click on the opponent's band opens their sheet (their faction's ability, their leader's,
+                                      // their cards), Escape closes it; a click on yours opens yours, a click outside closes it
+            PinchZoom,                // two fingers (a virtual touchscreen) zoom the board in, the first one on a hand card,
+                                      // which is not selected; the zoom-out button and Escape bring the whole board back;
+                                      // zoomed, one finger drags the board (from a hand card, which is not selected); the
+                                      // lock stops a tap on a hand card, unlocked it selects; a double tap on the table
+                                      // zooms in there and out again
+            MainMenuSettings,         // hovering moves the highlight, Settings opens, the volume slider works, Escape closes;
+                                      // Escape on the menu itself asks to quit, a second one closes the question
             MenuPlay,                 // Play opens the opponent picker; choosing one remembers it and starts the battle
         }
 
@@ -1245,7 +1274,8 @@ namespace Gwent.EditorTools
 
                 At(0, Setup);
                 InputScenario[] with_hand = { InputScenario.RedrawSlowClicksThenDone, InputScenario.RedrawTwice, InputScenario.RedrawCarousel, InputScenario.RedrawSpace,
-                    InputScenario.SelectCard, InputScenario.PassWithSpace, InputScenario.KeyboardPlay, InputScenario.TouchControls, InputScenario.LeaderLift };
+                    InputScenario.SelectCard, InputScenario.PassWithSpace, InputScenario.KeyboardPlay, InputScenario.TouchControls, InputScenario.LeaderLift,
+                    InputScenario.PinchZoom };
                 if (c != null && with_hand.Contains(scenario))
                     At(0, () => check(CardPosition() != Vector2.zero, "the hand has cards to click"));
                 if (scenario == InputScenario.RedrawSlowClicksThenDone)
@@ -1327,6 +1357,35 @@ namespace Gwent.EditorTools
                     PickerKeys();
                 else if (scenario == InputScenario.DiscardPile)
                     DiscardPile();
+                else if (scenario == InputScenario.PinchZoom)
+                    PinchZoom();
+                else if (scenario == InputScenario.PlayerSheet)
+                {
+                    // On the band's background, right of the gems (the portrait is the quick chat's in a LAN battle)
+                    Func<bool, Func<Vector2>> band = mine => () =>
+                    {
+                        RectTransform cover = c.PanelOf(mine).Band;
+                        Vector3[] corners = new Vector3[4];
+                        cover.GetWorldCorners(corners);
+                        return new Vector2(Mathf.Lerp(corners[0].x, corners[2].x, 0.62f), Mathf.Lerp(corners[0].y, corners[2].y, 0.25f));
+                    };
+                    Click(0.3, band(false));
+                    At(0.9, () => check(Gwent.Battle.PlayerSheet.IsOpen && !Gwent.Battle.PlayerSheet.ShowsPlayer && Time.timeScale == 0,
+                        "a click on the opponent's band opens their sheet (the battle waits)"));
+                    At(1.0, () =>
+                    {
+                        GameObject sheet = GameObject.Find("PlayerSheet");
+                        string ability = c.EnemyInfo.Faction.Ability();
+                        check(sheet != null && sheet.GetComponentsInChildren<TextMeshProUGUI>().Any(t => t.text == ability),
+                            "the sheet tells their faction's ability (" + ability + ")");
+                    });
+                    Key(1.2, UnityEngine.InputSystem.Key.Escape);
+                    At(1.7, () => check(!Gwent.Battle.PlayerSheet.IsOpen && !PauseMenu.IsOpen && Time.timeScale > 0, "Escape closes it, and only it"));
+                    Click(2.0, band(true));
+                    At(2.6, () => check(Gwent.Battle.PlayerSheet.IsOpen && Gwent.Battle.PlayerSheet.ShowsPlayer, "a click on your band opens your sheet"));
+                    Click(2.9, () => new Vector2(Screen.width * 0.6f, Screen.height * 0.5f));
+                    At(3.5, () => check(!Gwent.Battle.PlayerSheet.IsOpen && c.selectedCard == null, "a click outside closes it, and does nothing else"));
+                }
                 else if (scenario == InputScenario.LeaderLift)
                     LeaderLift();
                 else if (scenario == InputScenario.DeckBuilder)
@@ -1363,6 +1422,11 @@ namespace Gwent.EditorTools
                     At(4.1, () => check(UIScreens.Find("Button No") == null && PauseMenu.IsOpen && !c.IsBattleOver, "Escape stays in the battle, the menu still open"));
                     Click(4.4, Named("Item Resume"));
                     At(4.9, () => check(!PauseMenu.IsOpen && Time.timeScale > 0, "Resume closes it"));
+                    // The "?" beside the menu button: How to play over the battle, which waits; Escape closes it
+                    Click(5.2, Named("HelpButton"));
+                    At(5.8, () => check(UIScreens.Find("Item The battle") != null && Time.timeScale == 0, "the ? opens How to play over the battle (it waits)"));
+                    Key(6.1, UnityEngine.InputSystem.Key.Escape);
+                    At(6.7, () => check(UIScreens.Find("Item The battle") == null && !PauseMenu.IsOpen && Time.timeScale > 0, "Escape closes it, and the battle goes on"));
                 }
                 else if (scenario == InputScenario.GiveUpAsked)
                 {
@@ -1402,6 +1466,12 @@ namespace Gwent.EditorTools
                     At(5.1, () => check(UIScreens.Find("Entry Spy") != null && UIScreens.Find("Entry Your hand") == null, "a rules topic shows its own entries"));
                     Key(5.4, UnityEngine.InputSystem.Key.Escape);
                     At(5.9, () => check(GameObject.Find("RulesPage") == null, "Escape closes the rules"));
+                    // Nothing over the menu: Escape asks to quit (Quit not focused), a second Escape answers Cancel
+                    Key(6.2, UnityEngine.InputSystem.Key.Escape);
+                    At(6.7, () => check(UIScreens.Find("Button Yes") is UnityEngine.UIElements.Button quit && quit.text == "Quit",
+                        "Escape on the main menu asks to quit"));
+                    Key(7.0, UnityEngine.InputSystem.Key.Escape);
+                    At(7.5, () => check(UIScreens.Find("Button Yes") == null && !UIOverlay.HasModal, "a second Escape stays (the question closes)"));
                 }
                 else
                 {
@@ -1995,6 +2065,11 @@ namespace Gwent.EditorTools
                     InputSystem.RemoveDevice(keyboard);
                     keyboard = null;
                 }
+                if (touchscreen != null)
+                {
+                    InputSystem.RemoveDevice(touchscreen);
+                    touchscreen = null;
+                }
                 if (savedMasterVolume >= 0 && !Mathf.Approximately(GameSettings.MasterVolume, savedMasterVolume))
                     GameSettings.MasterVolume = savedMasterVolume;
                 if (touchChanged)
@@ -2119,6 +2194,160 @@ namespace Gwent.EditorTools
                     module.actionsAsset.Disable();
                     module.actionsAsset.Enable();
                 }
+            }
+
+            // Two fingers part on the board, the first one starting on a hand card: the board zooms in under them, and no
+            // card is selected or played (their release lands on the pinch's cover); the zoom-out button brings it back;
+            // a second pinch, then Escape: back too, and the pause menu stays closed. Zoomed again: one finger dragged from
+            // a hand card moves the board and selects nothing; locked, a tap on a hand card does nothing; unlocked, it
+            // selects it (Escape puts it back); zoomed out, the lock is off. A double tap on the table zooms in, another out.
+            private void PinchZoom()
+            {
+                int hand = 0;
+                Vector2 start = Vector2.zero;
+                At(0.2, () =>
+                {
+                    touchscreen = InputSystem.AddDevice<Touchscreen>("AutoplayTouch");
+                    hand = c.PlayerInfo.HandList.Count;
+                    start = CardPosition();
+                    check(BoardZoom.Zoom == 1 && !BoardZoom.Zoomed, "the board starts whole");
+                });
+                Pinch(0.4, () => start, 60, 260);
+                At(1.6, () => check(BoardZoom.Zoom > 1.4f && BoardZoom.Zoomed, "two fingers parting zoom the board in (x" + BoardZoom.Zoom.ToString("0.00") + ")"));
+                At(1.7, () => check(c.selectedCard == null && c.PlayerInfo.HandList.Count == hand && !c.IsPresenting,
+                    "the pinch selected and played nothing, its first finger on a hand card"));
+                At(1.8, () => check(BoardZoom.ZoomOutButton != null && BoardZoom.ZoomOutButton.GetComponent<CanvasGroup>().alpha > 0.5f, "the zoom-out button shows"));
+                Click(2.1, () => ScreenPoint(BoardZoom.ZoomOutButton.transform));
+                At(3.0, () => check(BoardZoom.Zoom == 1 && !BoardZoom.Zoomed, "the zoom-out button brings the whole board back"));
+                Pinch(3.2, () => start, 60, 220);
+                At(4.3, () => check(BoardZoom.Zoomed, "a second pinch zooms in again"));
+                Key(4.5, UnityEngine.InputSystem.Key.Escape);
+                At(5.4, () => check(BoardZoom.Zoom == 1 && !PauseMenu.IsOpen, "Escape zooms out (the menu stays closed)"));
+
+                Pinch(5.6, () => start, 60, 260);
+                Vector2 pan = Vector2.zero;
+                At(6.6, () => pan = BoardZoom.Pan);
+                Drag(6.7, () => CardPosition(), new Vector2(-160, 120)); // up: the hand stays in sight
+                At(7.6, () => check((BoardZoom.Pan - pan).magnitude > 60 && c.selectedCard == null && c.PlayerInfo.HandList.Count == hand,
+                    "one finger drags the zoomed board (moved " + (BoardZoom.Pan - pan).magnitude.ToString("0") + "), from a hand card it selects nothing"));
+                Tap(7.9, () => ScreenPoint(BoardZoom.LockButton.transform)); // a finger: the padlock is a touch screen's
+                At(8.3, () => check(BoardZoom.Locked, "the padlock locks the board"));
+                Tap(8.5, () => CardPosition());
+                At(9.0, () => check(c.selectedCard == null, "locked, a tap on a hand card selects nothing"));
+                Tap(9.2, () => ScreenPoint(BoardZoom.LockButton.transform));
+                At(9.6, () => check(!BoardZoom.Locked, "the padlock unlocks it"));
+                Tap(9.8, () => CardPosition());
+                At(10.3, () => check(c.selectedCard != null, "unlocked, a tap on a hand card selects it"));
+                Key(10.5, UnityEngine.InputSystem.Key.Escape);
+                At(11.0, () => check(c.selectedCard == null && BoardZoom.Zoomed, "Escape puts the card back first, the board stays zoomed"));
+                Tap(11.2, () => ScreenPoint(BoardZoom.LockButton.transform));
+                Key(11.6, UnityEngine.InputSystem.Key.Escape);
+                At(12.5, () => check(!BoardZoom.Zoomed && !BoardZoom.Locked, "zoomed out, the board is unlocked"));
+
+                Vector2 table = Vector2.zero;
+                At(12.6, () =>
+                {
+                    table = TablePoint();
+                    check(table.x >= 0, "a spot of bare table to double tap");
+                });
+                Tap(12.7, () => table);
+                Tap(12.9, () => table);
+                At(13.8, () => check(BoardZoom.Zoom > 1.8f && !PauseMenu.IsOpen && c.selectedCard == null,
+                    "a double tap on the table zooms in (x" + BoardZoom.Zoom.ToString("0.00") + ")"));
+                Tap(14.0, () => table);
+                Tap(14.2, () => table);
+                At(15.1, () => check(BoardZoom.Zoom == 1, "another double tap zooms back out"));
+                At(15.2, () =>
+                {
+                    if (touchscreen != null)
+                        InputSystem.RemoveDevice(touchscreen);
+                    touchscreen = null;
+                });
+            }
+
+            // One finger down at a point and up again at once
+            private void Tap(double time, Func<Vector2> at)
+            {
+                Vector2 point = Vector2.zero;
+                At(time, () =>
+                {
+                    point = at();
+                    Touch(1, point, UnityEngine.InputSystem.TouchPhase.Began);
+                });
+                At(time + 0.08, () => Touch(1, point, UnityEngine.InputSystem.TouchPhase.Ended));
+            }
+
+            // One finger down at a point, moved by a distance in ten steps, then lifted
+            private void Drag(double time, Func<Vector2> from, Vector2 by)
+            {
+                Vector2 at = Vector2.zero;
+                At(time, () =>
+                {
+                    at = from();
+                    Touch(1, at, UnityEngine.InputSystem.TouchPhase.Began);
+                });
+                const int moves = 10;
+                for (int i = 1; i <= moves; i++)
+                {
+                    float t = i / (float)moves;
+                    At(time + 0.1 + i * 0.04, () => Touch(1, at + by * t, UnityEngine.InputSystem.TouchPhase.Moved));
+                }
+                At(time + 0.6, () => Touch(1, at + by, UnityEngine.InputSystem.TouchPhase.Ended));
+            }
+
+            // A point of the screen where a tap lands on the table itself (nothing there answers it), near the middle
+            private static Vector2 TablePoint()
+            {
+                List<RaycastResult> hits = new List<RaycastResult>();
+                for (int ring = 0; ring < 12; ring++)
+                    for (int side = 0; side < 8; side++)
+                    {
+                        float angle = side * Mathf.PI / 4;
+                        Vector2 point = new Vector2(Screen.width / 2f, Screen.height / 2f) + ring * 40f * new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+                        hits.Clear();
+                        EventSystem.current.RaycastAll(new PointerEventData(EventSystem.current) { position = point }, hits);
+                        GameObject hit = hits.Count > 0 ? hits[0].gameObject : null;
+                        if (hit != null && (ExecuteEvents.GetEventHandler<IPointerClickHandler>(hit) != null || ExecuteEvents.GetEventHandler<IPointerDownHandler>(hit) != null))
+                            continue;
+                        return point;
+                    }
+                return new Vector2(-1, -1);
+            }
+
+            // Two fingers down around a point, a gap apart, parting to wide, then lifted
+            private void Pinch(double time, Func<Vector2> around, float gap, float wide)
+            {
+                Vector2 at = Vector2.zero;
+                At(time, () =>
+                {
+                    at = around();
+                    Touch(1, at, UnityEngine.InputSystem.TouchPhase.Began);
+                    Touch(2, at + new Vector2(gap, 0), UnityEngine.InputSystem.TouchPhase.Began);
+                });
+                const int moves = 10;
+                for (int i = 1; i <= moves; i++)
+                {
+                    float spread = Mathf.Lerp(gap, wide, i / (float)moves);
+                    At(time + 0.1 + i * 0.05, () =>
+                    {
+                        Touch(1, at - new Vector2((spread - gap) / 2, 0), UnityEngine.InputSystem.TouchPhase.Moved);
+                        Touch(2, at + new Vector2(gap + (spread - gap) / 2, 0), UnityEngine.InputSystem.TouchPhase.Moved);
+                    });
+                }
+                At(time + 0.75, () =>
+                {
+                    Touch(1, at - new Vector2((wide - gap) / 2, 0), UnityEngine.InputSystem.TouchPhase.Ended);
+                    Touch(2, at + new Vector2(gap + (wide - gap) / 2, 0), UnityEngine.InputSystem.TouchPhase.Ended);
+                });
+            }
+
+            private Touchscreen touchscreen;
+
+            private void Touch(int id, Vector2 position, UnityEngine.InputSystem.TouchPhase phase)
+            {
+                sent++;
+                if (touchscreen != null)
+                    InputSystem.QueueStateEvent(touchscreen, new TouchState { touchId = id, phase = phase, position = position, pressure = 1 });
             }
 
             private void Send(Vector2 position, MouseButton button, bool pressed)

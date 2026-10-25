@@ -23,7 +23,7 @@ Every control, on the desktop (mouse and keyboard) and on Android (touch). The g
 | --- | --- | --- |
 | Start a battle | **Play**, then choose your opponent (one of 11 decks across the five factions) or **Random opponent**; the choice is remembered | Same, with taps |
 | Play someone on your network (not in a browser) | **Multiplayer** > **Local network**: see [Play on LAN](lan.md) | Same |
-| Read the rules | Main menu > **How to play**: the rules with the game's own pieces (the battle, the board, cards, abilities, special cards, the factions with their abilities and leaders, controls); hover a leader to read its ability | Same; hold a finger on a leader |
+| Read the rules | Main menu > **How to play**: the rules with the game's own pieces (the battle, the board, cards, abilities, special cards, the factions with their abilities and leaders, controls); hover a leader to read its ability. In a battle, the **?** beside the menu button opens it too (the battle waits, except in a LAN battle) | Same; hold a finger on a leader |
 
 The battle uses [your battle deck](#your-battle-deck).
 
@@ -49,7 +49,10 @@ The battle uses [your battle deck](#your-battle-deck).
 | Action | Desktop | Android |
 | --- | --- | --- |
 | Preview a card (board, hand, weather, discard pile, leaders) | Hover it | Hold a finger on it: it shows on the right until you lift the finger (a hand card: tap it to select it) |
-| Read a faction's ability | Hover the faction's shield or name on either side panel | Hold a finger on it |
+| A player at a glance | Click their side panel (the band with their name, faction, gems and score): their sheet opens beside it, with their faction's ability, their leader's ability and whether it can still be used, and the cards in their hand, deck and discard pile. The ×, a click outside it or Esc closes it; the battle waits meanwhile, except in a LAN battle | Tap the band; Back closes it |
+| Read a faction's ability | Hover the faction's shield or name on either side panel, or open that player's sheet | Hold a finger on it, or tap the band |
+| Zoom in on the board | Two fingers on a touch screen, as below | Pinch with two fingers: parting them zooms in (up to 2.5 times) where they are, moving them moves the board. Zoomed in, one finger drags the board too (a finger that moves never plays a card); a double tap on the table (not on a card, a row or a button) zooms in there, or back out. The magnifier under the menu button, or the Back button, brings the whole board back |
+| Look around safely | Touch screens only | Zoomed in, the padlock under the magnifier locks the board: taps on it do nothing, one finger still moves it. Tap the padlock again to unlock; zooming out unlocks it |
 | Browse a discard pile (either side) | Click it: it opens in the card carousel, its top card in front (arrow keys or the wheel browse, Esc or the × puts it away). Hovered, a pile says whose it is and how many cards it holds; the empty weather slot says what it is for | Tap it; hold a finger on it to read whose it is |
 | Choose a card in a picker (medic, leaders, Emhyr's look at the opponent's hand) | The cards show in the carousel under a title, as in the redraw: click a card to bring it forward, click it again (or Enter) to choose it; arrow keys or the wheel browse. The × (Down reaches it) gives the choice up, after asking, since it ends your turn; for a look, it closes | Tap a card to bring it forward, tap it again to choose it |
 
@@ -57,6 +60,7 @@ The battle uses [your battle deck](#your-battle-deck).
 
 | Action | Desktop | Android |
 | --- | --- | --- |
+| Step back | Esc, everywhere, one thing at a time: a dialog or window closes, a chosen card or leader goes back, a picker's choice is given up (asked first where something is lost) or a look closes, the end screen goes to the main menu; otherwise the pause menu opens. On the main menu Esc asks to quit (not in a browser) | The Back button, the same way |
 | Pause (resume, settings, leave) | Esc or the menu button at the top left | Back button or the menu button |
 | Give up (Yu-Gi-Oh style: a hand on your deck) | In your turn (in a LAN battle, any time), hover your deck: the cursor turns into a hand. Click it and confirm; it counts as a loss | Hold a finger on your deck, then confirm |
 | Leave the battle | Pause menu > **Leave battle**, and confirm: it counts as a loss (in a LAN battle, the other player wins), and the main menu opens | Same |
@@ -68,8 +72,8 @@ Only in a LAN battle, never against the AI. More in [Play on LAN](lan.md).
 
 | Action | Desktop | Android |
 | --- | --- | --- |
-| Quick chat | E (or click your portrait): The Witcher 3's quick lines pop up beside your portrait, numbered; 1 to 8 (or a click) says one | Tap your portrait, then a line |
-| Chat window | T (or your portrait's "..." badge): what was said this session (rematches too), and a message to type. The speaker mutes the other player, the × hides the window | Tap the badge |
+| Quick chat | E (or click your portrait, or the speech bubble on its corner): The Witcher 3's quick lines pop up beside your portrait, numbered; 1 to 8 (or a click) says one | Tap your portrait or its speech bubble, then a line |
+| Chat window | T (or the "..." badge on your portrait's other corner): what was said this session (rematches too), and a message to type. The speaker mutes the other player, the × hides the window | Tap the badge |
 | The turn clock | A fuse burns along the middle of the board in a turn's last 15 seconds. Out of time in a turn, you lose the round; in the redraw, you keep your hand ([the turn clock](lan.md#the-turn-clock)) | Same |
 
 ## The deck builder
@@ -84,7 +88,7 @@ Only in a LAN battle, never against the AI. More in [Play on LAN](lan.md).
 | New empty deck | "+ New empty deck", the deck list's last entry: the same field opens for its name ("New deck" offered); Enter makes the deck, with no cards, for the faction shown | Same |
 | Presets | Each faction's AI decks are listed after your own decks, marked "(preset)". Pick one to play with it as it is; your first change saves your own copy ("The Monster Horde (copy)"), and naming one makes your own deck from it. The preset stays as it was: presets can't be renamed or deleted | Same, with taps |
 | Delete a deck | The trash, beside the pencil (your own decks; it asks first) | Same |
-| Back to the main menu | The arrow at the top left, or Esc (once the name being typed, the deck list or a card's details are closed: Esc closes them first) | The arrow, or the Back button |
+| Back to the main menu | The arrow at the top left, or Esc (once the name being typed, the deck list or a card's details are closed: Esc closes them first, one at a time) | The arrow, or the Back button |
 
 ## Your battle deck
 
@@ -97,7 +101,9 @@ battle uses the built-in Northern Realms deck. A deck saved with more copies tha
 
 Main menu or pause menu > **Settings**:
 
-- **Audio** and **Display**.
+- **Audio** and **Display**. **Display > Menu size** sizes the menus and dialogs. On a phone they start a size larger (by the
+  screen's measured size, a tablet's not), as large as the largest menu size, with a larger × and larger battle corner
+  buttons; a smaller menu size still shrinks them.
 - **Game > Game speed** (Slow, Normal, Fast) sets how fast cards move, notices pass and the opponent plays.
 - **Game > Difficulty** (Easy, Normal, Hard) sets how well the opponent plays (see [The AI](ai.md)).
 - **Game > Censored artwork** (on by default) shows covered versions of the cards' art that has them, and of the main menu's

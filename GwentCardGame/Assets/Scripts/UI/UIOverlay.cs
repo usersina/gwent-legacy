@@ -53,7 +53,7 @@ namespace Gwent.UI
             canvas.sortingOrder = sorting_order;
             CanvasScaler scaler = canvas_go.AddComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            scaler.referenceResolution = scaled_by_settings ? ReferenceResolution / GameSettings.MenuScale : ReferenceResolution;
+            scaler.referenceResolution = scaled_by_settings ? ReferenceResolution / UIKit.MenuScale : ReferenceResolution;
             scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.Expand; // as the scenes' canvases: all of it on any screen
             canvas_go.AddComponent<GraphicRaycaster>();
 
@@ -262,7 +262,7 @@ namespace Gwent.UI
 
             private void Update()
             {
-                Vector2 reference = ReferenceResolution / GameSettings.MenuScale;
+                Vector2 reference = ReferenceResolution / UIKit.MenuScale;
                 if (scaler != null && scaler.referenceResolution != reference)
                     scaler.referenceResolution = reference;
 

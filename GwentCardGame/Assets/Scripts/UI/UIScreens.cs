@@ -52,6 +52,7 @@ namespace Gwent.UI
                 root.style.top = 0;
                 root.style.right = 0;
                 root.style.bottom = 0;
+                root.EnableInClassList("phone", UIKit.PhoneScale > 1); // a phone's own sizes (Gwent.uss)
                 roots.RemoveAll(shown => shown.panel == null); // closed, or gone with their scene
                 roots.Add(root);
                 bind(root);
@@ -151,7 +152,7 @@ namespace Gwent.UI
         {
             foreach (PanelSettings panel in panels)
                 if (panel != null)
-                    panel.referenceResolution = Vector2Int.RoundToInt(ReferenceResolution / GameSettings.MenuScale);
+                    panel.referenceResolution = Vector2Int.RoundToInt(ReferenceResolution / UIKit.MenuScale);
         }
     }
 }

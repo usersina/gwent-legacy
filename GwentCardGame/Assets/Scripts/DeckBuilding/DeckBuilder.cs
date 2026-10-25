@@ -92,21 +92,32 @@ namespace Gwent.DeckBuilding
             UIOverlay.SetEscapeAction(OnEscape);
         }
 
-        // Escape (and Android's Back button) goes back to the main menu, unless that press is closing something of the
-        // builder's own, open the frame before: the name being typed, the deck list, a card's details (they close on it
-        // themselves; the dialogs over the builder, the leaders' too, take it before this)
+        // Escape (and Android's Back button) goes back to the main menu, unless something of the builder's own was open the
+        // frame before: then that press closes it, one thing at a time. A card's details; the name being typed (its field
+        // cancels the name itself while it has the keyboard, so only a field left open without it is closed here); the deck
+        // list (it closes on the press itself while one of its entries is selected; otherwise here). The dialogs over the
+        // builder, the leaders' too, take the press before this.
         private bool escapeCloses;
+        private bool detailsOpen, nameTyped, listOpen;
 
         private void LateUpdate()
         {
-            escapeCloses = naming || deckSummary.deckPicker.IsExpanded
-                || deckCollection.cardDetails != null && deckCollection.cardDetails.activeInHierarchy;
+            detailsOpen = deckCollection.cardDetails != null && deckCollection.cardDetails.activeInHierarchy;
+            nameTyped = nameField != null && nameField.isFocused;
+            listOpen = deckSummary.deckPicker.IsExpanded;
+            escapeCloses = naming || listOpen || detailsOpen;
         }
 
         private void OnEscape()
         {
             if (!escapeCloses)
                 ToMainMenu();
+            else if (detailsOpen)
+                deckCollection.cardDetails.SetActive(false);
+            else if (naming && !nameTyped)
+                StopNaming();
+            else if (listOpen && deckSummary.deckPicker.IsExpanded)
+                deckSummary.deckPicker.Hide();
         }
 
         // What the icon buttons do, when the pointer rests on them (or a finger is held on them)

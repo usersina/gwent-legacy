@@ -225,6 +225,16 @@
     background-color: rgba(201, 164, 92, 0.28);
 }
 
+/* On a phone (UIScreens adds .phone to every screen and dialog): the × takes a finger, nearer the corner */
+.phone .button--close {
+    top: 20px;
+    right: 20px;
+    width: 62px;
+    height: 62px;
+    padding-bottom: 8px;
+    font-size: 66px;
+}
+
 /* Gold fill, dark text: the choice a dialog is about */
 .button--primary {
     background-color: var(--gold);
@@ -246,6 +256,7 @@
 /*---------------------------------------- Opponent picker ----------------------------------------*/
 .opponent-picker {
     width: 1300px;
+    max-height: 96%;
     padding: 34px 40px 36px 40px;
     align-items: center;
 }
@@ -254,8 +265,15 @@
     margin: 14px 0 30px 0;
 }
 
-/* Two entries a row */
+/* Two entries a row, scrolling when they don't all fit (the bar in the panel's right padding) */
 .opponent-picker__entries {
+    width: 1244px;
+    flex-shrink: 1;
+    margin-right: -24px;
+}
+
+/* (the picker's own name: to win over the scroll view's column) */
+.opponent-picker #Entries .unity-scroll-view__content-container {
     width: 1220px;
     flex-direction: row;
     flex-wrap: wrap;

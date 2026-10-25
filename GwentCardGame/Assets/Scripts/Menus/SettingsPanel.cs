@@ -224,9 +224,10 @@ namespace Gwent.Menus
         private static Focusable BuildDisplayPage(VisualElement page)
         {
             Focusable first = null;
-            if (GameSettings.IsWeb)
+            if (GameSettings.IsWeb && !GameSettings.IsMobile)
             {
-                // The browser decides the rest; fullscreen follows a click (browsers allow it only then)
+                // The browser decides the rest; fullscreen follows a click (browsers allow it only then). In a phone's
+                // browser the page itself goes fullscreen at a tap, in landscape (the web template's index.html)
                 first = SwitchRow(page, "Fullscreen", "Esc leaves it", Screen.fullScreen, v => Screen.fullScreen = v);
             }
             else if (!GameSettings.IsMobile)
