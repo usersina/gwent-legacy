@@ -227,10 +227,11 @@ namespace Gwent.EditorTools
                 case BuildTarget.Android:
                     EditorUserBuildSettings.buildAppBundle = false; // an .apk, to install directly
                     // A release installs over the one before only with a version code at least as high (the release
-                    // workflow passes the number of commits on main)
+                    // workflow passes the number of commits on main); a build number given alone is the version code too
+                    // (test builds that update one another: -buildNumber 10001, then 10002)
                     savedVersionCode = PlayerSettings.Android.bundleVersionCode;
                     int version_code;
-                    if (int.TryParse(Argument("-androidVersionCode"), out version_code) && version_code > 0)
+                    if (int.TryParse(Argument("-androidVersionCode") ?? Argument("-buildNumber"), out version_code) && version_code > 0)
                         PlayerSettings.Android.bundleVersionCode = version_code;
                     string keystore = Argument("-androidKeystoreName");
                     if (!string.IsNullOrEmpty(keystore))

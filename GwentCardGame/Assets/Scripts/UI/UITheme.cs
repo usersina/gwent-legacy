@@ -74,6 +74,7 @@ namespace Gwent.UI
         public VisualTreeAsset settings;
         public VisualTreeAsset pauseMenu;
         public VisualTreeAsset confirmDialog;
+        public VisualTreeAsset updateDialog;      // a newer build is out: what's new, Update
         public VisualTreeAsset toast;
         public VisualTreeAsset rulesPage;
 

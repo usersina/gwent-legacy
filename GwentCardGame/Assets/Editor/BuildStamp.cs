@@ -13,6 +13,8 @@ namespace Gwent.EditorTools
 {
     // Stamps which source a build comes from (BuildInfo): the commit ("1a2b3c4d"), and when the working tree has changes
     // not committed, a hash of them too ("1a2b3c4d.5e6f70"), so that two builds match only when built from the same files.
+    // Its second line is the build number, the count of commits ("332"): later builds have higher ones (the update check
+    // compares them; the release workflow gives it, -buildNumber 332, as it gives Android's version code).
     // Written to Assets/Resources/BuildStamp.txt (ignored by git) as each build starts, and as the editor loads its scripts
     // (the editor's own play is the working tree's build). "unknown" without git. A stamp given on the command line
     // (-buildStamp 1a2b3c4d) is taken as it is: the release workflow gives its commit, its builds running in a container
@@ -36,17 +38,29 @@ namespace Gwent.EditorTools
                 EditorApplication.delayCall += () => Write();
         }
 
-        // Writes the stamp (only when it changed: no import otherwise); the stamp written
+        // Writes the stamp and the build number (only when they changed: no import otherwise); the stamp written
         public static string Write()
         {
             string stamp = Compute();
-            string old = File.Exists(StampPath) ? File.ReadAllText(StampPath).Trim() : null;
-            if (old != stamp)
+            string text = stamp + "\n" + Number() + "\n";
+            string old = File.Exists(StampPath) ? File.ReadAllText(StampPath) : null;
+            if (old != text)
             {
-                File.WriteAllText(StampPath, stamp + "\n");
+                File.WriteAllText(StampPath, text);
                 AssetDatabase.ImportAsset(StampPath, ImportAssetOptions.ForceSynchronousImport);
             }
             return stamp;
+        }
+
+        // The build number: the one given (-buildNumber 332), else the count of commits up to this one; 0 without git
+        public static int Number()
+        {
+            string[] arguments = Environment.GetCommandLineArgs();
+            int at = Array.LastIndexOf(arguments, "-buildNumber");
+            int number;
+            if (at >= 0 && at + 1 < arguments.Length && int.TryParse(arguments[at + 1], out number) && number > 0)
+                return number;
+            return int.TryParse(Git("rev-list --count HEAD"), out number) ? number : 0;
         }
 
         // The commit, and a hash of what differs from it (changed files, new files not ignored); or the one given

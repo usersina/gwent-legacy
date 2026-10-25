@@ -1220,7 +1220,8 @@ namespace Gwent.EditorTools
                                       // lock stops a tap on a hand card, unlocked it selects; a double tap on the table
                                       // zooms in there and out again
             MainMenuSettings,         // hovering moves the highlight, Settings opens, the volume slider works, Escape closes;
-                                      // Escape on the menu itself asks to quit, a second one closes the question
+                                      // Escape on the menu itself asks to quit, a second one closes the question; a newer
+                                      // build in a feed shows the update notice, which opens what's new
             MenuPlay,                 // Play opens the opponent picker; choosing one remembers it and starts the battle
         }
 
@@ -1472,6 +1473,28 @@ namespace Gwent.EditorTools
                         "Escape on the main menu asks to quit"));
                     Key(7.0, UnityEngine.InputSystem.Key.Escape);
                     At(7.5, () => check(UIScreens.Find("Button Yes") == null && !UIOverlay.HasModal, "a second Escape stays (the question closes)"));
+                    // A newer build in a feed (a file here): the menu shows its notice, which opens what's new; Escape closes it
+                    At(7.7, () =>
+                    {
+                        string feed = System.IO.Path.Combine(Application.temporaryCachePath, "autoplay-version.json");
+                        System.IO.File.WriteAllText(feed, "{\"build\": " + (BuildInfo.Number + 1) + ", \"commit\": \"0000abcd\", \"date\": \"2026-10-26\", "
+                            + "\"notes\": \"### Battles\\n\\n- A **new** thing.\\n- Another one.\"}");
+                        Gwent.Updates.UpdateCheck.FeedOverride = "file://" + feed;
+                        Gwent.Updates.UpdateCheck.Reset();
+                        Gwent.Updates.UpdateCheck.Begin();
+                    });
+                    At(8.6, () => check(UIScreens.Find("Button Update") is UnityEngine.UIElements.Button notice && notice.resolvedStyle.display == UnityEngine.UIElements.DisplayStyle.Flex
+                        && notice.text.Contains((BuildInfo.Number + 1).ToString()), "a newer build in the feed shows the menu's notice"));
+                    Click(8.9, Named("Button Update"));
+                    At(9.5, () => check(UpdateDialog.IsOpen && UIScreens.Find("Notes") is UnityEngine.UIElements.ScrollView notes && notes.contentContainer.childCount == 3,
+                        "the notice opens what's new (a heading, two points)"));
+                    Key(9.8, UnityEngine.InputSystem.Key.Escape);
+                    At(10.3, () => check(!UpdateDialog.IsOpen && !UIOverlay.HasModal, "Escape closes it"));
+                    At(10.4, () =>
+                    {
+                        Gwent.Updates.UpdateCheck.FeedOverride = null;
+                        Gwent.Updates.UpdateCheck.Reset();
+                    });
                 }
                 else
                 {

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The game's update may install the APK it downloaded (GwentUpdateInstaller.java, beside this library): Android still
+     asks the player to confirm each update, and once to allow the game to install apps. Merged into the game's manifest. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.usersina.gwentlegacy.update">
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+</manifest>

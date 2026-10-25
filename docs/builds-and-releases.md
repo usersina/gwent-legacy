@@ -8,6 +8,7 @@
 - [Platform notes](#platform-notes)
 - [The build number](#the-build-number)
 - [Releases](#releases)
+- [Updates](#updates)
 
 ## Building the game
 
@@ -79,6 +80,12 @@ platform's own files (Android's keystore) would count as changes.
 Two devices play each other on LAN only with the same build ([Play on LAN](lan.md#the-same-build)). Unity's own
 `Application.buildGUID` would not do: it differs between platforms built from the same source.
 
+The stamp's second line is the **build number**: the count of commits (`git rev-list --count HEAD`), or the one given with
+`-buildNumber 332`. Later builds have higher numbers, so the [update check](#updates) compares them; the main menu shows it as
+"Build 332 (1a2b3c4d)". The release workflow gives every platform's build the same number, which is also Android's version code
+(so a release installs over the one before). A build number given alone sets Android's version code too, which makes test builds
+that update one another: `-buildNumber 10001`, then `-buildNumber 10002`.
+
 ## Releases
 
 **Every push to `main` is a release.** `.github/workflows/release.yml` runs the EditMode tests, builds the five platforms on
@@ -95,6 +102,35 @@ to 1 GB and about 100 GB of traffic a month.
 
 The download links stay the same from one release to the next:
 `https://github.com/usersina/gwent-legacy/releases/latest/download/GwentLegacy-<Windows.zip|macOS.zip|Linux.tar.gz|Android.apk|Web.zip>`.
+
+Each release also publishes the **update feed**, `version.json`, beside the web build
+(<https://usersina.github.io/gwent-legacy/version.json>) and as a release asset. `.github/scripts/version_json.py` makes it from
+the released archives: the build number, the commit, the date, the newest section of `CHANGELOG.md`, and each platform's
+download link, size and SHA-256.
+
+## Updates
+
+The game reads the feed once a session, as the main menu opens (`Gwent.Updates.UpdateCheck`), unless **Settings > Game > Check
+for updates** is off; never in the editor. A newer build shows a notice in the main menu's top right corner, which opens what's new and **Update**
+(`UpdateDialog`, `UpdateInstaller`):
+
+- **In a browser** the page reloads (the feed read there is the one beside the page, so a copy hosted elsewhere without one
+  shows nothing).
+- **On Android** the game downloads the APK, checks its size and SHA-256 and hands it to Android's package installer
+  (`Plugins/Android/GwentUpdateInstaller.java`; the `GwentUpdate.androidlib` beside it adds the `REQUEST_INSTALL_PACKAGES`
+  permission). Android asks the player to confirm, and the first time to allow the game to install apps. It installs only over a
+  copy signed with the same key, as releases are.
+- **On Windows, Linux and macOS** the game downloads the archive into `.gwent-update` in the folder it replaces things in, checks
+  it, unpacks it (tar on Linux, ditto on macOS), writes a script (`DesktopUpdate`: sh, or cmd on Windows) and quits. The script
+  waits for the game to end, moves the game's own entries aside, moves the new ones in (putting the old ones back if one can't
+  be moved), starts the game again and removes `.gwent-update`; it logs to `update.log` in the game's data folder. On Windows
+  and Linux the entries are those of the game's folder (other files there stay); on macOS, the app in the folder it sits in. A
+  macOS app run from where it was downloaded (App Translocation: a read-only copy) can't be replaced: the dialog says to move
+  it to Applications first.
+
+Anything that fails says why and offers the release's download page. To test against another feed: `-updateFeed <url>` on the
+command line, or a file `update-feed.txt` in the game's data folder holding the URL (a `file://` one works, on Android too);
+the autoplay uses `UpdateCheck.FeedOverride`.
 
 The workflow needs the Unity license and the Android release key as repository secrets; `tools/release-secrets.sh` sets them once
 (it reads the license Unity Hub keeps on the machine, asks for the Unity account, and makes the Android key in

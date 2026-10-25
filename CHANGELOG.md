@@ -4,6 +4,28 @@ Every push to `main` is a release: it replaces the one GitHub release, `latest`,
 notes. A push to `main` is only released when this file has a new section since the last release: add one, headed by the
 date, before pushing.
 
+## 2026-10-25 (2)
+
+The game now tells you when a new version is out, and updates itself.
+
+### Updates
+
+- As the game starts, it checks for a newer release. When there is one, the main menu says so in its top right corner
+  ("New version available · build 335"); it opens what's new, with the download's size, **Update** and **Later**.
+- **Update** does what each platform can, and your settings and decks stay:
+  - in a browser, the page reloads with the new version;
+  - on Android, the game downloads the new version, checks it and hands it to Android's installer, which asks you to confirm
+    (the first time, also to allow installing from the game);
+  - on Windows, Linux and macOS, the game downloads the new version, checks it, then restarts as it. Only the game's own files
+    are replaced.
+- When it can't (no connection, a folder the game may not write to, a macOS copy not moved to Applications yet), it says why and
+  offers the release's download page.
+- **Settings > Game > Check for updates** turns it off.
+- The main menu shows the build's number with its commit, "Build 335 (1a2b3c4d)": the commit opens its source on GitHub. The
+  fan project's note moved under it, smaller.
+
+Copies of the game from before this release don't have it: update them by hand once.
+
 ## 2026-10-25
 
 Easier on a phone and in a browser: the web version fills the screen in landscape, the board zooms with two fingers, every

@@ -3,6 +3,7 @@ using System.Linq;
 using Cysharp.Threading.Tasks;
 using Gwent.Core;
 using Gwent.UI;
+using Gwent.Updates;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -26,6 +27,8 @@ namespace Gwent.Menus
             GameAudio.PlayMenuMusic();
             UIScreens.Show("MainMenu", UITheme.Current.mainMenu, Bind);
             UIOverlay.SetEscapeAction(AskQuit);
+            UpdateCheck.Found += ShowUpdate;
+            UpdateCheck.Begin(); // once a session: a newer build shows a notice here
             CoverWithKeyArt();
             // The leaders' faces, for the opponent picker, the LAN lobby and How to play: loading while the menu is on,
             // they are there when those open (released with the menu)
@@ -39,7 +42,7 @@ namespace Gwent.Menus
         private void Bind(VisualElement root)
         {
             items.Clear();
-            root.Q<Label>("Build").text = "Version " + Application.version + " \u00B7 Build " + BuildInfo.Build;
+            ShowBuild(root);
             AddItem(root, "Item Play", PlayGame);
             AddItem(root, "Item Multiplayer", () => OpenMultiplayer());
             AddItem(root, "Item Deck builder", EditDeck);
@@ -50,8 +53,51 @@ namespace Gwent.Menus
                 quit.RemoveFromHierarchy();
             else
                 AddItem(root, "Item Quit", QuitGame);
+            update = root.Q<UnityEngine.UIElements.Button>("Button Update");
+            update.clicked += () => UpdateDialog.Open(UpdateCheck.Available, () => UIScreens.Focus(update));
+            ShowUpdate();
             // Once the panel has laid it out
             root.schedule.Execute(() => Focus(0));
+        }
+
+        // "Version 1.0.0 · Build 332 (1a2b3c4d)", the commit a link to it on GitHub (and its part of a local build's changes
+        // after it, as is); without a number or a commit known, the build as it is
+        private static void ShowBuild(VisualElement root)
+        {
+            Label start = root.Q<Label>("Build");
+            Label commit = root.Q<Label>("Commit");
+            Label end = root.Q<Label>("Build end");
+            string version = "Version " + Application.version + " \u00B7 ";
+            string url = BuildInfo.CommitUrl;
+            if (BuildInfo.Number <= 0 || url == null)
+            {
+                start.text = version + BuildInfo.Label;
+                commit.style.display = DisplayStyle.None;
+                end.style.display = DisplayStyle.None;
+                return;
+            }
+            start.text = version + "Build " + BuildInfo.Number + " (";
+            commit.text = BuildInfo.Commit;
+            end.text = BuildInfo.Build.Substring(BuildInfo.Commit.Length) + ")";
+            commit.tooltip = "This build's source on GitHub";
+            commit.RegisterCallback<ClickEvent>(_ =>
+            {
+                GameAudio.PlaySfx("ui_click");
+                Application.OpenURL(url);
+            });
+        }
+
+        // The notice of a newer build (UpdateCheck), in the top right corner: it opens what's new and Update
+        private UnityEngine.UIElements.Button update;
+
+        private void ShowUpdate()
+        {
+            UpdateFeed feed = UpdateCheck.Available;
+            if (update == null)
+                return;
+            update.style.display = feed != null ? DisplayStyle.Flex : DisplayStyle.None;
+            if (feed != null)
+                update.text = "New version available \u00B7 build " + feed.build;
         }
 
         private void AddItem(VisualElement root, string name, System.Action on_click)
@@ -101,6 +147,7 @@ namespace Gwent.Menus
 
         private void OnDestroy()
         {
+            UpdateCheck.Found -= ShowUpdate;
             CensoredArt.Changed -= ShowKeyArt;
         }
 

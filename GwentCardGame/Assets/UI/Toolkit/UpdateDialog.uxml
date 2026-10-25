@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Toolkit/Gwent.uss" />
+    <!-- A newer build is out (Gwent.Menus.UpdateDialog): its build, date and size, what's new (the release's notes), then
+         Update (the download's progress over the status) and Later -->
+    <ui:VisualElement name="Dimmer" class="dimmer">
+        <ui:VisualElement name="Panel" class="panel update">
+            <ui:Label text="A new version" class="title" />
+            <ui:VisualElement class="ornament update__ornament" />
+            <ui:Label name="Detail" class="caption update__detail" />
+            <ui:ScrollView name="Notes" class="update__notes scroll" vertical-scroller-visibility="Auto" horizontal-scroller-visibility="Hidden" />
+            <ui:VisualElement name="Progress" class="update__progress">
+                <ui:VisualElement name="Bar" class="update__bar" />
+            </ui:VisualElement>
+            <ui:Label name="Status" class="body update__status" />
+            <ui:VisualElement class="update__buttons">
+                <Gwent.UI.DialogButton name="Button Update" text="Update" class="button--primary" />
+                <Gwent.UI.DialogButton name="Button Later" text="Later" class="button--secondary" />
+            </ui:VisualElement>
+            <Gwent.UI.DialogButton name="Button Close" text="×" class="button--close" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
