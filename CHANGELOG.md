@@ -4,6 +4,32 @@ Every push to `main` is a release: it replaces the one GitHub release, `latest`,
 notes. A push to `main` is only released when this file has a new section since the last release: add one, headed by the
 date, before pushing.
 
+## 2026-10-27
+
+Replays: save a battle from its end screen, and watch it again.
+
+### Replays
+
+- **Save replay** on the end screen keeps the battle: against the AI, and LAN battles on both devices (the guest's once its
+  fair play check has passed).
+- **Main menu > Replays** lists them, the newest first: who played whom, how it ended, when, both factions. They stay until
+  you delete one with the cross beside it.
+- Watching shows the battle from your side, at its own pace. A bar where the pass button is plays and pauses, goes a move or
+  a round forward or back, and sets the speed (1×, 2×, 4×); on a computer, Space, the arrows and Shift with them do the same.
+  Your own plays and leader show in the showcase on the right, as your opponent's do.
+- The switch right of your hand (S on a computer) turns the board over: the same moment from your opponent's side, their
+  hand shown.
+- At the end: **Watch again** or back to **Replays**. Esc or Back > **Stop watching** leaves at any time.
+- A replay is the battle played again from its moves: one recorded with an earlier version whose rules or cards play them
+  differently says so instead of showing a battle that never was.
+- How far the replay is shows along the line between the two halves of the board, a mark where each round starts.
+
+### Battle
+
+- The lines dividing the board (between its two halves, and along the left column) are now thin iron rods set in the
+  table, as on The Witcher 3's board. A LAN battle's turn clock burns along the middle one, under the cards and their
+  highlights.
+
 ## 2026-10-25 (2)
 
 The game now tells you when a new version is out, and updates itself.
