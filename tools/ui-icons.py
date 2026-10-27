@@ -8,6 +8,9 @@ Assets/UI/Sprites, drawn four times larger and scaled down:
 - IconZoomOut.png (96): a magnifier with a minus (the battle's zoom out, once a pinch zoomed the board in)
 - IconTalk.png (96): a speech bubble with two lines of words (the mark on your portrait in a LAN battle: the quick chat)
 - IconLock.png, IconUnlock.png (96): a padlock, shut or open (the zoomed board's lock: taps on the board do nothing)
+- IconPlay.png, IconPause.png, IconStepBack.png, IconStepForward.png, IconRoundBack.png, IconRoundForward.png (96): a
+  replay's controls (a triangle, two bars; a triangle against a bar for a move; two triangles against a bar for a round)
+- IconSwitch.png (96): an arrow up beside an arrow down (a replay's switch to the other side's view: the board turns over)
 
 tools/ui-icons.py [project dir, default GwentCardGame]
 """
@@ -138,6 +141,63 @@ def padlock(shut, size=96):
     save(big.getchannel("A"), size, "IconLock.png" if shut else "IconUnlock.png")
 
 
+def media(kind, size=96):
+    S = size * SCALE
+    big = Image.new("RGBA", (S, S), (255, 255, 255, 0))
+    d = ImageDraw.Draw(big)
+    cy, h = S * 0.5, S * 0.30          # the triangles' middle and half height
+    bar = S * 0.085                    # a bar's width
+
+    def triangle(tip_x, back_x):
+        d.polygon([(back_x, cy - h), (tip_x, cy), (back_x, cy + h)], fill="white")
+
+    def upright(x):
+        d.rounded_rectangle((x - bar / 2, cy - h, x + bar / 2, cy + h), radius=bar * 0.3, fill="white")
+
+    if kind == "play":
+        triangle(S * 0.78, S * 0.30)
+    elif kind == "pause":
+        for x in (S * 0.38, S * 0.62):
+            d.rounded_rectangle((x - bar * 0.8, cy - h, x + bar * 0.8, cy + h), radius=bar * 0.4, fill="white")
+    elif kind == "step_forward":
+        triangle(S * 0.64, S * 0.26)
+        upright(S * 0.72)
+    elif kind == "step_back":
+        triangle(S * 0.36, S * 0.74)
+        upright(S * 0.28)
+    elif kind == "round_forward":
+        triangle(S * 0.50, S * 0.20)
+        triangle(S * 0.76, S * 0.46)
+        upright(S * 0.82)
+    elif kind == "round_back":
+        triangle(S * 0.50, S * 0.80)
+        triangle(S * 0.24, S * 0.54)
+        upright(S * 0.18)
+    names = {"play": "IconPlay.png", "pause": "IconPause.png", "step_forward": "IconStepForward.png",
+             "step_back": "IconStepBack.png", "round_forward": "IconRoundForward.png", "round_back": "IconRoundBack.png"}
+    save(big.getchannel("A"), size, names[kind])
+
+
+def switch(size=96):
+    S = size * SCALE
+    big = Image.new("RGBA", (S, S), (255, 255, 255, 0))
+    d = ImageDraw.Draw(big)
+    shaft = S * 0.085                  # as the media icons' bars
+    head_w, head_h = S * 0.30, S * 0.22
+    top, bottom = S * 0.16, S * 0.84
+
+    def arrow(x, up):
+        tip = top if up else bottom
+        base = tip + head_h if up else tip - head_h
+        end = bottom if up else top
+        d.rounded_rectangle((x - shaft / 2, min(base, end) - 1, x + shaft / 2, max(base, end) + 1), radius=shaft * 0.3, fill="white")
+        d.polygon([(x - head_w / 2, base), (x, tip), (x + head_w / 2, base)], fill="white")
+
+    arrow(S * 0.33, True)
+    arrow(S * 0.67, False)
+    save(big.getchannel("A"), size, "IconSwitch.png")
+
+
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     close()
@@ -147,4 +207,7 @@ if __name__ == "__main__":
     talk()
     padlock(True)
     padlock(False)
+    for kind in ("play", "pause", "step_forward", "step_back", "round_forward", "round_back"):
+        media(kind)
+    switch()
     print("written to", OUT)

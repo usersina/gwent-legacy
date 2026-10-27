@@ -130,6 +130,10 @@ namespace Gwent.Net
         public bool FairChecked { get; private set; }
         public string FairProblem { get; private set; }
 
+        // The guest: the battle just over as its fair play check played it, once it passed (what its replay is saved
+        // from: the host saves its own match); null before, or when it failed
+        public Gwent.Rules.Match Checked { get; private set; }
+
         private LanLink link;
         private LanDiscovery discovery;
         private LanDiscovery finding;    // guest: its host looked for on the network while away (its address may have changed)
@@ -756,6 +760,7 @@ namespace Gwent.Net
                     movesKnown = true;
                     FairChecked = false;
                     FairProblem = null;
+                    Checked = null;
                     State = Stage.Battle;
                     ForBattle = this;
                     resumed = true;
@@ -956,6 +961,17 @@ namespace Gwent.Net
                 Say("the guest's moves in the record: " + string.Join(", ", commands.Where(c => !c.seat).Select(c => c.command.ToString()))
                     + " | as it made them: " + string.Join(", ", sentMoves.Select(m => m.Command + (m.Unsure ? " (unsure)" : ""))));
             GameLog.Event(LogCategory.Game, "lan_fair_play", "ok", FairProblem == null, "problem", FairProblem ?? "");
+            if (FairProblem == null)
+            {
+                try
+                {
+                    Checked = Gwent.Rules.Match.Replay(setup, CardLibrary.Get(), commands);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogWarning("[lan] The battle could not be played again for its replay: " + e.Message);
+                }
+            }
             Changed?.Invoke();
         }
 

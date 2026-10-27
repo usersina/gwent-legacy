@@ -100,14 +100,14 @@
     -unity-background-image-tint-color: rgba(0, 0, 0, 0.9);
 }
 
-/* Five entries' room (the web build has no Quit), a little below the middle */
+/* Seven entries' room (the web build has no Quit), a little below the middle */
 .main-menu__entries {
     position: absolute;
     left: 120px;
     top: 50%;
-    margin-top: -180px;
+    margin-top: -230px;
     width: 600px;
-    height: 440px;
+    height: 540px;
 }
 
 /* The bottom right corner: the version and build on a line (the commit a link), the fan project's note centred under them,
@@ -1506,6 +1506,73 @@
 
 /* A question's two answers look alike; the selected one (the safe one as it opens; the arrows, Tab or a click move it)
    is filled with gold, as a dialog's choice is: Enter presses it */
+/*---------------------------------------- Replays ----------------------------------------*/
+/* The replays saved: the opponent picker's panel and rows, a caption under the title, a word when there is none */
+.replays__caption {
+    margin: -14px 0 20px 0;
+    -unity-text-align: middle-center;
+}
+
+.replays__empty {
+    margin: 40px 0 70px 0;
+    white-space: normal;
+    -unity-text-align: middle-center;
+    color: var(--text-muted);
+    display: none;
+}
+
+/* A replay: its entry (as an opponent's) and, beside it, its cross */
+.replay {
+    width: 600px;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 0 12px 0;
+}
+
+.replay > .opponent {
+    width: auto;
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin: 0;
+}
+
+/* Who played whom on one line, cut short with "…" (the cross takes its room) */
+.replay .opponent__title {
+    font-size: 26px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* (.unity-button too: to win over the default theme's button) */
+.unity-button.replay__action {
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    margin: 0 0 0 6px;
+    padding: 0;
+    border-width: 0;
+    border-radius: 10px;
+    background-color: rgba(201, 164, 92, 0);
+    background-size: 30px 30px;
+    -unity-background-image-tint-color: var(--gold);
+    transition-property: background-color;
+    transition-duration: 0.12s;
+}
+
+.unity-button.replay__action:hover,
+.unity-button.replay__action:focus {
+    background-color: rgba(201, 164, 92, 0.16);
+    -unity-background-image-tint-color: var(--gold-bright);
+}
+
+/* On a phone: a finger's */
+.phone .unity-button.replay__action {
+    width: 58px;
+    height: 58px;
+    background-size: 34px 34px;
+}
+
 /*---------------------------------------- Update ----------------------------------------*/
 /* A newer build: its notes scroll in the middle, the download's bar and the status under them */
 .update {

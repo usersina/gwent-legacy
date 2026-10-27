@@ -96,18 +96,20 @@ namespace Gwent.UI
             RectTransform band = BattleBanner.Band("Notice", root);
             if (scene == SceneNames.Game)
             {
-                // The decks the battle will play: a LAN battle's two, or the player's and the AI's (a random one is picked now)
-                LanSession lan = LanSession.Current != null && LanSession.Current.State == LanSession.Stage.Battle ? LanSession.Current : null;
-                Deck mine = lan != null ? lan.MyDeck : BattleController.PlayerDeck(CardLibrary.Get(), out _);
-                Deck opponent = lan != null ? lan.TheirDeck : null;
-                if (lan == null)
+                // The decks the battle will play: a replay's two, a LAN battle's, or the player's and the AI's (a random one
+                // is picked now)
+                Gwent.Replays.ReplayPlayer replay = Gwent.Replays.ReplayPlayer.Current;
+                LanSession lan = replay == null && LanSession.Current != null && LanSession.Current.State == LanSession.Stage.Battle ? LanSession.Current : null;
+                Deck mine = replay != null ? replay.MyDeck : lan != null ? lan.MyDeck : BattleController.PlayerDeck(CardLibrary.Get(), out _);
+                Deck opponent = replay != null ? replay.TheirDeck : lan != null ? lan.TheirDeck : null;
+                if (replay == null && lan == null)
                 {
                     TextAsset theirs = OpponentDecks.PickNext();
                     opponent = theirs != null ? CardLibrary.ParseDeck(theirs.text, theirs.name) : null;
                 }
                 BattleBanner.Emblem(band, -CrestX - ArtCentre, Crest(mine));
                 BattleBanner.Emblem(band, CrestX - ArtCentre, Crest(opponent));
-                BattleBanner.Text(band, "Preparing the battle");
+                BattleBanner.Text(band, replay != null ? "Preparing the replay" : "Preparing the battle");
             }
             else
             {

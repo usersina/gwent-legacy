@@ -48,3 +48,29 @@ namespace Gwent.Battle
         public override bool Submit(MatchCommand command) { return match.Apply(true, command); }
     }
 }
+
+namespace Gwent.Battle
+{
+    // A replay's battle, played again from its record (Gwent.Replays.ReplayPlayer): every event is there from the start,
+    // seen from one side, at the bottom (the one that recorded it, or the other: a LAN guest's is the match's Enemy
+    // side); it takes no move
+    public sealed class ReplaySource : BattleSource
+    {
+        private readonly Match match;
+        private readonly bool seat;
+
+        public ReplaySource(Match match, bool seat)
+        {
+            this.match = match;
+            this.seat = seat;
+        }
+
+        public override int Count { get { return match.Events.Count; } }
+        public override MatchEvent Seen(int index) { return match.Events[index].For(seat); }
+
+        // Whole from the match's Player side (as against the AI, as the host), else as seen (as the guest)
+        public override MatchEvent All(int index) { return seat ? match.Events[index] : Seen(index); }
+
+        public override bool Submit(MatchCommand command) { return false; }
+    }
+}

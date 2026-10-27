@@ -56,11 +56,20 @@ namespace Gwent.Menus
             resume.clicked += Close;
             MenuEntry settings = root.Q<MenuEntry>("Item Settings");
             settings.clicked += () => SettingsPanel.Open(() => UIScreens.Focus(settings));
-            // While the battle is on, leaving gives it up; once it is over, back to the main menu from here too
+            // While the battle is on, leaving gives it up; once it is over, back to the main menu from here too. A replay is
+            // left for the replays, nothing asked (nothing is lost)
             BattleController battle = BattleController.Instance;
-            bool battle_on = battle != null && !battle.IsBattleOver;
+            bool watching = battle != null && battle.Replaying;
+            bool battle_on = battle != null && !battle.IsBattleOver && !watching;
             Entry(root, "Item Leave battle", battle_on, () => UIOverlay.Confirm("Leave the battle? It counts as a loss.", "Leave", "Stay", GiveUpAndLeave));
-            Entry(root, "Item Main menu", !battle_on, () => UIOverlay.Confirm("Leave and go back to the main menu?", "Leave", "Stay", LeaveBattle));
+            if (watching)
+            {
+                MenuEntry stop = root.Q<MenuEntry>("Item Main menu");
+                stop.text = "Stop watching";
+                stop.clicked += Gwent.Replays.ReplayPlayer.Leave;
+            }
+            else
+                Entry(root, "Item Main menu", !battle_on, () => UIOverlay.Confirm("Leave and go back to the main menu?", "Leave", "Stay", LeaveBattle));
             // As the main menu's Quit: everywhere but in a browser, whose tab is closed, not quit
             Entry(root, "Item Quit game", !GameSettings.IsWeb, () => UIOverlay.Confirm("Quit the game?", "Quit", "Cancel", Application.Quit));
             root.schedule.Execute(() => UIScreens.Focus(resume));
@@ -78,9 +87,9 @@ namespace Gwent.Menus
 
         private static void Resumed()
         {
-            // In a battle, at the game speed (it may have changed in the settings)
+            // In a battle, at the game speed (it may have changed in the settings), or a replay's own pace
             float previous = current != null ? current.previousTimeScale : 1f;
-            Time.timeScale = BattleController.Instance != null ? GameSettings.GameTimeScale : previous > 0 ? previous : 1f;
+            Time.timeScale = BattleController.Instance != null ? BattleController.PlayingTimeScale : previous > 0 ? previous : 1f;
             current = null;
         }
 
