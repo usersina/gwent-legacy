@@ -7,6 +7,7 @@
             <Gwent.UI.MenuEntry name="Item Play" text="Play" />
             <Gwent.UI.MenuEntry name="Item Multiplayer" text="Multiplayer" />
             <Gwent.UI.MenuEntry name="Item Deck builder" text="Deck builder" />
+            <Gwent.UI.MenuEntry name="Item Replays" text="Replays" />
             <Gwent.UI.MenuEntry name="Item How to play" text="How to play" />
             <Gwent.UI.MenuEntry name="Item Settings" text="Settings" />
             <Gwent.UI.MenuEntry name="Item Quit" text="Quit game" />

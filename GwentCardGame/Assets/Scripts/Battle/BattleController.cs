@@ -6,6 +6,7 @@ using Cysharp.Threading.Tasks;
 using Gwent.Core;
 using Gwent.Menus;
 using Gwent.Net;
+using Gwent.Replays;
 using Gwent.Rules;
 using Gwent.UI;
 using UnityEngine;
@@ -155,7 +156,7 @@ namespace Gwent.Battle
             Gwent.Menus.RulesPage.Open(() =>
             {
                 if (stop && this != null && !Gwent.Menus.PauseMenu.IsOpen)
-                    Time.timeScale = GameSettings.GameTimeScale;
+                    Time.timeScale = PlayingTimeScale;
             });
         }
 
@@ -187,7 +188,8 @@ namespace Gwent.Battle
 
         private void Start()
         {
-            LanSession meant = LanSession.ForBattle;
+            replay = ReplayPlayer.Current; // a replay to watch (null: a battle to play)
+            LanSession meant = replay == null ? LanSession.ForBattle : null;
             bool lan_battle = meant is object; // a session closed meanwhile is a destroyed object: "!= null" would say none
             lan = lan_battle && meant.State == LanSession.Stage.Battle ? meant : null;
             if (lan_battle && lan == null)
@@ -201,17 +203,20 @@ namespace Gwent.Battle
                 away = LanNotice.Show(meant, true, () => LoadingScreen.Load(SceneNames.Menu));
                 return;
             }
-            if (!GameInput.IsTouch)
+            if (!GameInput.IsTouch && replay == null)
                 gameObject.AddComponent<BattleKeys>();
-            View(true).Deck.gameObject.AddComponent<DeckGiveUp>(); // a hand laid on your deck gives up
+            if (replay == null)
+                View(true).Deck.gameObject.AddComponent<DeckGiveUp>(); // a hand laid on your deck gives up
             GameAudio.PlayGameMusic();
-            Time.timeScale = GameSettings.GameTimeScale;
-            PlayerInfo.Name = lan != null ? lan.MyName : "Player";
-            EnemyInfo.Name = lan != null ? lan.TheirName : "Opponent";
+            Time.timeScale = PlayingTimeScale;
+            PlayerInfo.Name = replay != null ? replay.MyName : lan != null ? lan.MyName : "Player";
+            EnemyInfo.Name = replay != null ? replay.TheirName : lan != null ? lan.TheirName : "Opponent";
 
             UIOverlay.SetEscapeAction(OnEscape);
             battleState = BattleState.Start;
             SetupBattle();
+            if (replay != null)
+                ReplayBar.Attach(this, replay);
             CardEffects.Prepare(); // no effect waits for its art the first time it plays
             BattleOpening(flow.Token).Forget();
         }
@@ -234,7 +239,7 @@ namespace Gwent.Battle
             if (deckProblem != null)
                 UIOverlay.Toast("Your selected deck can't be used (" + deckProblem + "). Playing with the default deck.", 4f);
 
-            if (whiteFlameNotice != null)
+            if (whiteFlameNotice != null && (replay == null || replay.StartAt <= 1)) // not for a replay shown from further on
             {
                 BattleBanner.Show(BattleBanner.FactionEmblem(Faction.Nilfgaard), whiteFlameNotice, BattleBanner.Long);
                 whiteFlameNotice = null;
@@ -246,6 +251,24 @@ namespace Gwent.Battle
 
         // The player's hand row on the screen (the LAN talk window opens over it)
         public Rect HandScreenRect { get { return CardMotion.ScreenRect((RectTransform)View(true).Hand.transform); } }
+
+        // The line drawn between the two halves of the board (the scene's SepHorizontal, in the zoomed layer: early in the
+        // canvas, under the rows, the cards and their highlights): a LAN turn clock's fuse burns in it, a replay's progress
+        // runs in it; null if the scene has none
+        internal RectTransform Divider
+        {
+            get
+            {
+                if (divider == null)
+                {
+                    GameObject line = GameObject.Find("SepHorizontal");
+                    divider = line != null ? line.transform as RectTransform : null;
+                }
+                return divider;
+            }
+        }
+        private RectTransform divider;
+        internal const float DividerInset = 12; // what runs in it starts and ends this far in (where the rows do)
 
         // The line between the two halves of the board (the close combat rows'), on the screen: a LAN turn clock's fuse
         internal Rect MiddleScreenRect
@@ -306,12 +329,12 @@ namespace Gwent.Battle
 
         public bool IsPlayerActionAllowed
         {
-            get { return battleState == BattleState.PlayerTurn && pendingAction == PendingAction.None && !IsPresenting; }
+            get { return battleState == BattleState.PlayerTurn && pendingAction == PendingAction.None && !IsPresenting && replay == null; }
         }
 
         // The player may give up (a hand on their deck): in their turn, nothing pending or being shown; in a LAN battle at
         // any time, the other player there (holding its turn forever is no way to win)
-        public bool CanGiveUp { get { return !IsBattleOver && (IsPlayerActionAllowed || lan != null && lan.Linked && shown > 0); } }
+        public bool CanGiveUp { get { return !IsBattleOver && replay == null && (IsPlayerActionAllowed || lan != null && lan.Linked && shown > 0); } }
 
         // A play is being shown, the match has moved on and the screen not yet, a move is on its way to a LAN host, or the
         // other device of a LAN battle is away: nothing else can be done until then
@@ -336,7 +359,9 @@ namespace Gwent.Battle
         // session's: the host's match, or the host's events.
         private void SetupBattle()
         {
-            if (lan != null)
+            if (replay != null)
+                SetupReplay();
+            else if (lan != null)
             {
                 match = lan.Match;
                 source = lan.Source;
@@ -423,7 +448,8 @@ namespace Gwent.Battle
                 if (info.leaderDisabled)
                 {
                     View(is_player).Leader.MarkCancelled();
-                    whiteFlameNotice = is_player ? "Your opponent's leader cancels your leader ability" : "Your leader cancels your opponent's leader ability";
+                    whiteFlameNotice = Said(is_player ? "Your opponent's leader cancels your leader ability" : "Your leader cancels your opponent's leader ability",
+                        NameOf(!is_player) + "'s leader cancels " + NameOf(is_player) + "'s leader ability");
                 }
             }
         }
@@ -502,12 +528,23 @@ namespace Gwent.Battle
         //----------------------------------------------The match's events---------------------------------------------------//
         // The events one after the other, each shown in full before the next; when the screen has caught up and the match
         // waits for the opponent, the opponent acts (its move becomes the next events). A LAN battle taken up again
-        // (LanSession.Rejoined) shows the events up to where it stands at once, the last of them as usual.
+        // (LanSession.Rejoined) shows the events up to where it stands at once, the last of them as usual; so does a replay
+        // shown from further on, up to there (ReplayPlayer.StartAt), and it shows each event once its pace allows (paused,
+        // a move forward: ReplayPlayer.MayShow).
         private async UniTask ShowEvents(CancellationToken ct)
         {
             bool catching = lan != null && lan.Rejoined;
+            int skip = replay != null ? replay.StartAt : 0;
             while (true)
             {
+                if (shown < skip)
+                {
+                    ShowAtOnce(source.Seen(shown), source.All(shown).State);
+                    shown++;
+                    if (shown >= skip)
+                        CaughtUp();
+                    continue;
+                }
                 if (shown >= source.Count)
                 {
                     AskOpponent(ct);
@@ -530,18 +567,29 @@ namespace Gwent.Battle
                     catching = false;
                     CaughtUp();
                 }
-                MatchEvent e = source.Seen(shown);
-                showing = source.All(shown);
+                int index = shown;
+                if (replay != null)
+                {
+                    replay.Reached(index);
+                    if (!replay.MayShow(index))
+                        await UniTask.WaitUntil(() => replay.MayShow(index), PlayerLoopTiming.Update, ct);
+                    replay.Showing(index);
+                }
+                MatchEvent e = source.Seen(index);
+                showing = source.All(index);
                 shown++;
                 presenting++;
                 try
                 {
                     await Show(e, showing.State, ct);
+                    if (replay != null)
+                        await ReplayBeat(e, ct);
                 }
                 finally
                 {
                     presenting = Math.Max(0, presenting - 1);
                 }
+                replay?.Shown(index);
                 if (e.Kind == MatchEventKind.Ended)
                     return;
             }
@@ -565,7 +613,7 @@ namespace Gwent.Battle
             View(false).Stats.UIUpdateGemLives(EnemyInfo.Lives);
             roundOpening = false;
             lastTurnWasPlayer = null;
-            if (latest != null && latest.Phase == MatchPhase.Redraw && PlayerInfo.CanExchange && mulliganPrompt == null)
+            if (latest != null && latest.Phase == MatchPhase.Redraw && PlayerInfo.CanExchange && mulliganPrompt == null && replay == null)
                 mulliganPrompt = RedrawPicker.ShowPhase(this);
         }
 
@@ -632,13 +680,15 @@ namespace Gwent.Battle
             bool opponents_perk = e.Flag && EnemyInfo.Faction == Faction.Scoiatael;
             if (opponents_perk)
                 BattleBanner.Show(BattleBanner.FactionEmblem(Faction.Scoiatael), player_first
-                    ? "Opponent used the Scoia'tael faction ability to let you go first." : "Opponent used the Scoia'tael faction ability to go first.");
+                    ? Said("Opponent used the Scoia'tael faction ability to let you go first.", NameOf(false) + " used the Scoia'tael faction ability to let " + NameOf(true) + " go first.")
+                    : Said("Opponent used the Scoia'tael faction ability to go first.", NameOf(false) + " used the Scoia'tael faction ability to go first."));
             else
-                BattleBanner.Show(player_first ? BattleBanner.YouFirst : BattleBanner.OpponentFirst, player_first ? "You will go first" : "Your opponent will go first");
+                BattleBanner.Show(player_first ? BattleBanner.YouFirst : BattleBanner.OpponentFirst,
+                    Said(player_first ? "You will go first" : "Your opponent will go first", NameOf(player_first) + " will go first"));
             await While(() => BattleBanner.Busy, ct);
 
             battleState = BattleState.Start; // the redraw (an opponent choosing first had it look like its turn)
-            if (PlayerInfo.CanExchange)
+            if (PlayerInfo.CanExchange && replay == null) // a replay shows the redraws as they come
                 mulliganPrompt = RedrawPicker.ShowPhase(this);
         }
 
@@ -649,14 +699,14 @@ namespace Gwent.Battle
         {
             ApplyView(e.State, all);
             if (e.Seat && e.Why == PassReason.TimedOut)
-                UIOverlay.Toast("Out of time: you keep your hand", 3f);
+                UIOverlay.Toast(Said("Out of time: you keep your hand", NameOf(true) + " ran out of time and keeps the hand"), 3f);
             if (!e.Seat || !EnemyInfo.CanExchange)
                 return;
             await While(() => RedrawPicker.IsAnimating, ct);
             if (mulliganPrompt != null)
                 Destroy(mulliganPrompt);
             mulliganPrompt = null;
-            OpponentsMove("Your opponent is still redrawing");
+            OpponentsMove(Said("Your opponent is still redrawing", NameOf(false) + " is still redrawing"));
         }
 
         // The screen waits for the opponent outside its turns (its redraw, its choice of who goes first): as on its turn,
@@ -731,7 +781,8 @@ namespace Gwent.Battle
             roundOpening = false;
             bool shown = lastTurnWasPlayer != is_player && !Opponent(is_player).hasPassed;
             if (shown)
-                BattleBanner.Show(is_player ? BattleBanner.YourTurn : BattleBanner.OpponentsTurn, is_player ? "Your turn!" : "Opponent's turn",
+                BattleBanner.Show(is_player ? BattleBanner.YourTurn : BattleBanner.OpponentsTurn,
+                    Said(is_player ? "Your turn!" : "Opponent's turn", NameOf(is_player) + "'s turn"),
                     BattleBanner.Turn, is_player ? "turn_player" : "turn_enemy");
             lastTurnWasPlayer = is_player;
             return shown;
@@ -750,7 +801,7 @@ namespace Gwent.Battle
             // A pass that ends the round is followed by the round's result instead; at the opening of a round the
             // other side's "Round N" notice says it all. Its sound goes with its notice (which may wait behind another).
             if (!Opponent(is_player).hasPassed && !roundOpening)
-                BattleBanner.Show(BattleBanner.Passed, is_player ? "Turn passed" : "Your opponent has passed", BattleBanner.Turn, "pass");
+                BattleBanner.Show(BattleBanner.Passed, Said(is_player ? "Turn passed" : "Your opponent has passed", NameOf(is_player) + " has passed"), BattleBanner.Turn, "pass");
             else
                 GameAudio.PlaySfx("pass");
             if (is_player)
@@ -771,6 +822,8 @@ namespace Gwent.Battle
             Card card = Db.Get(e.Card);
             if (!is_player && e.From == PlaySource.Hand)
                 await ShowcaseOpponent(card, ct);
+            else if (replay != null && e.From == PlaySource.Hand)
+                await ShowcaseMine(e.Card, false, ct);
 
             BattleLog.BeforeChange(this);
             if (is_player)
@@ -784,7 +837,7 @@ namespace Gwent.Battle
             BattleLog.Played(this, decoy ? "decoy_played" : "card_played", is_player, e.Card, e.Row);
             SetHider(false);
             BoardChange change = board.EndChange();
-            int landing = !is_player && e.From == PlaySource.Discard ? -1 : e.Card;
+            int landing = (!is_player || replay != null) && e.From == PlaySource.Discard ? -1 : e.Card; // a replay's: no pick showed it
             await ShowChange(change, show => presenter.Play(change, landing, is_player, e.Flag, show), ct);
         }
 
@@ -872,11 +925,12 @@ namespace Gwent.Battle
             int result;
             if (timed_out)
                 result = BattleBanner.Show(e.Seat ? BattleBanner.RoundLost : BattleBanner.RoundWon,
-                    e.Seat ? "Out of time: your opponent wins the round" : "Your opponent ran out of time: you win the round", BattleBanner.Long, sound);
+                    Said(e.Seat ? "Out of time: your opponent wins the round" : "Your opponent ran out of time: you win the round",
+                        NameOf(e.Seat) + " ran out of time: " + NameOf(!e.Seat) + " wins the round"), BattleBanner.Long, sound);
             else if (e.Winner == RoundWinner.Player)
-                result = BattleBanner.Show(BattleBanner.RoundWon, "You won the round!", BattleBanner.Long, sound);
+                result = BattleBanner.Show(BattleBanner.RoundWon, Said("You won the round!", NameOf(true) + " won the round!"), BattleBanner.Long, sound);
             else if (e.Winner == RoundWinner.Enemy)
-                result = BattleBanner.Show(BattleBanner.RoundLost, "Your opponent won the round", BattleBanner.Long, sound);
+                result = BattleBanner.Show(BattleBanner.RoundLost, Said("Your opponent won the round", NameOf(false) + " won the round"), BattleBanner.Long, sound);
             else
                 result = BattleBanner.Show(BattleBanner.RoundDrawn, "The round ended in a draw", BattleBanner.Long, sound);
 
@@ -957,6 +1011,13 @@ namespace Gwent.Battle
         private void ShowEnd(MatchEvent e, MatchState all)
         {
             ApplyView(e.State, all);
+            if (replay != null)
+            {
+                // Its own giving up shows here too, in a replay
+                ConcludeBattle(e.Winner == RoundWinner.Player ? BattleState.Won : e.Winner == RoundWinner.Enemy ? BattleState.Lost : BattleState.Draw,
+                    e.Flag && e.Seat, e.Flag && !e.Seat);
+                return;
+            }
             // Given up by the other side; or for this one, by the host while this guest was away (its own giving up does
             // not come here)
             ConcludeBattle(e.Winner == RoundWinner.Player ? BattleState.Won : e.Winner == RoundWinner.Enemy ? BattleState.Lost : BattleState.Draw,
@@ -1076,7 +1137,8 @@ namespace Gwent.Battle
             CardShowcase.Clear();
             CardMotion.ClearLayer();
             PostGame.SetActive(true);
-            PostGame.GetComponent<EndScreen>().Show(outcome, PlayerInfo, EnemyInfo, gave_up, opponent_left, !ReferenceEquals(lan, null), ended_away);
+            bool named = replay != null ? replay.Record.Kind != RecordKind.Ai || replay.Switched : !ReferenceEquals(lan, null); // the other side's name in the tally
+            PostGame.GetComponent<EndScreen>().Show(outcome, PlayerInfo, EnemyInfo, gave_up, opponent_left, named, ended_away, replay != null);
             if (outcome == BattleState.Won)
                 GameAudio.PlaySfx("victory");
             else if (outcome == BattleState.Lost)
@@ -1264,7 +1326,7 @@ namespace Gwent.Battle
         // otherwise it pauses
         // Escape (Android's Back) steps back one level: a card or leader put back; a picker's choice given up, as its × does
         // (asked first where something is lost), or a look closed; the whole board again; the end screen left for the main
-        // menu; otherwise the pause menu (the redraw, who goes first and a LAN notice have nothing to step back to)
+        // menu (a replay's, for the replays); otherwise the pause menu (the redraw, who goes first and a LAN notice have nothing to step back to)
         private void OnEscape()
         {
             BattlePickers pickers = Panel != null && Panel.activeInHierarchy ? Panel.GetComponent<BattlePickers>() : null;
@@ -1275,7 +1337,12 @@ namespace Gwent.Battle
             else if (BoardZoom.Zoomed)
                 BoardZoom.ZoomOut(); // the whole board first, then the menu
             else if (IsBattleOver && PostGame != null && PostGame.activeInHierarchy)
-                PostGame.GetComponent<EndScreen>().ToMainMenu();
+            {
+                if (replay != null)
+                    ReplayPlayer.Leave(); // a replay's end: back to the replays
+                else
+                    PostGame.GetComponent<EndScreen>().ToMainMenu();
+            }
             else
                 PauseMenu.Open();
         }
@@ -1402,12 +1469,21 @@ namespace Gwent.Battle
                     {
                         bool killed = pending <= summonsPending[caller][index];
                         GameLog.Event(LogCategory.Battle, killed ? "avenged" : "summon_pending", "side", is_player ? "player" : "enemy", "card", Db.Get(caller).name);
-                        UIOverlay.Toast(AvengerNotice(caller == CardIds.Kambi, is_player, killed), 4f);
+                        UIOverlay.Toast(replay != null ? ReplayAvengerNotice(caller == CardIds.Kambi, is_player, killed) : AvengerNotice(caller == CardIds.Kambi, is_player, killed), 4f);
                     }
                     avengersDiscarded[caller][index] = discarded;
                     summonsPending[caller][index] = pending;
                 }
             }
+        }
+
+        // In a replay: the side named
+        private string ReplayAvengerNotice(bool kambi, bool is_player, bool killed)
+        {
+            string side = NameOf(is_player) + (kambi ? "'s Kambi" : "'s Cow");
+            string avenger = kambi ? "Hemdall" : "the Bovine Defense Force";
+            return killed ? side + " was killed: " + avenger + " takes the field to avenge " + (kambi ? "him" : "it")
+                : side + " is discarded: " + avenger + " comes next round, if the battle goes on";
         }
 
         private static string AvengerNotice(bool kambi, bool is_player, bool killed)

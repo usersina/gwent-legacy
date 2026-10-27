@@ -48,6 +48,13 @@ MonoBehaviour:
   iconTalk: {fileID: 21300000, guid: a547650b324b4d27a9c34935a7b1b4d1, type: 3}
   iconLock: {fileID: 21300000, guid: 131f84260a80495c954c5753fecf1d8c, type: 3}
   iconUnlock: {fileID: 21300000, guid: 7ca17c6488354dd793a703d123f0282c, type: 3}
+  iconPlay: {fileID: 21300000, guid: bdc519186bac44b9af9db3d95374cef9, type: 3}
+  iconPause: {fileID: 21300000, guid: c41d03d0d11949ce8c954ae443a32a0f, type: 3}
+  iconStepBack: {fileID: 21300000, guid: c58a9a84cb704e9fb9b224c8f9eecc92, type: 3}
+  iconStepForward: {fileID: 21300000, guid: 74f8d2a5ec77449fb8712c0f960da6f3, type: 3}
+  iconRoundBack: {fileID: 21300000, guid: b38922e7ada9450588484f235118cde3, type: 3}
+  iconRoundForward: {fileID: 21300000, guid: c79549c8523149e2b693006e11c82e3d, type: 3}
+  iconSwitch: {fileID: 21300000, guid: a28c8c5996d64d3d8e175db1853949dc, type: 3}
   softShadow: {fileID: 21300000, guid: 7d0cda7be02823c7d8759f7bf3548013, type: 3}
   glowRing: {fileID: 21300000, guid: 9add077e035209d588c8dc6d288356f0, type: 3}
   leaderReady: {fileID: 21300000, guid: 9aa5796da9e2898eca470dede03cb193, type: 3}
@@ -68,6 +75,7 @@ MonoBehaviour:
   settings: {fileID: 9197481963319205126, guid: 56ee6535a2f93a299933304d2b220249, type: 3}
   pauseMenu: {fileID: 9197481963319205126, guid: 307009fbc2e3406d78749c3ca88134bc, type: 3}
   confirmDialog: {fileID: 9197481963319205126, guid: 9ee83f16e03a5e4409b3004117d49e24, type: 3}
+  replaysPage: {fileID: 9197481963319205126, guid: 1b98c86dc359467c90a15f746bf8cee6, type: 3}
   updateDialog: {fileID: 9197481963319205126, guid: 05fc18857a5e4c7caa4ba661eb78871f, type: 3}
   toast: {fileID: 9197481963319205126, guid: ef6b4d4f61306d3049f8caa83c158f95, type: 3}
   rulesPage: {fileID: 9197481963319205126, guid: 76fa8843591236b9394c96e10802e52a, type: 3}

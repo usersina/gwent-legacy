@@ -94,11 +94,13 @@ namespace Gwent.Battle
                 graphic.raycastTarget = false;
         }
 
-        // Along the line between the halves of the board; your redraw's: along its band's foot, over the board
+        // In the line between the halves of the board (under the cards and their highlights; it moves with a zoom), else
+        // along it on the overlay; your redraw's: along its band's foot, over the board
         private void Place(bool mine)
         {
             RectTransform band = mine ? battle.RedrawBand : null;
-            Transform parent = band != null ? band : UIOverlay.FixedRoot;
+            RectTransform divider = battle.Divider;
+            Transform parent = band != null ? band : divider != null ? divider : UIOverlay.FixedRoot;
             if (placedIn != parent)
             {
                 placedIn = parent;
@@ -112,6 +114,15 @@ namespace Gwent.Battle
                 root.pivot = new Vector2(0.5f, 0.5f);
                 root.offsetMin = new Vector2(320, -1);
                 root.offsetMax = new Vector2(-320, 1);
+                return;
+            }
+            if (divider != null)
+            {
+                root.anchorMin = new Vector2(0, 0.5f);
+                root.anchorMax = new Vector2(1, 0.5f);
+                root.pivot = new Vector2(0.5f, 0.5f);
+                root.offsetMin = new Vector2(BattleController.DividerInset, -1);
+                root.offsetMax = new Vector2(-BattleController.DividerInset, 1);
                 return;
             }
             CardMotion.ToLayout(battle.MiddleScreenRect, out Vector2 center, out Vector2 size);

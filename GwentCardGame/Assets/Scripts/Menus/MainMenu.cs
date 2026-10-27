@@ -24,6 +24,7 @@ namespace Gwent.Menus
         private void Start()
         {
             Gwent.Net.LanSession.ForgetBattle(); // a LAN battle that closed is no battle to load any more
+            bool replays = Gwent.Replays.ReplayPlayer.Forget(); // nor is a replay (left for its list: it opens again)
             GameAudio.PlayMenuMusic();
             UIScreens.Show("MainMenu", UITheme.Current.mainMenu, Bind);
             UIOverlay.SetEscapeAction(AskQuit);
@@ -35,6 +36,8 @@ namespace Gwent.Menus
             CardArt.Preload(Gwent.Rules.LeaderIds.ByFaction.Values.SelectMany(leaders => leaders), "menu leaders", destroyCancellationToken).Forget();
             if (LanLobby.Reopen()) // back from the deck builder the lobby sent the player to
                 OpenMultiplayer(true);
+            else if (replays)
+                OpenReplays();
             else if (!GameSettings.IsWeb && Gwent.Net.LanSession.Current == null && Gwent.Net.LanSave.Load() != null)
                 UIOverlay.Toast("A LAN battle is still on: Multiplayer, then Local network, to rejoin it", 4f);
         }
@@ -46,6 +49,7 @@ namespace Gwent.Menus
             AddItem(root, "Item Play", PlayGame);
             AddItem(root, "Item Multiplayer", () => OpenMultiplayer());
             AddItem(root, "Item Deck builder", EditDeck);
+            AddItem(root, "Item Replays", OpenReplays);
             AddItem(root, "Item How to play", OpenRules);
             AddItem(root, "Item Settings", OpenSettings);
             MenuEntry quit = root.Q<MenuEntry>("Item Quit");
@@ -172,6 +176,12 @@ namespace Gwent.Menus
         public void OpenRules()
         {
             RulesPage.Open(() => Focus("Item How to play"));
+        }
+
+        // The replays saved: watch one, delete one
+        public void OpenReplays()
+        {
+            ReplaysPage.Open(() => Focus("Item Replays"));
         }
 
         public void OpenSettings()

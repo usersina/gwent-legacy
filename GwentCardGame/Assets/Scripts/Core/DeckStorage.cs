@@ -147,6 +147,12 @@ namespace Gwent.Core
         private static extern void GwentSyncFiles();
     #endif
 
+        // Other files the game writes (replays) to the browser's storage too, as the decks' are
+        public static void SyncWritten()
+        {
+            Stored();
+        }
+
         // The files written reach the browser's storage (elsewhere they are on disk already)
         private static void Stored()
         {

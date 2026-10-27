@@ -13,19 +13,21 @@ namespace Gwent.Battle
     // The end of the battle: The Witcher 3's emblem of the outcome, the round tally, a scoreboard with both sides (leader
     // portrait, name, faction, every round's score, a laurel behind each round's winning score) and the way on: against
     // the AI, Play again; in a LAN battle, Rematch (once both players ask, the next battle loads; under the buttons, what
-    // the other player is at: asking too, away, gone) and, for its guest, the fair play check of the battle (FairPlay).
-    // Built when the battle ends, over the dimmed board.
+    // the other player is at: asking too, away, gone) and, for its guest, the fair play check of the battle (FairPlay);
+    // Save replay, to watch the battle again from the main menu (a LAN guest's, once its fair play check passed); Main
+    // menu. Built when the battle ends, over the dimmed board.
     public class EndScreen : MonoBehaviour
     {
         private const float SideColumn = 400;
         private const float RoundColumn = 170;
         private const float RowHeight = 116;
+        private const float ButtonSpacing = 340; // from a button's middle to the next one's
 
         private bool lanBattle;
         private LanSession lan;         // the LAN battle's session, while it lasts
         private int battle;             // the session's battle shown: another one is the rematch
         private string opponentName;
-        private Button rematch, menu;
+        private Button rematch, menu, saveReplay;
         private TextMeshProUGUI status, fairPlay;
         private bool loading;
         private readonly RectTransform[] portraits = new RectTransform[2]; // the scoreboard's: the player's, the opponent's
@@ -38,8 +40,8 @@ namespace Gwent.Battle
 
         // gave_up: the player gave up; opponent_left: the opponent did (a LAN battle's other player); lan_battle: a LAN
         // battle (its session may be gone already: the other player left); ended_away: its host ended it while this guest
-        // was away
-        public void Show(BattleState outcome, BattleController.BattleSide player, BattleController.BattleSide opponent, bool gave_up = false, bool opponent_left = false, bool lan_battle = false, bool ended_away = false)
+        // was away; replay: a replay's end (Watch again, back to the replays)
+        public void Show(BattleState outcome, BattleController.BattleSide player, BattleController.BattleSide opponent, bool gave_up = false, bool opponent_left = false, bool lan_battle = false, bool ended_away = false, bool replay = false)
         {
             UITheme theme = UITheme.Current;
             foreach (Transform child in transform)
@@ -53,11 +55,13 @@ namespace Gwent.Battle
             int player_rounds = player.RoundsWon.Count(won => won), opponent_rounds = opponent.RoundsWon.Count(won => won);
             int drawn = player.RoundsScore.Count - player_rounds - opponent_rounds;
             string drawn_text = drawn == 1 ? ", one round drawn" : drawn > 1 ? ", " + drawn + " rounds drawn" : "";
-            string tally = outcome == BattleState.Won ? "You won the battle, " + Rounds(player_rounds) + " to " + opponent_rounds + drawn_text
+            // A replay seen from the other side: the bottom side by its name, not "You"
+            string you = replay && Gwent.Replays.ReplayPlayer.Current != null && Gwent.Replays.ReplayPlayer.Current.Switched ? player.Name : "You";
+            string tally = outcome == BattleState.Won ? you + " won the battle, " + Rounds(player_rounds) + " to " + opponent_rounds + drawn_text
                 : outcome == BattleState.Lost ? (lan_battle ? opponent.Name : "The opponent") + " won the battle, " + Rounds(opponent_rounds) + " to " + player_rounds + drawn_text
                 : "Neither side came out ahead" + drawn_text;
             if (gave_up)
-                tally = "You gave up the battle";
+                tally = you + " gave up the battle";
             else if (opponent_left)
                 tally = opponent.Name + " left the battle";
             else if (ended_away)
@@ -76,14 +80,22 @@ namespace Gwent.Battle
 
             BuildScoreboard(content, player, opponent);
 
+            if (replay)
+            {
+                ShowReplayButtons(content);
+                return;
+            }
+
             // A LAN battle whose session is gone (the other player left): back to the main menu only
             lanBattle = lan_battle;
             lan = lan_battle ? LanSession.Current : null;
             bool menu_only = lan_battle && lan == null;
+            saveReplay = UIKit.Button(content, "Save replay", UIKit.ButtonStyle.Secondary, SaveReplay, new Vector2(300, 72));
             menu = UIKit.Button(content, "Main menu", menu_only ? UIKit.ButtonStyle.Primary : UIKit.ButtonStyle.Secondary, ToMainMenu, new Vector2(300, 72));
-            ((RectTransform)menu.transform).Place(new Vector2(0.5f, 0.5f), new Vector2(menu_only ? 0 : 170, -350), new Vector2(300, 72));
+            ShowSaveReplay();
             if (menu_only)
             {
+                PlaceButtons(saveReplay, menu);
                 UIKit.Focus(menu);
                 return;
             }
@@ -92,7 +104,7 @@ namespace Gwent.Battle
                 battle = lan.Battle;
                 opponentName = opponent.Name;
                 rematch = UIKit.Button(content, "Rematch", UIKit.ButtonStyle.Primary, () => lan.AskRematch(), new Vector2(300, 72));
-                ((RectTransform)rematch.transform).Place(new Vector2(0.5f, 0.5f), new Vector2(-170, -350), new Vector2(300, 72));
+                PlaceButtons(rematch, saveReplay, menu);
                 status = UIKit.Text(content, "", UIKit.TextStyle.Body, TextAlignmentOptions.Center);
                 status.rectTransform.Place(new Vector2(0.5f, 0.5f), new Vector2(0, -432), new Vector2(1200, 44));
                 if (!lan.Hosting)
@@ -105,13 +117,48 @@ namespace Gwent.Battle
                 return;
             }
             Button again = UIKit.Button(content, "Play again", UIKit.ButtonStyle.Primary, PlayAgain, new Vector2(300, 72));
-            ((RectTransform)again.transform).Place(new Vector2(0.5f, 0.5f), new Vector2(-170, -350), new Vector2(300, 72));
+            PlaceButtons(again, saveReplay, menu);
             UIKit.Focus(again);
+        }
+
+        // The buttons side by side, under the scoreboard
+        private static void PlaceButtons(params Button[] buttons)
+        {
+            for (int i = 0; i < buttons.Length; i++)
+                ((RectTransform)buttons[i].transform).Place(new Vector2(0.5f, 0.5f), new Vector2((i - (buttons.Length - 1) / 2f) * ButtonSpacing, -350), new Vector2(300, 72));
+        }
+
+        //----------------------------------------Save replay----------------------------------------//
+        private void SaveReplay()
+        {
+            BattleController battle_screen = BattleController.Instance;
+            if (battle_screen == null || !battle_screen.CanSaveReplay)
+                return;
+            if (!battle_screen.SaveReplay())
+                UIOverlay.Toast("The replay could not be saved");
+            ShowSaveReplay();
+        }
+
+        // Save replay while it can be (a LAN guest's: once its fair play check passed); once saved, it says so
+        private void ShowSaveReplay()
+        {
+            if (saveReplay == null)
+                return;
+            BattleController battle_screen = BattleController.Instance;
+            bool saved = battle_screen != null && battle_screen.ReplaySaved;
+            bool can = battle_screen != null && battle_screen.CanSaveReplay;
+            if (saveReplay.interactable != can)
+                saveReplay.interactable = can;
+            TextMeshProUGUI label = saveReplay.GetComponentInChildren<TextMeshProUGUI>();
+            string text = saved ? "Replay saved" : "Save replay";
+            if (label.text != text)
+                label.text = text;
         }
 
         //----------------------------------------Rematch----------------------------------------//
         private void Update()
         {
+            ShowSaveReplay();
             if (!lanBattle || rematch == null || loading)
                 return;
             if (lan != null && lan.State == LanSession.Stage.Battle && lan.Battle != battle)
@@ -221,6 +268,16 @@ namespace Gwent.Battle
         }
 
         //----------------------------------------Buttons----------------------------------------//
+        // A replay's end: watch it again from the start, or back to the replays
+        private void ShowReplayButtons(RectTransform content)
+        {
+            Button again = UIKit.Button(content, "Watch again", UIKit.ButtonStyle.Primary, () => Gwent.Replays.ReplayPlayer.Current?.Restart(), new Vector2(300, 72));
+            ((RectTransform)again.transform).Place(new Vector2(0.5f, 0.5f), new Vector2(-170, -350), new Vector2(300, 72));
+            Button replays = UIKit.Button(content, "Replays", UIKit.ButtonStyle.Secondary, Gwent.Replays.ReplayPlayer.Leave, new Vector2(300, 72));
+            ((RectTransform)replays.transform).Place(new Vector2(0.5f, 0.5f), new Vector2(170, -350), new Vector2(300, 72));
+            UIKit.Focus(again);
+        }
+
         public void PlayAgain()
         {
             Time.timeScale = 1f;

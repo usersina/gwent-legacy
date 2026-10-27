@@ -19,12 +19,13 @@ namespace Gwent.Battle
             return Panel.GetComponent<BattlePickers>();
         }
 
-        // The match asks a side to choose: the player's choice opens (the opponent's is its own business)
+        // The match asks a side to choose: the player's choice opens (the opponent's is its own business; in a replay, what
+        // the player chose follows: nothing opens)
         private async UniTask ShowChoice(MatchEvent e, MatchState all, CancellationToken ct)
         {
             ApplyView(e.State, all);
             Choice choice = e.State.Choice;
-            if (choice == null || !choice.Seat)
+            if (choice == null || !choice.Seat || replay != null)
             {
                 // A LAN battle's other player choosing who goes first takes its time (the AI answers at once)
                 if (choice != null && choice.Kind == ChoiceKind.FirstPlayer && lan != null)

@@ -15,6 +15,7 @@ Every control, on the desktop (mouse and keyboard) and on Android (touch). The g
 - [In a LAN battle](#in-a-lan-battle)
 - [The deck builder](#the-deck-builder)
 - [Your battle deck](#your-battle-deck)
+- [Replays](#replays)
 - [Settings](#settings)
 
 ## Starting a battle
@@ -64,7 +65,7 @@ The battle uses [your battle deck](#your-battle-deck).
 | Pause (resume, settings, leave) | Esc or the menu button at the top left | Back button or the menu button |
 | Give up (Yu-Gi-Oh style: a hand on your deck) | In your turn (in a LAN battle, any time), hover your deck: the cursor turns into a hand. Click it and confirm; it counts as a loss | Hold a finger on your deck, then confirm |
 | Leave the battle | Pause menu > **Leave battle**, and confirm: it counts as a loss (in a LAN battle, the other player wins), and the main menu opens | Same |
-| After the battle | The end screen shows The Witcher 3's emblem of the outcome and every round's score; **Play again** or **Main menu** (in a LAN battle, **Rematch**) | Tap |
+| After the battle | The end screen shows The Witcher 3's emblem of the outcome and every round's score; **Play again** (in a LAN battle, **Rematch**), **Save replay** or **Main menu** | Tap |
 
 ## In a LAN battle
 
@@ -96,6 +97,26 @@ The deck you last selected in the deck builder (one of yours or a preset) is use
 unit cards, at most 10 special cards, and each card at most as many times as The Witcher 3 has copies of it (heroes and most cards
 once, up to 5 Mahakaman Defenders). The line at the bottom of the deck builder shows which deck that is. Without a valid deck, the
 battle uses the built-in Northern Realms deck. A deck saved with more copies than that loses the extra ones when it is loaded.
+
+## Replays
+
+A battle you finish can be saved as a replay: **Save replay** on its end screen, against the AI and in a LAN battle on both
+devices (the guest's once its fair play check has passed). Replays stay until you delete them. A replay shows the battle from your
+side of the board, as you saw it; the switch right of your hand turns the board over, to your opponent's side and hand.
+
+| Action | Desktop | Android |
+| --- | --- | --- |
+| Watch a replay | Main menu > **Replays**, then click it: the newest first, each with who played whom, how it ended and when | Tap it |
+| Delete one | The cross beside it, then confirm | Same |
+| Play and pause | Space, or the middle button of the bar where the pass button is | The middle button |
+| A move forward or back | Right or Left, or the buttons beside the middle one. Forward runs to the next move (a play, a pass, a leader, a redraw, a card taken or discarded, a round's end) and pauses once it has shown; back goes to the start of the move showing, or the one before | The buttons |
+| A round forward or back | Shift+Right or Shift+Left, or the outer buttons: back starts the round showing again, or the one before when it has only just started | The outer buttons |
+| Speed | Up or Down, or the speed button: 1×, 2× or 4× the game speed | The speed button |
+| Switch sides | S, or the button right of your hand: the battle from the other side (its hand shown), where it was | The button |
+| Stop watching | Esc > **Stop watching**, back to the replays; at the end, **Watch again** or **Replays** | Back > **Stop watching** |
+
+A replay is the battle played again from its moves. One recorded with an earlier version whose rules or cards play those moves
+differently says so instead of showing a battle that never was.
 
 ## Settings
 

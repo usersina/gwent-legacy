@@ -227,6 +227,10 @@ namespace Gwent.EditorTools
                 savedDifficulty = PlayerPrefs.HasKey("aiDifficulty") ? (int)GameSettings.AiDifficulty : -1;
                 savedTouch = GameInput.SimulateTouch;
                 GameInput.SimulateTouch = false;
+                // The run's battles kept as replays apart from the player's
+                Gwent.Replays.ReplayLibrary.FolderOverride = Path.Combine(Application.temporaryCachePath, "autoplay-replays");
+                if (Directory.Exists(Gwent.Replays.ReplayLibrary.FolderOverride))
+                    Directory.Delete(Gwent.Replays.ReplayLibrary.FolderOverride, true);
                 Application.logMessageReceived += OnLog;
                 EditorApplication.update += Tick;
                 Time.timeScale = TimeScale;
@@ -400,7 +404,16 @@ namespace Gwent.EditorTools
                         string expected = c.battleState == BattleState.Won ? "win" : c.battleState == BattleState.Lost ? "lose" : "draw";
                         Image emblem = c.PostGame.GetComponentsInChildren<Image>().FirstOrDefault(i => i.name == "Emblem");
                         Check(c.PostGame.activeInHierarchy && emblem != null && emblem.sprite != null && emblem.sprite.name == expected, "the end screen shows the \"" + expected + "\" emblem", "end screen");
-                        Check(GameObject.Find("Button Play again") != null && GameObject.Find("Button Main menu") != null, "the end screen offers Play again and Main menu", "end screen");
+                        GameObject save = GameObject.Find("Button Save replay");
+                        Check(GameObject.Find("Button Play again") != null && save != null && GameObject.Find("Button Main menu") != null, "the end screen offers Play again, Save replay and Main menu", "end screen");
+                        // Saved as a replay: the newest, as many events as the battle, playing again the same; once only
+                        int before = Gwent.Replays.ReplayLibrary.All().Count;
+                        save?.GetComponent<Button>().onClick.Invoke();
+                        List<Gwent.Replays.ReplayLibrary.Entry> saved = Gwent.Replays.ReplayLibrary.All();
+                        string problem = null;
+                        Check(saved.Count == before + 1 && c.Match != null && saved[0].Record.Events == c.Match.Events.Count && saved[0].Record.Play(c.Db, out problem) != null,
+                            "Save replay saves the battle, and it plays again" + (problem != null ? " (" + problem + ")" : ""), "replay");
+                        Check(c.ReplaySaved && !c.CanSaveReplay && save != null && !save.GetComponent<Button>().interactable, "Save replay is done once", "replay");
                     }
                     results.Add(Label() + ": " + c.battleState + " " + string.Join("-", c.PlayerInfo.RoundsScore) + " vs " + string.Join("-", c.EnemyInfo.RoundsScore));
                     Count("result " + c.battleState);
@@ -798,7 +811,7 @@ namespace Gwent.EditorTools
                     if (++menuPhaseFrames < 60)
                         return;
                     MainMenu menu = UnityEngine.Object.FindAnyObjectByType<MainMenu>();
-                    Check(menu != null && menu.Items.Count == 6 && menu.Items[1].name == "Item Multiplayer", "the main menu loads with its 6 entries, Multiplayer second", "main menu");
+                    Check(menu != null && menu.Items.Count == 7 && menu.Items[1].name == "Item Multiplayer" && menu.Items[3].name == "Item Replays", "the main menu loads with its 7 entries, Multiplayer second, Replays fourth", "main menu");
                     Check(DeckStorage.BattleDeckPath == testDeckPath, "the main menu picks up the battle deck saved by the deck builder", "main menu");
                     inputCheck = new InputCheck(null, InputScenario.MainMenuSettings, (ok, what) => Check(ok, what, "main menu input"));
                     menuStage = 1;
@@ -1098,6 +1111,9 @@ namespace Gwent.EditorTools
                     if (File.Exists(file))
                         File.Delete(file);
                 OpponentDecks.Override = null;
+                if (Gwent.Replays.ReplayLibrary.FolderOverride != null && Directory.Exists(Gwent.Replays.ReplayLibrary.FolderOverride))
+                    Directory.Delete(Gwent.Replays.ReplayLibrary.FolderOverride, true);
+                Gwent.Replays.ReplayLibrary.FolderOverride = null;
                 // What the run changed in the player's settings: the battle deck, the opponent, the touch controls switch
                 if (string.IsNullOrEmpty(savedBattleDeck))
                     PlayerPrefs.DeleteKey("playerDeckPath");

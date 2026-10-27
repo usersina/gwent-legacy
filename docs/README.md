@@ -8,7 +8,7 @@ The full details of the game and of how it is made. For a quick look at the proj
 
 - **[How to play](how-to-play.md)**: every control, on the desktop and on Android
   - [Starting a battle](how-to-play.md#starting-a-battle) · [The redraw](how-to-play.md#the-redraw) · [Your turn](how-to-play.md#your-turn) · [Looking at cards](how-to-play.md#looking-at-cards) · [Pausing, giving up and the end](how-to-play.md#pausing-giving-up-and-the-end)
-  - [In a LAN battle](how-to-play.md#in-a-lan-battle) · [The deck builder](how-to-play.md#the-deck-builder) · [Your battle deck](how-to-play.md#your-battle-deck) · [Settings](how-to-play.md#settings)
+  - [In a LAN battle](how-to-play.md#in-a-lan-battle) · [The deck builder](how-to-play.md#the-deck-builder) · [Your battle deck](how-to-play.md#your-battle-deck) · [Replays](how-to-play.md#replays) · [Settings](how-to-play.md#settings)
 - **[Rules](rules.md)**: how the game settles what the cards leave open, and where it differs from The Witcher 3
   - [Turns and rounds](rules.md#turns-and-rounds) · [Leaders](rules.md#leaders) · [Cards](rules.md#cards) · [Skellige](rules.md#skellige) · [Differences from The Witcher 3](rules.md#differences-from-the-witcher-3)
 - **[The AI](ai.md)**: the three difficulties and the AI's 11 decks

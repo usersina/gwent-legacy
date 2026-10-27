@@ -67,7 +67,7 @@ namespace Gwent.Battle
             if (!CanUseLeader(true))
             {
                 GameAudio.PlaySfx("invalid");
-                if (PlayerInfo.leaderDisabled)
+                if (PlayerInfo.leaderDisabled && replay == null) // a replay takes no input: nothing to say
                     UIOverlay.Toast("Your leader ability was cancelled by the opponent's leader");
                 return;
             }
@@ -146,7 +146,7 @@ namespace Gwent.Battle
             if (!CanUseLeader(true))
             {
                 GameAudio.PlaySfx("invalid");
-                if (PlayerInfo.leaderDisabled)
+                if (PlayerInfo.leaderDisabled && replay == null) // a replay takes no input: nothing to say
                     UIOverlay.Toast("Your leader ability was cancelled by the opponent's leader");
                 return;
             }
@@ -171,6 +171,8 @@ namespace Gwent.Battle
             bool is_player = e.Seat;
             if (!is_player)
                 await ShowcaseOpponent(Db.Get(e.Card), ct);
+            else if (replay != null)
+                await ShowcaseMine(e.Card, true, ct); // a replay: the player's leader shows as the opponent's does
             CardShowcase.Clear();
             BattleLog.BeforeChange(this);
             GameAudio.PlaySfx("leader");

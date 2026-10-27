@@ -51,6 +51,13 @@ namespace Gwent.UI
         public Sprite iconTalk;      // the quick chat's mark on your portrait (a LAN battle)
         public Sprite iconLock;      // the zoomed board's lock, shut: taps on the board do nothing
         public Sprite iconUnlock;    // the same, open
+        public Sprite iconPlay;     // a replay's play
+        public Sprite iconPause;    // and pause
+        public Sprite iconStepBack; // a move back
+        public Sprite iconStepForward; // a move forward
+        public Sprite iconRoundBack; // a round back
+        public Sprite iconRoundForward; // a round forward
+        public Sprite iconSwitch;   // a replay seen from the other side
         public Sprite softShadow; // soft blurred rounded rectangle (card shadows, glows)
         public Sprite glowRing;   // a glow around a rectangle, clear inside (nine-sliced, reaching 32 px out)
         public Sprite leaderReady; // the leader ability's crown, glowing: the leader is lifted and the crown uses it
@@ -74,6 +81,7 @@ namespace Gwent.UI
         public VisualTreeAsset settings;
         public VisualTreeAsset pauseMenu;
         public VisualTreeAsset confirmDialog;
+        public VisualTreeAsset replaysPage;       // the replays saved: watch, delete
         public VisualTreeAsset updateDialog;      // a newer build is out: what's new, Update
         public VisualTreeAsset toast;
         public VisualTreeAsset rulesPage;

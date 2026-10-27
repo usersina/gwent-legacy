@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Toolkit/Gwent.uss" />
+    <!-- The replays saved (Gwent.Menus.ReplaysPage): the newest first, two a row as the opponents are (each an
+         OpponentEntry.uxml, its cross beside it); they scroll where they don't all fit -->
+    <ui:VisualElement name="Dimmer" class="dimmer">
+        <ui:VisualElement name="Panel" class="panel opponent-picker replays">
+            <ui:Label text="Replays" class="title" />
+            <ui:VisualElement class="ornament opponent-picker__ornament" />
+            <ui:Label name="Caption" class="caption replays__caption" />
+            <ui:Label name="Empty" class="body replays__empty" />
+            <ui:ScrollView name="Entries" class="opponent-picker__entries scroll" vertical-scroller-visibility="Auto" horizontal-scroller-visibility="Hidden" />
+            <Gwent.UI.DialogButton name="Button Close" text="×" class="button--close" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
