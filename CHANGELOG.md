@@ -4,6 +4,45 @@ Every push to `main` is a release: it replaces the one GitHub release, `latest`,
 notes. A push to `main` is only released when this file has a new section since the last release: add one, headed by the
 date, before pushing.
 
+## 2026-10-29
+
+Story: The Witcher 3's Gwent as Geralt played it, on The Witcher 3's own maps.
+
+### Story
+
+- **Play > Story** begins it: The Witcher 3's Northern Realms starter deck and a leader of four factions, then its lands
+  in its order: White Orchard, the royal palace in Vizima, Velen and Novigrad (Oxenfurt, and Hearts of Stone's players once
+  Gwent: Skellige Style is done), Skellige, Toussaint.
+- Each region is The Witcher 3's own map: drag it, zoom it (the wheel, a pinch, + and -), its Gwent players where they stand
+  in the game. A marker shows gold while there is something to win, buy or find there, the quest's mark while a quest leads
+  there, a tick once it's all yours.
+- Every card comes as it does in The Witcher 3: a renowned player's own card when you first beat them, a random card from
+  the players of no particular renown, innkeepers' and merchants' cards for crowns, the Gwent quests' leaders (Velen Players,
+  Big City Players, Old Pals, Playing Innkeeps, Skellige Style…), A Dangerous Game, the masquerade's and High Stakes'
+  tournaments, Count Monnier's Skellige deck and the Beauclair tournament. Nothing can be missed, and rematches are always
+  there.
+- Wins pay crowns; rematches pay less. Opponents get stronger along the story: the first ones play like beginners, then
+  their decks grow; The Witcher 3's masters of the game (Thaler, Dijkstra, Crach an Craite, Olgierd…) and the tournaments
+  play the hardest.
+- A player's sheet shows their card and what they sell as cards, a price tag under each; the button says what a win pays.
+- At the top of the map: the journal (J: the Gwent quests, as far as they have led), the collection (C: The Witcher 3's A
+  Miraculous Guide to Gwent, a bar for every region and faction), your story decks (D: only the cards you own), travel (M).
+- The story has its own save and its own decks: **Play**, **Multiplayer** and the deck builder of the main menu keep every
+  card. **Start over** sets a story aside, never deletes it.
+
+### Main menu
+
+- **Play** asks what to play: **Story**, **Single match** (against the AI, as Play was) or **Multiplayer**. The menu is down
+  to six entries.
+
+### End screen
+
+- The way on is one gold button with its key (Enter): **Play again**, **Rematch**, **Watch again**; beside it, round buttons
+  with their names under them and their keys: **Save replay** (S; a tick once saved), **Main menu** (Esc).
+- In the story, a win's cards come first, on their own and large: each turns over from its back, says whether it's new
+  (or a quest's reward), the crowns count up beside them, with the quests done and the lands opened. **Collect** shows the
+  scoreboard, with what you won in a line under it.
+
 ## 2026-10-27
 
 Replays: save a battle from its end screen, and watch it again.
