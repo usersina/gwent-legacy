@@ -47,7 +47,8 @@ namespace Gwent.DeckBuilding
         {
             Instance = this;
             Db = CardLibrary.Get(CardsDatabase);
-            allCards = Db.All;
+            // Every card; in the story, those owned (DeckContext)
+            allCards = DeckContext.InStory ? Db.All.Where(card => DeckContext.Supply.Copies(card) > 0).ToList() : Db.All;
 
             DeckStorage.EnsureDirectories();
 
@@ -124,7 +125,7 @@ namespace Gwent.DeckBuilding
         private void AddTooltips()
         {
             string escape = GameInput.IsTouch ? "" : " (Esc)";
-            Tooltip("BackBtn", () => "Back to the main menu" + escape);
+            Tooltip("BackBtn", () => (DeckContext.InStory ? "Back to the map" : "Back to the main menu") + escape);
             Tooltip("RenameBtn", () => naming ? "Keep this name" : ShowsPreset ? "Name a copy of this preset" : "Rename this deck");
             Tooltip("DeleteBtn", () => naming ? "Leave the name as it was" : ShowsPreset ? "Presets can't be deleted" : "Delete this deck");
         }
@@ -187,7 +188,7 @@ namespace Gwent.DeckBuilding
             }
             else
                 deck = DeckStorage.Load(path);
-            return DeckRules.Sanitize(deck, Db);
+            return DeckRules.Sanitize(deck, Db, DeckContext.Supply);
         }
 
         // Rescans the deck folders (call every time a deck is added, renamed or deleted)
@@ -450,7 +451,8 @@ namespace Gwent.DeckBuilding
             {
                 Faction = my_deck.Faction,
                 Name = name,
-                Leader = LeaderIds.BelongsTo(my_deck.Leader, my_deck.Faction) ? my_deck.Leader : LeaderIds.DefaultFor(my_deck.Faction),
+                Leader = LeaderIds.BelongsTo(my_deck.Leader, my_deck.Faction) && DeckContext.Supply.Copies(Db.Get(my_deck.Leader)) > 0
+                    ? my_deck.Leader : DeckRules.DefaultLeader(my_deck.Faction, Db, DeckContext.Supply),
             };
             string path = DeckStorage.PathFor(deck.Faction, file_name);
             if (!DeckStorage.Save(deck, path))
@@ -664,12 +666,13 @@ namespace Gwent.DeckBuilding
 
             string battle_path = DeckStorage.BattleDeckPath;
             Deck battle_deck = DeckStorage.Exists(battle_path) ? DeckStorage.Load(battle_path) : null;
-            string battle_name = battle_deck == null ? "default (Northern Realms)" : battle_deck.Name + (OpponentDecks.IsPreset(battle_path) ? " (preset)" : "");
+            string battle_name = battle_deck == null ? (DeckContext.InStory ? "the starter deck" : "default (Northern Realms)")
+                : battle_deck.Name + (OpponentDecks.IsPreset(battle_path) ? " (preset)" : "");
 
             bool editing_real_deck = currentDeckPath != EmptyDeckResourcePath && my_deck.Name != DeckRules.EmptyDeckName;
             if (editing_real_deck && !IsDeckValid(my_deck))
             {
-                string problem = DeckRules.Validate(my_deck, Db).FirstOrDefault();
+                string problem = DeckRules.Validate(my_deck, Db).FirstOrDefault() ?? (DeckContext.InStory ? DeckContext.Story.DeckProblem(my_deck) : null);
                 battleDeckStatus.text = "Not battle-ready: " + problem + "\nBattle deck: " + battle_name;
                 battleDeckStatus.color = UITheme.Current.danger;
             }
@@ -698,16 +701,18 @@ namespace Gwent.DeckBuilding
                 UIOverlay.Toast("Could not save the deck");
         }
 
+        // Valid by the rules (in the story, made of the cards owned)
         public bool IsDeckValid(Deck deck)
         {
-            return DeckRules.IsValid(deck, Db);
+            return DeckRules.IsValid(deck, Db) && (!DeckContext.InStory || DeckContext.Story.DeckProblem(deck) == null);
         }
 
         //--------To Main Menu
+        // Back to the main menu, or the story's map
         public void ToMainMenu()
         {
             GameAudio.PlaySfx("ui_click");
-            LoadingScreen.Load(SceneNames.Menu);
+            LoadingScreen.Load(DeckContext.InStory ? SceneNames.Story : SceneNames.Menu);
         }
     }
 }

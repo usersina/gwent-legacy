@@ -113,7 +113,7 @@ namespace Gwent.Rules.Tests
             return results;
         }
 
-        private static AiAction Decide(Board board, bool is_player, AiDifficulty difficulty)
+        internal static AiAction Decide(Board board, bool is_player, AiDifficulty difficulty)
         {
             AiContext ctx = board.AiContextFor(is_player);
             ctx.Difficulty = difficulty;
@@ -123,7 +123,7 @@ namespace Gwent.Rules.Tests
 
         // A battle from the deal (BattleController.Start): shuffled decks, 10 cards (11 under Francesca, Daisy of the
         // Valley), the White Flame's cancel, Scoia'tael going first against another faction
-        private static RoundWinner PlayBattle(Deck player_deck, Deck enemy_deck, Func<Board, bool, AiAction> policy, int seed)
+        internal static RoundWinner PlayBattle(Deck player_deck, Deck enemy_deck, Func<Board, bool, AiAction> policy, int seed)
         {
             Rng.Seed(seed);
             Random rnd = new Random(seed);

@@ -6,5 +6,6 @@ namespace Gwent.Core
         public const string Menu = "Menu";
         public const string Game = "Game";
         public const string Deck = "Deck";
+        public const string Story = "Story";
     }
 }

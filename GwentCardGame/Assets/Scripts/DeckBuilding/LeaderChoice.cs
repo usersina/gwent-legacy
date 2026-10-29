@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Gwent.Battle;
 using Gwent.Core;
 using Gwent.Rules;
@@ -23,8 +24,12 @@ namespace Gwent.DeckBuilding
 
         public static void Open(DeckBuilder builder)
         {
-            int[] leaders;
-            if (current != null || !LeaderIds.ByFaction.TryGetValue(builder.my_deck.Faction, out leaders))
+            int[] all;
+            if (current != null || !LeaderIds.ByFaction.TryGetValue(builder.my_deck.Faction, out all))
+                return;
+            // In the story, the leaders owned
+            int[] leaders = all.Where(leader => DeckContext.Supply.Copies(builder.Db.Get(leader)) > 0).ToArray();
+            if (leaders.Length == 0)
                 return;
             // Over the whole screen, the deck builder dimmed under it and taking no click
             RectTransform root = UIKit.Rect("LeaderChoice", UIOverlay.Root).Stretch();

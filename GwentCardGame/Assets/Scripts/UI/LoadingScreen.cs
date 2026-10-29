@@ -71,9 +71,9 @@ namespace Gwent.UI
             screen.alpha = 0;
 
             // The next screen's backdrop, as it lays it: the battle's table and the menu's key art (covering the screen),
-            // the deck builder's plain background
+            // the deck builder's and the story map's plain background
             RectTransform root = (RectTransform)transform;
-            Image under = UIKit.NewImage(root, "Under", null, scene == SceneNames.Deck ? theme.background : Color.black);
+            Image under = UIKit.NewImage(root, "Under", null, scene == SceneNames.Deck || scene == SceneNames.Story ? theme.background : Color.black);
             under.rectTransform.Stretch();
             under.raycastTarget = true; // takes the clicks
             if (scene == SceneNames.Game)
@@ -97,12 +97,15 @@ namespace Gwent.UI
             if (scene == SceneNames.Game)
             {
                 // The decks the battle will play: a replay's two, a LAN battle's, or the player's and the AI's (a random one
-                // is picked now)
+                // is picked now; the story's: its player's)
                 Gwent.Replays.ReplayPlayer replay = Gwent.Replays.ReplayPlayer.Current;
                 LanSession lan = replay == null && LanSession.Current != null && LanSession.Current.State == LanSession.Stage.Battle ? LanSession.Current : null;
                 Deck mine = replay != null ? replay.MyDeck : lan != null ? lan.MyDeck : BattleController.PlayerDeck(CardLibrary.Get(), out _);
                 Deck opponent = replay != null ? replay.TheirDeck : lan != null ? lan.TheirDeck : null;
-                if (replay == null && lan == null)
+                Gwent.Story.StoryBattle story = replay == null && lan == null ? Gwent.Story.StoryBattle.Current : null;
+                if (story != null)
+                    opponent = story.Opponent(CardLibrary.Get()); // the story's player, or a tournament's round
+                else if (replay == null && lan == null)
                 {
                     TextAsset theirs = OpponentDecks.PickNext();
                     opponent = theirs != null ? CardLibrary.ParseDeck(theirs.text, theirs.name) : null;

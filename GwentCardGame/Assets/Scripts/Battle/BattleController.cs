@@ -8,6 +8,7 @@ using Gwent.Menus;
 using Gwent.Net;
 using Gwent.Replays;
 using Gwent.Rules;
+using Gwent.Story;
 using Gwent.UI;
 using UnityEngine;
 using UnityEngine.UI;
@@ -203,14 +204,15 @@ namespace Gwent.Battle
                 away = LanNotice.Show(meant, true, () => LoadingScreen.Load(SceneNames.Menu));
                 return;
             }
+            story = replay == null && lan == null ? StoryBattle.Current : null; // a battle of the story's map
             if (!GameInput.IsTouch && replay == null)
                 gameObject.AddComponent<BattleKeys>();
             if (replay == null)
                 View(true).Deck.gameObject.AddComponent<DeckGiveUp>(); // a hand laid on your deck gives up
             GameAudio.PlayGameMusic();
             Time.timeScale = PlayingTimeScale;
-            PlayerInfo.Name = replay != null ? replay.MyName : lan != null ? lan.MyName : "Player";
-            EnemyInfo.Name = replay != null ? replay.TheirName : lan != null ? lan.TheirName : "Opponent";
+            PlayerInfo.Name = replay != null ? replay.MyName : lan != null ? lan.MyName : story != null ? StoryBattle.PlayerName : "Player";
+            EnemyInfo.Name = replay != null ? replay.TheirName : lan != null ? lan.TheirName : story != null ? story.Name : "Opponent";
 
             UIOverlay.SetEscapeAction(OnEscape);
             battleState = BattleState.Start;
@@ -310,6 +312,8 @@ namespace Gwent.Battle
             // A LAN battle's clock runs once this screen has shown all there is (its animations are not the player's time)
             if (lan != null && presenting == 0 && source != null && shown >= source.Count)
                 lan.ScreenShown(shown, lanBattle);
+
+            ConcludeStory();
         }
 
         // Right click (or a second finger) keeps the hand; Escape opens the pause menu instead
@@ -388,9 +392,17 @@ namespace Gwent.Battle
             else
             {
                 MyDeck = PlayerDeck(Db, out deckProblem);
-                TextAsset enemy_deck = OpponentDecks.ForBattle() ?? EnemyDeck;
-                TheirDeck = DeckRules.Sanitize(CardLibrary.ParseDeck(enemy_deck.text, enemy_deck.name), Db);
-                opponentName = enemy_deck.name;
+                if (story != null)
+                {
+                    TheirDeck = story.Opponent(Db);
+                    opponentName = story.Name;
+                }
+                else
+                {
+                    TextAsset enemy_deck = OpponentDecks.ForBattle() ?? EnemyDeck;
+                    TheirDeck = DeckRules.Sanitize(CardLibrary.ParseDeck(enemy_deck.text, enemy_deck.name), Db);
+                    opponentName = enemy_deck.name;
+                }
                 match = new Match(new MatchSetup { Player = MyDeck, Enemy = TheirDeck, Seed = Rng.Shared.Next() }, Db);
                 match.Start();
                 source = new LocalSource(match);
@@ -400,21 +412,24 @@ namespace Gwent.Battle
         }
 
         // The deck the player battles with: the selected one if it exists and is valid, else the built-in default deck
-        // (problem: why the selected one could not be used, or null). The loading screen shows its crest.
+        // (problem: why the selected one could not be used, or null). The loading screen shows its crest. In the story,
+        // its battle deck with the copies owned, else The Witcher 3's starter deck.
         public static Deck PlayerDeck(CardDatabase db, out string problem)
         {
             problem = null;
             string path = DeckStorage.BattleDeckPath;
             if (DeckStorage.Exists(path)) // a deck file, or a preset (an AI deck)
             {
-                Deck deck = DeckRules.Sanitize(DeckStorage.Load(path), db); // copies beyond the W3 limits are dropped
-                List<string> errors = DeckRules.Validate(deck, db);
-                if (errors.Count == 0)
+                Deck deck = DeckRules.Sanitize(DeckStorage.Load(path), db, DeckContext.Supply); // copies beyond the W3 limits (the story's: those owned) are dropped
+                string error = DeckContext.InStory ? DeckContext.Story.DeckProblem(deck) : DeckRules.Validate(deck, db).FirstOrDefault();
+                if (error == null)
                 {
                     return deck;
                 }
-                problem = errors[0];
+                problem = error;
             }
+            if (DeckContext.InStory)
+                return StoryGame.StarterDeck(DeckContext.Story);
 
             TextAsset deckAsset = Resources.Load<TextAsset>(DefaultDeckResource);
             return DeckRules.Sanitize(CardLibrary.ParseDeck(deckAsset.text, DefaultDeckResource), db);
@@ -1104,6 +1119,7 @@ namespace Gwent.Battle
             DropInput();
             source.Submit(MatchCommand.GiveUp()); // a LAN guest away: the host finds out on its own
             shown = source.Count;
+            ConcludeStory(); // a story's battle given up is lost (a tournament's run ends), even when the map loads next
             if (leaving)
             {
                 BattleLog.End(BattleState.Lost, true);
@@ -1131,6 +1147,7 @@ namespace Gwent.Battle
         {
             BattleLog.End(outcome, gave_up);
             battleState = outcome;
+            ConcludeStory();
             BoardZoom.ZoomOut(); // the end screen over the whole board
             CloseAway();
             BattleBanner.Clear(); // a notice under way (the other's turn, as it gave up) does not show over the end
@@ -1138,7 +1155,7 @@ namespace Gwent.Battle
             CardMotion.ClearLayer();
             PostGame.SetActive(true);
             bool named = replay != null ? replay.Record.Kind != RecordKind.Ai || replay.Switched : !ReferenceEquals(lan, null); // the other side's name in the tally
-            PostGame.GetComponent<EndScreen>().Show(outcome, PlayerInfo, EnemyInfo, gave_up, opponent_left, named, ended_away, replay != null);
+            PostGame.GetComponent<EndScreen>().Show(outcome, PlayerInfo, EnemyInfo, gave_up, opponent_left, named, ended_away, replay != null, story);
             if (outcome == BattleState.Won)
                 GameAudio.PlaySfx("victory");
             else if (outcome == BattleState.Lost)

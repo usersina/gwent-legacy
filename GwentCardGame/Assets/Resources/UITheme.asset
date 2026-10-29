@@ -55,6 +55,18 @@ MonoBehaviour:
   iconRoundBack: {fileID: 21300000, guid: b38922e7ada9450588484f235118cde3, type: 3}
   iconRoundForward: {fileID: 21300000, guid: c79549c8523149e2b693006e11c82e3d, type: 3}
   iconSwitch: {fileID: 21300000, guid: a28c8c5996d64d3d8e175db1853949dc, type: 3}
+  iconCards: {fileID: 21300000, guid: e57de2d383b84cddb884c8416608b226, type: 3}
+  iconCoin: {fileID: 21300000, guid: 61637ef336ee46c2b492a0b1a0440c45, type: 3}
+  iconJournal: {fileID: 21300000, guid: 4502bb248c484fb7ae0d4926d053efe0, type: 3}
+  iconTravel: {fileID: 21300000, guid: 714229cc9fa74f5b9fe667c23a2024ce, type: 3}
+  iconChest: {fileID: 21300000, guid: a357826b03174353b541a8a6999eedfa, type: 3}
+  iconQuest: {fileID: 21300000, guid: 8a462309435b42d3b943113ce1383977, type: 3}
+  iconGoblet: {fileID: 21300000, guid: 8476bd794c854d97abab97c3bcbd84c2, type: 3}
+  iconDeck: {fileID: 21300000, guid: afad9b4274a9474eadeeb4b59e426657, type: 3}
+  iconAgain: {fileID: 21300000, guid: 6df7d6b634b5427fb455ef9c7867430f, type: 3}
+  iconFilm: {fileID: 21300000, guid: ef65907d6f484256b2414da80b20e2c8, type: 3}
+  iconHome: {fileID: 21300000, guid: d28e9905d99543c2be8299dd9eb925a1, type: 3}
+  iconMap: {fileID: 21300000, guid: 0af1dfe844a14b288879036afb15080d, type: 3}
   softShadow: {fileID: 21300000, guid: 7d0cda7be02823c7d8759f7bf3548013, type: 3}
   glowRing: {fileID: 21300000, guid: 9add077e035209d588c8dc6d288356f0, type: 3}
   leaderReady: {fileID: 21300000, guid: 9aa5796da9e2898eca470dede03cb193, type: 3}
@@ -79,6 +91,9 @@ MonoBehaviour:
   updateDialog: {fileID: 9197481963319205126, guid: 05fc18857a5e4c7caa4ba661eb78871f, type: 3}
   toast: {fileID: 9197481963319205126, guid: ef6b4d4f61306d3049f8caa83c158f95, type: 3}
   rulesPage: {fileID: 9197481963319205126, guid: 76fa8843591236b9394c96e10802e52a, type: 3}
+  storyMap: {fileID: 9197481963319205126, guid: 43879d1b04004bc49353c880f5314560, type: 3}
+  storySheet: {fileID: 9197481963319205126, guid: 7ccdc858b1d84a1e9bd1420dde1f160b, type: 3}
+  storyPage: {fileID: 9197481963319205126, guid: 18cf3acf960741f588aead7691788227, type: 3}
   cursorDefault: {fileID: 2800000, guid: cbcb12b56ba765b95ad7887bec99e252, type: 3}
   cursorInteract: {fileID: 2800000, guid: b850cb37082471b529f708fa503613ef, type: 3}
   cursorInvalid: {fileID: 2800000, guid: 511b23d617df0dc869d7200289b1e555, type: 3}

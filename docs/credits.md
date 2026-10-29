@@ -22,6 +22,11 @@ Hunt; all credit goes to its owner, CD PROJEKT RED. This is a non-commercial fan
 - The cards' names, strengths, abilities and copies follow the community's
   [Gwent Card List](https://docs.google.com/spreadsheets/d/15RUB-aG3Y2mRY3oWyNY1TlfDTRE-ySgNURUfTpMH0XQ/htmlview) spreadsheet,
   Blood and Wine's Skellige cards included.
+- The story's maps are The Witcher 3's own region maps, as extracted for [witcher3map](https://github.com/witcher3map/witcher3map)
+  by untamed0 and its contributors (with DesignGears and hhrhhr), CC BY-NC-SA 4.0: its zoom 4 tiles stitched, and its markers
+  for where the Gwent players stand (see `GwentCardGame/Assets/Content/Story/CREDITS.md`). Where each card comes from, who plays
+  Gwent where and the Gwent quests come from the [Witcher wiki](https://witcher.fandom.com) (CC BY-SA), its cards' and quests'
+  pages and its list of Gwent players, with the PSNProfiles Card Collector guide's order and starter deck.
 - The opponent decks (`Resources/Decks/AI`) are adapted from the default decks of
   [gwent-classic](https://github.com/asundr/gwent-classic) by Arun Sundaram (MIT with the Commons Clause), as kept in
   [gwent-classic-v3.1](https://github.com/RandomPianist/gwent-classic-v3.1); three were changed so that their leader suits their

@@ -1,0 +1,38 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Toolkit/Gwent.uss" />
+    <!-- A place of the story's map (Gwent.Story.StorySheet): their portrait (their leader's: its name in the tooltip, or the
+         place's icon), name and trade, chips (faction, how well they play, the quest that leads there); the card a win
+         gives; what they sell, a price tag under each card; a tournament's rounds; the button, the crowns a win pays on it.
+         The note under it only says what stops it. -->
+    <ui:VisualElement name="Dimmer" class="dimmer">
+        <ui:VisualElement name="Panel" class="panel story-sheet">
+            <ui:VisualElement class="story-sheet__head">
+                <ui:VisualElement name="Portrait" class="opponent__portrait story-sheet__portrait">
+                    <ui:VisualElement name="Art" class="opponent__art" picking-mode="Ignore" />
+                    <ui:VisualElement name="Icon" class="story-sheet__icon" picking-mode="Ignore" />
+                </ui:VisualElement>
+                <ui:VisualElement class="story-sheet__who" picking-mode="Ignore">
+                    <ui:Label name="Title" class="story-sheet__title" picking-mode="Ignore" />
+                    <ui:Label name="Trade" class="story-sheet__trade" picking-mode="Ignore" />
+                    <ui:VisualElement name="Chips" class="story-sheet__chips" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="ornament story-sheet__ornament" />
+            <ui:VisualElement class="story-sheet__body">
+                <ui:VisualElement name="PrizeBox" class="story-sheet__prize">
+                    <ui:Label name="PrizeTitle" class="story-sheet__heading" />
+                    <ui:VisualElement name="Prize" class="story-sheet__card" />
+                </ui:VisualElement>
+                <ui:VisualElement name="ListBox" class="story-sheet__list-box">
+                    <ui:Label name="ListTitle" class="story-sheet__heading" />
+                    <ui:ScrollView name="List" class="story-sheet__list scroll" vertical-scroller-visibility="Auto" horizontal-scroller-visibility="Hidden" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:Label name="Note" class="story-sheet__note" />
+            <ui:VisualElement name="Buttons" class="story-sheet__buttons">
+                <Gwent.UI.DialogButton name="Button Play" class="button--primary story-sheet__play" />
+            </ui:VisualElement>
+            <Gwent.UI.DialogButton name="Button Close" text="×" class="button--close" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

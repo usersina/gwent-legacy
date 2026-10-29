@@ -58,6 +58,18 @@ namespace Gwent.UI
         public Sprite iconRoundBack; // a round back
         public Sprite iconRoundForward; // a round forward
         public Sprite iconSwitch;   // a replay seen from the other side
+        public Sprite iconCards;    // the story's map: a Gwent player; the collection
+        public Sprite iconCoin;     // crowns; a shop
+        public Sprite iconJournal;  // the story's quests
+        public Sprite iconTravel;   // another region
+        public Sprite iconChest;    // a card to find
+        public Sprite iconQuest;    // a card or deck given
+        public Sprite iconGoblet;   // a tournament
+        public Sprite iconDeck;     // the story's decks
+        public Sprite iconAgain;    // the end screen: play again, rematch, watch again
+        public Sprite iconFilm;     // save replay; the replays
+        public Sprite iconHome;     // the main menu
+        public Sprite iconMap;      // the story's map
         public Sprite softShadow; // soft blurred rounded rectangle (card shadows, glows)
         public Sprite glowRing;   // a glow around a rectangle, clear inside (nine-sliced, reaching 32 px out)
         public Sprite leaderReady; // the leader ability's crown, glowing: the leader is lifted and the crown uses it
@@ -85,6 +97,9 @@ namespace Gwent.UI
         public VisualTreeAsset updateDialog;      // a newer build is out: what's new, Update
         public VisualTreeAsset toast;
         public VisualTreeAsset rulesPage;
+        public VisualTreeAsset storyMap;          // the story's map (StoryScreen)
+        public VisualTreeAsset storySheet;        // a place of the map: who, what they give and sell, Play
+        public VisualTreeAsset storyPage;         // the journal, the collection, travel, the story's start
 
         [Header("Cursors (tip at 5, 4)")]
         public Texture2D cursorDefault;

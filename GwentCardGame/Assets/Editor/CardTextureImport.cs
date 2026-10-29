@@ -23,7 +23,13 @@ namespace Gwent.EditorTools
             ("Assets/Resources/Cards/Back/", 0, 0),   // 216x328, seven of them
             ("Assets/Resources/Cards/Ability/", 0, 0),// 60x60
             ("Assets/Resources/Cards/Row/", 0, 0),
+            (StoryMaps, 2048, 2048),                  // the story's maps, 4096 on their longest side (tools/story-maps.py):
+                                                      // exactly halved, as their sides are multiples of 8
         };
+
+        // The story's maps: sprites (the map screen shows them in UI Toolkit), kept at 4096 on a computer (the default
+        // would halve them)
+        public const string StoryMaps = "Assets/Content/Story/Maps/";
 
         public static readonly string[] Mobile = { "Android", "WebGL" };
 
@@ -76,6 +82,13 @@ namespace Gwent.EditorTools
                 return;
             importer.mipmapEnabled = false;
             importer.mipmapLimitGroupName = "";
+            if (assetPath.StartsWith(StoryMaps))
+            {
+                importer.textureType = TextureImporterType.Sprite;
+                importer.spriteImportMode = SpriteImportMode.Single;
+                importer.maxTextureSize = 4096;
+                importer.wrapMode = TextureWrapMode.Clamp;
+            }
             foreach (string platform in Mobile)
             {
                 TextureImporterPlatformSettings settings = importer.GetPlatformTextureSettings(platform);

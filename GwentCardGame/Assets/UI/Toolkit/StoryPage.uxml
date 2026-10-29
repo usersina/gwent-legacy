@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Toolkit/Gwent.uss" />
+    <!-- One of the story's pages (Gwent.Story.StoryPages): the journal, the collection (A Miraculous Guide to Gwent),
+         travel, and the story's start from the main menu (begin, continue, start over): a title, a line under it, its
+         entries (they scroll where they don't all fit), its buttons -->
+    <ui:VisualElement name="Dimmer" class="dimmer">
+        <ui:VisualElement name="Panel" class="panel story-page">
+            <ui:Label name="Title" class="title" />
+            <ui:VisualElement class="ornament story-page__ornament" />
+            <ui:Label name="Caption" class="story-page__caption" />
+            <ui:ScrollView name="Entries" class="story-page__entries scroll" vertical-scroller-visibility="Auto" horizontal-scroller-visibility="Hidden" />
+            <ui:VisualElement name="Buttons" class="story-page__buttons" />
+            <Gwent.UI.DialogButton name="Button Close" text="×" class="button--close" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

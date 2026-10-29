@@ -29,7 +29,7 @@ namespace Gwent.Battle
             GameLog.Event(LogCategory.Battle, "battle_start",
                 "player_deck", mine.Name, "player_faction", mine.Faction, "player_leader", c.Db.Get(mine.Leader).name,
                 "opponent_deck", opponent, "opponent_faction", theirs.Faction, "opponent_leader", c.Db.Get(theirs.Leader).name,
-                "difficulty", GameSettings.AiDifficulty, "double_spies", c.doubleSpies, "random_medic", c.randomMedic);
+                "difficulty", BattleController.Instance != null ? BattleController.Instance.AiDifficulty : GameSettings.AiDifficulty, "double_spies", c.doubleSpies, "random_medic", c.randomMedic);
         }
 
         [Conditional("UNITY_EDITOR"), Conditional("DEBUG"), Conditional("GWENT_VERBOSE_LOGS")]

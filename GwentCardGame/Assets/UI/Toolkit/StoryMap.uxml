@@ -1,0 +1,31 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Toolkit/Gwent.uss" />
+    <!-- The story's map (Gwent.Story.StoryScreen): The Witcher 3's map of the region filling the screen (a MapView in Map:
+         dragged, zoomed), its places' markers on it; a region without a map (the royal palace) shows its places in Place.
+         Along the top: the region and what is left to find there, the crowns; the journal, the collection, the story's
+         deck and travel as icons (StoryScreen adds them, each with its key); the × back to the main menu. -->
+    <ui:VisualElement name="Story" class="screen story">
+        <ui:VisualElement name="Map" class="story__map" />
+        <ui:VisualElement name="Place" class="story__place">
+            <ui:VisualElement name="Backdrop" class="story__backdrop" picking-mode="Ignore" />
+            <ui:VisualElement class="story__dim" picking-mode="Ignore" />
+            <ui:VisualElement name="PlacePanel" class="panel story__place-panel">
+                <ui:Label name="PlaceTitle" class="title" />
+                <ui:VisualElement class="ornament story__place-ornament" />
+                <ui:VisualElement name="PlaceEntries" class="story__place-entries" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Bar" class="story__bar" picking-mode="Ignore">
+            <ui:VisualElement class="story__where" picking-mode="Ignore">
+                <ui:Label name="Region" class="story__region" picking-mode="Ignore" />
+                <ui:Label name="Hint" class="story__hint" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Purse" class="story__purse">
+                <ui:VisualElement name="Coin" class="story__coin" picking-mode="Ignore" />
+                <ui:Label name="Crowns" class="story__crowns" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Tools" class="story__tools" />
+            <Gwent.UI.DialogButton name="Button Close" text="×" class="button--close story__close" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

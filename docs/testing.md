@@ -23,6 +23,12 @@ Window > General > Test Runner > EditMode > Run All.
 - **The AI**: `AiDifficultyTests` play the AI's 11 decks against each other: Normal must beat Easy and Hard must beat Normal, no
   card may be lost or made, and every deck's active leader must come into play. `AiBrainTests` check that every difficulty only
   makes legal moves, and that Hard's move does not depend on which of your unseen cards are in your hand.
+- **The story**: `StoryTests` check its content (every card copy has one source, every place lies on its map, every opponent's
+  deck is valid) and play it through to Collect 'Em All; `StorySaveTests` check its save. `StoryBalanceTests` is a report, run
+  by name (it takes about three minutes): it plays the story through the easiest opponent first, and has the Normal AI play the
+  strongest deck the cards owned make against each opponent's deck at its level, 8 battles each. It writes each opponent's win
+  rate and each region's and level's to `Logs/story-balance.txt`. On 2026-10-29: about 74% in Velen's first level, 58% in its
+  second, 57% against the last level's innkeepers and merchants, 39% against the masters and the tournaments (the Hard AI).
 - **The content** (`Gwent.Content.Tests`, run with them): the Addressables content, and that every card has the description box it
   should, with its icon.
 - **LAN** (`Gwent.Net.Tests`): two players on this computer over its loopback network, with real sockets (see
@@ -94,6 +100,12 @@ Close the project in the editor first. With the [Unity CLI](https://docs.unity.c
 
 ```bash
 unity test GwentCardGame --mode EditMode --output editmode-results.xml
+```
+
+The story's balance report, by name:
+
+```bash
+<path-to>/6000.6.5f1/Editor/Unity -batchmode -nographics -projectPath GwentCardGame -runTests -testPlatform EditMode -testFilter Gwent.Rules.Tests.StoryBalanceTests.HowHardTheStoryIs -testResults balance.xml
 ```
 
 The autoplay test needs the editor to stay open after the method returns, so it runs the editor directly (the CLI's `run` always

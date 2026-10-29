@@ -64,9 +64,11 @@ namespace Gwent.DeckBuilding
             deckPicker.ClearOptions();
 
             List<TMP_Dropdown.OptionData> decks_list_drop = new List<TMP_Dropdown.OptionData>();
-            // The player's decks, then the faction's presets (the AI's decks)
+            // The player's decks, then the faction's presets (the AI's decks: not in the story, whose decks hold the cards
+            // owned)
             List<string> deck_paths_list = new List<string>(deckBuilder.DeckPathsOf(deckBuilder.my_deck.Faction));
-            deck_paths_list.AddRange(OpponentDecks.PresetPaths(deckBuilder.my_deck.Faction));
+            if (!DeckContext.InStory)
+                deck_paths_list.AddRange(OpponentDecks.PresetPaths(deckBuilder.my_deck.Faction));
 
             myDecks.Clear();
             myPaths.Clear();

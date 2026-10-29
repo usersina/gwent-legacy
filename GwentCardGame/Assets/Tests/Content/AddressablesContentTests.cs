@@ -52,6 +52,7 @@ namespace Gwent.Content.Tests
             {
                 { GwentContent.CardArtFolder, GwentContent.CardArtGroup },
                 { GwentContent.MusicFolder, GwentContent.MusicGroup },
+                { GwentContent.StoryMapsFolder, GwentContent.StoryMapsGroup },
             })
             {
                 HashSet<string> entries = new HashSet<string>(Entries(pair.Value).Select(entry => entry.guid));

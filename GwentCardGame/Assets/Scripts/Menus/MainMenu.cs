@@ -24,6 +24,8 @@ namespace Gwent.Menus
         private void Start()
         {
             Gwent.Net.LanSession.ForgetBattle(); // a LAN battle that closed is no battle to load any more
+            Gwent.Story.StoryBattle.Forget();
+            DeckContext.Leave(); // the free collection: Play, Multiplayer and the deck builder take every card
             bool replays = Gwent.Replays.ReplayPlayer.Forget(); // nor is a replay (left for its list: it opens again)
             GameAudio.PlayMenuMusic();
             UIScreens.Show("MainMenu", UITheme.Current.mainMenu, Bind);
@@ -47,7 +49,6 @@ namespace Gwent.Menus
             items.Clear();
             ShowBuild(root);
             AddItem(root, "Item Play", PlayGame);
-            AddItem(root, "Item Multiplayer", () => OpenMultiplayer());
             AddItem(root, "Item Deck builder", EditDeck);
             AddItem(root, "Item Replays", OpenReplays);
             AddItem(root, "Item How to play", OpenRules);
@@ -155,17 +156,17 @@ namespace Gwent.Menus
             CensoredArt.Changed -= ShowKeyArt;
         }
 
-        // Play: choose the opponent first
+        // Play: what to play (PlayPicker): the story, a single match against the AI, or multiplayer
         public void PlayGame()
         {
-            OpponentPicker.Open(() => Focus(0));
+            PlayPicker.Open(() => Focus("Item Play"));
         }
 
         // Multiplayer: on the local network or online (MultiplayerPicker), in a browser too (where it says neither can be
-        // had there yet); lobby: the LAN lobby over it at once
+        // had there yet); lobby: the LAN lobby over it at once (back from the deck builder the lobby sent the player to)
         public void OpenMultiplayer(bool lobby = false)
         {
-            MultiplayerPicker.Open(() => Focus("Item Multiplayer"), lobby);
+            MultiplayerPicker.Open(() => Focus("Item Play"), lobby);
         }
 
         public void EditDeck()

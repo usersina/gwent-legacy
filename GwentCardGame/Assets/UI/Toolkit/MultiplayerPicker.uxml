@@ -1,9 +1,10 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Toolkit/Gwent.uss" />
-    <!-- Multiplayer: how to play someone, one a row (MultiplayerPicker makes the entries, OpponentEntry.uxml each) -->
+    <!-- Multiplayer: how to play someone, one a row (MultiplayerPicker makes the entries, OpponentEntry.uxml each); Play's
+         picker too (PlayPicker: its own title) -->
     <ui:VisualElement name="Dimmer" class="dimmer">
         <ui:VisualElement name="Panel" class="panel mode-picker">
-            <ui:Label text="Multiplayer" class="title" />
+            <ui:Label name="Title" text="Multiplayer" class="title" />
             <ui:VisualElement class="ornament opponent-picker__ornament" />
             <ui:VisualElement name="Entries" class="mode-picker__entries" />
             <Gwent.UI.DialogButton name="Button Close" text="×" class="button--close" />

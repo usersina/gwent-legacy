@@ -275,7 +275,7 @@ namespace Gwent.Core
         }
 
         // The back of the card's faction (special cards have the plain one)
-        private static Sprite Back(int card_id)
+        public static Sprite Back(int card_id)
         {
             CardDatabase db = CardLibrary.Get();
             Sprite back = db.Contains(card_id) ? SpriteCache.Load("Cards/Back/" + db.Get(card_id).faction.Code()) : null;

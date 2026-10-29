@@ -5,7 +5,6 @@
         <ui:VisualElement name="Scrim" class="main-menu__scrim" picking-mode="Ignore" />
         <ui:VisualElement name="Entries" class="main-menu__entries">
             <Gwent.UI.MenuEntry name="Item Play" text="Play" />
-            <Gwent.UI.MenuEntry name="Item Multiplayer" text="Multiplayer" />
             <Gwent.UI.MenuEntry name="Item Deck builder" text="Deck builder" />
             <Gwent.UI.MenuEntry name="Item Replays" text="Replays" />
             <Gwent.UI.MenuEntry name="Item How to play" text="How to play" />

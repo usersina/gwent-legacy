@@ -13,8 +13,8 @@ namespace Gwent.DeckBuilding
 {
     public class CardGrid : MonoBehaviour
     {
-        // The factions of the header's panels, in order
-        public static readonly Faction[] HeaderFactions = { Faction.NorthernRealms, Faction.Nilfgaard, Faction.Scoiatael, Faction.Monsters, Faction.Skellige };
+        // The factions of the header's panels, in order: every faction, or in the story those with a leader owned
+        public static Faction[] HeaderFactions { get { return DeckContext.Factions; } }
 
         public DeckBuilder deckBuilder;
         public FactionHeader header;
@@ -155,7 +155,7 @@ namespace Gwent.DeckBuilding
                 if (CardIds.IsSummoned(card._id) || !shown.Add(card._id))
                     continue;
                 in_deck.TryGetValue(card._id, out int used);
-                int count = deck ? used : DeckRules.MaxCopies(card) - used;
+                int count = deck ? used : DeckContext.Supply.Copies(card) - used; // in the story, the copies owned
                 if (deck && count <= 0)
                     continue;
 
@@ -329,7 +329,7 @@ namespace Gwent.DeckBuilding
             foreach (int id in deckBuilder.my_deck.Cards)
                 if (id == card_id)
                     used++;
-            return transform.CompareTag("Player") ? used : DeckRules.MaxCopies(deckBuilder.Db.Get(card_id)) - used;
+            return transform.CompareTag("Player") ? used : DeckContext.Supply.Copies(deckBuilder.Db.Get(card_id)) - used;
         }
 
         private void ShowArrivals(int card_id)
@@ -485,8 +485,8 @@ namespace Gwent.DeckBuilding
                 // Start from a new empty deck of that faction (the loaded deck object is shared with the dropdown list)
                 deckBuilder.my_deck = new Deck { Faction = faction, Name = DeckRules.EmptyDeckName };
 
-                // Change the leader to the default of each faction
-                deckBuilder.my_deck.Leader = LeaderIds.DefaultFor(faction);
+                // Change the leader to the default of each faction (in the story, the first one owned)
+                deckBuilder.my_deck.Leader = DeckRules.DefaultLeader(faction, deckBuilder.Db, DeckContext.Supply);
 
                 // Load the new decklists and get the first deck if not empty
                 deckSummary.LoadDecks();

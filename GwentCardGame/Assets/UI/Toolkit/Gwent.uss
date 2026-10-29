@@ -441,6 +441,19 @@
     background-image: url("project://database/Assets/UI/Sprites/IconGlobe.png");
 }
 
+/* Play's modes (PlayPicker) */
+.mode__icon--story {
+    background-image: url("project://database/Assets/UI/Sprites/IconTravel.png");
+}
+
+.mode__icon--match {
+    background-image: url("project://database/Assets/UI/Sprites/IconCards.png");
+}
+
+.mode__icon--multiplayer {
+    background-image: url("project://database/Assets/UI/Sprites/IconNetwork.png");
+}
+
 .mode__tag {
     -unity-font-definition: var(--heading-font);
     font-size: 22px;
@@ -1980,4 +1993,779 @@
 .unity-button.stepper__arrow:focus:disabled, .unity-button.stepper__arrow:hover:disabled {
     background-color: rgba(0, 0, 0, 0);
     border-color: rgba(0, 0, 0, 0);
+}
+
+/*---------------------------------------- The story's map ----------------------------------------*/
+/* The Witcher 3's map of the region over the whole screen (MapView), a bar of dark glass along its top */
+.story {
+    background-color: var(--background);
+}
+
+.story__map {
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom: 0;
+}
+
+.map-view {
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom: 0;
+}
+
+.map-view__image {
+    -unity-background-scale-mode: stretch-to-fill;
+}
+
+/* A region without a map (the royal palace in Vizima): its places on a panel over the key art */
+.story__place {
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom: 0;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.story__backdrop {
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom: 0;
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.story__dim {
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.story__place-panel {
+    width: 760px;
+    padding: 34px 40px 30px 40px;
+    align-items: center;
+}
+
+.story__place-ornament {
+    margin: 14px 0 24px 0;
+}
+
+.story__place-entries {
+    width: 660px;
+}
+
+.story__bar {
+    position: absolute;
+    left: 0; top: 0; right: 0;
+    height: 104px;
+    padding: 0 110px 8px 40px;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgba(10, 8, 6, 0.5);
+    background-image: url("project://database/Assets/UI/Sprites/GradientV.png");
+    -unity-background-image-tint-color: rgba(10, 8, 6, 0.92);
+}
+
+.story__where {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.story__region {
+    -unity-font-definition: var(--heading-font);
+    font-size: 40px;
+    letter-spacing: 2.9px;
+    color: var(--gold-bright);
+    padding: 0;
+    margin: 0;
+}
+
+.story__hint {
+    -unity-font-definition: var(--body-font);
+    font-size: 22px;
+    color: var(--text-secondary);
+    margin: 0;
+    padding: 0;
+}
+
+.story__purse {
+    flex-direction: row;
+    align-items: center;
+    margin: 0 22px 0 0;
+}
+
+.story__coin {
+    width: 40px;
+    height: 40px;
+    background-image: url("project://database/Assets/UI/Sprites/IconCoin.png");
+    -unity-background-image-tint-color: var(--gold-bright);
+    margin-right: 10px;
+}
+
+.story__crowns {
+    -unity-font-definition: var(--heading-font);
+    font-size: 32px;
+    color: var(--gold-bright);
+    min-width: 70px;
+}
+
+/* The journal, the collection, the deck, travel: an icon in a ring, its key under it on a computer */
+.story__tools {
+    flex-direction: row;
+    align-items: center;
+}
+
+.story__tool {
+    width: 60px;
+    height: 60px;
+    margin: 0 0 0 14px;
+    padding: 0;
+    border-width: 2px;
+    border-radius: 30px;
+    border-color: rgba(201, 164, 92, 0.7);
+    background-color: rgba(22, 18, 14, 0.85);
+    align-items: center;
+    justify-content: center;
+    transition-property: border-color, background-color;
+    transition-duration: 0.12s;
+}
+
+.unity-button.story__tool:hover,
+.unity-button.story__tool:focus {
+    border-color: var(--gold-bright);
+    background-color: rgba(42, 34, 25, 0.96);
+}
+
+.story__tool-icon {
+    width: 32px;
+    height: 32px;
+    -unity-background-image-tint-color: var(--gold-bright);
+}
+
+.story__tool-key {
+    position: absolute;
+    bottom: -14px;
+    height: 24px;
+    min-width: 24px;
+    margin: 0;
+    padding: 0 5px 1px 5px;
+    border-width: 1px;
+    border-radius: 5px;
+    background-color: rgba(22, 18, 14, 0.95);
+}
+
+.story__tool-key .keycap__label {
+    font-size: 15px;
+}
+
+.phone .story__tool {
+    width: 76px;
+    height: 76px;
+    border-radius: 38px;
+}
+
+.phone .story__tool-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.story__close {
+    top: 28px;
+    right: 32px;
+}
+
+/* A place on the map: a dark disc in a ring, the icon of what it is; gold while there is something to win there, dim once
+   all is won; the quest's mark in its corner while a quest leads there */
+.story-marker {
+    width: 60px;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+    border-width: 3px;
+    border-radius: 30px;
+    border-color: var(--gold);
+    background-color: rgba(22, 18, 14, 0.9);
+    align-items: center;
+    justify-content: center;
+    transition-property: scale, border-color;
+    transition-duration: 0.12s;
+}
+
+.unity-button.story-marker:hover,
+.unity-button.story-marker:focus {
+    scale: 1.18 1.18;
+    border-color: var(--gold-bright);
+    background-color: rgba(42, 34, 25, 0.96);
+}
+
+.unity-button.story-marker:active {
+    background-color: rgba(60, 48, 34, 0.96);
+}
+
+.story-marker__icon {
+    width: 34px;
+    height: 34px;
+    -unity-background-image-tint-color: var(--gold-bright);
+}
+
+.story-marker--done {
+    border-color: var(--line);
+}
+
+.story-marker--done .story-marker__icon {
+    -unity-background-image-tint-color: var(--text-muted);
+}
+
+.story-marker__badge {
+    position: absolute;
+    right: -8px;
+    top: -10px;
+    width: 26px;
+    height: 26px;
+    border-radius: 13px;
+    background-color: var(--gold-bright);
+    display: none;
+}
+
+.story-marker__badge-icon {
+    position: absolute;
+    left: 3px; top: 3px; right: 3px; bottom: 3px;
+    -unity-background-image-tint-color: var(--background);
+}
+
+.story-marker--quest .story-marker__badge,
+.story-marker--done .story-marker__badge {
+    display: flex;
+}
+
+.story-marker--done .story-marker__badge {
+    background-color: var(--line);
+}
+
+.story-marker--done .story-marker__badge-icon {
+    -unity-background-image-tint-color: var(--text-secondary);
+}
+
+.phone .story-marker {
+    width: 76px;
+    height: 76px;
+    border-radius: 38px;
+}
+
+.phone .story-marker__icon {
+    width: 44px;
+    height: 44px;
+}
+
+/*---------------------------------------- A place's sheet ----------------------------------------*/
+/* Few words: a portrait, a name, chips; the cards themselves; the button with the crowns on it */
+.story-sheet {
+    width: 1180px;
+    max-height: 96%;
+    padding: 32px 44px 30px 44px;
+    align-items: stretch;
+}
+
+.story-sheet--narrow {
+    width: 700px;
+}
+
+.story-sheet__head {
+    flex-direction: row;
+    align-items: center;
+    padding-right: 60px;
+}
+
+.story-sheet__portrait {
+    width: 112px;
+    height: 112px;
+    border-radius: 56px;
+}
+
+.story-sheet__portrait .opponent__art {
+    left: -22px;
+    top: -16px;
+    width: 156px;
+    height: 243px;
+}
+
+.story-sheet__icon {
+    width: 60px;
+    height: 60px;
+    -unity-background-image-tint-color: var(--gold-bright);
+}
+
+.story-sheet__who {
+    margin-left: 26px;
+    flex-shrink: 1;
+}
+
+.story-sheet__title {
+    -unity-font-definition: var(--heading-font);
+    font-size: 34px;
+    letter-spacing: 2.6px;
+    color: var(--gold-bright);
+    margin: 0;
+    padding: 0;
+    white-space: normal;
+}
+
+.story-sheet__trade {
+    -unity-font-definition: var(--body-font);
+    font-size: 24px;
+    color: var(--text-muted);
+    margin: 0;
+    padding: 0;
+}
+
+.story-sheet__chips {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+/* A chip: a faction, the pips of how well they play, the quest that leads there */
+.story-chip {
+    flex-direction: row;
+    align-items: center;
+    height: 34px;
+    margin: 0 8px 4px 0;
+    padding: 0 14px 1px 14px;
+    border-width: 1px;
+    border-radius: 17px;
+    border-color: var(--line);
+    background-color: rgba(42, 34, 25, 0.8);
+}
+
+.story-chip__text {
+    -unity-font-definition: var(--body-font);
+    font-size: 21px;
+    color: var(--text-secondary);
+    margin: 0;
+    padding: 0;
+}
+
+.story-chip__icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    -unity-background-image-tint-color: var(--gold-bright);
+}
+
+.story-chip--pips .story-chip__text {
+    color: var(--gold-bright);
+    letter-spacing: 3px;
+}
+
+.story-chip--quest {
+    border-color: rgba(201, 164, 92, 0.7);
+}
+
+.story-chip--quest .story-chip__text {
+    color: var(--gold-bright);
+}
+
+.story-sheet__ornament {
+    width: auto;
+    margin: 18px 0 18px 0;
+}
+
+.story-sheet__body {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    flex-shrink: 1;
+    min-height: 0;
+}
+
+.story-sheet__prize {
+    width: 260px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.story-sheet__heading {
+    -unity-font-definition: var(--heading-font);
+    font-size: 20px;
+    letter-spacing: 2.4px;
+    color: var(--text-muted);
+    margin: 0 0 10px 0;
+    padding: 0;
+    -unity-text-align: middle-center;
+    align-self: stretch;
+}
+
+.story-sheet__list-box .story-sheet__heading {
+    -unity-text-align: middle-left;
+}
+
+.story-sheet__card {
+    width: 220px;
+    height: 343px;
+    -unity-background-scale-mode: stretch-to-fill;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+.story-sheet__list-box {
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-left: 34px;
+    min-height: 0;
+}
+
+.story-sheet__list {
+    flex-grow: 0;
+    flex-shrink: 1;
+    max-height: 480px;
+}
+
+/* For sale: the cards in rows (StorySheet makes them), a price tag under each */
+.story-sale-row {
+    flex-direction: row;
+}
+
+.story-sale {
+    width: 142px;
+    margin: 0 14px 16px 0;
+    align-items: center;
+}
+
+.story-sale__card {
+    width: 136px;
+    height: 212px;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0);
+    -unity-background-scale-mode: stretch-to-fill;
+    transition-property: scale;
+    transition-duration: 0.12s;
+}
+
+.unity-button.story-sale__card:hover,
+.unity-button.story-sale__card:focus {
+    scale: 1.05 1.05;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.story-sale__owned {
+    position: absolute;
+    right: 6px;
+    bottom: 34px;
+    height: 28px;
+    padding: 0 8px 1px 8px;
+    border-radius: 14px;
+    background-color: rgba(18, 13, 9, 0.88);
+    -unity-font-definition: var(--body-font);
+    font-size: 20px;
+    color: var(--gold-bright);
+    -unity-text-align: middle-center;
+}
+
+.story-sale__tag {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 38px;
+    min-width: 96px;
+    margin: 8px 0 0 0;
+    padding: 0 14px 1px 12px;
+    border-width: 1px;
+    border-radius: 19px;
+    border-color: rgba(201, 164, 92, 0.7);
+    background-color: rgba(42, 34, 25, 0.9);
+}
+
+.unity-button.story-sale__tag:hover,
+.unity-button.story-sale__tag:focus {
+    border-color: var(--gold-bright);
+    background-color: rgba(201, 164, 92, 0.2);
+}
+
+.story-coin {
+    -unity-background-image-tint-color: var(--gold-bright);
+}
+
+.story-sale__coin {
+    width: 22px;
+    height: 22px;
+    margin-right: 6px;
+}
+
+.story-sale__price {
+    -unity-font-definition: var(--heading-font);
+    font-size: 22px;
+    color: var(--gold-bright);
+    margin: 0;
+    padding: 0;
+}
+
+/* Too few crowns for it: the tag muted (a click says how many it takes) */
+.story-sale__tag--short .story-sale__price {
+    color: var(--text-muted);
+}
+
+.story-sale__tag--short .story-coin {
+    -unity-background-image-tint-color: var(--text-muted);
+}
+
+/* Sold: the card dimmed, its tag a word */
+.story-sale--sold .story-sale__card {
+    opacity: 0.35;
+}
+
+.unity-button.story-sale__tag:disabled,
+.unity-button.story-sale__card:disabled {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: var(--line);
+}
+
+.story-sale--sold .story-sale__price {
+    color: var(--text-muted);
+    -unity-font-definition: var(--body-font);
+}
+
+/* A tournament's rounds: a line each, the next one lit, those won ticked */
+.story-round {
+    flex-direction: row;
+    align-items: center;
+    height: 58px;
+    margin: 0 0 6px 0;
+    padding: 0 18px;
+    border-radius: 8px;
+    background-color: var(--panel-raised);
+}
+
+.story-round__name {
+    flex-grow: 1;
+    -unity-font-definition: var(--body-font);
+    font-size: 26px;
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+}
+
+.story-round__faction {
+    -unity-font-definition: var(--body-font);
+    font-size: 21px;
+    color: var(--text-muted);
+    margin: 0;
+    padding: 0;
+}
+
+.story-round--next {
+    border-width: 1px;
+    border-color: var(--gold);
+}
+
+.story-round--won .story-round__name {
+    color: var(--text-muted);
+}
+
+.story-sheet__note {
+    -unity-font-definition: var(--body-font);
+    font-size: 23px;
+    color: #C95E4E;
+    -unity-text-align: middle-center;
+    white-space: normal;
+    margin: 16px 0 0 0;
+    padding: 0;
+}
+
+.story-sheet__buttons {
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 18px;
+}
+
+/* Play · (a coin) 30 */
+.story-sheet__play {
+    width: auto;
+    min-width: 300px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px 2px 30px;
+}
+
+.story-sheet__play-text {
+    -unity-font-definition: var(--heading-font);
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: var(--background);
+    margin: 0 4px;
+    padding: 0;
+}
+
+.story-sheet__play-coin {
+    width: 26px;
+    height: 26px;
+    margin: 0 4px 0 6px;
+    -unity-background-image-tint-color: var(--background);
+}
+
+.unity-button.story-sheet__play:disabled {
+    background-color: var(--line);
+    border-color: var(--line);
+}
+
+.unity-button.story-sheet__play:disabled .story-sheet__play-text {
+    color: var(--text-muted);
+}
+
+.unity-button.story-sheet__play:disabled .story-sheet__play-coin {
+    -unity-background-image-tint-color: var(--text-muted);
+}
+
+/*---------------------------------------- The story's pages ----------------------------------------*/
+.story-page {
+    width: 1240px;
+    max-height: 96%;
+    padding: 34px 44px 32px 44px;
+    align-items: center;
+}
+
+.story-page__ornament {
+    margin: 14px 0 16px 0;
+}
+
+.story-page__caption {
+    -unity-font-definition: var(--body-font);
+    font-size: 26px;
+    color: var(--text-secondary);
+    -unity-text-align: middle-center;
+    white-space: normal;
+    margin: 0 0 22px 0;
+    padding: 0 40px;
+}
+
+.story-page__entries {
+    width: 1150px;
+    flex-shrink: 1;
+}
+
+/* Travel's regions, one a row (the opponent picker's entries, the whole width) */
+.story-page__entries .opponent {
+    width: 1120px;
+}
+
+/* A heading among a page's rows */
+.story-page__heading {
+    -unity-font-definition: var(--heading-font);
+    font-size: 20px;
+    letter-spacing: 2.4px;
+    color: var(--text-muted);
+    margin: 18px 0 8px 4px;
+    padding: 0;
+}
+
+/* The collection's rows: a name, a gold bar, the numbers */
+.story-bar {
+    flex-direction: row;
+    align-items: center;
+    height: 50px;
+    padding: 0 18px;
+    margin: 0 0 6px 0;
+    border-radius: 8px;
+    background-color: var(--panel-raised);
+}
+
+.story-bar__name {
+    width: 420px;
+    -unity-font-definition: var(--body-font);
+    font-size: 25px;
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+}
+
+.story-bar__track {
+    flex-grow: 1;
+    height: 10px;
+    border-radius: 5px;
+    background-color: var(--line-soft);
+    overflow: hidden;
+}
+
+.story-bar__fill {
+    height: 100%;
+    border-radius: 5px;
+    background-color: var(--gold);
+}
+
+.story-bar__count {
+    width: 130px;
+    -unity-font-definition: var(--body-font);
+    font-size: 23px;
+    color: var(--text-secondary);
+    -unity-text-align: middle-right;
+    margin: 0;
+    padding: 0;
+}
+
+.story-bar--whole {
+    height: 64px;
+}
+
+.story-bar--whole .story-bar__name {
+    -unity-font-definition: var(--heading-font);
+    font-size: 27px;
+    color: var(--gold-bright);
+}
+
+.story-bar--done .story-bar__fill {
+    background-color: var(--gold-bright);
+}
+
+/* A quest, a region, a faction: its name, a line on it, its steps or numbers */
+.story-entry {
+    padding: 14px 20px 16px 20px;
+    margin: 0 0 10px 0;
+    background-color: var(--panel-raised);
+    border-radius: 8px;
+}
+
+.story-entry__name {
+    -unity-font-definition: var(--heading-font);
+    font-size: 28px;
+    letter-spacing: 1.6px;
+    color: var(--gold-bright);
+    margin: 0;
+    padding: 0;
+}
+
+.story-entry--done .story-entry__name {
+    color: var(--text-muted);
+}
+
+.story-entry__line {
+    -unity-font-definition: var(--body-font);
+    font-size: 24px;
+    color: var(--text);
+    margin: 4px 0 0 0;
+    padding: 0;
+    white-space: normal;
+}
+
+.story-entry__line--done {
+    color: var(--text-muted);
+}
+
+.story-page__buttons {
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 18px;
+}
+
+.story-page__buttons .button {
+    margin: 0 12px;
+}
+
+.story-page__buttons .button--primary {
+    width: 340px;
+}
+
+/* (Unity's own button states: none of its grey on the markers) */
+.unity-button.story-marker:disabled {
+    background-color: rgba(22, 18, 14, 0.9);
 }
