@@ -68,6 +68,13 @@ namespace Gwent.Menus
                 stop.text = "Stop watching";
                 stop.clicked += Gwent.Replays.ReplayPlayer.Leave;
             }
+            else if (Gwent.Story.StoryBattle.Current != null)
+            {
+                // A story's battle: back to its map
+                MenuEntry map = root.Q<MenuEntry>("Item Main menu");
+                map.text = "Back to the map";
+                Entry(root, "Item Main menu", !battle_on, () => UIOverlay.Confirm("Leave and go back to the map?", "Leave", "Stay", LeaveBattle));
+            }
             else
                 Entry(root, "Item Main menu", !battle_on, () => UIOverlay.Confirm("Leave and go back to the main menu?", "Leave", "Stay", LeaveBattle));
             // As the main menu's Quit: everywhere but in a browser, whose tab is closed, not quit
@@ -101,11 +108,15 @@ namespace Gwent.Menus
             LeaveBattle();
         }
 
-        // The battle stays paused under the loading screen (leaving it sets the time going again, OnDestroy)
+        // The battle stays paused under the loading screen (leaving it sets the time going again, OnDestroy); a story's
+        // battle goes back to its map
         private static void LeaveBattle()
         {
             Gwent.Net.LanSession.Current?.Leave();
-            LoadingScreen.Load(SceneNames.Menu);
+            if (Gwent.Story.StoryBattle.Current != null)
+                Gwent.Story.StoryBattle.Leave();
+            else
+                LoadingScreen.Load(SceneNames.Menu);
         }
 
         private void OnDestroy()

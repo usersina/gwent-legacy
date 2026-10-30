@@ -7,6 +7,7 @@ Every control, on the desktop (mouse and keyboard) and on Android (touch). The g
 
 ## Contents
 
+- [The story](#the-story)
 - [Starting a battle](#starting-a-battle)
 - [The redraw](#the-redraw)
 - [Your turn](#your-turn)
@@ -18,12 +19,49 @@ Every control, on the desktop (mouse and keyboard) and on Android (touch). The g
 - [Replays](#replays)
 - [Settings](#settings)
 
+## The story
+
+Main menu > **Play** > **Story**: The Witcher 3's Gwent as Geralt played it. You start with its Northern Realms starter deck and a leader
+of four factions, travel its lands on its own maps (White Orchard, the royal palace in Vizima, Velen and Novigrad, Skellige,
+Toussaint), beat its Gwent players for their cards, buy from its innkeepers and merchants, finish its Gwent quests and
+tournaments, and collect every card. The story has its own save, its own collection and its own decks: **Play** and
+**Multiplayer** keep every card.
+
+- **Cards** come as they do in The Witcher 3. A renowned player's first loss gives you their card (the Bloody Baron's
+  Sigismund Dijkstra). A player of no particular renown gives you a random card the first time. An innkeeper or merchant sells
+  their cards, each once. A Gwent quest gives a leader when all its steps are done, and a tournament's round gives its
+  player's leader. Some cards are found (Brunwich's barn), and Count Monnier gives you the Skellige deck. Nothing can be
+  missed: every player stays, and rematches are always there.
+- **Crowns**: a win pays crowns (a first win 15, 30 or 50 as the story goes on, a tournament's round 60, a rematch a
+  quarter); shops sell for them, and High Stakes asks an entry fee.
+- **Opponents** get stronger along the story: White Orchard's and Velen's players play like beginners, Novigrad's and
+  Skellige's better and with stronger decks; The Witcher 3's masters of the game (Thaler, Dijkstra, Crach an Craite,
+  Olgierd…) and the tournaments play the hardest. A player's sheet shows how well they play. The difficulty in Settings is
+  for **Play** only.
+- **Regions** open in The Witcher 3's order: Vizima once you beat the scholar at the White Orchard inn, Velen and Novigrad
+  once you beat the Nilfgaardian nobleman, Skellige once Gwent: Velen Players is done, Toussaint once you win High Stakes.
+  Hearts of Stone's players come to Velen once Gwent: Skellige Style is done. Count Monnier's tournament takes Skellige decks only.
+
+| Action | Desktop | Android |
+| --- | --- | --- |
+| Begin or continue | Main menu > **Play** > **Story**: **Begin** (the first time), **Continue**, or **Start over** (the story before is set aside, not deleted) | Same |
+| Move the map | Drag it, or the arrow keys | Drag it with a finger |
+| Zoom | The mouse wheel, or + and - | Pinch |
+| A place | Click its marker: gold while there is something to win, buy or find there; the quest's mark while a quest leads there; a tick once it's all yours. Hover it for who it is. A drag that starts on a marker moves the map | Tap it; hold a finger on it for who it is |
+| A place's sheet | Their portrait (hover it for their leader), their faction, how well they play (one to three pips) and the quest that leads there; the card a win gives; what they sell, a price tag under each card (click the card or its tag to buy it, asked first; ×2 marks a card you own two of); a tournament's rounds. The button says what a win pays (**Play** · 30). Esc closes it | Same; Back closes it |
+| After a battle | A win's cards show first, turning over, with the crowns and what they opened (Enter: **Collect**); then the scoreboard, what you won under it, and the way on: won, **Back to the map** and **Play again** (R: a rematch, crowns only); lost, **Play again** and the map (Esc); a tournament's **Next round** | Same, tap |
+| The journal | The book at the top right, or J: the Gwent quests and their steps, as far as they have shown | The book |
+| The collection | The cards, or C (The Witcher 3's A Miraculous Guide to Gwent): a bar for every region's cards, the random cards and each faction's | The cards |
+| Your story decks | The deck, or D: the deck builder, with the cards you own (counts as you own them), the factions you have a leader for and the leaders you own; no presets. Its arrow comes back to the map | The deck |
+| Another region | The signpost, or M: the regions open, and what opens the others | The signpost |
+| Back to the main menu | The × at the top right, or Esc | The ×, or the Back button |
+
 ## Starting a battle
 
 | Action | Desktop | Android |
 | --- | --- | --- |
-| Start a battle | **Play**, then choose your opponent (one of 11 decks across the five factions) or **Random opponent**; the choice is remembered | Same, with taps |
-| Play someone on your network (not in a browser) | **Multiplayer** > **Local network**: see [Play on LAN](lan.md) | Same |
+| Start a battle | **Play** > **Single match**, then choose your opponent (one of 11 decks across the five factions) or **Random opponent**; the choice is remembered | Same, with taps |
+| Play someone on your network (not in a browser) | **Play** > **Multiplayer** > **Local network**: see [Play on LAN](lan.md) | Same |
 | Read the rules | Main menu > **How to play**: the rules with the game's own pieces (the battle, the board, cards, abilities, special cards, the factions with their abilities and leaders, controls); hover a leader to read its ability. In a battle, the **?** beside the menu button opens it too (the battle waits, except in a LAN battle) | Same; hold a finger on a leader |
 
 The battle uses [your battle deck](#your-battle-deck).
@@ -61,11 +99,11 @@ The battle uses [your battle deck](#your-battle-deck).
 
 | Action | Desktop | Android |
 | --- | --- | --- |
-| Step back | Esc, everywhere, one thing at a time: a dialog or window closes, a chosen card or leader goes back, a picker's choice is given up (asked first where something is lost) or a look closes, the end screen goes to the main menu; otherwise the pause menu opens. On the main menu Esc asks to quit (not in a browser) | The Back button, the same way |
+| Step back | Esc, everywhere, one thing at a time: a dialog or window closes, a chosen card or leader goes back, a picker's choice is given up (asked first where something is lost) or a look closes, the end screen goes to the main menu (a story's battle, to its map); otherwise the pause menu opens. On the main menu Esc asks to quit (not in a browser) | The Back button, the same way |
 | Pause (resume, settings, leave) | Esc or the menu button at the top left | Back button or the menu button |
 | Give up (Yu-Gi-Oh style: a hand on your deck) | In your turn (in a LAN battle, any time), hover your deck: the cursor turns into a hand. Click it and confirm; it counts as a loss | Hold a finger on your deck, then confirm |
-| Leave the battle | Pause menu > **Leave battle**, and confirm: it counts as a loss (in a LAN battle, the other player wins), and the main menu opens | Same |
-| After the battle | The end screen shows The Witcher 3's emblem of the outcome and every round's score; **Play again** (in a LAN battle, **Rematch**), **Save replay** or **Main menu** | Tap |
+| Leave the battle | Pause menu > **Leave battle**, and confirm: it counts as a loss (in a LAN battle, the other player wins), and the main menu opens (in the story, its map) | Same |
+| After the battle | The end screen shows The Witcher 3's emblem of the outcome and every round's score, then the way on: the gold **Play again** (Enter; in a LAN battle, **Rematch**), and beside it **Save replay** (S) and **Main menu** (Esc) | Tap |
 
 ## In a LAN battle
 

@@ -117,11 +117,14 @@ namespace Gwent.DeckBuilding
                 return false;
             }
 
-            // The copies of the card that exist in The Witcher 3 (one of a hero)
-            if (occurences >= Gwent.Rules.DeckRules.MaxCopies(card))
+            // The copies of the card that exist in The Witcher 3 (one of a hero); in the story, those owned
+            if (occurences >= DeckContext.Supply.Copies(card))
             {
                 GameAudio.PlaySfx("invalid");
-                UIOverlay.Toast(Gwent.Rules.DeckRules.TooManyCopies(card));
+                int owned = DeckContext.Supply.Copies(card);
+                bool story_limit = DeckContext.InStory && owned < Gwent.Rules.DeckRules.MaxCopies(card);
+                UIOverlay.Toast(story_limit ? "You own " + (owned == 1 ? "one " + card.DisplayName : owned + " copies of " + card.DisplayName)
+                    : Gwent.Rules.DeckRules.TooManyCopies(card));
                 return false;
             }
 

@@ -6,9 +6,10 @@ using UnityEngine;
 
 namespace Gwent.Core
 {
-    // Deck files on disk: <persistentDataPath>/Decks/<faction>/<name>.json. Decks that ship with the game (the AI's,
-    // offered as presets) are read from Resources, by a "resource://<path>" path. In a browser the files are stored in
-    // the browser's storage after every change (Plugins/WebGL/GwentStorage.jslib).
+    // Deck files on disk: <persistentDataPath>/Decks/<faction>/<name>.json (the story's: <persistentDataPath>/Story/Decks,
+    // DeckContext). Decks that ship with the game (the AI's, offered as presets) are read from Resources, by a
+    // "resource://<path>" path. In a browser the files are stored in the browser's storage after every change
+    // (Plugins/WebGL/GwentStorage.jslib).
     public static class DeckStorage
     {
         public const string ResourcePrefix = "resource://";
@@ -28,8 +29,11 @@ namespace Gwent.Core
 
         public static string Root
         {
-            get { return Path.Combine(Application.persistentDataPath, "Decks"); }
+            get { return DeckContext.InStory ? StoryRoot : Path.Combine(Application.persistentDataPath, "Decks"); }
         }
+
+        // The story's decks, beside its save (Start over sets them aside with it)
+        public static string StoryRoot { get { return Path.Combine(Gwent.Story.StorySave.Folder, "Decks"); } }
 
         public static string FactionFolder(Faction faction)
         {
@@ -43,26 +47,37 @@ namespace Gwent.Core
         // The deck taken into battle this session (null: the default deck)
         public static string BattleDeckPath;
 
-        // The battle deck as saved in the settings ("" when there is none)
-        public static string SavedBattleDeck { get { return PlayerPrefs.GetString(BattleDeckKey, ""); } }
+        // The battle deck as saved in the settings ("" when there is none); in the story, in its save
+        public static string SavedBattleDeck
+        {
+            get { return DeckContext.InStory ? DeckContext.Story.State.BattleDeck ?? "" : PlayerPrefs.GetString(BattleDeckKey, ""); }
+        }
 
         // Reads the battle deck back from the settings (ignored if the file is gone)
         public static void LoadBattleDeck()
         {
             BattleDeckPath = null;
             string path = SavedBattleDeck;
-            if ((path.EndsWith(".json") || OpponentDecks.IsPreset(path)) && Exists(path))
+            if ((path.EndsWith(".json") || (OpponentDecks.IsPreset(path) && !DeckContext.InStory)) && Exists(path))
                 BattleDeckPath = path;
         }
 
         // Takes a deck into battle and saves the choice (null or "": the default deck)
         public static void SaveBattleDeck(string path)
         {
-            if (string.IsNullOrEmpty(path))
-                PlayerPrefs.DeleteKey(BattleDeckKey);
+            if (DeckContext.InStory)
+            {
+                DeckContext.Story.State.BattleDeck = path ?? "";
+                DeckContext.SaveStory();
+            }
             else
-                PlayerPrefs.SetString(BattleDeckKey, path);
-            PlayerPrefs.Save();
+            {
+                if (string.IsNullOrEmpty(path))
+                    PlayerPrefs.DeleteKey(BattleDeckKey);
+                else
+                    PlayerPrefs.SetString(BattleDeckKey, path);
+                PlayerPrefs.Save();
+            }
             BattleDeckPath = string.IsNullOrEmpty(path) ? null : path;
         }
 

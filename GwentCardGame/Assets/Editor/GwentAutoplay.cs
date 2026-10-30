@@ -187,6 +187,10 @@ namespace Gwent.EditorTools
             private int menuStage;
             private bool roundTripPhase;
             private int roundTripStage;
+            private bool storyPhase;
+            private int storyStage;
+            private int storyFrames;
+            private int storyCrowns;
             private double phaseStart;
             private BattleController previousBattle;
 
@@ -231,6 +235,10 @@ namespace Gwent.EditorTools
                 Gwent.Replays.ReplayLibrary.FolderOverride = Path.Combine(Application.temporaryCachePath, "autoplay-replays");
                 if (Directory.Exists(Gwent.Replays.ReplayLibrary.FolderOverride))
                     Directory.Delete(Gwent.Replays.ReplayLibrary.FolderOverride, true);
+                // ... and its story too
+                Gwent.Story.StorySave.FolderOverride = Path.Combine(Application.temporaryCachePath, "autoplay-story");
+                if (Directory.Exists(Gwent.Story.StorySave.FolderOverride))
+                    Directory.Delete(Gwent.Story.StorySave.FolderOverride, true);
                 Application.logMessageReceived += OnLog;
                 EditorApplication.update += Tick;
                 Time.timeScale = TimeScale;
@@ -324,6 +332,11 @@ namespace Gwent.EditorTools
 
                 try
                 {
+                    if (storyPhase)
+                    {
+                        StoryStep();
+                        return;
+                    }
                     if (roundTripPhase)
                     {
                         RoundTripStep();
@@ -811,7 +824,7 @@ namespace Gwent.EditorTools
                     if (++menuPhaseFrames < 60)
                         return;
                     MainMenu menu = UnityEngine.Object.FindAnyObjectByType<MainMenu>();
-                    Check(menu != null && menu.Items.Count == 7 && menu.Items[1].name == "Item Multiplayer" && menu.Items[3].name == "Item Replays", "the main menu loads with its 7 entries, Multiplayer second, Replays fourth", "main menu");
+                    Check(menu != null && menu.Items.Count == 6 && menu.Items[0].name == "Item Play" && menu.Items[2].name == "Item Replays", "the main menu loads with its 6 entries, Play first, Replays third", "main menu");
                     Check(DeckStorage.BattleDeckPath == testDeckPath, "the main menu picks up the battle deck saved by the deck builder", "main menu");
                     inputCheck = new InputCheck(null, InputScenario.MainMenuSettings, (ok, what) => Check(ok, what, "main menu input"));
                     menuStage = 1;
@@ -883,7 +896,140 @@ namespace Gwent.EditorTools
                 Deck preset = DeckStorage.Load(DeckStorage.BattleDeckPath);
                 Check(preset != null && battle.PlayerInfo.Faction == preset.Faction && battle.PlayerInfo.Leader == preset.Leader,
                     "a preset picked as the battle deck is the one played", "battle from the menu");
-                Finish();
+                roundTripPhase = false;
+                storyPhase = true;
+                storyStage = 0;
+                storyFrames = 0;
+                phaseStart = EditorApplication.timeSinceStartup;
+                currentDeck = "story";
+                SceneManager.LoadScene(SceneNames.Menu);
+            }
+
+            //----------------------------------------The story----------------------------------------//
+            // From the main menu: a story begun (its own save, apart from the player's), its map, White Orchard's scholar
+            // played and beaten (he gives up on the player's turn: the run's player is no Gwent master), the reward saved
+            // and the end screen's way back, the map again (the scholar beaten, Vizima open), a card bought from Elsa, the
+            // journey to Vizima, the story's deck builder (the cards owned only, the factions with a leader owned)
+            private void StoryStep()
+            {
+                if (TickInputCheck())
+                    return;
+                if (EditorApplication.timeSinceStartup - phaseStart > SoftlockSeconds * 3)
+                {
+                    Abort("the story's step " + storyStage + " did not come");
+                    return;
+                }
+                StoryProgress story = Gwent.Story.StoryGame.Progress;
+                switch (storyStage)
+                {
+                    case 0: // the main menu: Story, Begin
+                        if (UnityEngine.Object.FindAnyObjectByType<MainMenu>() == null || LoadingScreen.Showing || ++storyFrames < 30)
+                            return;
+                        inputCheck = new InputCheck(null, InputScenario.StoryBegin, (ok, what) => Check(ok, what, "story"));
+                        NextStory();
+                        return;
+                    case 1: // the map of White Orchard
+                        if (!OnMap("wo_scholar"))
+                            return;
+                        Check(story != null && story.State.Cards.Count == story.Content.File.Starter.Count && story.State.Crowns == 0,
+                            "a new story starts with The Witcher 3's starter deck and no crowns", "story");
+                        Check(DeckContext.InStory && DeckStorage.BattleDeckPath != null && DeckStorage.BattleDeckPath.EndsWith("starter_deck.json"),
+                            "... its own collection, the starter deck its battle deck", "story");
+                        Check(UIScreens.Find("Marker wo_elsa") != null, "White Orchard's places are on its map", "story");
+                        inputCheck = new InputCheck(null, InputScenario.StoryPlay, (ok, what) => Check(ok, what, "story"));
+                        NextStory();
+                        return;
+                    case 2: // the battle against the scholar: won (he gives up on the player's turn)
+                        BattleController battle = BattleController.Instance;
+                        if (battle == null || LoadingScreen.Showing || battle.PlayerInfo.HandList.Count == 0)
+                            return;
+                        if (battle.battleState == BattleState.Start && battle.PlayerInfo.CanExchange)
+                        {
+                            battle.FinishCardExchange();
+                            return;
+                        }
+                        if (!battle.IsPlayerActionAllowed)
+                            return;
+                        Check(battle.Story != null && battle.Story.Place.Id == "wo_scholar" && battle.EnemyInfo.Name == "Aldert Geert",
+                            "the battle is against the scholar, by his name", "story");
+                        Check(battle.AiDifficulty == AiDifficulty.Easy, "... who plays like a beginner (his own difficulty)", "story");
+                        Check(battle.PlayerInfo.Faction == Faction.NorthernRealms && battle.PlayerInfo.Leader == LeaderIds.FoltestKingOfTemeria,
+                            "... against the starter deck", "story");
+                        battle.Match.Apply(false, MatchCommand.GiveUp());
+                        NextStory();
+                        return;
+                    case 3: // the end screen: the scholar's card on its own first (Collect), and crowns, saved; Back to the map
+                        GameObject collect = GameObject.Find("Button Collect");
+                        if (collect != null)
+                        {
+                            Check(GameObject.Find("Won Zoltan Chivay") != null && GameObject.Find("Button Back to the map") == null,
+                                "a win shows the card it gave on its own, before the scoreboard", "story");
+                            collect.GetComponent<Button>().onClick.Invoke();
+                            return;
+                        }
+                        if (GameObject.Find("Button Back to the map") == null)
+                            return;
+                        const int zoltan = 146;
+                        Check(story.Owned(zoltan) == 1 && story.State.Crowns == story.Content.Place("wo_scholar").Crowns,
+                            "the win gives Zoltan Chivay and the scholar's crowns", "story");
+                        StoryState saved = Gwent.Story.StorySave.Load(out string _);
+                        Check(saved != null && saved.Cards.Contains(zoltan), "... saved before the end screen", "story");
+                        Check(GameObject.Find("Button Play again") != null && GameObject.Find("Button Save replay") != null,
+                            "the end screen offers Play again and Save replay", "story");
+                        inputCheck = new InputCheck(null, InputScenario.StoryBack, (ok, what) => Check(ok, what, "story"));
+                        NextStory();
+                        return;
+                    case 4: // the map again: the scholar beaten, Vizima open; Elsa's shop
+                        if (!OnMap("wo_elsa"))
+                            return;
+                        UnityEngine.UIElements.VisualElement scholar = UIScreens.Find("Marker wo_scholar");
+                        Check(scholar != null && scholar.ClassListContains("story-marker--done"), "back on the map, the scholar's marker shows him beaten", "story");
+                        Check(story.IsOpen(story.Content.Region("vizima")), "... and Vizima is open", "story");
+                        story.State.Crowns += 100; // the run has no time to earn them
+                        storyCrowns = story.State.Crowns;
+                        inputCheck = new InputCheck(null, InputScenario.StoryShop, (ok, what) => Check(ok, what, "story"));
+                        NextStory();
+                        return;
+                    case 5: // a card bought; Travel to Vizima
+                        StoryPlace elsa = story.Content.Place("wo_elsa");
+                        Check(story.Bought(elsa, 0) && story.Owned(elsa.Sells[0].Card) == 3 && story.State.Crowns == storyCrowns - elsa.Sells[0].Price,
+                            "Elsa's first card is bought for its price", "story");
+                        inputCheck = new InputCheck(null, InputScenario.StoryTravel, (ok, what) => Check(ok, what, "story"));
+                        NextStory();
+                        return;
+                    case 6: // Vizima; the story's decks
+                        Check(story.Current.Id == "vizima", "the story is in Vizima", "story");
+                        inputCheck = new InputCheck(null, InputScenario.StoryDeck, (ok, what) => Check(ok, what, "story"));
+                        NextStory();
+                        return;
+                    case 7: // the story's deck builder
+                        DeckBuilder builder = DeckBuilder.Instance;
+                        if (builder == null || !builder.IsReady || LoadingScreen.Showing)
+                            return;
+                        const int catapult = 11;
+                        Check(builder.allCards.All(card => story.Owned(card._id) > 0) && builder.allCards.All(card => card._id != catapult),
+                            "the story's deck builder shows the cards owned only", "story");
+                        Check(CardGrid.HeaderFactions.Length == 4 && !CardGrid.HeaderFactions.Contains(Faction.Skellige),
+                            "... and the factions a leader is owned of", "story");
+                        Check(builder.my_deck.Name == Gwent.Story.StoryGame.StarterDeckName, "... opening on the starter deck", "story");
+                        storyPhase = false;
+                        Finish();
+                        return;
+                }
+            }
+
+            private void NextStory()
+            {
+                storyStage++;
+                storyFrames = 0;
+                phaseStart = EditorApplication.timeSinceStartup;
+            }
+
+            // The story's map shown, that marker on it
+            private static bool OnMap(string place)
+            {
+                return UnityEngine.Object.FindAnyObjectByType<Gwent.Story.StoryScreen>() != null && !LoadingScreen.Showing
+                    && UIScreens.Find("Marker " + place) != null;
             }
 
             private void Check(bool condition, string what, string area = "deck builder")
@@ -1114,6 +1260,10 @@ namespace Gwent.EditorTools
                 if (Gwent.Replays.ReplayLibrary.FolderOverride != null && Directory.Exists(Gwent.Replays.ReplayLibrary.FolderOverride))
                     Directory.Delete(Gwent.Replays.ReplayLibrary.FolderOverride, true);
                 Gwent.Replays.ReplayLibrary.FolderOverride = null;
+                DeckContext.Leave();
+                if (Gwent.Story.StorySave.FolderOverride != null && Directory.Exists(Gwent.Story.StorySave.FolderOverride))
+                    Directory.Delete(Gwent.Story.StorySave.FolderOverride, true);
+                Gwent.Story.StorySave.FolderOverride = null;
                 // What the run changed in the player's settings: the battle deck, the opponent, the touch controls switch
                 if (string.IsNullOrEmpty(savedBattleDeck))
                     PlayerPrefs.DeleteKey("playerDeckPath");
@@ -1238,7 +1388,14 @@ namespace Gwent.EditorTools
             MainMenuSettings,         // hovering moves the highlight, Settings opens, the volume slider works, Escape closes;
                                       // Escape on the menu itself asks to quit, a second one closes the question; a newer
                                       // build in a feed shows the update notice, which opens what's new
-            MenuPlay,                 // Play opens the opponent picker; choosing one remembers it and starts the battle
+            MenuPlay,                 // Play opens its modes; Single match the opponent picker; choosing one remembers it and
+                                      // starts the battle
+            StoryBegin,               // Play, then Story opens its page; Begin starts a story and loads its map
+            StoryPlay,                // a marker opens its place's sheet; Play starts the battle
+            StoryBack,                // the end screen's Back to the map loads the map
+            StoryShop,                // a shop's sheet: Buy asks first, Yes buys; Escape closes the sheet
+            StoryTravel,              // Travel lists the regions; one opens on the map
+            StoryDeck,                // Deck opens the story's deck builder
         }
 
         // Plays part of the game like a person would: a virtual mouse and keyboard at human speed, going through the
@@ -1411,10 +1568,52 @@ namespace Gwent.EditorTools
                 {
                     string entry = opponent != null ? "Opponent " + CardLibrary.ParseDeck(opponent.text, opponent.name).Name : "(no opponent deck)";
                     Click(0.3, Named("Item Play"));
-                    At(0.8, () => check(GameObject.Find("OpponentPicker") != null, "Play opens the opponent picker"));
-                    Click(1.1, Named(entry));
-                    At(1.8, () => check(opponent != null && OpponentDecks.Chosen == opponent.name && LoadingScreen.Showing,
+                    At(0.8, () => check(GameObject.Find("PlayPicker") != null, "Play opens its modes"));
+                    Click(1.1, Named("Mode Single match"));
+                    At(1.6, () => check(GameObject.Find("OpponentPicker") != null, "Single match opens the opponent picker"));
+                    Click(1.9, Named(entry));
+                    At(2.6, () => check(opponent != null && OpponentDecks.Chosen == opponent.name && LoadingScreen.Showing,
                         "choosing an opponent remembers it and starts the battle, behind the loading screen"));
+                }
+                else if (scenario == InputScenario.StoryBegin)
+                {
+                    Click(0.3, Named("Item Play"));
+                    Click(1.0, Named("Mode Story"));
+                    At(1.6, () => check(GameObject.Find("StoryPage") != null, "Story opens its page"));
+                    Click(1.9, Named("Button Begin"));
+                    At(2.6, () => check(LoadingScreen.Showing && Gwent.Story.StoryGame.Progress != null, "Begin starts a story and loads its map"));
+                }
+                else if (scenario == InputScenario.StoryPlay)
+                {
+                    Click(0.5, Named("Marker wo_scholar"));
+                    At(1.1, () => check(GameObject.Find("StorySheet") != null, "a marker opens its place's sheet"));
+                    Click(1.4, Named("Button Play"));
+                    At(2.1, () => check(LoadingScreen.Showing && Gwent.Story.StoryBattle.Current != null, "Play starts the battle against him"));
+                }
+                else if (scenario == InputScenario.StoryBack)
+                {
+                    Click(0.6, Named("Button Back to the map"));
+                    At(1.3, () => check(LoadingScreen.Showing, "Back to the map loads the map"));
+                }
+                else if (scenario == InputScenario.StoryShop)
+                {
+                    Click(0.5, Named("Marker wo_elsa"));
+                    Click(1.2, Named("Buy 0"));
+                    At(1.6, () => check(UIScreens.Find("Button Yes") != null, "Buy asks first"));
+                    Click(1.9, Named("Button Yes"));
+                    Key(2.6, UnityEngine.InputSystem.Key.Escape);
+                    At(3.0, () => check(GameObject.Find("StorySheet") == null, "Escape closes the sheet"));
+                }
+                else if (scenario == InputScenario.StoryTravel)
+                {
+                    Click(0.5, Named("Button Travel"));
+                    Click(1.2, Named("Region vizima"));
+                    At(2.0, () => check(UIScreens.Find("Place vizima_nobleman") != null, "a region chosen in Travel shows on the map"));
+                }
+                else if (scenario == InputScenario.StoryDeck)
+                {
+                    Click(0.5, Named("Button Deck"));
+                    At(1.2, () => check(LoadingScreen.Showing, "Deck opens the story's deck builder"));
                 }
                 else if (scenario == InputScenario.PauseMenu)
                 {

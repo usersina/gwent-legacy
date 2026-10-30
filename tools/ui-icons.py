@@ -11,6 +11,13 @@ Assets/UI/Sprites, drawn four times larger and scaled down:
 - IconPlay.png, IconPause.png, IconStepBack.png, IconStepForward.png, IconRoundBack.png, IconRoundForward.png (96): a
   replay's controls (a triangle, two bars; a triangle against a bar for a move; two triangles against a bar for a round)
 - IconSwitch.png (96): an arrow up beside an arrow down (a replay's switch to the other side's view: the board turns over)
+- The story's map (96): IconCards.png, two cards fanned (a Gwent player; the collection); IconCoin.png, a coin with a
+  crown struck on it (crowns; a shop); IconJournal.png, an open book (the quests); IconTravel.png, a signpost with two
+  boards (travel to another region); IconChest.png, a small chest (a card to find); IconQuest.png, The Witcher 3's
+  exclamation mark (a card or deck given); IconGoblet.png, a goblet (a tournament); IconDeck.png, three cards
+  stacked (the story's decks)
+- The end screen (96): IconAgain.png, a round arrow (play again, rematch, watch again); IconFilm.png, a film strip
+  (save replay; the replays); IconHome.png, a house (the main menu); IconMap.png, a map folded in three (the story's map)
 
 tools/ui-icons.py [project dir, default GwentCardGame]
 """
@@ -198,6 +205,142 @@ def switch(size=96):
     save(big.getchannel("A"), size, "IconSwitch.png")
 
 
+def story(size=96):
+    S = size * SCALE
+    line = S * 0.075
+
+    def canvas():
+        big = Image.new("RGBA", (S, S), (255, 255, 255, 0))
+        return big, ImageDraw.Draw(big)
+
+    def card(d, cx, cy, w, h, angle, hollow):
+        # A card turned about its centre: its outline (a hollow card shows the one under it)
+        a = math.radians(angle)
+        pts = [(cx + x * math.cos(a) - y * math.sin(a), cy + x * math.sin(a) + y * math.cos(a))
+               for x, y in ((-w / 2, -h / 2), (w / 2, -h / 2), (w / 2, h / 2), (-w / 2, h / 2))]
+        d.polygon(pts, fill=(255, 255, 255, 0) if hollow else "white")
+        d.line(pts + [pts[0]], fill="white", width=int(line), joint="curve")
+
+    # Two cards fanned, the front one solid with a cut-out diamond
+    big, d = canvas()
+    card(d, S * 0.40, S * 0.52, S * 0.40, S * 0.58, -14, True)
+    card(d, S * 0.60, S * 0.48, S * 0.40, S * 0.58, 12, False)
+    cx, cy, r = S * 0.60, S * 0.48, S * 0.08
+    d.polygon([(cx, cy - r * 1.5), (cx + r, cy), (cx, cy + r * 1.5), (cx - r, cy)], fill=(255, 255, 255, 0))
+    save(big.getchannel("A"), size, "IconCards.png")
+
+    # A coin: a rim, and a crown struck in its middle
+    big, d = canvas()
+    d.ellipse((S * 0.12, S * 0.12, S * 0.88, S * 0.88), fill="white")
+    d.ellipse((S * 0.20, S * 0.20, S * 0.80, S * 0.80), fill=(255, 255, 255, 0))
+    d.ellipse((S * 0.25, S * 0.25, S * 0.75, S * 0.75), fill="white")
+    crown = [(S * 0.34, S * 0.60), (S * 0.34, S * 0.40), (S * 0.42, S * 0.50), (S * 0.50, S * 0.36), (S * 0.58, S * 0.50),
+             (S * 0.66, S * 0.40), (S * 0.66, S * 0.60)]
+    d.polygon(crown, fill=(255, 255, 255, 0))
+    save(big.getchannel("A"), size, "IconCoin.png")
+
+    # An open book: two pages bent from the spine, lines of writing cut out
+    big, d = canvas()
+    for side in (-1, 1):
+        x0, x1 = S * 0.5, S * 0.5 + side * S * 0.40
+        d.polygon([(x0, S * 0.30), (x1, S * 0.22), (x1, S * 0.74), (x0, S * 0.82)], fill="white")
+        for k in range(3):
+            y = S * (0.38 + k * 0.11)
+            xa, xb = S * 0.5 + side * S * 0.10, S * 0.5 + side * S * 0.32
+            d.line((min(xa, xb), y + (0.02 * S if side > 0 else -0.0), max(xa, xb), y), fill=(255, 255, 255, 0), width=int(S * 0.035))
+    d.line((S * 0.5, S * 0.30, S * 0.5, S * 0.82), fill=(255, 255, 255, 0), width=int(S * 0.03))
+    save(big.getchannel("A"), size, "IconJournal.png")
+
+    # A signpost: a pole, a board pointing right and one pointing left
+    big, d = canvas()
+    d.rectangle((S * 0.46, S * 0.12, S * 0.54, S * 0.90), fill="white")
+    d.polygon([(S * 0.22, S * 0.20), (S * 0.70, S * 0.20), (S * 0.82, S * 0.29), (S * 0.70, S * 0.38), (S * 0.22, S * 0.38)], fill="white")
+    d.polygon([(S * 0.78, S * 0.46), (S * 0.30, S * 0.46), (S * 0.18, S * 0.55), (S * 0.30, S * 0.64), (S * 0.78, S * 0.64)], fill="white")
+    save(big.getchannel("A"), size, "IconTravel.png")
+
+    # A small chest: its rounded lid, its body, a lock between them
+    big, d = canvas()
+    d.rounded_rectangle((S * 0.14, S * 0.26, S * 0.86, S * 0.50), radius=S * 0.12, fill="white")
+    d.rectangle((S * 0.14, S * 0.54, S * 0.86, S * 0.82), fill="white")
+    d.rectangle((S * 0.43, S * 0.44, S * 0.57, S * 0.62), fill=(255, 255, 255, 0))
+    d.rectangle((S * 0.46, S * 0.47, S * 0.54, S * 0.59), fill="white")
+    save(big.getchannel("A"), size, "IconChest.png")
+
+    # The Witcher 3's exclamation mark: a tapering bar over a dot
+    big, d = canvas()
+    d.polygon([(S * 0.40, S * 0.12), (S * 0.60, S * 0.12), (S * 0.55, S * 0.64), (S * 0.45, S * 0.64)], fill="white")
+    d.ellipse((S * 0.41, S * 0.72, S * 0.59, S * 0.90), fill="white")
+    save(big.getchannel("A"), size, "IconQuest.png")
+
+    # A goblet: its cup, its stem, its foot
+    big, d = canvas()
+    d.chord((S * 0.22, S * 0.02, S * 0.78, S * 0.58), 0, 180, fill="white")
+    d.rectangle((S * 0.22, S * 0.14, S * 0.78, S * 0.30), fill="white")
+    d.rectangle((S * 0.46, S * 0.56, S * 0.54, S * 0.78), fill="white")
+    d.rounded_rectangle((S * 0.30, S * 0.76, S * 0.70, S * 0.88), radius=S * 0.04, fill="white")
+    save(big.getchannel("A"), size, "IconGoblet.png")
+
+    # A deck: three cards stacked square, the top one with its diamond
+    big, d = canvas()
+    for k in (2, 1):
+        o = k * S * 0.07
+        d.rounded_rectangle((S * 0.26 + o, S * 0.16 - o * 0.2, S * 0.70 + o, S * 0.80 - o * 0.2), radius=S * 0.05,
+                            outline="white", width=int(line * 0.8))
+    d.rounded_rectangle((S * 0.22, S * 0.20, S * 0.66, S * 0.84), radius=S * 0.05, fill="white")
+    cx, cy, r = S * 0.44, S * 0.52, S * 0.08
+    d.polygon([(cx, cy - r * 1.5), (cx + r, cy), (cx, cy + r * 1.5), (cx - r, cy)], fill=(255, 255, 255, 0))
+    save(big.getchannel("A"), size, "IconDeck.png")
+
+
+def end(size=96):
+    S = size * SCALE
+    clear = (255, 255, 255, 0)
+
+    def canvas():
+        big = Image.new("RGBA", (S, S), clear)
+        return big, ImageDraw.Draw(big)
+
+    # Again: an arc almost round (clockwise, from one o'clock to eleven), its arrowhead at the end pointing on round
+    big, d = canvas()
+    w = S * 0.10
+    d.arc((S * 0.16, S * 0.16, S * 0.84, S * 0.84), 300, 245, fill="white", width=int(w))
+    a = math.radians(245)
+    r = S * 0.34 - w / 2
+    px, py = S * 0.5 + r * math.cos(a), S * 0.5 + r * math.sin(a)
+    tx, ty = -math.sin(a), math.cos(a)  # clockwise along the arc
+    nx, ny = math.cos(a), math.sin(a)   # outwards
+    head, half = S * 0.20, S * 0.15
+    d.polygon([(px + tx * head, py + ty * head), (px + nx * half, py + ny * half), (px - nx * half, py - ny * half)], fill="white")
+    save(big.getchannel("A"), size, "IconAgain.png")
+
+    # A film strip: a band with its holes along both edges and two frames between them
+    big, d = canvas()
+    d.rounded_rectangle((S * 0.14, S * 0.18, S * 0.86, S * 0.82), radius=S * 0.06, fill="white")
+    for k in range(5):
+        x = S * (0.205 + k * 0.14)
+        for y in (S * 0.235, S * 0.705):
+            d.rectangle((x, y, x + S * 0.07, y + S * 0.06), fill=clear)
+    for x in (S * 0.22, S * 0.52):
+        d.rectangle((x, S * 0.35, x + S * 0.26, S * 0.65), fill=clear)
+    save(big.getchannel("A"), size, "IconFilm.png")
+
+    # Home: a roof over a house, its door cut out
+    big, d = canvas()
+    d.polygon([(S * 0.50, S * 0.12), (S * 0.90, S * 0.48), (S * 0.10, S * 0.48)], fill="white")
+    d.rectangle((S * 0.22, S * 0.44, S * 0.78, S * 0.86), fill="white")
+    d.rectangle((S * 0.43, S * 0.60, S * 0.57, S * 0.86), fill=clear)
+    save(big.getchannel("A"), size, "IconHome.png")
+
+    # A map folded in three, the middle panel set back (a route drawn across it would be too fine at this size)
+    big, d = canvas()
+    panels = [(0.12, 0.24, 0.38, 0.16), (0.38, 0.16, 0.62, 0.24), (0.62, 0.24, 0.88, 0.16)]
+    for x0, y0, x1, y1 in panels:
+        d.polygon([(S * x0, S * y0), (S * x1, S * y1), (S * x1, S * (y1 + 0.62)), (S * x0, S * (y0 + 0.62))], fill="white")
+    for x in (0.38, 0.62):
+        d.line((S * x, S * 0.16, S * x, S * 0.86), fill=clear, width=int(S * 0.035))
+    save(big.getchannel("A"), size, "IconMap.png")
+
+
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     close()
@@ -210,4 +353,6 @@ if __name__ == "__main__":
     for kind in ("play", "pause", "step_forward", "step_back", "round_forward", "round_back"):
         media(kind)
     switch()
+    story()
+    end()
     print("written to", OUT)

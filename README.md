@@ -55,7 +55,7 @@ is a folder to put on any static host.
 
 ## Getting started
 
-**Playing**: **Play**, then pick an opponent. Click a card, then a row, to play it; hold Space (or the button) to pass the round.
+**Playing**: **Play** > **Single match**, then pick an opponent (or **Story**: The Witcher 3's Gwent across its lands, collecting the cards). Click a card, then a row, to play it; hold Space (or the button) to pass the round.
 The main menu's **How to play** teaches the rules, and [How to play](docs/how-to-play.md) lists every control.
 
 **Developing**: open `GwentCardGame/` with **Unity 6.6 (6000.6.5f1)**. Run the tests from Window > General > Test Runner >

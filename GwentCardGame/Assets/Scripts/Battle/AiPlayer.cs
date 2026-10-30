@@ -16,8 +16,8 @@ namespace Gwent.Battle
         UniTask Act(Match match, bool seat, CancellationToken ct);
     }
 
-    // Plays the opponent's side. Decisions come from Gwent.Rules.AiBrain at the difficulty of the settings; this class
-    // only gives them to the match, and always ends the AI's turn (passes when its move is refused).
+    // Plays the opponent's side. Decisions come from Gwent.Rules.AiBrain at the settings' difficulty (a story opponent's
+    // own); this class only gives them to the match, and always ends the AI's turn (passes when its move is refused).
     public class AiPlayer : MonoBehaviour, IOpponent
     {
         // In a browser: Hard thinks 10 ms a frame, 0.7 s of thinking at most (a few battles fewer per move than elsewhere)
@@ -48,6 +48,12 @@ namespace Gwent.Battle
         }
 
         private Board Board { get { return match.Board; } }
+
+        // The settings' difficulty, or a story opponent's own
+        private static AiDifficulty Difficulty
+        {
+            get { return BattleController.Instance != null ? BattleController.Instance.AiDifficulty : GameSettings.AiDifficulty; }
+        }
         private CardDatabase Db { get { return match.Board.Db; } }
 
         //----------------------------------------------AI Phases------------------------------------------------------------//
@@ -56,7 +62,7 @@ namespace Gwent.Battle
         private void Redraw()
         {
             PlayerState ai = Board.Side(seat);
-            foreach (int card_id in AiBrain.Redraws(ai, Db, GameSettings.AiDifficulty))
+            foreach (int card_id in AiBrain.Redraws(ai, Db, Difficulty))
             {
                 if (!ai.CanExchange || ai.CardsExchanged >= 2)
                     break;
@@ -78,7 +84,7 @@ namespace Gwent.Battle
             await UniTask.WaitWhile(() => BattleBanner.Busy, PlayerLoopTiming.Update, ct);
             await BattleController.Wait(0.15f, ct);
 
-            GameLog.Event(LogCategory.Ai, "decision", "difficulty", GameSettings.AiDifficulty, "action", Describe(action),
+            GameLog.Event(LogCategory.Ai, "decision", "difficulty", Difficulty, "action", Describe(action),
                 "think_ms", thinkMs, "considered", Considered());
             if (!match.Apply(seat, MatchCommand.From(action)))
             {
@@ -176,7 +182,7 @@ namespace Gwent.Battle
         private AiContext BuildContext()
         {
             AiContext ctx = Board.AiContextFor(seat);
-            ctx.Difficulty = GameSettings.AiDifficulty;
+            ctx.Difficulty = Difficulty;
             ctx.Seed = Rng.Shared.Next();
             return ctx;
         }

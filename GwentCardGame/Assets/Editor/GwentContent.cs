@@ -9,21 +9,23 @@ using UnityEngine;
 
 namespace Gwent.EditorTools
 {
-    // The content the game loads on demand, through Addressables: each card's full art and each music track, an asset
-    // bundle apiece. A build's data holds none of it; the bundles sit next to it (StreamingAssets/aa) and a card's art is
+    // The content the game loads on demand, through Addressables: each card's full art, each music track and each of the
+    // story's maps, an asset bundle apiece. A build's data holds none of it; the bundles sit next to it (StreamingAssets/aa) and a card's art is
     // loaded the first time it shows (on the web, downloaded then, and cached by the browser). Everything small and needed
     // at once (the card thumbnails, backs, icons, sound effects, decks) stays in Resources.
     //
-    // The groups and their entries are made from the two folders below, by Update: menu Gwent > Content > Update
+    // The groups and their entries are made from the folders below, by Update: menu Gwent > Content > Update
     // Addressables, and every build runs it first, so a file added to a folder is never left out. The Addressables
     // content itself is built with each player build (BuildWithPlayer).
     public static class GwentContent
     {
         public const string CardArtFolder = "Assets/Content/CardArt";
         public const string MusicFolder = "Assets/Content/Music";
+        public const string StoryMapsFolder = "Assets/Content/Story/Maps";
 
         public const string CardArtGroup = "Card Art";
         public const string MusicGroup = "Music";
+        public const string StoryMapsGroup = "Story Maps";
         public const string MusicLabel = "music"; // the runtime finds the tracks by it (GameAudio)
 
         [MenuItem("Gwent/Content/Update Addressables")]
@@ -39,7 +41,8 @@ namespace Gwent.EditorTools
             settings.AddLabel(MusicLabel, false);
 
             int changes = Fill(settings, Group(settings, CardArtGroup), CardArtFolder, "CardArt/", null)
-                + Fill(settings, Group(settings, MusicGroup), MusicFolder, "Music/", MusicLabel);
+                + Fill(settings, Group(settings, MusicGroup), MusicFolder, "Music/", MusicLabel)
+                + Fill(settings, Group(settings, StoryMapsGroup), StoryMapsFolder, "StoryMaps/", null);
             settings.SetDirty(AddressableAssetSettings.ModificationEvent.BatchModification, null, true, true);
             AssetDatabase.SaveAssets();
             if (changes > 0)

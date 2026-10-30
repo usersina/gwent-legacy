@@ -87,11 +87,13 @@ namespace Gwent.Rules
         }
 
         // Drops unknown card ids and copies beyond what exists, and fixes an invalid leader, so a hand-edited deck
-        // (or one saved before the copy limits) can still be loaded
-        public static Deck Sanitize(Deck deck, CardDatabase db)
+        // (or one saved before the copy limits) can still be loaded. With a supply, copies beyond it too (a story deck
+        // keeps the copies owned) and a leader not owned (the faction's first owned one takes its place).
+        public static Deck Sanitize(Deck deck, CardDatabase db, ICardSupply supply = null)
         {
             if (deck == null)
                 return null;
+            supply = supply ?? AllCards.Instance;
             Dictionary<int, int> kept = new Dictionary<int, int>();
             deck.Cards = (deck.Cards ?? new List<int>()).Where(id =>
             {
@@ -100,14 +102,27 @@ namespace Gwent.Rules
                     return false;
                 int count;
                 kept.TryGetValue(id, out count);
-                if (count >= MaxCopies(card))
+                if (count >= Math.Min(MaxCopies(card), supply.Copies(card)))
                     return false;
                 kept[id] = count + 1;
                 return true;
             }).ToList();
             if (Array.IndexOf(Factions.Playable, deck.Faction) >= 0 && !LeaderIds.BelongsTo(deck.Leader, deck.Faction))
                 deck.Leader = LeaderIds.DefaultFor(deck.Faction);
+            if (Array.IndexOf(Factions.Playable, deck.Faction) >= 0 && supply.Copies(db.Get(deck.Leader)) == 0)
+                deck.Leader = DefaultLeader(deck.Faction, db, supply);
             return deck;
+        }
+
+        // The faction's first leader the supply has (its first of all when it has none)
+        public static int DefaultLeader(Faction faction, CardDatabase db, ICardSupply supply = null)
+        {
+            int[] leaders;
+            if (supply != null && LeaderIds.ByFaction.TryGetValue(faction, out leaders))
+                foreach (int leader in leaders)
+                    if (supply.Copies(db.Get(leader)) > 0)
+                        return leader;
+            return LeaderIds.DefaultFor(faction);
         }
 
         //----------------------------------------Deck names----------------------------------------//
