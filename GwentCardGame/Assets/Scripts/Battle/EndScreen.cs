@@ -54,10 +54,11 @@ namespace Gwent.Battle
             return portraits[player ? 0 : 1];
         }
 
-        // gave_up: the player gave up; opponent_left: the opponent did (a LAN battle's other player); lan_battle: a LAN
-        // battle (its session may be gone already: the other player left); ended_away: its host ended it while this guest
-        // was away; replay: a replay's end (Watch again, back to the replays); story: a battle of the story
-        public void Show(BattleState outcome, BattleController.BattleSide player, BattleController.BattleSide opponent, bool gave_up = false, bool opponent_left = false, bool lan_battle = false, bool ended_away = false, bool replay = false, StoryBattle story = null)
+        // gave_up: the player gave up; opponent_gave_up: the opponent did (still there, or gone: the status line says);
+        // opponent_left: a LAN host's guest away, its host claimed the win; lan_battle: a LAN battle (its session may be gone
+        // already: the other player left); ended_away: its host ended it while this guest was away; replay: a replay's end
+        // (Watch again, back to the replays); story: a battle of the story
+        public void Show(BattleState outcome, BattleController.BattleSide player, BattleController.BattleSide opponent, bool gave_up = false, bool opponent_gave_up = false, bool opponent_left = false, bool lan_battle = false, bool ended_away = false, bool replay = false, StoryBattle story = null)
         {
             UITheme theme = UITheme.Current;
             foreach (Transform child in transform)
@@ -78,6 +79,8 @@ namespace Gwent.Battle
                 : "Neither side came out ahead" + drawn_text;
             if (gave_up)
                 tally = you + " gave up the battle";
+            else if (opponent_gave_up)
+                tally = (lan_battle || story != null ? opponent.Name : "The opponent") + " gave up the battle";
             else if (opponent_left)
                 tally = opponent.Name + " left the battle";
             else if (ended_away)

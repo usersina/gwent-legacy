@@ -75,6 +75,7 @@ namespace Gwent.Battle
         private MatchState logged;        // the whole battle as the event shown last left it (the log tells all of it)
         private MatchEvent showing;       // the event being shown, whole where this device has it (the log tells all of it)
         private LanNotice away;           // the other device away, said over the board
+        private bool claimed;             // this host claimed the win, its guest away: the guest left (it did not give up)
         private IOpponent opponent;
         private bool opponentActing;
         private BoardView board;
@@ -1076,7 +1077,10 @@ namespace Gwent.Battle
         private void LeaveAway()
         {
             if (lan.Hosting)
+            {
+                claimed = true;
                 lan.Match.Apply(false, MatchCommand.GiveUp()); // the guest's seat: it left the battle
+            }
             else
             {
                 // Out of the session too: no joining again behind the end screen (the host, its minute up, ends it)
@@ -1141,9 +1145,9 @@ namespace Gwent.Battle
             SetHider(false);
         }
 
-        // gave_up: the player gave up; opponent_left: the opponent did (a LAN battle's other player); ended_away: the LAN
-        // host ended it while this guest was away
-        private void ConcludeBattle(BattleState outcome, bool gave_up = false, bool opponent_left = false, bool ended_away = false)
+        // gave_up: the player gave up; opponent_gave_up: the opponent did (the AI in a replay, a LAN battle's other player;
+        // for this host, or its guest left: claimed); ended_away: the LAN host ended it while this guest was away
+        private void ConcludeBattle(BattleState outcome, bool gave_up = false, bool opponent_gave_up = false, bool ended_away = false)
         {
             BattleLog.End(outcome, gave_up);
             battleState = outcome;
@@ -1155,7 +1159,8 @@ namespace Gwent.Battle
             CardMotion.ClearLayer();
             PostGame.SetActive(true);
             bool named = replay != null ? replay.Record.Kind != RecordKind.Ai || replay.Switched : !ReferenceEquals(lan, null); // the other side's name in the tally
-            PostGame.GetComponent<EndScreen>().Show(outcome, PlayerInfo, EnemyInfo, gave_up, opponent_left, named, ended_away, replay != null, story);
+            PostGame.GetComponent<EndScreen>().Show(outcome, PlayerInfo, EnemyInfo, gave_up, opponent_gave_up && !claimed, opponent_gave_up && claimed,
+                named, ended_away, replay != null, story);
             if (outcome == BattleState.Won)
                 GameAudio.PlaySfx("victory");
             else if (outcome == BattleState.Lost)

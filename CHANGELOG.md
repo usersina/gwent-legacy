@@ -42,6 +42,8 @@ Story: The Witcher 3's Gwent as Geralt played it, on The Witcher 3's own maps.
 - In the story, a win's cards come first, on their own and large: each turns over from its back, says whether it's new
   (or a quest's reward), the crowns count up beside them, with the quests done and the lands opened. **Collect** shows the
   scoreboard, with what you won in a line under it.
+- When the other player of a LAN battle gives up, the end screen says so ("… gave up the battle"), not that they left it;
+  the line over the buttons still says whether they're there for a rematch.
 
 ## 2026-10-27
 
