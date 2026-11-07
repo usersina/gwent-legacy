@@ -16,6 +16,91 @@ namespace Gwent.Menus
     {
         private static readonly string[] Tabs = { "Game", "Display", "Graphics", "Audio" };
 
+        // The rows, captions, groups and options are written here in English, which is also what names them (the autoplay
+        // finds "Row Difficulty"); what is shown is the UI table's entry under the key given here
+        private static readonly Dictionary<string, string> Keys = new Dictionary<string, string>
+        {
+            { "Language", "settings.language" },
+            { "Takes effect at once", "settings.language.caption" },
+            { "Game speed", "settings.speed" },
+            { "Cards, notices and the opponent", "settings.speed.caption" },
+            { "Speed/Slow", "settings.speed.slow" },
+            { "Speed/Normal", "settings.speed.normal" },
+            { "Speed/Fast", "settings.speed.fast" },
+            { "Difficulty", "settings.difficulty" },
+            { "Difficulty/Easy", "settings.difficulty.easy" },
+            { "Difficulty/Normal", "settings.difficulty.normal" },
+            { "Difficulty/Hard", "settings.difficulty.hard" },
+            { "Your opponent plays like a beginner", "settings.difficulty.easy.caption" },
+            { "Your opponent saves cards for later rounds", "settings.difficulty.normal.caption" },
+            { "Your opponent thinks the battle through", "settings.difficulty.hard.caption" },
+            { "Censored artwork", "settings.censored" },
+            { "Covered versions of some cards' art", "settings.censored.caption" },
+            { "Check for updates", "settings.updates" },
+            { "On launch, from the game's page on GitHub", "settings.updates.caption" },
+            { "Master volume", "settings.volume.master" },
+            { "Music", "settings.volume.music" },
+            { "Sound effects", "settings.volume.sfx" },
+            { "Mute when in the background", "settings.mute" },
+            { "When another window is in front", "settings.mute.caption" },
+            { "Fullscreen", "settings.fullscreen" },
+            { "Esc leaves it", "settings.fullscreen.caption" },
+            { "Window", "settings.window" },
+            { "Windowed", "settings.windowed" },
+            { "Resolution", "settings.resolution" },
+            { "Frame rate", "settings.framerate" },
+            { "Unlimited", "settings.framerate.unlimited" },
+            { "Lower values save battery", "settings.framerate.battery" },
+            { "VSync follows your screen", "settings.framerate.vsync" },
+            { "Menu size", "settings.menusize" },
+            { "Menus and dialogs only", "settings.menusize.caption" },
+            { "Preset", "settings.preset" },
+            { "Sets everything below", "settings.preset.caption" },
+            { "Preset/Low", "settings.preset.low" },
+            { "Preset/Medium", "settings.preset.medium" },
+            { "Preset/High", "settings.preset.high" },
+            { "Preset/Custom", "settings.preset.custom" },
+            { "Particle density", "settings.particles" },
+            { "Fewer sparks, flames and raindrops", "settings.particles.caption" },
+            { "Weather", "settings.group.weather" },
+            { "Battle effects", "settings.group.battle" },
+            { "Motion", "settings.group.motion" },
+            { "Menus", "settings.group.menus" },
+            { "Animated weather", "settings.fx.weather" },
+            { "Off: still pictures", "settings.fx.weather.caption" },
+            { "Lightning and thunder", "settings.fx.storm" },
+            { "In Skellige Storm", "settings.fx.storm.caption" },
+            { "Clear Weather's sun", "settings.fx.sun" },
+            { "The light sweeping the weather away", "settings.fx.sun.caption" },
+            { "Hero landing", "settings.fx.hero" },
+            { "Off: the card's edge flashes gold", "settings.fx.hero.caption" },
+            { "Scorch fire", "settings.fx.scorch" },
+            { "Off: the cards char, without fire", "settings.fx.scorch.caption" },
+            { "Ability flares", "settings.fx.flares" },
+            { "Off: the ability's icon only", "settings.fx.flares.caption" },
+            { "Medic flames", "settings.fx.medic" },
+            { "Over the discard pile", "settings.fx.medic.caption" },
+            { "Horn glow", "settings.fx.horn" },
+            { "Along a horned row", "settings.fx.horn.caption" },
+            { "Landing wisps", "settings.fx.wisps" },
+            { "As a card lands", "settings.fx.wisps.caption" },
+            { "Shine and pulsing", "settings.fx.shine" },
+            { "The light across a card, pulsing frames", "settings.fx.shine.caption" },
+            { "Menu animations", "settings.fx.menu" },
+            { "The title, the rules coming in", "settings.fx.menu.caption" },
+        };
+
+        private static string S(string english)
+        {
+            return Loc.T(Loc.UI, Keys[english]);
+        }
+
+        // The names of an option list (GameSettings' names, which the log keeps in English) in the current language
+        private static string[] Options(string group, string[] names)
+        {
+            return names.Select(name => S(group + "/" + name)).ToArray();
+        }
+
         // What each difficulty means, under its name
         private static readonly string[] DifficultyCaptions =
         {
@@ -154,12 +239,12 @@ namespace Gwent.Menus
             row.AddToClassList("setting");
             VisualElement labels = new VisualElement();
             labels.AddToClassList("setting__labels");
-            Label text = new Label(label);
+            Label text = new Label(S(label));
             text.AddToClassList("setting__label");
             labels.Add(text);
             if (caption != null)
             {
-                Label small = new Label(caption) { name = "Caption" };
+                Label small = new Label(S(caption)) { name = "Caption" };
                 small.AddToClassList("caption");
                 labels.Add(small);
             }
@@ -232,7 +317,7 @@ namespace Gwent.Menus
             }
             else if (!GameSettings.IsMobile)
             {
-                Stepper window = StepperRow(page, "Window", new[] { "Fullscreen", "Windowed" }, GameSettings.Fullscreen ? 0 : 1,
+                Stepper window = StepperRow(page, "Window", new[] { S("Fullscreen"), S("Windowed") }, GameSettings.Fullscreen ? 0 : 1,
                     i => GameSettings.Fullscreen = i == 0);
                 first = window.Left;
 
@@ -245,7 +330,7 @@ namespace Gwent.Menus
             if (!GameSettings.IsWeb)
             {
                 int[] rates = GameSettings.FrameRates;
-                Stepper frame_rate = StepperRow(page, "Frame rate", rates.Select(GameSettings.FrameRateLabel).ToArray(),
+                Stepper frame_rate = StepperRow(page, "Frame rate", rates.Select(FrameRateLabel).ToArray(),
                     Mathf.Max(0, Array.IndexOf(rates, GameSettings.FrameRate)), i => GameSettings.FrameRate = rates[i],
                     GameSettings.IsMobile ? "Lower values save battery" : "VSync follows your screen");
                 if (first == null)
@@ -269,7 +354,7 @@ namespace Gwent.Menus
             Dictionary<GameSettings.Effect, Switch> switches = new Dictionary<GameSettings.Effect, Switch>();
             Action show_preset = () => preset.Show((int)GameSettings.Graphics);
 
-            preset = StepperRow(page, "Preset", GameSettings.GraphicsPresetNames, (int)GameSettings.Graphics, i =>
+            preset = StepperRow(page, "Preset", Options("Preset", GameSettings.GraphicsPresetNames), (int)GameSettings.Graphics, i =>
             {
                 GameSettings.Graphics = (GameSettings.GraphicsPreset)i; // Custom: everything stays as it is
                 density.SetValueWithoutNotify(GameSettings.ParticleDensity);
@@ -346,6 +431,11 @@ namespace Gwent.Menus
             scroll.RegisterCallback<GeometryChangedEvent>(_ => show());
         }
 
+        private static string FrameRateLabel(int frame_rate)
+        {
+            return frame_rate == GameSettings.VSync ? "VSync" : frame_rate == 0 ? S("Unlimited") : frame_rate + " FPS";
+        }
+
         private static string Percent(float value)
         {
             return Mathf.RoundToInt(value * 100) + "%";
@@ -354,7 +444,7 @@ namespace Gwent.Menus
         // A heading over a group of rows
         private static void Group(VisualElement page, string title)
         {
-            Label heading = new Label(title) { name = "Group " + title };
+            Label heading = new Label(S(title)) { name = "Group " + title };
             heading.AddToClassList("setting__group");
             page.Add(heading);
         }
@@ -364,21 +454,21 @@ namespace Gwent.Menus
             // The texts of every screen come from the language's tables, so a new language shows once the panel is rebuilt
             // (Reopen), after its tables are loaded
             string[] languages = Loc.Languages.Select(Loc.NameOf).ToArray();
-            Stepper language = StepperRow(page, Loc.T(Loc.UI, "settings.language"), languages, Loc.Current,
+            Stepper language = StepperRow(page, "Language", languages, Loc.Current,
                 i => Loc.Set(i, () =>
                 {
                     if (IsOpen)
                         Reopen();
-                }), Loc.T(Loc.UI, "settings.language.caption"));
-            Stepper speed = StepperRow(page, "Game speed", GameSettings.GameSpeedNames, GameSettings.GameSpeed,
+                }), "Takes effect at once");
+            Stepper speed = StepperRow(page, "Game speed", Options("Speed", GameSettings.GameSpeedNames), GameSettings.GameSpeed,
                 i => GameSettings.GameSpeed = i, "Cards, notices and the opponent");
 
             Label about = null;
-            StepperRow(page, "Difficulty", GameSettings.AiDifficultyNames, (int)GameSettings.AiDifficulty, i =>
+            StepperRow(page, "Difficulty", Options("Difficulty", GameSettings.AiDifficultyNames), (int)GameSettings.AiDifficulty, i =>
             {
                 GameSettings.AiDifficulty = (AiDifficulty)i;
                 if (about != null)
-                    about.text = DifficultyCaptions[i];
+                    about.text = S(DifficultyCaptions[i]);
             }, DifficultyCaptions[(int)GameSettings.AiDifficulty]);
             about = page.Q("Row Difficulty").Q<Label>("Caption");
             SwitchRow(page, "Censored artwork", "Covered versions of some cards' art", GameSettings.CensoredArt, on => GameSettings.CensoredArt = on);

@@ -25,3 +25,69 @@ settings.tab.graphics,Graphics,Gráficos
 settings.tab.audio,Audio,Audio
 settings.reset,Reset to defaults,Restablecer valores
 update.title,A new version,Una versión nueva
+settings.speed,Game speed,Velocidad del juego
+settings.speed.caption,"Cards, notices and the opponent","Cartas, avisos y el oponente"
+settings.speed.slow,Slow,Lenta
+settings.speed.normal,Normal,Normal
+settings.speed.fast,Fast,Rápida
+settings.difficulty,Difficulty,Dificultad
+settings.difficulty.easy,Easy,Fácil
+settings.difficulty.normal,Normal,Normal
+settings.difficulty.hard,Hard,Difícil
+settings.difficulty.easy.caption,Your opponent plays like a beginner,Tu oponente juega como un principiante
+settings.difficulty.normal.caption,Your opponent saves cards for later rounds,Tu oponente guarda cartas para las rondas siguientes
+settings.difficulty.hard.caption,Your opponent thinks the battle through,Tu oponente planea toda la batalla
+settings.censored,Censored artwork,Arte censurado
+settings.censored.caption,Covered versions of some cards' art,Versiones cubiertas del arte de algunas cartas
+settings.updates,Check for updates,Buscar actualizaciones
+settings.updates.caption,"On launch, from the game's page on GitHub","Al iniciar, desde la página del juego en GitHub"
+settings.volume.master,Master volume,Volumen general
+settings.volume.music,Music,Música
+settings.volume.sfx,Sound effects,Efectos de sonido
+settings.mute,Mute when in the background,Silenciar en segundo plano
+settings.mute.caption,When another window is in front,Cuando hay otra ventana al frente
+settings.fullscreen,Fullscreen,Pantalla completa
+settings.fullscreen.caption,Esc leaves it,Esc para salir
+settings.window,Window,Ventana
+settings.windowed,Windowed,En ventana
+settings.resolution,Resolution,Resolución
+settings.framerate,Frame rate,Velocidad de fotogramas
+settings.framerate.unlimited,Unlimited,Sin límite
+settings.framerate.battery,Lower values save battery,Los valores bajos ahorran batería
+settings.framerate.vsync,VSync follows your screen,VSync sigue a tu pantalla
+settings.menusize,Menu size,Tamaño del menú
+settings.menusize.caption,Menus and dialogs only,Solo menús y diálogos
+settings.preset,Preset,Preajuste
+settings.preset.caption,Sets everything below,Define todo lo de abajo
+settings.preset.low,Low,Bajo
+settings.preset.medium,Medium,Medio
+settings.preset.high,High,Alto
+settings.preset.custom,Custom,Personalizado
+settings.particles,Particle density,Densidad de partículas
+settings.particles.caption,"Fewer sparks, flames and raindrops","Menos chispas, llamas y gotas de lluvia"
+settings.group.weather,Weather,Clima
+settings.group.battle,Battle effects,Efectos de batalla
+settings.group.motion,Motion,Movimiento
+settings.group.menus,Menus,Menús
+settings.fx.weather,Animated weather,Clima animado
+settings.fx.weather.caption,Off: still pictures,Apagado: imágenes fijas
+settings.fx.storm,Lightning and thunder,Rayos y truenos
+settings.fx.storm.caption,In Skellige Storm,En Tormenta de Skellige
+settings.fx.sun,Clear Weather's sun,Sol del Tiempo despejado
+settings.fx.sun.caption,The light sweeping the weather away,La luz que disipa el clima
+settings.fx.hero,Hero landing,Aterrizaje de héroes
+settings.fx.hero.caption,Off: the card's edge flashes gold,Apagado: el borde de la carta destella en dorado
+settings.fx.scorch,Scorch fire,Fuego de Abrasar
+settings.fx.scorch.caption,"Off: the cards char, without fire","Apagado: las cartas se carbonizan, sin fuego"
+settings.fx.flares,Ability flares,Destellos de habilidad
+settings.fx.flares.caption,Off: the ability's icon only,Apagado: solo el ícono de la habilidad
+settings.fx.medic,Medic flames,Llamas de Médico
+settings.fx.medic.caption,Over the discard pile,Sobre la pila de descarte
+settings.fx.horn,Horn glow,Brillo del cuerno
+settings.fx.horn.caption,Along a horned row,A lo largo de una fila con cuerno
+settings.fx.wisps,Landing wisps,Volutas al aterrizar
+settings.fx.wisps.caption,As a card lands,Cuando cae una carta
+settings.fx.shine,Shine and pulsing,Brillo y pulso
+settings.fx.shine.caption,"The light across a card, pulsing frames",La luz sobre la carta y los marcos que pulsan
+settings.fx.menu,Menu animations,Animaciones de menú
+settings.fx.menu.caption,"The title, the rules coming in",El título y la entrada de las reglas
