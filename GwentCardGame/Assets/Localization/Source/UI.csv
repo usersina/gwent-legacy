@@ -91,3 +91,77 @@ settings.fx.shine,Shine and pulsing,Brillo y pulso
 settings.fx.shine.caption,"The light across a card, pulsing frames",La luz sobre la carta y los marcos que pulsan
 settings.fx.menu,Menu animations,Animaciones de menú
 settings.fx.menu.caption,"The title, the rules coming in",El título y la entrada de las reglas
+common.quit,Quit,Salir
+common.cancel,Cancel,Cancelar
+menu.version,Version {0},Versión {0}
+menu.build,Build {0},Compilación {0}
+menu.commit_tooltip,This build's source on GitHub,El código fuente de esta compilación en GitHub
+menu.update,New version available · build {0},Nueva versión disponible · compilación {0}
+menu.lan_rejoin,"A LAN battle is still on: Multiplayer, then Local network, to rejoin it","Hay una batalla LAN en curso: Multijugador, luego Red local, para volver a entrar"
+menu.quit_ask,Quit the game?,¿Salir del juego?
+pause.menu,Menu,Menú
+pause.paused,Paused,En pausa
+pause.main_menu,Main menu,Menú principal
+pause.leave_ask,Leave the battle? It counts as a loss.,¿Abandonar la batalla? Cuenta como una derrota.
+pause.leave_yes,Leave,Salir
+pause.stay,Stay,Quedarme
+pause.stop_watching,Stop watching,Dejar de mirar
+pause.back_map,Back to the map,Volver al mapa
+pause.map_ask,Leave and go back to the map?,¿Salir y volver al mapa?
+pause.main_ask,Leave and go back to the main menu?,¿Salir y volver al menú principal?
+mp.title,Multiplayer,Multijugador
+mp.lan.web,Needs the downloaded game,Requiere el juego descargado
+mp.lan.detail,"Same Wi-Fi, cable or phone hotspot","Mismo Wi-Fi, cable o punto de acceso del teléfono"
+mp.lan.not_web,Not in a browser,No disponible en el navegador
+mp.lan.rejoin,Rejoin,Volver a entrar
+mp.online,Online,En línea
+mp.online.detail,"Anyone, anywhere, through a server","Con cualquiera, en cualquier lugar, mediante un servidor"
+mp.online.soon,Coming soon,Próximamente
+play.story,Story,Historia
+play.match,Single match,Partida individual
+play.match.detail,Against the AI: choose your opponent,Contra la IA: elige a tu oponente
+play.multiplayer.detail,"On your network, or online",En tu red o en línea
+play.story.unreadable,Its save can't be read,No se puede leer su partida guardada
+play.story.begin,"The Witcher 3's Gwent, from its starter deck","El Gwent de The Witcher 3, desde su mazo inicial"
+play.story.progress,{0} · {1} of {2} cards,{0} · {1} de {2} cartas
+opponent.random,Random opponent,Oponente aleatorio
+opponent.random.detail,A different deck every battle,Un mazo distinto en cada batalla
+replays.caption,"The battles you saved: Save replay, on a battle's end screen, keeps one here.","Las batallas que guardaste: Guardar repetición, en la pantalla final de una batalla, deja una aquí."
+replays.empty,"No replays yet: Save replay, on a battle's end screen, keeps the battle here to watch again.","Todavía no hay repeticiones: Guardar repetición, en la pantalla final de una batalla, deja la batalla aquí para verla de nuevo."
+replays.delete,Delete,Eliminar
+replays.delete_ask,Delete this replay?,¿Eliminar esta repetición?
+replays.keep,Keep it,Conservarla
+replays.you_vs,You vs {0},Tú vs {0}
+replays.vs,{0} vs {1},{0} vs {1}
+replays.gave_up,Gave up,Abandonaste
+replays.they_gave_up,Opponent gave up,El oponente abandonó
+replays.left,{0} left,{0} se fue
+replays.won,Won,Ganaste
+replays.lost,Lost,Perdiste
+replays.draw,Draw,Empate
+update.yours,(yours: {0}),(la tuya: {0})
+update.later,Later,Más tarde
+update.downloading_of,Downloading… {0} of {1},Descargando… {0} de {1}
+update.downloading,Downloading… {0},Descargando… {0}
+update.checking,Checking the download…,Verificando la descarga…
+update.unpacking,Unpacking…,Descomprimiendo…
+update.android_confirming,"Android asks you to confirm the update; once it's installed, open the game again.","Android te pide confirmar la actualización; cuando termine de instalarse, abre el juego otra vez."
+update.reloading,Reloading…,Recargando…
+update.restarting,Restarting with the new version…,Reiniciando con la nueva versión…
+update.page,Download it from the release's page.,Descárgala desde la página de la versión.
+update.web_ready,The page reloads with the new version.,La página se recarga con la nueva versión.
+update.android_ready,Android asks you to confirm it; then open the game again. Your settings and decks stay.,Android te pide confirmarla; después abre el juego otra vez. Tus ajustes y mazos se conservan.
+update.desktop_ready,The game restarts once updated. Your settings and decks stay.,El juego se reinicia al terminar la actualización. Tus ajustes y mazos se conservan.
+update.action_page,Download page,Página de descarga
+update.action_reload,Reload,Recargar
+update.action_install,Install,Instalar
+update.action_update,Update,Actualizar
+update.cancelled,The update was cancelled.,Se canceló la actualización.
+update.android_failed,Android didn't install it: {0},Android no la instaló: {0}
+update.failed,The update failed: {0},La actualización falló: {0}
+update.android_allow,"Allow installs from Gwent Legacy in Android's settings, then tap Install again.",Permite instalar desde Gwent Legacy en los ajustes de Android y toca Instalar otra vez.
+update.android_start,Android couldn't start installing it: {0},Android no pudo empezar a instalarla: {0}
+update.read_only,The game's folder can't be written to ({0}): download the new version by hand.,No se puede escribir en la carpeta del juego ({0}): descarga la nueva versión a mano.
+update.no_game,The downloaded version doesn't hold the game ({0}).,La versión descargada no contiene el juego ({0}).
+update.download_failed,The download failed: {0}.,La descarga falló: {0}.
+update.checksum,The download doesn't match the release (its checksum differs): try again later.,La descarga no coincide con la versión publicada (su suma de verificación difiere): inténtalo más tarde.

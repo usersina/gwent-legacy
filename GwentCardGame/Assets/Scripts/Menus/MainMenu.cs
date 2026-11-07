@@ -43,7 +43,7 @@ namespace Gwent.Menus
             else if (replays)
                 OpenReplays();
             else if (!GameSettings.IsWeb && Gwent.Net.LanSession.Current == null && Gwent.Net.LanSave.Load() != null)
-                UIOverlay.Toast("A LAN battle is still on: Multiplayer, then Local network, to rejoin it", 4f);
+                UIOverlay.Toast(Loc.T(Loc.UI, "menu.lan_rejoin"), 4f);
         }
 
         private void Bind(VisualElement root)
@@ -74,7 +74,7 @@ namespace Gwent.Menus
             Label start = root.Q<Label>("Build");
             Label commit = root.Q<Label>("Commit");
             Label end = root.Q<Label>("Build end");
-            string version = "Version " + Application.version + " \u00B7 ";
+            string version = Loc.T(Loc.UI, "menu.version", Application.version) + " \u00B7 ";
             string url = BuildInfo.CommitUrl;
             if (BuildInfo.Number <= 0 || url == null)
             {
@@ -83,10 +83,10 @@ namespace Gwent.Menus
                 end.style.display = DisplayStyle.None;
                 return;
             }
-            start.text = version + "Build " + BuildInfo.Number + " (";
+            start.text = version + Loc.T(Loc.UI, "menu.build", BuildInfo.Number) + " (";
             commit.text = BuildInfo.Commit;
             end.text = BuildInfo.Build.Substring(BuildInfo.Commit.Length) + ")";
-            commit.tooltip = "This build's source on GitHub";
+            commit.tooltip = Loc.T(Loc.UI, "menu.commit_tooltip");
             commit.RegisterCallback<ClickEvent>(_ =>
             {
                 GameAudio.PlaySfx("ui_click");
@@ -104,7 +104,7 @@ namespace Gwent.Menus
                 return;
             update.style.display = feed != null ? DisplayStyle.Flex : DisplayStyle.None;
             if (feed != null)
-                update.text = "New version available \u00B7 build " + feed.build;
+                update.text = Loc.T(Loc.UI, "menu.update", feed.build);
         }
 
         private void AddItem(VisualElement root, string name, System.Action on_click)
@@ -197,7 +197,7 @@ namespace Gwent.Menus
         private void AskQuit()
         {
             if (!GameSettings.IsWeb)
-                UIOverlay.Confirm("Quit the game?", "Quit", "Cancel", QuitGame);
+                UIOverlay.Confirm(Loc.T(Loc.UI, "menu.quit_ask"), Loc.T(Loc.UI, "common.quit"), Loc.T(Loc.UI, "common.cancel"), QuitGame);
         }
 
         public void QuitGame()

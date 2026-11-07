@@ -51,6 +51,16 @@ namespace Gwent.Core
                 : locale.LocaleName;
         }
 
+        // The current language's culture, for dates and the like (the invariant one if it names none)
+        public static System.Globalization.CultureInfo Culture
+        {
+            get
+            {
+                Locale locale = LocalizationSettings.SelectedLocale;
+                return locale != null && locale.Identifier.CultureInfo != null ? locale.Identifier.CultureInfo : System.Globalization.CultureInfo.InvariantCulture;
+            }
+        }
+
         public static int Current
         {
             get

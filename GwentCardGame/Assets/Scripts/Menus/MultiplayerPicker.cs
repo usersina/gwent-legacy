@@ -24,9 +24,11 @@ namespace Gwent.Menus
         {
             VisualElement entries = root.Q("Entries");
             bool web = GameSettings.IsWeb;
-            MenuEntry lan = Entry(entries, "Local network", "network", web ? "Needs the downloaded game" : "Same Wi-Fi, cable or phone hotspot",
-                web ? "Not in a browser" : LanSave.Load() != null ? "Rejoin" : null, !web);
-            Entry(entries, "Online", "online", "Anyone, anywhere, through a server", "Coming soon", false);
+            root.Q<Label>("Title").text = Loc.T(Loc.UI, "mp.title");
+            MenuEntry lan = Entry(entries, "Local network", Loc.T(Loc.UI, "lan.title"), "network",
+                Loc.T(Loc.UI, web ? "mp.lan.web" : "mp.lan.detail"),
+                web ? Loc.T(Loc.UI, "mp.lan.not_web") : LanSave.Load() != null ? Loc.T(Loc.UI, "mp.lan.rejoin") : null, !web);
+            Entry(entries, "Online", Loc.T(Loc.UI, "mp.online"), "online", Loc.T(Loc.UI, "mp.online.detail"), Loc.T(Loc.UI, "mp.online.soon"), false);
             Button close = root.Q<Button>("Button Close");
             close.clicked += () => UIScreens.Close(root);
             if (!web)
@@ -44,12 +46,12 @@ namespace Gwent.Menus
             LanLobby.Open(() => UIScreens.Focus(lan));
         }
 
-        // A way to play someone: its icon (a .mode__icon-- class), name and detail; tag: why it cannot be chosen, or what
-        // waits there (null: none)
-        private static MenuEntry Entry(VisualElement entries, string title, string icon, string detail, string tag, bool open)
+        // A way to play someone: its name (id: in English, it names the entry) and the title shown, its icon (a .mode__icon--
+        // class) and detail; tag: why it cannot be chosen, or what waits there (null: none)
+        private static MenuEntry Entry(VisualElement entries, string id, string title, string icon, string detail, string tag, bool open)
         {
             MenuEntry entry = UITheme.Current.opponentEntry.Instantiate().Q<MenuEntry>();
-            entry.name = "Mode " + title;
+            entry.name = "Mode " + id;
             entry.Q<Label>("Title").text = title;
             entry.Q<Label>("Detail").text = detail;
             entry.Q("Art").RemoveFromHierarchy();

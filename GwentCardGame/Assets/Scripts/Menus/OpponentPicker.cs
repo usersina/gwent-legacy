@@ -22,7 +22,8 @@ namespace Gwent.Menus
             CardDatabase db = CardLibrary.Get();
             string chosen = OpponentDecks.Chosen;
             VisualElement entries = root.Q("Entries");
-            MenuEntry focus = Entry(entries, -1, "Random opponent", "A different deck every battle", "", chosen == "");
+            MenuEntry focus = Entry(entries, -1, "Random opponent", Loc.T(Loc.UI, "opponent.random.detail"), "", chosen == "");
+            focus.Q<Label>("Title").text = Loc.T(Loc.UI, "opponent.random");
             foreach (TextAsset file in OpponentDecks.All())
             {
                 Deck deck = CardLibrary.ParseDeck(file.text, file.name);

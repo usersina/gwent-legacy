@@ -33,8 +33,8 @@ namespace Gwent.Menus
         private static void Bind(VisualElement root, UpdateFeed feed, UpdateInstaller installer)
         {
             UpdateFile file = installer.File;
-            root.Q<Label>("Detail").text = "Build " + feed.build + " \u00B7 " + feed.date + (file != null ? " \u00B7 " + Megabytes(file.size) : "")
-                + "   (yours: " + BuildInfo.Label + ")";
+            root.Q<Label>("Detail").text = Loc.T(Loc.UI, "menu.build", feed.build) + " \u00B7 " + feed.date + (file != null ? " \u00B7 " + Megabytes(file.size) : "")
+                + "   " + Loc.T(Loc.UI, "update.yours", BuildInfo.Label);
 
             ScrollView notes = root.Q<ScrollView>("Notes");
             foreach (UpdateFeed.NoteLine line in UpdateFeed.Lines(feed.notes))
@@ -86,7 +86,7 @@ namespace Gwent.Menus
                 status.text = Status(installer, file);
                 update.text = installer.ActionLabel;
                 update.SetEnabled(!installer.Busy && installer.State != UpdateInstaller.Stage.Confirming);
-                later.text = installer.Busy ? "Cancel" : "Later";
+                later.text = Loc.T(Loc.UI, installer.Busy ? "common.cancel" : "update.later");
                 later.SetEnabled(installer.State != UpdateInstaller.Stage.Restarting);
             };
             refresh();
@@ -109,27 +109,27 @@ namespace Gwent.Menus
             switch (installer.State)
             {
                 case UpdateInstaller.Stage.Downloading:
-                    return "Downloading\u2026 " + Megabytes(installer.Received) + (file != null ? " of " + Megabytes(file.size) : "");
+                    return file != null ? Loc.T(Loc.UI, "update.downloading_of", Megabytes(installer.Received), Megabytes(file.size)) : Loc.T(Loc.UI, "update.downloading", Megabytes(installer.Received));
                 case UpdateInstaller.Stage.Checking:
-                    return "Checking the download\u2026";
+                    return Loc.T(Loc.UI, "update.checking");
                 case UpdateInstaller.Stage.Unpacking:
-                    return "Unpacking\u2026";
+                    return Loc.T(Loc.UI, "update.unpacking");
                 case UpdateInstaller.Stage.Confirming:
-                    return "Android asks you to confirm the update; once it's installed, open the game again.";
+                    return Loc.T(Loc.UI, "update.android_confirming");
                 case UpdateInstaller.Stage.Restarting:
-                    return platform == UpdatePlatform.Web ? "Reloading\u2026" : "Restarting with the new version\u2026";
+                    return Loc.T(Loc.UI, platform == UpdatePlatform.Web ? "update.reloading" : "update.restarting");
                 case UpdateInstaller.Stage.Failed:
                     return installer.Problem;
             }
             if (installer.Problem != null)
                 return installer.Problem;
             if (installer.OfferPage || platform != UpdatePlatform.Web && installer.File == null)
-                return "Download it from the release's page.";
+                return Loc.T(Loc.UI, "update.page");
             switch (platform)
             {
-                case UpdatePlatform.Web: return "The page reloads with the new version.";
-                case UpdatePlatform.Android: return "Android asks you to confirm it; then open the game again. Your settings and decks stay.";
-                default: return "The game restarts once updated. Your settings and decks stay.";
+                case UpdatePlatform.Web: return Loc.T(Loc.UI, "update.web_ready");
+                case UpdatePlatform.Android: return Loc.T(Loc.UI, "update.android_ready");
+                default: return Loc.T(Loc.UI, "update.desktop_ready");
             }
         }
 

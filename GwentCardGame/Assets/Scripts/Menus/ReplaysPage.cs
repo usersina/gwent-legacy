@@ -25,7 +25,7 @@ namespace Gwent.Menus
         private static void Bind(VisualElement root)
         {
             root.Q<Button>("Button Close").clicked += () => UIScreens.Close(root);
-            root.Q<Label>("Caption").text = "The battles you saved: Save replay, on a battle's end screen, keeps one here.";
+            root.Q<Label>("Caption").text = Loc.T(Loc.UI, "replays.caption");
             // The keys move the focus through the list: it scrolls to the focused replay
             ScrollView list = root.Q<ScrollView>("Entries");
             list.RegisterCallback<FocusInEvent>(e =>
@@ -43,7 +43,7 @@ namespace Gwent.Menus
             list.Clear();
             List<ReplayLibrary.Entry> replays = ReplayLibrary.All();
             Label empty = root.Q<Label>("Empty");
-            empty.text = "No replays yet: Save replay, on a battle's end screen, keeps the battle here to watch again.";
+            empty.text = Loc.T(Loc.UI, "replays.empty");
             empty.style.display = replays.Count == 0 ? DisplayStyle.Flex : DisplayStyle.None;
             list.style.display = replays.Count == 0 ? DisplayStyle.None : DisplayStyle.Flex;
 
@@ -77,8 +77,8 @@ namespace Gwent.Menus
 
             Button remove = ActionButton(row, UITheme.Current.iconClose);
             remove.name = "Delete";
-            ElementTooltip.Attach(remove, () => "Delete");
-            remove.clicked += () => UIOverlay.Confirm("Delete this replay?", "Delete", "Keep it", () =>
+            ElementTooltip.Attach(remove, () => Loc.T(Loc.UI, "replays.delete"));
+            remove.clicked += () => UIOverlay.Confirm(Loc.T(Loc.UI, "replays.delete_ask"), Loc.T(Loc.UI, "replays.delete"), Loc.T(Loc.UI, "replays.keep"), () =>
             {
                 ReplayLibrary.Delete(replay);
                 Fill(root);
@@ -110,9 +110,9 @@ namespace Gwent.Menus
             if (record.Kind == RecordKind.Ai)
             {
                 string deck = record.TheirDeck.Name;
-                return "You vs " + (string.IsNullOrEmpty(deck) ? record.TheirDeck.Faction.DisplayName() : deck);
+                return Loc.T(Loc.UI, "replays.you_vs", string.IsNullOrEmpty(deck) ? record.TheirDeck.Faction.DisplayName() : deck);
             }
-            return record.MyName + " vs " + record.TheirName;
+            return Loc.T(Loc.UI, "replays.vs", record.MyName, record.TheirName);
         }
 
         // "Won 2-1, 27 Oct, 14:05", then "Northern Realms vs Monsters"
@@ -120,12 +120,12 @@ namespace Gwent.Menus
         {
             string outcome;
             if (record.GaveUp)
-                outcome = record.GaveUpSeat == record.Seat ? "Gave up" : record.Kind == RecordKind.Ai ? "Opponent gave up" : record.TheirName + " left";
+                outcome = record.GaveUpSeat == record.Seat ? Loc.T(Loc.UI, "replays.gave_up") : record.Kind == RecordKind.Ai ? Loc.T(Loc.UI, "replays.they_gave_up") : Loc.T(Loc.UI, "replays.left", record.TheirName);
             else
-                outcome = record.Outcome == RoundWinner.Player ? "Won" : record.Outcome == RoundWinner.Enemy ? "Lost" : "Draw";
-            string when = record.Saved.ToLocalTime().ToString("d MMM, HH:mm", CultureInfo.InvariantCulture);
+                outcome = Loc.T(Loc.UI, record.Outcome == RoundWinner.Player ? "replays.won" : record.Outcome == RoundWinner.Enemy ? "replays.lost" : "replays.draw");
+            string when = record.Saved.ToLocalTime().ToString("d MMM, HH:mm", Loc.Culture);
             return outcome + " " + record.MyRounds + "\u2013" + record.TheirRounds + " \u00B7 " + when + "\n"
-                + record.MyDeck.Faction.DisplayName() + " vs " + record.TheirDeck.Faction.DisplayName();
+                + Loc.T(Loc.UI, "replays.vs", record.MyDeck.Faction.DisplayName(), record.TheirDeck.Faction.DisplayName());
         }
     }
 }
