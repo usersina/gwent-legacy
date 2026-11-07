@@ -73,7 +73,7 @@ settings.fx.weather,Animated weather,Clima animado
 settings.fx.weather.caption,Off: still pictures,Apagado: imágenes fijas
 settings.fx.storm,Lightning and thunder,Rayos y truenos
 settings.fx.storm.caption,In Skellige Storm,En Tormenta de Skellige
-settings.fx.sun,Clear Weather's sun,Sol del Tiempo despejado
+settings.fx.sun,Clear Weather's sun,Sol de Clima despejado
 settings.fx.sun.caption,The light sweeping the weather away,La luz que disipa el clima
 settings.fx.hero,Hero landing,Aterrizaje de héroes
 settings.fx.hero.caption,Off: the card's edge flashes gold,Apagado: el borde de la carta destella en dorado
@@ -399,7 +399,7 @@ sheet.in_hand,in hand,en la mano
 sheet.in_deck,in deck,en el mazo
 sheet.discarded,discarded,descartadas
 row.decoy,A decoy takes the place of one of your units on the board: choose which,Un señuelo ocupa el lugar de una de tus unidades en el tablero: elige cuál
-row.weather,Weather and Scorch go on the weather board,El clima y Scorch van en el tablero de clima
+row.weather,Weather and Scorch go on the weather board,El clima y Abrasar van en el tablero de clima
 side.faction_you,Faction ability,Habilidad de la facción
 side.faction_opp,Opponent's faction ability,Habilidad de la facción del oponente
 side.ability_tip,{0} ({1}): {2},{0} ({1}): {2}
@@ -559,3 +559,13 @@ deck.lbl_collection,Card Collection,Colección de cartas
 deck.lbl_show_neutrals,Show neutrals,Mostrar neutrales
 battle.passed_label,Passed,Pasó
 battle.press_to_pass,Press to pass,Presiona para pasar
+faction.northern_realms,Northern Realms,Reinos del Norte
+faction.nilfgaard,Nilfgaardian Empire,Imperio nilfgaardiano
+faction.scoiatael,Scoia'tael,Scoia'tael
+faction.monsters,Monsters,Monstruos
+faction.skellige,Skellige,Skellige
+faction.northern_realms.ability,Draw a card from your deck whenever you win a round.,Roba una carta de tu mazo cada vez que ganes una ronda.
+faction.nilfgaard.ability,Win any round that ends in a draw (unless your opponent is Nilfgaard too).,Gana cualquier ronda que termine en empate (salvo que tu oponente también sea Nilfgaard).
+faction.scoiatael.ability,Decide who goes first at the start of the battle.,Decide quién empieza al comienzo de la batalla.
+faction.monsters.ability,Keep one random unit on the board after each round.,Conserva una unidad al azar en el tablero después de cada ronda.
+faction.skellige.ability,Two random units of your discard pile (no heroes or spies) return to the board in the third round.,Dos unidades al azar de tu pila de descarte (sin héroes ni espías) vuelven al tablero en la tercera ronda.

@@ -141,7 +141,7 @@ namespace Gwent.Battle
                     controller.ShowcasePicked(card_id, field, isPlayerCard);
                     controller.SetHider(true);
                     gameObject.SetActive(false);
-                    UIOverlay.Toast(Loc.T(Loc.UI, "pick.where_to_play", controller.GetCard(card_id).name));
+                    UIOverlay.Toast(Loc.T(Loc.UI, "pick.where_to_play", controller.GetCard(card_id).LocalName()));
                     break;
 
                 // A leader's pick: the card goes to the hand and the turn ends

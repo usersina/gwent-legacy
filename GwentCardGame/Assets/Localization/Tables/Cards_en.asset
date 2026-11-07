@@ -17,7 +17,967 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 0ff5237a339fbbb47a54cceb963aef9c, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 17695500640256
+    m_Localized: Albrich
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777600
+    m_Localized: Arachas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777601
+    m_Localized: Arachas Behemoth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777602
+    m_Localized: Assire var Anahid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777603
+    m_Localized: Ballista
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777604
+    m_Localized: Barclay Els
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777605
+    m_Localized: Black Infantry Archer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777606
+    m_Localized: Blue Stripes Commando
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777607
+    m_Localized: Botchling
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777608
+    m_Localized: Bovine Defense Force
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777609
+    m_Localized: Cahir Mawr Dyffryn aep Ceallach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777610
+    m_Localized: Catapult
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777611
+    m_Localized: Celaeno Harpy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777612
+    m_Localized: Ciaran aep Easnillien
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777613
+    m_Localized: Cirilla Fiona Elen Riannon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777614
+    m_Localized: Cockatrice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777615
+    m_Localized: Cow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777616
+    m_Localized: Crinfrid Reavers Dragon Hunter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777617
+    m_Localized: Crone Brewess
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777618
+    m_Localized: Crone Weavess
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777619
+    m_Localized: Crone Whispess
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777620
+    m_Localized: Cynthia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777621
+    m_Localized: Dandelion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777622
+    m_Localized: Dennis Cranmer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777623
+    m_Localized: Dethmold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777624
+    m_Localized: Dol Blathanna Archer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777625
+    m_Localized: Dol Blathanna Scout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777626
+    m_Localized: Draug
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777627
+    m_Localized: Dun Banner Medic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777628
+    m_Localized: Dwarven Skirmisher
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777629
+    m_Localized: Earth Elemental
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777630
+    m_Localized: Eithne
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777631
+    m_Localized: Elven Skirmisher
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777632
+    m_Localized: Emhyr var Emreis Emperor of Nilfgaard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777633
+    m_Localized: Emhyr var Emreis His Imperial Majesty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777634
+    m_Localized: Emhyr var Emreis Invader of The North
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777635
+    m_Localized: Emhyr var Emreis the Relentless
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777636
+    m_Localized: Emhyr var Emreis the White Flame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777637
+    m_Localized: Emiel Regis Rohellec Terzieff
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777638
+    m_Localized: Endrega
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777639
+    m_Localized: Eredin Breacc Glas The Treacherous
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777640
+    m_Localized: Eredin Bringer of Death
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777641
+    m_Localized: Eredin Commander of the Red Riders
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777642
+    m_Localized: Eredin Destroyer of Worlds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777643
+    m_Localized: Eredin King of the Wild Hunt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777644
+    m_Localized: Esterad Thyssen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777645
+    m_Localized: Etolian Auxiliary Archers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777646
+    m_Localized: Fiend
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777647
+    m_Localized: Filavandrel aen Fidhail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777648
+    m_Localized: Fire Elemental
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777649
+    m_Localized: Foglet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777650
+    m_Localized: Foltest King of Temeria
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777651
+    m_Localized: Foltest Lord Commander of the North
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777652
+    m_Localized: Foltest Son of Medell
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777653
+    m_Localized: Foltest the Siegemaster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777654
+    m_Localized: Foltest the Steel-Forged
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777655
+    m_Localized: Forktail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777656
+    m_Localized: Francesca Findabair Daisy of the Valley
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777657
+    m_Localized: Francesca Findabair Hope of the Aen Seidhe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777658
+    m_Localized: Francesca Findabair Pureblood Elf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777659
+    m_Localized: Francesca Findabair Queen of Dol Blathanna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777660
+    m_Localized: Francesca Findabair the Beautiful
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777661
+    m_Localized: Frightener
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777662
+    m_Localized: Fringilla Vigo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777663
+    m_Localized: Gargoyle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777664
+    m_Localized: Gaunter O'Dimm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777665
+    m_Localized: 'Gaunter O''Dimm: Darkness'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777666
+    m_Localized: Geralt of Rivia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777667
+    m_Localized: Ghoul
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777668
+    m_Localized: Grave Hag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777669
+    m_Localized: Griffin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777670
+    m_Localized: Harpy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777671
+    m_Localized: Havekar Healer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777672
+    m_Localized: Havekar Smuggler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777673
+    m_Localized: Heavy Zerrikanian Fire Scorpion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777674
+    m_Localized: Ice Giant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777675
+    m_Localized: Ida Emean aep Sivney
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777676
+    m_Localized: Imlerith
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777677
+    m_Localized: Impera Brigade Guard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777678
+    m_Localized: Iorveth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777679
+    m_Localized: Isengrim Faoiltiarna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777680
+    m_Localized: John Natalis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777681
+    m_Localized: Kaedweni Siege Expert
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777682
+    m_Localized: Kayran
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777683
+    m_Localized: Keira Metz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777684
+    m_Localized: Leshen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777685
+    m_Localized: Letho of Gulet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777686
+    m_Localized: Mahakaman Defender
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777687
+    m_Localized: Menno Coehoorn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777688
+    m_Localized: Milva
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777689
+    m_Localized: Morteisen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777690
+    m_Localized: Morvran Voorhis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777691
+    m_Localized: Mysterious Elf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777692
+    m_Localized: Nausicaa Cavalry Rider
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777693
+    m_Localized: Nekker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777694
+    m_Localized: Olgierd von Everec
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777695
+    m_Localized: Philippa Eilhart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777696
+    m_Localized: Plague Maiden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777697
+    m_Localized: Poor Fucking Infantry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777698
+    m_Localized: Prince Stennis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777699
+    m_Localized: Puttkammer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777700
+    m_Localized: Rainfarn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777701
+    m_Localized: Redanian Foot Soldier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777702
+    m_Localized: Renuald aep Matsen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777703
+    m_Localized: Riordain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777704
+    m_Localized: Rotten Mangonel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777705
+    m_Localized: Sabrina Glevissig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777706
+    m_Localized: Saesenthessis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777707
+    m_Localized: Schirru
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777708
+    m_Localized: Sheldon Skaggs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777709
+    m_Localized: Shilard Fitz-Oesterlen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777710
+    m_Localized: Siege Engineer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777711
+    m_Localized: Siege Technician
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777712
+    m_Localized: Siege Tower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777713
+    m_Localized: Siegfried of Denesle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777714
+    m_Localized: Sigismund Dijkstra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777715
+    m_Localized: Sile de Tansarville
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777716
+    m_Localized: Stefan Skellen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777717
+    m_Localized: Sweers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777718
+    m_Localized: Thaler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777719
+    m_Localized: Tibor Eggebracht
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777720
+    m_Localized: Toad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777721
+    m_Localized: Toruviel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777722
+    m_Localized: Trebuchet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777723
+    m_Localized: Triss Merigold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777724
+    m_Localized: Vampire Bruxa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777725
+    m_Localized: Vampire Ekimmara
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777726
+    m_Localized: Vampire Fleder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777727
+    m_Localized: Vampire Garkain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777728
+    m_Localized: Vampire Katakan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777729
+    m_Localized: Vanhemar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777730
+    m_Localized: Vattier de Rideaux
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777731
+    m_Localized: Vernon Roche
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777732
+    m_Localized: Ves
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777733
+    m_Localized: Vesemir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777734
+    m_Localized: Villentretenmerth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777735
+    m_Localized: Vreemde
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777736
+    m_Localized: Vrihedd Brigade Recruit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777737
+    m_Localized: Vrihedd Brigade Veteran
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777738
+    m_Localized: Werewolf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777739
+    m_Localized: Wyvern
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777740
+    m_Localized: Yaevinn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777741
+    m_Localized: Yarpen Zigrin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777742
+    m_Localized: Yennefer of Vengerberg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777743
+    m_Localized: Young Emissary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777744
+    m_Localized: Zerrikanian Fire Scorpion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777745
+    m_Localized: Zoltan Chivay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777746
+    m_Localized: Berserker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777747
+    m_Localized: Birna Bran
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777748
+    m_Localized: Blueboy Lugos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777749
+    m_Localized: Cerys
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777750
+    m_Localized: Clan an Craite Warrior
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777751
+    m_Localized: Clan Brokvar Archer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777752
+    m_Localized: Clan Dimun Pirate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777753
+    m_Localized: Clan Drummond Shield Maiden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777754
+    m_Localized: Clan Heymaey Skald
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777755
+    m_Localized: Clan Tordarroch Armorsmith
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777756
+    m_Localized: Crach an Craite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777757
+    m_Localized: Donar an Hindar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777758
+    m_Localized: Draig Bon-Dhu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777759
+    m_Localized: Ermion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777760
+    m_Localized: Hemdall
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777761
+    m_Localized: Hjalmar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777762
+    m_Localized: Holger Blackhand
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777763
+    m_Localized: Kambi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777764
+    m_Localized: King Bran
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777765
+    m_Localized: Light Longship
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777766
+    m_Localized: Madman Lugos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777767
+    m_Localized: Olaf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777768
+    m_Localized: Svanrige
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777769
+    m_Localized: Transformed Vildkaarl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777770
+    m_Localized: Transformed Young Vildkaarl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777771
+    m_Localized: Udalryk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777772
+    m_Localized: War Longship
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777773
+    m_Localized: Young Berserker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777774
+    m_Localized: Biting Frost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777775
+    m_Localized: Clear Weather
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777776
+    m_Localized: Commander's Horn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777777
+    m_Localized: Decoy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777778
+    m_Localized: Impenetrable Fog
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777779
+    m_Localized: Scorch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777780
+    m_Localized: Torrential Rain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777781
+    m_Localized: Mardroeme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777782
+    m_Localized: Skellige Storm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777783
+    m_Localized: Leader Ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777784
+    m_Localized: Hero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777785
+    m_Localized: Not affected by any special cards or abilities.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777786
+    m_Localized: Agile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777787
+    m_Localized: Can be placed in either the Close Combat or the Ranged Combat row.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777788
+    m_Localized: Avenger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777789
+    m_Localized: Killed by a scorch, it calls Hemdall to your Close Combat row at once. Discarded any other way, he comes at the start of the next round.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777790
+    m_Localized: Killed by a scorch, it calls the Bovine Defense Force to your Close Combat row at once. Discarded any other way, it comes at the start of the next round.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777791
+    m_Localized: Triggers transformation of all Berserker cards on the same row.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777792
+    m_Localized: Doubles the strength of all unit cards in that row. Limited to 1 per row.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777793
+    m_Localized: Doubles the strength of the other units in its row.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777794
+    m_Localized: Sets the strength of all Close Combat cards to 1 for both players.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777795
+    m_Localized: Sets the strength of all Ranged Combat cards to 1 for both players.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777796
+    m_Localized: Sets the strength of all Siege Combat cards to 1 for both players.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777797
+    m_Localized: Sets the strength of all Ranged and Siege Combat cards to 1 for both players.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777798
+    m_Localized: Removes all weather effects (Biting Frost, Impenetrable Fog, Torrential Rain and Skellige Storm).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777799
+    m_Localized: Swap with a card on the battlefield to return it to your hand.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777800
+    m_Localized: Discard after playing. Kills the strongest card(s) on the battlefield.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777801
+    m_Localized: Spy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777802
+    m_Localized: Place on your opponent's battlefield (counts towards your opponent's total) and draw 2 cards from your deck.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777803
+    m_Localized: Medic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777804
+    m_Localized: Choose one card from your discard pile and play it instantly (no heroes or special cards).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777805
+    m_Localized: Muster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777806
+    m_Localized: Find any cards with the same name in your deck and hand, and play them instantly.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777807
+    m_Localized: Morale Boost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777808
+    m_Localized: Adds +1 to all units in the row (excluding itself).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777809
+    m_Localized: Tight Bond
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777810
+    m_Localized: Place next to a card with the same name to double the strength of both cards.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777811
+    m_Localized: Destroys your enemy's strongest Close Combat unit(s) if the combined strength of all their Close Combat units is 10 or more.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777812
+    m_Localized: Destroys your enemy's strongest Ranged Combat unit(s) if the combined strength of all their Ranged Combat units is 10 or more.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777813
+    m_Localized: Destroys your enemy's strongest Siege unit(s) if the combined strength of all their Siege units is 10 or more.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777814
+    m_Localized: Kills the strongest card(s) on the battlefield as it is played (never itself).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777815
+    m_Localized: Berserker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777816
+    m_Localized: Transforms into a bear when a Mardroeme card is on its row.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777817
+    m_Localized: Look at 3 random cards from your opponent's hand.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777818
+    m_Localized: Pick a Torrential Rain card from your deck and play it instantly.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777819
+    m_Localized: Medics and leader abilities that restore a unit pick a random one (a hero medic still chooses). Affects both players.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777820
+    m_Localized: Draw a unit (not a hero) from your opponent's discard pile.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777821
+    m_Localized: Cancels your opponent's leader ability.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777822
+    m_Localized: Doubles the strength of all spy cards. Affects both players.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777823
+    m_Localized: Restore a unit (not a hero) from your discard pile to your hand.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777824
+    m_Localized: Doubles the strength of all your Close Combat units (unless a Commander's Horn is also on that row).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777825
+    m_Localized: Discard 2 cards and draw 1 card of your choice from your deck.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777826
+    m_Localized: Pick any weather card from your deck and play it instantly.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777827
+    m_Localized: Pick an Impenetrable Fog card from your deck and play it instantly.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777828
+    m_Localized: Clears all weather effects (Biting Frost, Impenetrable Fog, Torrential Rain and Skellige Storm).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777829
+    m_Localized: Destroys your enemy's strongest Ranged Combat unit(s) if the combined strength of all their Ranged Combat units is 10 or more.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777830
+    m_Localized: Doubles the strength of all your Siege units (unless a Commander's Horn is also on that row).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777831
+    m_Localized: Destroys your enemy's strongest Siege unit(s) if the combined strength of all their Siege units is 10 or more.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777832
+    m_Localized: Draw an extra card at the beginning of the battle.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777833
+    m_Localized: Moves agile units to whichever valid row maximizes their strength (units already on their best row stay).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777834
+    m_Localized: Pick a Biting Frost card from your deck and play it instantly.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777835
+    m_Localized: Destroys your enemy's strongest Close Combat unit(s) if the combined strength of all their Close Combat units is 10 or more.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777836
+    m_Localized: Doubles the strength of all your Ranged Combat units (unless a Commander's Horn is also on that row).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777837
+    m_Localized: Shuffles all cards from each player's discard pile back into their decks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777838
+    m_Localized: Your units only lose half their strength in bad weather.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

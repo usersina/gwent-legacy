@@ -315,7 +315,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6579991060527
-    m_Localized: Sol del Tiempo despejado
+    m_Localized: Sol de Clima despejado
     m_Metadata:
       m_Items: []
   - m_Id: 6579991060528
@@ -1619,7 +1619,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 15369981370528
-    m_Localized: El clima y Scorch van en el tablero de clima
+    m_Localized: El clima y Abrasar van en el tablero de clima
     m_Metadata:
       m_Items: []
   - m_Id: 15369981370529
@@ -2240,6 +2240,46 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 15369981370683
     m_Localized: Presiona para pasar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696226254848
+    m_Localized: Reinos del Norte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169408
+    m_Localized: Imperio nilfgaardiano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169409
+    m_Localized: Scoia'tael
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169410
+    m_Localized: Monstruos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169411
+    m_Localized: Skellige
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169412
+    m_Localized: Roba una carta de tu mazo cada vez que ganes una ronda.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169413
+    m_Localized: "Gana cualquier ronda que termine en empate (salvo que tu oponente tambi\xE9n sea Nilfgaard)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169414
+    m_Localized: "Decide qui\xE9n empieza al comienzo de la batalla."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169415
+    m_Localized: "Conserva una unidad al azar en el tablero despu\xE9s de cada ronda."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169416
+    m_Localized: "Dos unidades al azar de tu pila de descarte (sin h\xE9roes ni esp\xEDas) vuelven al tablero en la tercera ronda."
     m_Metadata:
       m_Items: []
   references:

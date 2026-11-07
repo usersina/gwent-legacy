@@ -30,8 +30,8 @@ namespace Gwent.Menus
                 if (deck == null)
                     continue;
                 // The faction and the leader on a line each: on one, a long leader's name was cut short
-                string leader = db.Contains(deck.Leader) ? db.Get(deck.Leader).DisplayName : "";
-                MenuEntry entry = Entry(entries, deck.Leader, deck.Name, deck.Faction.DisplayName() + "\n" + leader, file.name, file.name == chosen);
+                string leader = db.Contains(deck.Leader) ? db.Get(deck.Leader).LocalName() : "";
+                MenuEntry entry = Entry(entries, deck.Leader, deck.Name, deck.Faction.LocalName() + "\n" + leader, file.name, file.name == chosen);
                 if (file.name == chosen)
                     focus = entry;
             }

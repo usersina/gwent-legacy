@@ -343,7 +343,7 @@ namespace Gwent.Battle
             who.overflowMode = TextOverflowModes.Ellipsis;
             who.color = theme.text;
             who.rectTransform.Place(new Vector2(0, 1), new Vector2(30 + 120, y + 4), new Vector2(270, 44), new Vector2(0, 0));
-            TextMeshProUGUI faction = UIKit.Text(board, Factions.DisplayName(info.Faction), UIKit.TextStyle.Caption, TextAlignmentOptions.TopLeft);
+            TextMeshProUGUI faction = UIKit.Text(board, info.Faction.LocalName(), UIKit.TextStyle.Caption, TextAlignmentOptions.TopLeft);
             faction.rectTransform.Place(new Vector2(0, 1), new Vector2(30 + 120, y - 2), new Vector2(270, 34), new Vector2(0, 1));
 
             for (int round = 0; round < 3; round++)
@@ -451,7 +451,7 @@ namespace Gwent.Battle
                 CardArt.Show(art, card);
             }
             if (reward.Cards.Count > 0)
-                line.Text(reward.Cards.Count <= 2 ? string.Join(", ", reward.Cards.Select(card => db.Get(card).DisplayName)) : Loc.T(Loc.UI, "end.cards", reward.Cards.Count), theme.text);
+                line.Text(reward.Cards.Count <= 2 ? string.Join(", ", reward.Cards.Select(card => db.Get(card).LocalName())) : Loc.T(Loc.UI, "end.cards", reward.Cards.Count), theme.text);
             if (reward.Crowns > 0)
             {
                 line.Picture("Coin", theme.iconCoin, theme.goldBright, new Vector2(34, 34));
@@ -522,7 +522,7 @@ namespace Gwent.Battle
                 Image face = UIKit.NewImage(view, "Won " + db.Get(card).DisplayName, null, Color.white, true);
                 face.rectTransform.Place(new Vector2(0.5f, 0.5f), at, new Vector2(width, height));
                 CardArt.Show(face, card);
-                face.gameObject.AddComponent<UITooltip>().text = () => db.Get(card).DisplayName;
+                face.gameObject.AddComponent<UITooltip>().text = () => db.Get(card).LocalName();
                 face.rectTransform.localScale = new Vector3(0, 1, 1);
                 Image back = UIKit.NewImage(view, "Back", CardArt.Back(card), Color.white);
                 back.rectTransform.Place(new Vector2(0.5f, 0.5f), at, new Vector2(width, height));

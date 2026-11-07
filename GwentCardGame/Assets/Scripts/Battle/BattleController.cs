@@ -1329,7 +1329,7 @@ namespace Gwent.Battle
             {
                 GameAudio.PlaySfx("invalid");
                 UIOverlay.Toast(CardIds.IsSummoned(targetStats._id) && targetCard.CompareTag("Player")
-                    ? Loc.T(Loc.UI, "battle.decoy_summoned", targetStats.DisplayName)
+                    ? Loc.T(Loc.UI, "battle.decoy_summoned", targetStats.LocalName())
                     : Loc.T(Loc.UI, "battle.decoy_target"));
                 return true;
             }

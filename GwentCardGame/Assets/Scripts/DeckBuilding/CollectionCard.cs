@@ -113,7 +113,7 @@ namespace Gwent.DeckBuilding
             if (!Gwent.Rules.DeckRules.Fits(card, deckBuilder.my_deck.Faction))
             {
                 GameAudio.PlaySfx("invalid");
-                UIOverlay.Toast(Loc.T(Loc.UI, "deck.wrong_faction", card.DisplayName));
+                UIOverlay.Toast(Loc.T(Loc.UI, "deck.wrong_faction", card.LocalName()));
                 return false;
             }
 
@@ -123,7 +123,7 @@ namespace Gwent.DeckBuilding
                 GameAudio.PlaySfx("invalid");
                 int owned = DeckContext.Supply.Copies(card);
                 bool story_limit = DeckContext.InStory && owned < Gwent.Rules.DeckRules.MaxCopies(card);
-                UIOverlay.Toast(story_limit ? (owned == 1 ? Loc.T(Loc.UI, "deck.own_one", card.DisplayName) : Loc.T(Loc.UI, "deck.own_many", owned, card.DisplayName))
+                UIOverlay.Toast(story_limit ? (owned == 1 ? Loc.T(Loc.UI, "deck.own_one", card.LocalName()) : Loc.T(Loc.UI, "deck.own_many", owned, card.LocalName()))
                     : Gwent.Rules.DeckRules.TooManyCopies(card));
                 return false;
             }
@@ -281,7 +281,7 @@ namespace Gwent.DeckBuilding
             Card stats = GetComponent<CardRef>().Card;
             TextMeshProUGUI name_text = transform.Find("Name").GetComponent<TextMeshProUGUI>();
             Image patch = transform.Find("Patch").GetComponent<Image>();
-            name_text.text = Card.DisplayNameOf(stats.name);
+            name_text.text = stats.LocalName();
 
             // Neutral and special cards have no faction banner: their name is centered on a wider patch (Blood and Wine's
             // Mardroeme and Skellige Storm carry Skellige's)

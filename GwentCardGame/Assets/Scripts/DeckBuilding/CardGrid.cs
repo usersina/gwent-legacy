@@ -464,7 +464,7 @@ namespace Gwent.DeckBuilding
                 return;
             faction = deck_faction;
             if (factionPerk != null)
-                factionPerk.text = faction.Ability();
+                factionPerk.text = faction.LocalAbility();
             if (header != null)
                 header.startingPanel = panel;
         }
@@ -476,7 +476,7 @@ namespace Gwent.DeckBuilding
             if (panel >= 0 && panel < HeaderFactions.Length)
             {
                 faction = HeaderFactions[panel];
-                factionPerk.text = faction.Ability();
+                factionPerk.text = faction.LocalAbility();
                 Select(selectedTab);
             }
 

@@ -45,7 +45,7 @@ namespace Gwent.Story
                     if (hidden)
                         Line(entry, "• " + Loc.T(Loc.UI, "story.more_to_come"), false);
                     if (quest.Reward.Count > 0)
-                        Line(entry, Loc.T(Loc.UI, done ? "story.reward_done" : "story.reward", string.Join(", ", quest.Reward.Select(id => db.Get(id).DisplayName))), done);
+                        Line(entry, Loc.T(Loc.UI, done ? "story.reward_done" : "story.reward", string.Join(", ", quest.Reward.Select(id => db.Get(id).LocalName()))), done);
                 }
                 VisualElement collect = Entry(entries, Loc.T(Loc.UI, "story.collect_all"), story.CollectionComplete);
                 Line(collect, (story.CollectionComplete ? "✓ " : "• ") + Loc.T(Loc.UI, "story.every_card_count", story.State.Cards.Count, AllCards), story.CollectionComplete);
@@ -86,7 +86,7 @@ namespace Gwent.Story
                 {
                     List<Card> cards = db.All.Where(card => card.faction == faction && card.copies > 0).ToList();
                     int have = cards.Sum(card => story.Owned(card._id)), total = cards.Sum(card => card.copies);
-                    Bar(entries, faction == Faction.Special ? Loc.T(Loc.UI, "story.special_cards") : faction == Faction.Neutral ? Loc.T(Loc.UI, "story.neutral") : faction.DisplayName(), have, total, false);
+                    Bar(entries, faction == Faction.Special ? Loc.T(Loc.UI, "story.special_cards") : faction == Faction.Neutral ? Loc.T(Loc.UI, "story.neutral") : faction.LocalName(), have, total, false);
                 }
             }, on_close);
         }

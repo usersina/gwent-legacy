@@ -142,7 +142,7 @@ namespace Gwent.DeckBuilding
             stats.Card = leader_card;
 
             CardArt.Show(leaderGo.GetComponent<Image>(), loadedDeck.Leader);
-            leaderGo.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = leader_card.name;
+            leaderGo.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = leader_card.LocalName();
         }
 
         // Updates the middle info numbers

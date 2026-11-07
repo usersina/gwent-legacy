@@ -110,7 +110,7 @@ namespace Gwent.Menus
             if (record.Kind == RecordKind.Ai)
             {
                 string deck = record.TheirDeck.Name;
-                return Loc.T(Loc.UI, "replays.you_vs", string.IsNullOrEmpty(deck) ? record.TheirDeck.Faction.DisplayName() : deck);
+                return Loc.T(Loc.UI, "replays.you_vs", string.IsNullOrEmpty(deck) ? record.TheirDeck.Faction.LocalName() : deck);
             }
             return Loc.T(Loc.UI, "replays.vs", record.MyName, record.TheirName);
         }
@@ -125,7 +125,7 @@ namespace Gwent.Menus
                 outcome = Loc.T(Loc.UI, record.Outcome == RoundWinner.Player ? "replays.won" : record.Outcome == RoundWinner.Enemy ? "replays.lost" : "replays.draw");
             string when = record.Saved.ToLocalTime().ToString("d MMM, HH:mm", Loc.Culture);
             return outcome + " " + record.MyRounds + "\u2013" + record.TheirRounds + " \u00B7 " + when + "\n"
-                + Loc.T(Loc.UI, "replays.vs", record.MyDeck.Faction.DisplayName(), record.TheirDeck.Faction.DisplayName());
+                + Loc.T(Loc.UI, "replays.vs", record.MyDeck.Faction.LocalName(), record.TheirDeck.Faction.LocalName());
         }
     }
 }

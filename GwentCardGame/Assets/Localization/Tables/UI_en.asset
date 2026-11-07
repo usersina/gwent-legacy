@@ -2246,6 +2246,46 @@ MonoBehaviour:
     m_Localized: Press to pass
     m_Metadata:
       m_Items: []
+  - m_Id: 17696226254848
+    m_Localized: Northern Realms
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169408
+    m_Localized: Nilfgaardian Empire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169409
+    m_Localized: Scoia'tael
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169410
+    m_Localized: Monsters
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169411
+    m_Localized: Skellige
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169412
+    m_Localized: Draw a card from your deck whenever you win a round.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169413
+    m_Localized: Win any round that ends in a draw (unless your opponent is Nilfgaard too).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169414
+    m_Localized: Decide who goes first at the start of the battle.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169415
+    m_Localized: Keep one random unit on the board after each round.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169416
+    m_Localized: Two random units of your discard pile (no heroes or spies) return to the board in the third round.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

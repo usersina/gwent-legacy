@@ -2239,6 +2239,46 @@ MonoBehaviour:
     m_Key: battle.press_to_pass
     m_Metadata:
       m_Items: []
+  - m_Id: 17696226254848
+    m_Key: faction.northern_realms
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169408
+    m_Key: faction.nilfgaard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169409
+    m_Key: faction.scoiatael
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169410
+    m_Key: faction.monsters
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169411
+    m_Key: faction.skellige
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169412
+    m_Key: faction.northern_realms.ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169413
+    m_Key: faction.nilfgaard.ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169414
+    m_Key: faction.scoiatael.ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169415
+    m_Key: faction.monsters.ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17696289169416
+    m_Key: faction.skellige.ability
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -74,7 +74,7 @@ namespace Gwent.Battle
             CardArt.ShowPortrait(art, side.Leader);
             float text_x = Pad + Face + 20, text_width = Width - text_x - Pad - 50;
             TextMeshProUGUI name = Line(panel, side.Name, UIKit.TextStyle.Heading, 32, theme.goldBright, text_x, y + 12, text_width, false);
-            Line(panel, side.Faction.DisplayName(), UIKit.TextStyle.Body, 24, theme.textSecondary, text_x, y + 12 + name.preferredHeight + 2, text_width, false);
+            Line(panel, side.Faction.LocalName(), UIKit.TextStyle.Body, 24, theme.textSecondary, text_x, y + 12 + name.preferredHeight + 2, text_width, false);
             y += Face + 18;
 
             Button close = UIKit.RoundButton(panel, "Close", "×", null, Close, 44);
@@ -86,7 +86,7 @@ namespace Gwent.Battle
             Image shield = UIKit.NewImage(panel, "Shield", SpriteCache.Load("Stats/faction/" + side.Faction.Code()), Color.white);
             shield.preserveAspect = true;
             shield.rectTransform.Place(new Vector2(0, 1), new Vector2(Pad, -y), new Vector2(52, 60), new Vector2(0, 1));
-            y = Section(panel, Loc.T(Loc.UI, "sheet.faction_ability"), side.Faction.Ability() ?? Loc.T(Loc.UI, "sheet.none"), y);
+            y = Section(panel, Loc.T(Loc.UI, "sheet.faction_ability"), side.Faction.LocalAbility() ?? Loc.T(Loc.UI, "sheet.none"), y);
             y = Mathf.Max(y, row + 60) + 16;
 
             // The leader's ability and its state
@@ -101,7 +101,7 @@ namespace Gwent.Battle
             }
             Card leader = battle.GetCard(side.Leader);
             string ability = CardDescription.LeaderAbility(side.Leader) ?? "";
-            y = Section(panel, Loc.T(Loc.UI, "sheet.leader", leader != null ? leader.DisplayName : "?"), ability, y);
+            y = Section(panel, Loc.T(Loc.UI, "sheet.leader", leader != null ? leader.LocalName() : "?"), ability, y);
             if (slot != null)
             {
                 bool usable;

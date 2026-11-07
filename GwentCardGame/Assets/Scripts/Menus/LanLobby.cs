@@ -312,8 +312,8 @@ namespace Gwent.Menus
             {
                 Deck deck = BattleController.PlayerDeck(CardLibrary.Get(), out string unplayable);
                 CardArt.ShowPortrait(youArt, deck.Leader);
-                deckName.text = unplayable == null ? deck.Name ?? deck.Faction.DisplayName() : Loc.T(Loc.UI, "lan.default_deck");
-                youDeck.text = unplayable == null ? Loc.T(Loc.UI, "lan.deck_cards", deck.Faction.DisplayName(), deck.Cards.Count)
+                deckName.text = unplayable == null ? deck.Name ?? deck.Faction.LocalName() : Loc.T(Loc.UI, "lan.default_deck");
+                youDeck.text = unplayable == null ? Loc.T(Loc.UI, "lan.deck_cards", deck.Faction.LocalName(), deck.Cards.Count)
                     : Loc.T(Loc.UI, "lan.deck_unplayable", unplayable);
             }
 
@@ -326,13 +326,13 @@ namespace Gwent.Menus
 
             private static string FactionAndLeader(Deck deck)
             {
-                return deck.Faction.DisplayName() + "  ·  " + LeaderName(deck.Leader);
+                return deck.Faction.LocalName() + "  ·  " + LeaderName(deck.Leader);
             }
 
             private static string LeaderName(int leader)
             {
                 CardDatabase db = CardLibrary.Get();
-                return db.Contains(leader) ? db.Get(leader).DisplayName : "";
+                return db.Contains(leader) ? db.Get(leader).LocalName() : "";
             }
 
             //----------------------------------------A battle still on----------------------------------------//
@@ -385,7 +385,7 @@ namespace Gwent.Menus
                     entry.Q<Label>("Title").text = game.Name;
                     bool known = db.Contains(game.Leader);
                     entry.Q<Label>("Detail").text = !game.Compatible ? Loc.T(Loc.UI, "lan.other_build", BuildInfo.Short(game.Version))
-                        : known ? db.Get(game.Leader).faction.DisplayName() + "  ·  " + db.Get(game.Leader).DisplayName : game.Address;
+                        : known ? db.Get(game.Leader).faction.LocalName() + "  ·  " + db.Get(game.Leader).LocalName() : game.Address;
                     entry.EnableInClassList("lan__game--other", !game.Compatible);
                     entry.EnableInClassList("lan__game--touch", GameInput.IsTouch); // "Join" shows: no pointer to light it
                     if (known)

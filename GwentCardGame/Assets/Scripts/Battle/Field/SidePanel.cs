@@ -135,7 +135,7 @@ namespace Gwent.Battle
 
         private string AbilityTooltip()
         {
-            string ability = faction.Ability();
+            string ability = faction.LocalAbility();
             if (ability == null)
                 return null;
             return Loc.T(Loc.UI, "side.ability_tip", Loc.T(Loc.UI, isPlayers ? "side.faction_you" : "side.faction_opp"), deckText.text, ability);
