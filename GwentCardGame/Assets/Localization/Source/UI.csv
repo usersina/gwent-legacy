@@ -8,3 +8,20 @@ menu.quit,Quit game,Salir del juego
 menu.note,"Fan project, not affiliated with CD PROJEKT RED","Proyecto de fans, sin afiliación con CD PROJEKT RED"
 settings.language,Language,Idioma
 settings.language.caption,Takes effect at once,Se aplica al instante
+lan.title,Local network,Red local
+lan.change_deck,Change deck,Cambiar mazo
+lan.abandon,Abandon,Abandonar
+lan.battles,Battles on your network,Batallas en tu red
+lan.join,Join,Unirse
+lan.join_address,Join by address,Unirse por dirección
+lan.vpn_note,"Friends on your VPN (Tailscale, ZeroTier, Hamachi...) can join from anywhere with its address.","Tus amigos en tu VPN (Tailscale, ZeroTier, Hamachi...) pueden unirse desde cualquier lugar con su dirección."
+pause.resume,Resume,Reanudar
+pause.leave,Leave battle,Abandonar batalla
+opponent.title,Choose your opponent,Elige a tu oponente
+settings.title,Settings,Ajustes
+settings.tab.game,Game,Juego
+settings.tab.display,Display,Pantalla
+settings.tab.graphics,Graphics,Gráficos
+settings.tab.audio,Audio,Audio
+settings.reset,Reset to defaults,Restablecer valores
+update.title,A new version,Una versión nueva
