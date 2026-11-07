@@ -10,6 +10,7 @@
         "Unity.Addressables",
         "Unity.Collections",
         "Unity.InputSystem",
+        "Unity.Localization",
         "Unity.Networking.Transport",
         "Unity.ResourceManager",
         "Unity.TextMeshPro",

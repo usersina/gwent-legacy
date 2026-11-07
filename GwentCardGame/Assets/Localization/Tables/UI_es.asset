@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UI_es
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: 8f3ca6c62f9c70146b7faf8921cdabba, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 726114304
+    m_Localized: Jugar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 797417472
+    m_Localized: Armar mazo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 797417473
+    m_Localized: Repeticiones
+    m_Metadata:
+      m_Items: []
+  - m_Id: 797417474
+    m_Localized: "C\xF3mo jugar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 801611776
+    m_Localized: Ajustes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 801611777
+    m_Localized: Salir del juego
+    m_Metadata:
+      m_Items: []
+  - m_Id: 801611778
+    m_Localized: "Proyecto de fans, sin afiliaci\xF3n con CD PROJEKT RED"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 801611779
+    m_Localized: Idioma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 801611780
+    m_Localized: Se aplica al instante
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

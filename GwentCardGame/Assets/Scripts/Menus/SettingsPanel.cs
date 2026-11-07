@@ -361,6 +361,15 @@ namespace Gwent.Menus
 
         private static Focusable BuildGamePage(VisualElement page)
         {
+            // The texts of every screen come from the language's tables, so a new language shows once the panel is rebuilt
+            // (Reopen), after its tables are loaded
+            string[] languages = Loc.Languages.Select(Loc.NameOf).ToArray();
+            Stepper language = StepperRow(page, Loc.T(Loc.UI, "settings.language"), languages, Loc.Current,
+                i => Loc.Set(i, () =>
+                {
+                    if (IsOpen)
+                        Reopen();
+                }), Loc.T(Loc.UI, "settings.language.caption"));
             Stepper speed = StepperRow(page, "Game speed", GameSettings.GameSpeedNames, GameSettings.GameSpeed,
                 i => GameSettings.GameSpeed = i, "Cards, notices and the opponent");
 
@@ -375,13 +384,18 @@ namespace Gwent.Menus
             SwitchRow(page, "Censored artwork", "Covered versions of some cards' art", GameSettings.CensoredArt, on => GameSettings.CensoredArt = on);
             SwitchRow(page, "Check for updates", "On launch, from the game's page on GitHub", GameSettings.CheckForUpdates,
                 on => GameSettings.CheckForUpdates = on);
-            return speed.Left;
+            return language.Left;
         }
 
         private static void ResetToDefaults()
         {
             GameSettings.ResetToDefaults();
-            // Rebuilt with the default values, on the same tab
+            Reopen();
+        }
+
+        // Rebuilt with the values now (the defaults, another language), on the same tab
+        private static void Reopen()
+        {
             Action closed = onClosed;
             int tab = currentTab;
             onClosed = null;

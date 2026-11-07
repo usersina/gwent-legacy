@@ -1,15 +1,15 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:l="UnityEngine.Localization" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Toolkit/Gwent.uss" />
     <!-- The main menu: Witcher-style entries on the left of the key art (the key art and its title are the scene's) -->
     <ui:VisualElement name="MainMenu" class="screen" picking-mode="Ignore">
         <ui:VisualElement name="Scrim" class="main-menu__scrim" picking-mode="Ignore" />
         <ui:VisualElement name="Entries" class="main-menu__entries">
-            <Gwent.UI.MenuEntry name="Item Play" text="Play" />
-            <Gwent.UI.MenuEntry name="Item Deck builder" text="Deck builder" />
-            <Gwent.UI.MenuEntry name="Item Replays" text="Replays" />
-            <Gwent.UI.MenuEntry name="Item How to play" text="How to play" />
-            <Gwent.UI.MenuEntry name="Item Settings" text="Settings" />
-            <Gwent.UI.MenuEntry name="Item Quit" text="Quit game" />
+            <Gwent.UI.MenuEntry name="Item Play" text="Play"><Bindings><l:LocalizedString property="text" table="UI" entry="menu.play" /></Bindings></Gwent.UI.MenuEntry>
+            <Gwent.UI.MenuEntry name="Item Deck builder" text="Deck builder"><Bindings><l:LocalizedString property="text" table="UI" entry="menu.deck" /></Bindings></Gwent.UI.MenuEntry>
+            <Gwent.UI.MenuEntry name="Item Replays" text="Replays"><Bindings><l:LocalizedString property="text" table="UI" entry="menu.replays" /></Bindings></Gwent.UI.MenuEntry>
+            <Gwent.UI.MenuEntry name="Item How to play" text="How to play"><Bindings><l:LocalizedString property="text" table="UI" entry="menu.rules" /></Bindings></Gwent.UI.MenuEntry>
+            <Gwent.UI.MenuEntry name="Item Settings" text="Settings"><Bindings><l:LocalizedString property="text" table="UI" entry="menu.settings" /></Bindings></Gwent.UI.MenuEntry>
+            <Gwent.UI.MenuEntry name="Item Quit" text="Quit game"><Bindings><l:LocalizedString property="text" table="UI" entry="menu.quit" /></Bindings></Gwent.UI.MenuEntry>
         </ui:VisualElement>
         <!-- A newer build is out (shown once the update check finds one, top right): opens what's new and Update -->
         <Gwent.UI.DialogButton name="Button Update" class="button--secondary main-menu__update" />
@@ -21,7 +21,7 @@
                 <ui:Label name="Commit" class="caption main-menu__commit" />
                 <ui:Label name="Build end" class="caption" picking-mode="Ignore" />
             </ui:VisualElement>
-            <ui:Label name="Note" text="Fan project, not affiliated with CD PROJEKT RED" class="caption main-menu__note" picking-mode="Ignore" />
+            <ui:Label name="Note" text="Fan project, not affiliated with CD PROJEKT RED" class="caption main-menu__note" picking-mode="Ignore"><Bindings><l:LocalizedString property="text" table="UI" entry="menu.note" /></Bindings></ui:Label>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

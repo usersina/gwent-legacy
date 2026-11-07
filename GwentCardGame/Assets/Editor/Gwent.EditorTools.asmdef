@@ -6,6 +6,8 @@
         "Unity.Addressables",
         "Unity.Addressables.Editor",
         "Unity.InputSystem",
+        "Unity.Localization",
+        "Unity.Localization.Editor",
         "Unity.ResourceManager",
         "Unity.TextMeshPro",
         "UnityEngine.UI"

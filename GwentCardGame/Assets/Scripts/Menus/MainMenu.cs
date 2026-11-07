@@ -21,13 +21,15 @@ namespace Gwent.Menus
 
         public IList<MenuEntry> Items { get { return items; } }
 
-        private void Start()
+        private async UniTaskVoid Start()
         {
             Gwent.Net.LanSession.ForgetBattle(); // a LAN battle that closed is no battle to load any more
             Gwent.Story.StoryBattle.Forget();
             DeckContext.Leave(); // the free collection: Play, Multiplayer and the deck builder take every card
             bool replays = Gwent.Replays.ReplayPlayer.Forget(); // nor is a replay (left for its list: it opens again)
             GameAudio.PlayMenuMusic();
+            // The texts come from the language's tables (Loc): the menu shows once they are loaded
+            await Loc.Ready().AttachExternalCancellation(destroyCancellationToken);
             UIScreens.Show("MainMenu", UITheme.Current.mainMenu, Bind);
             UIOverlay.SetEscapeAction(AskQuit);
             UpdateCheck.Found += ShowUpdate;
