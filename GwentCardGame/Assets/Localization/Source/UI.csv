@@ -165,3 +165,49 @@ update.read_only,The game's folder can't be written to ({0}): download the new v
 update.no_game,The downloaded version doesn't hold the game ({0}).,La versión descargada no contiene el juego ({0}).
 update.download_failed,The download failed: {0}.,La descarga falló: {0}.
 update.checksum,The download doesn't match the release (its checksum differs): try again later.,La descarga no coincide con la versión publicada (su suma de verificación difiere): inténtalo más tarde.
+lan.keep,Keep it,Conservarla
+lan.abandon_ask,Abandon your battle with {0}? It can't be taken up again.,¿Abandonar tu batalla con {0}? No se puede retomar.
+lan.copy,Copy,Copiar
+lan.copied,Copied,Copiado
+lan.details,Details,Detalles
+lan.hide_details,Hide details,Ocultar detalles
+lan.address_placeholder,"Address, like 192.168.1.20","Dirección, por ejemplo 192.168.1.20"
+lan.name_rule,"Up to {0} letters, numbers, spaces and - _ . '","Hasta {0} letras, números, espacios y - _ . '"
+lan.default_deck,The default deck,El mazo predeterminado
+lan.deck_cards,{0}  ·  {1} cards,{0}  ·  {1} cartas
+lan.deck_unplayable,Yours can't be played: {0},Tu mazo no se puede usar: {0}
+lan.rejoin_title,Your battle with {0} is still on,Tu batalla con {0} sigue en curso
+lan.left_now,Left just now,Saliste hace un momento
+lan.left_minute,Left 1 minute ago,Saliste hace 1 minuto
+lan.left_minutes,Left {0} minutes ago,Saliste hace {0} minutos
+lan.left_hour,Left 1 hour ago,Saliste hace 1 hora
+lan.left_hours,Left {0} hours ago,Saliste hace {0} horas
+lan.searching,Searching,Buscando
+lan.no_network,No network,Sin red
+lan.empty_offline,You're not on a network. Join a Wi-Fi or a phone's hotspot to play on LAN.,No estás en una red. Conéctate a un Wi-Fi o al punto de acceso de un teléfono para jugar en red local.
+lan.empty,No battles yet. Players on your Wi-Fi or hotspot show up here.,Todavía no hay batallas. Los jugadores de tu Wi-Fi o punto de acceso aparecen aquí.
+lan.other_build,Another build of the game ({0}): can't be joined,Otra compilación del juego ({0}): no se puede entrar
+lan.other_build_refused,That battle runs another build of the game ({0}; yours: {1}). Both players need the same build.,Esa batalla usa otra compilación del juego ({0}; la tuya: {1}). Ambos jugadores necesitan la misma compilación.
+lan.type_address,Type the address shown on the host's screen.,Escribe la dirección que aparece en la pantalla del anfitrión.
+lan.room_yours,Your battle,Tu batalla
+lan.room_theirs,{0}'s battle,Batalla de {0}
+lan.room_joining,Joining a battle,Uniéndote a una batalla
+lan.room_ready_host,{0} is here. Start the battle when you're ready.,{0} ya está aquí. Inicia la batalla cuando quieras.
+lan.room_ready_guest,Waiting for {0} to start the battle.,Esperando a que {0} inicie la batalla.
+lan.room_left,{0} left.,{0} se fue.
+lan.tag_host,Host,Anfitrión
+lan.tag_ready,Ready,Listo
+lan.tag_joining,Joining,Uniéndose
+lan.seat_waiting,Waiting for a player,Esperando a un jugador
+lan.seat_joining,Joining…,Uniéndose…
+lan.reach_none,You're not on a network: join a Wi-Fi or a phone's hotspot.,No estás en una red: conéctate a un Wi-Fi o al punto de acceso de un teléfono.
+lan.reach_address,Your address: {0},Tu dirección: {0}
+lan.reach_unlisted,Your address: {0} (not listed: others join by address),Tu dirección: {0} (no aparece en las listas: los demás se unen por dirección)
+lan.or,or,o
+lan.kind_hotspot,Hotspot,Punto de acceso
+lan.kind_network,Network,Red
+lan.ports,"Ports: {0} for the battle, {1} and {2} for the search (all UDP)","Puertos: {0} para la batalla, {1} y {2} para la búsqueda (todos UDP)"
+lan.host,Host a battle,Organizar una batalla
+lan.start,Start the battle,Iniciar la batalla
+lan.stop_hosting,Stop hosting,Dejar de organizar
+lan.leave,Leave,Salir

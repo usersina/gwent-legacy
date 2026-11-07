@@ -159,7 +159,7 @@ namespace Gwent.Menus
                     if (kept == null)
                         return;
                     LanSave abandoned = kept;
-                    UIOverlay.Confirm("Abandon your battle with " + abandoned.TheirName + "? It can't be taken up again.", "Abandon", "Keep it", () =>
+                    UIOverlay.Confirm(Loc.T(Loc.UI, "lan.abandon_ask", abandoned.TheirName), Loc.T(Loc.UI, "lan.abandon"), Loc.T(Loc.UI, "lan.keep"), () =>
                     {
                         abandoned.Delete();
                         kept = LanSave.Load();
@@ -170,17 +170,20 @@ namespace Gwent.Menus
                 main.clicked += MainClicked;
                 back.clicked += BackClicked;
                 root.Q<Button>("Button Close").clicked += () => UIScreens.Close(root); // leaving a room too (Closed)
-                root.Q<Label>("Build").text = "Build " + BuildInfo.Build;
+                root.Q<Label>("Build").text = Loc.T(Loc.UI, "menu.build", BuildInfo.Build);
+                // These two are set in code (Copy and the details toggle change them), so the UXML has no binding for them
+                copy.text = Loc.T(Loc.UI, "lan.copy");
+                detailsButton.text = Loc.T(Loc.UI, "lan.details");
                 copy.clicked += () => Copy(copy, copy.userData as string);
                 detailsButton.clicked += () =>
                 {
                     detailsOpen = !detailsOpen;
-                    detailsButton.text = detailsOpen ? "Hide details" : "Details";
+                    detailsButton.text = Loc.T(Loc.UI, detailsOpen ? "lan.hide_details" : "lan.details");
                     Refresh();
                 };
 
                 // Join by address: the field opens under the list on asking
-                address.textEdition.placeholder = "Address, like 192.168.1.20";
+                address.textEdition.placeholder = Loc.T(Loc.UI, "lan.address_placeholder");
                 Show(addressRow, false);
                 addressLink.clicked += () =>
                 {
@@ -253,8 +256,8 @@ namespace Gwent.Menus
 
                 bool start = !idle && session.Hosting && session.State == LanSession.Stage.Ready;
                 ShowMain(idle || start);
-                string main_text = rejoining ? "Rejoin" : idle ? "Host a battle" : "Start the battle";
-                string back_text = idle ? back.text : session.Hosting ? "Stop hosting" : "Leave";
+                string main_text = Loc.T(Loc.UI, rejoining ? "mp.lan.rejoin" : idle ? "lan.host" : "lan.start");
+                string back_text = idle ? back.text : Loc.T(Loc.UI, session.Hosting ? "lan.stop_hosting" : "lan.leave");
                 Show(back, !idle); // no room to leave: the × closes the lobby
                 if (main.text != main_text || back.text != back_text)
                     changedAt = Time.unscaledTime;
@@ -300,7 +303,7 @@ namespace Gwent.Menus
             {
                 nameRow.EnableInClassList("lan__name-row--editing", editing);
                 nameCount.text = name.value.Length + "/" + PlayerNames.MaxLength;
-                nameHint.text = PlayerNames.Rule;
+                nameHint.text = Loc.T(Loc.UI, "lan.name_rule", PlayerNames.MaxLength);
                 Show(nameHint, editing);
             }
 
@@ -309,9 +312,9 @@ namespace Gwent.Menus
             {
                 Deck deck = BattleController.PlayerDeck(CardLibrary.Get(), out string unplayable);
                 CardArt.ShowPortrait(youArt, deck.Leader);
-                deckName.text = unplayable == null ? deck.Name ?? deck.Faction.DisplayName() : "The default deck";
-                youDeck.text = unplayable == null ? deck.Faction.DisplayName() + "  ·  " + deck.Cards.Count + " cards"
-                    : "Yours can't be played: " + unplayable;
+                deckName.text = unplayable == null ? deck.Name ?? deck.Faction.DisplayName() : Loc.T(Loc.UI, "lan.default_deck");
+                youDeck.text = unplayable == null ? Loc.T(Loc.UI, "lan.deck_cards", deck.Faction.DisplayName(), deck.Cards.Count)
+                    : Loc.T(Loc.UI, "lan.deck_unplayable", unplayable);
             }
 
             private void ChangeDeck()
@@ -338,7 +341,7 @@ namespace Gwent.Menus
                 if (kept == shownKept)
                     return;
                 shownKept = kept;
-                rejoinTitle.text = "Your battle with " + kept.TheirName + " is still on";
+                rejoinTitle.text = Loc.T(Loc.UI, "lan.rejoin_title", kept.TheirName);
                 rejoinDetail.text = Ago(kept.Saved);
                 if (kept.TheirDeck != null)
                     CardArt.ShowPortrait(rejoinArt, kept.TheirDeck.Leader);
@@ -347,16 +350,16 @@ namespace Gwent.Menus
             private static string Ago(DateTime saved)
             {
                 TimeSpan ago = DateTime.UtcNow - saved;
+                // One key a form: the singular and the plural read differently in other languages
                 if (ago.TotalMinutes < 1)
-                    return "Left just now";
+                    return Loc.T(Loc.UI, "lan.left_now");
                 if (ago.TotalHours < 1)
-                    return "Left " + Count((int)ago.TotalMinutes, "minute") + " ago";
-                return "Left " + Count((int)ago.TotalHours, "hour") + " ago";
-            }
-
-            private static string Count(int n, string unit)
-            {
-                return n + " " + unit + (n == 1 ? "" : "s");
+                {
+                    int minutes = (int)ago.TotalMinutes;
+                    return minutes == 1 ? Loc.T(Loc.UI, "lan.left_minute") : Loc.T(Loc.UI, "lan.left_minutes", minutes);
+                }
+                int hours = (int)ago.TotalHours;
+                return hours == 1 ? Loc.T(Loc.UI, "lan.left_hour") : Loc.T(Loc.UI, "lan.left_hours", hours);
             }
 
             //----------------------------------------The battles on the network----------------------------------------//
@@ -366,9 +369,8 @@ namespace Gwent.Menus
                 string key = string.Join("|", found.Select(game => game.Name + game.Address + game.Port + game.Leader + game.Compatible));
                 Show(empty, found.Count == 0);
                 Show(games, found.Count > 0);
-                liveText.text = offline ? "No network" : "Searching";
-                emptyText.text = offline ? "You're not on a network. Join a Wi-Fi or a phone's hotspot to play on LAN."
-                    : "No battles yet. Players on your Wi-Fi or hotspot show up here.";
+                liveText.text = Loc.T(Loc.UI, offline ? "lan.no_network" : "lan.searching");
+                emptyText.text = Loc.T(Loc.UI, offline ? "lan.empty_offline" : "lan.empty");
                 if (key == shownGames)
                     return;
                 shownGames = key;
@@ -382,7 +384,7 @@ namespace Gwent.Menus
                     entry.name = "Game " + game.Name;
                     entry.Q<Label>("Title").text = game.Name;
                     bool known = db.Contains(game.Leader);
-                    entry.Q<Label>("Detail").text = !game.Compatible ? "Another build of the game (" + BuildInfo.Short(game.Version) + "): can't be joined"
+                    entry.Q<Label>("Detail").text = !game.Compatible ? Loc.T(Loc.UI, "lan.other_build", BuildInfo.Short(game.Version))
                         : known ? db.Get(game.Leader).faction.DisplayName() + "  ·  " + db.Get(game.Leader).DisplayName : game.Address;
                     entry.EnableInClassList("lan__game--other", !game.Compatible);
                     entry.EnableInClassList("lan__game--touch", GameInput.IsTouch); // "Join" shows: no pointer to light it
@@ -397,14 +399,14 @@ namespace Gwent.Menus
                     VisualElement chosen = entry.Q("Chosen");
                     if (game.Compatible)
                     {
-                        Label join = new Label("Join") { pickingMode = PickingMode.Ignore };
+                        Label join = new Label(Loc.T(Loc.UI, "lan.join")) { pickingMode = PickingMode.Ignore };
                         join.AddToClassList("lan__join");
                         chosen.parent.Insert(chosen.parent.IndexOf(chosen), join);
                     }
                     chosen.RemoveFromHierarchy();
                     LanDiscovery.Game picked = game;
                     entry.clicked += () => Join(picked.Address, picked.Port, picked.Compatible ? null
-                        : "That battle runs another build of the game (" + BuildInfo.Short(picked.Version) + "; yours: " + BuildInfo.Build + "). Both players need the same build.");
+                        : Loc.T(Loc.UI, "lan.other_build_refused", BuildInfo.Short(picked.Version), BuildInfo.Build));
                     games.Add(entry);
                     if (entry.name == focused)
                         UIScreens.Focus(entry);
@@ -428,7 +430,7 @@ namespace Gwent.Menus
                     port = given;
                     typed = typed.Substring(0, colon);
                 }
-                Join(typed, port, typed.Length == 0 ? "Type the address shown on the host's screen." : null);
+                Join(typed, port, typed.Length == 0 ? Loc.T(Loc.UI, "lan.type_address") : null);
             }
 
             private void Join(string at, ushort port, string refused)
@@ -454,16 +456,16 @@ namespace Gwent.Menus
             {
                 bool hosting = session.Hosting;
                 LanSession.Stage stage = session.State;
-                roomTitle.text = hosting ? "Your battle" : session.TheirName != null ? session.TheirName + "'s battle" : "Joining a battle";
+                roomTitle.text = hosting ? Loc.T(Loc.UI, "lan.room_yours") : session.TheirName != null ? Loc.T(Loc.UI, "lan.room_theirs", session.TheirName) : Loc.T(Loc.UI, "lan.room_joining");
                 switch (stage)
                 {
                     case LanSession.Stage.Ready:
-                        roomStatus.text = hosting ? session.TheirName + " is here. Start the battle when you're ready."
-                            : "Waiting for " + session.TheirName + " to start the battle.";
+                        roomStatus.text = hosting ? Loc.T(Loc.UI, "lan.room_ready_host", session.TheirName)
+                            : Loc.T(Loc.UI, "lan.room_ready_guest", session.TheirName);
                         break;
                     default:
                         // The empty seat says what it waits for; who just left, if someone did
-                        roomStatus.text = hosting && session.LeftRoom != null ? session.LeftRoom + " left." : "";
+                        roomStatus.text = hosting && session.LeftRoom != null ? Loc.T(Loc.UI, "lan.room_left", session.LeftRoom) : "";
                         break;
                 }
                 Show(roomStatus, roomStatus.text.Length > 0);
@@ -473,11 +475,11 @@ namespace Gwent.Menus
                 {
                     shownSeats = seats;
                     bool ready = stage == LanSession.Stage.Ready;
-                    Seat(seatMe, session.MyName, session.MyDeck, hosting ? "Host" : ready ? "Ready" : "Joining");
+                    Seat(seatMe, session.MyName, session.MyDeck, Loc.T(Loc.UI, hosting ? "lan.tag_host" : ready ? "lan.tag_ready" : "lan.tag_joining"));
                     if (ready && session.TheirDeck != null)
-                        Seat(seatThem, session.TheirName, session.TheirDeck, hosting ? "Ready" : "Host");
+                        Seat(seatThem, session.TheirName, session.TheirDeck, Loc.T(Loc.UI, hosting ? "lan.tag_ready" : "lan.tag_host"));
                     else
-                        EmptySeat(seatThem, hosting ? "Waiting for a player" : "Joining…");
+                        EmptySeat(seatThem, Loc.T(Loc.UI, hosting ? "lan.seat_waiting" : "lan.seat_joining"));
                 }
 
                 bool waiting = hosting && stage == LanSession.Stage.Waiting;
@@ -488,8 +490,8 @@ namespace Gwent.Menus
                     string port = session.Port != LanLink.GamePort ? ":" + session.Port : "";
                     List<string> at = LanDiscovery.JoinableAddresses().Take(2).Select(a => a + port).ToList();
                     // Not on a network: no address to give; not in others' lists: joined by address only
-                    reachText.text = at.Count == 0 ? "You're not on a network: join a Wi-Fi or a phone's hotspot."
-                        : "Your address: " + string.Join(" or ", at) + (session.Listed ? "" : " (not listed: others join by address)");
+                    reachText.text = at.Count == 0 ? Loc.T(Loc.UI, "lan.reach_none")
+                        : Loc.T(Loc.UI, session.Listed ? "lan.reach_address" : "lan.reach_unlisted", string.Join(" " + Loc.T(Loc.UI, "lan.or") + " ", at));
                     copy.userData = at.FirstOrDefault();
                     ShowNetworks(session, port);
                 }
@@ -508,17 +510,29 @@ namespace Gwent.Menus
                 foreach (LanDiscovery.Network network in LanDiscovery.Reachable())
                 {
                     VisualElement row = Add(networks, new VisualElement(), "lan__network");
-                    Add(row, new Label(network.Kind), "lan__network-kind");
+                    Add(row, new Label(KindName(network.Kind)), "lan__network-kind");
                     Add(row, new Label(network.Adapter), "lan__network-adapter");
                     string at = network.Address + port;
                     Add(row, new Label(at), "lan__network-address");
-                    DialogButton copy_it = new DialogButton { text = "Copy" };
+                    DialogButton copy_it = new DialogButton { text = Loc.T(Loc.UI, "lan.copy") };
                     copy_it.AddToClassList("button--ghost");
                     copy_it.AddToClassList("lan__copy");
                     copy_it.clicked += () => Copy(copy_it, at);
                     row.Add(copy_it);
                 }
-                ports.text = "Ports: " + session.Port + " for the battle, " + LanDiscovery.Port + " and " + LanDiscovery.AnswersPort + " for the search (all UDP)";
+                ports.text = Loc.T(Loc.UI, "lan.ports", session.Port, LanDiscovery.Port, LanDiscovery.AnswersPort);
+            }
+
+            // What a network is called on screen: only the two generic names are the game's words (Network.Kind keeps them
+            // in English, LanDiscovery compares it); Wi-Fi, Ethernet, VPN and a VPN's own name read the same everywhere
+            private static string KindName(string kind)
+            {
+                switch (kind)
+                {
+                    case "Hotspot": return Loc.T(Loc.UI, "lan.kind_hotspot");
+                    case "Network": return Loc.T(Loc.UI, "lan.kind_network");
+                    default: return kind;
+                }
             }
 
             // A player's seat: their leader in a big ring, their faction's crest, name, faction and leader, and a tag
@@ -558,8 +572,8 @@ namespace Gwent.Menus
                 if (at == null)
                     return;
                 GUIUtility.systemCopyBuffer = at;
-                button.text = "Copied";
-                root.schedule.Execute(() => button.text = "Copy").StartingIn(1500);
+                button.text = Loc.T(Loc.UI, "lan.copied");
+                root.schedule.Execute(() => button.text = Loc.T(Loc.UI, "lan.copy")).StartingIn(1500);
             }
 
             //----------------------------------------The buttons----------------------------------------//
@@ -618,7 +632,7 @@ namespace Gwent.Menus
                 if (detailsOpen && details.style.display != DisplayStyle.None)
                 {
                     detailsOpen = false;
-                    detailsButton.text = "Details";
+                    detailsButton.text = Loc.T(Loc.UI, "lan.details");
                     Refresh();
                     return false;
                 }

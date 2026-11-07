@@ -54,6 +54,818 @@ MonoBehaviour:
     m_Localized: Se aplica al instante
     m_Metadata:
       m_Items: []
+  - m_Id: 3598352621568
+    m_Localized: Red local
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536128
+    m_Localized: Cambiar mazo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536129
+    m_Localized: Abandonar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536130
+    m_Localized: Batallas en tu red
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536131
+    m_Localized: Unirse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536132
+    m_Localized: "Unirse por direcci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536133
+    m_Localized: "Tus amigos en tu VPN (Tailscale, ZeroTier, Hamachi...) pueden unirse desde cualquier lugar con su direcci\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536134
+    m_Localized: Reanudar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536135
+    m_Localized: Abandonar batalla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536136
+    m_Localized: Elige a tu oponente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536137
+    m_Localized: Ajustes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536138
+    m_Localized: Juego
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536139
+    m_Localized: Pantalla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536140
+    m_Localized: "Gr\xE1ficos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536141
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536142
+    m_Localized: Restablecer valores
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536143
+    m_Localized: "Una versi\xF3n nueva"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579932340224
+    m_Localized: Velocidad del juego
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060480
+    m_Localized: Cartas, avisos y el oponente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060481
+    m_Localized: Lenta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060482
+    m_Localized: Normal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060483
+    m_Localized: "R\xE1pida"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060484
+    m_Localized: Dificultad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060485
+    m_Localized: "F\xE1cil"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060486
+    m_Localized: Normal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060487
+    m_Localized: "Dif\xEDcil"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060488
+    m_Localized: Tu oponente juega como un principiante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060489
+    m_Localized: Tu oponente guarda cartas para las rondas siguientes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060490
+    m_Localized: Tu oponente planea toda la batalla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060491
+    m_Localized: Arte censurado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060492
+    m_Localized: Versiones cubiertas del arte de algunas cartas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060493
+    m_Localized: Buscar actualizaciones
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060494
+    m_Localized: "Al iniciar, desde la p\xE1gina del juego en GitHub"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060495
+    m_Localized: Volumen general
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060496
+    m_Localized: "M\xFAsica"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060497
+    m_Localized: Efectos de sonido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060498
+    m_Localized: Silenciar en segundo plano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060499
+    m_Localized: Cuando hay otra ventana al frente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060500
+    m_Localized: Pantalla completa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060501
+    m_Localized: Esc para salir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060502
+    m_Localized: Ventana
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060503
+    m_Localized: En ventana
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060504
+    m_Localized: "Resoluci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060505
+    m_Localized: Velocidad de fotogramas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060506
+    m_Localized: "Sin l\xEDmite"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060507
+    m_Localized: "Los valores bajos ahorran bater\xEDa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060508
+    m_Localized: VSync sigue a tu pantalla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060509
+    m_Localized: "Tama\xF1o del men\xFA"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060510
+    m_Localized: "Solo men\xFAs y di\xE1logos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060511
+    m_Localized: Preajuste
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060512
+    m_Localized: Define todo lo de abajo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060513
+    m_Localized: Bajo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060514
+    m_Localized: Medio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060515
+    m_Localized: Alto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060516
+    m_Localized: Personalizado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060517
+    m_Localized: "Densidad de part\xEDculas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060518
+    m_Localized: Menos chispas, llamas y gotas de lluvia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060519
+    m_Localized: Clima
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060520
+    m_Localized: Efectos de batalla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060521
+    m_Localized: Movimiento
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060522
+    m_Localized: "Men\xFAs"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060523
+    m_Localized: Clima animado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060524
+    m_Localized: "Apagado: im\xE1genes fijas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060525
+    m_Localized: Rayos y truenos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060526
+    m_Localized: En Tormenta de Skellige
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060527
+    m_Localized: Sol del Tiempo despejado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060528
+    m_Localized: La luz que disipa el clima
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060529
+    m_Localized: "Aterrizaje de h\xE9roes"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060530
+    m_Localized: 'Apagado: el borde de la carta destella en dorado'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060531
+    m_Localized: Fuego de Abrasar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060532
+    m_Localized: 'Apagado: las cartas se carbonizan, sin fuego'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060533
+    m_Localized: Destellos de habilidad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060534
+    m_Localized: "Apagado: solo el \xEDcono de la habilidad"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060535
+    m_Localized: "Llamas de M\xE9dico"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060536
+    m_Localized: Sobre la pila de descarte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060537
+    m_Localized: Brillo del cuerno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060538
+    m_Localized: A lo largo de una fila con cuerno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060539
+    m_Localized: Volutas al aterrizar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060540
+    m_Localized: Cuando cae una carta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060541
+    m_Localized: Brillo y pulso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060542
+    m_Localized: La luz sobre la carta y los marcos que pulsan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060543
+    m_Localized: "Animaciones de men\xFA"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060544
+    m_Localized: "El t\xEDtulo y la entrada de las reglas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060545
+    m_Localized: Salir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060546
+    m_Localized: Cancelar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060547
+    m_Localized: "Versi\xF3n {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060548
+    m_Localized: "Compilaci\xF3n {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060549
+    m_Localized: "El c\xF3digo fuente de esta compilaci\xF3n en GitHub"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060550
+    m_Localized: "Nueva versi\xF3n disponible \xB7 compilaci\xF3n {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060551
+    m_Localized: 'Hay una batalla LAN en curso: Multijugador, luego Red local, para volver a entrar'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060552
+    m_Localized: "\xBFSalir del juego?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060553
+    m_Localized: "Men\xFA"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060554
+    m_Localized: En pausa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060555
+    m_Localized: "Men\xFA principal"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060556
+    m_Localized: "\xBFAbandonar la batalla? Cuenta como una derrota."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060557
+    m_Localized: Salir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060558
+    m_Localized: Quedarme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060559
+    m_Localized: Dejar de mirar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060560
+    m_Localized: Volver al mapa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060561
+    m_Localized: "\xBFSalir y volver al mapa?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060562
+    m_Localized: "\xBFSalir y volver al men\xFA principal?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060563
+    m_Localized: Multijugador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060564
+    m_Localized: Requiere el juego descargado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060565
+    m_Localized: "Mismo Wi-Fi, cable o punto de acceso del tel\xE9fono"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060566
+    m_Localized: No disponible en el navegador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060567
+    m_Localized: Volver a entrar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060568
+    m_Localized: "En l\xEDnea"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060569
+    m_Localized: Con cualquiera, en cualquier lugar, mediante un servidor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060570
+    m_Localized: "Pr\xF3ximamente"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060571
+    m_Localized: Historia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060572
+    m_Localized: Partida individual
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060573
+    m_Localized: 'Contra la IA: elige a tu oponente'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060574
+    m_Localized: "En tu red o en l\xEDnea"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060575
+    m_Localized: No se puede leer su partida guardada
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060576
+    m_Localized: El Gwent de The Witcher 3, desde su mazo inicial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060577
+    m_Localized: "{0} \xB7 {1} de {2} cartas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060578
+    m_Localized: Oponente aleatorio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060579
+    m_Localized: Un mazo distinto en cada batalla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060580
+    m_Localized: "Las batallas que guardaste: Guardar repetici\xF3n, en la pantalla final de una batalla, deja una aqu\xED."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060581
+    m_Localized: "Todav\xEDa no hay repeticiones: Guardar repetici\xF3n, en la pantalla final de una batalla, deja la batalla aqu\xED para verla de nuevo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060582
+    m_Localized: Eliminar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060583
+    m_Localized: "\xBFEliminar esta repetici\xF3n?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060584
+    m_Localized: Conservarla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060585
+    m_Localized: "T\xFA vs {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060586
+    m_Localized: '{0} vs {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060587
+    m_Localized: Abandonaste
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060588
+    m_Localized: "El oponente abandon\xF3"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060589
+    m_Localized: '{0} se fue'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060590
+    m_Localized: Ganaste
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060591
+    m_Localized: Perdiste
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060592
+    m_Localized: Empate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060593
+    m_Localized: '(la tuya: {0})'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060594
+    m_Localized: "M\xE1s tarde"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060595
+    m_Localized: "Descargando\u2026 {0} de {1}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060596
+    m_Localized: "Descargando\u2026 {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060597
+    m_Localized: "Verificando la descarga\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060598
+    m_Localized: "Descomprimiendo\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060599
+    m_Localized: "Android te pide confirmar la actualizaci\xF3n; cuando termine de instalarse, abre el juego otra vez."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060600
+    m_Localized: "Recargando\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060601
+    m_Localized: "Reiniciando con la nueva versi\xF3n\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060602
+    m_Localized: "Desc\xE1rgala desde la p\xE1gina de la versi\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060603
+    m_Localized: "La p\xE1gina se recarga con la nueva versi\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060604
+    m_Localized: "Android te pide confirmarla; despu\xE9s abre el juego otra vez. Tus ajustes y mazos se conservan."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060605
+    m_Localized: "El juego se reinicia al terminar la actualizaci\xF3n. Tus ajustes y mazos se conservan."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060606
+    m_Localized: "P\xE1gina de descarga"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060607
+    m_Localized: Recargar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060608
+    m_Localized: Instalar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060609
+    m_Localized: Actualizar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060610
+    m_Localized: "Se cancel\xF3 la actualizaci\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060611
+    m_Localized: "Android no la instal\xF3: {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060612
+    m_Localized: "La actualizaci\xF3n fall\xF3: {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060613
+    m_Localized: Permite instalar desde Gwent Legacy en los ajustes de Android y toca Instalar otra vez.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060614
+    m_Localized: 'Android no pudo empezar a instalarla: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060615
+    m_Localized: "No se puede escribir en la carpeta del juego ({0}): descarga la nueva versi\xF3n a mano."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060616
+    m_Localized: "La versi\xF3n descargada no contiene el juego ({0})."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060617
+    m_Localized: "La descarga fall\xF3: {0}."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060618
+    m_Localized: "La descarga no coincide con la versi\xF3n publicada (su suma de verificaci\xF3n difiere): int\xE9ntalo m\xE1s tarde."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060619
+    m_Localized: Conservarla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060620
+    m_Localized: "\xBFAbandonar tu batalla con {0}? No se puede retomar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060621
+    m_Localized: Copiar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060622
+    m_Localized: Copiado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060623
+    m_Localized: Detalles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060624
+    m_Localized: Ocultar detalles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060625
+    m_Localized: "Direcci\xF3n, por ejemplo 192.168.1.20"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060626
+    m_Localized: "Hasta {0} letras, n\xFAmeros, espacios y - _ . '"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060627
+    m_Localized: El mazo predeterminado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060628
+    m_Localized: "{0}  \xB7  {1} cartas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060629
+    m_Localized: 'Tu mazo no se puede usar: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060630
+    m_Localized: Tu batalla con {0} sigue en curso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060631
+    m_Localized: Saliste hace un momento
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060632
+    m_Localized: Saliste hace 1 minuto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060633
+    m_Localized: Saliste hace {0} minutos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060634
+    m_Localized: Saliste hace 1 hora
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060635
+    m_Localized: Saliste hace {0} horas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060636
+    m_Localized: Buscando
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060637
+    m_Localized: Sin red
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060638
+    m_Localized: "No est\xE1s en una red. Con\xE9ctate a un Wi-Fi o al punto de acceso de un tel\xE9fono para jugar en red local."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060639
+    m_Localized: "Todav\xEDa no hay batallas. Los jugadores de tu Wi-Fi o punto de acceso aparecen aqu\xED."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060640
+    m_Localized: "Otra compilaci\xF3n del juego ({0}): no se puede entrar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060641
+    m_Localized: "Esa batalla usa otra compilaci\xF3n del juego ({0}; la tuya: {1}). Ambos jugadores necesitan la misma compilaci\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060642
+    m_Localized: "Escribe la direcci\xF3n que aparece en la pantalla del anfitri\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060643
+    m_Localized: Tu batalla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060644
+    m_Localized: Batalla de {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060645
+    m_Localized: "Uni\xE9ndote a una batalla"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060646
+    m_Localized: "{0} ya est\xE1 aqu\xED. Inicia la batalla cuando quieras."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060647
+    m_Localized: Esperando a que {0} inicie la batalla.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060648
+    m_Localized: '{0} se fue.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060649
+    m_Localized: "Anfitri\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060650
+    m_Localized: Listo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060651
+    m_Localized: "Uni\xE9ndose"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060652
+    m_Localized: Esperando a un jugador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060653
+    m_Localized: "Uni\xE9ndose\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060654
+    m_Localized: "No est\xE1s en una red: con\xE9ctate a un Wi-Fi o al punto de acceso de un tel\xE9fono."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060655
+    m_Localized: "Tu direcci\xF3n: {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060656
+    m_Localized: "Tu direcci\xF3n: {0} (no aparece en las listas: los dem\xE1s se unen por direcci\xF3n)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060657
+    m_Localized: o
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060658
+    m_Localized: Punto de acceso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060659
+    m_Localized: Red
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060660
+    m_Localized: "Puertos: {0} para la batalla, {1} y {2} para la b\xFAsqueda (todos UDP)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060661
+    m_Localized: Organizar una batalla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060662
+    m_Localized: Iniciar la batalla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060663
+    m_Localized: Dejar de organizar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060664
+    m_Localized: Salir
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

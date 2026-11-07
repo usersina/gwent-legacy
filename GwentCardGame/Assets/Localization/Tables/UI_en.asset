@@ -54,6 +54,818 @@ MonoBehaviour:
     m_Localized: Takes effect at once
     m_Metadata:
       m_Items: []
+  - m_Id: 3598352621568
+    m_Localized: Local network
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536128
+    m_Localized: Change deck
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536129
+    m_Localized: Abandon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536130
+    m_Localized: Battles on your network
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536131
+    m_Localized: Join
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536132
+    m_Localized: Join by address
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536133
+    m_Localized: Friends on your VPN (Tailscale, ZeroTier, Hamachi...) can join from anywhere with its address.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536134
+    m_Localized: Resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536135
+    m_Localized: Leave battle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536136
+    m_Localized: Choose your opponent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536137
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536138
+    m_Localized: Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536139
+    m_Localized: Display
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536140
+    m_Localized: Graphics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536141
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536142
+    m_Localized: Reset to defaults
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3598415536143
+    m_Localized: A new version
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579932340224
+    m_Localized: Game speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060480
+    m_Localized: Cards, notices and the opponent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060481
+    m_Localized: Slow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060482
+    m_Localized: Normal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060483
+    m_Localized: Fast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060484
+    m_Localized: Difficulty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060485
+    m_Localized: Easy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060486
+    m_Localized: Normal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060487
+    m_Localized: Hard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060488
+    m_Localized: Your opponent plays like a beginner
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060489
+    m_Localized: Your opponent saves cards for later rounds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060490
+    m_Localized: Your opponent thinks the battle through
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060491
+    m_Localized: Censored artwork
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060492
+    m_Localized: Covered versions of some cards' art
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060493
+    m_Localized: Check for updates
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060494
+    m_Localized: On launch, from the game's page on GitHub
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060495
+    m_Localized: Master volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060496
+    m_Localized: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060497
+    m_Localized: Sound effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060498
+    m_Localized: Mute when in the background
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060499
+    m_Localized: When another window is in front
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060500
+    m_Localized: Fullscreen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060501
+    m_Localized: Esc leaves it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060502
+    m_Localized: Window
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060503
+    m_Localized: Windowed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060504
+    m_Localized: Resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060505
+    m_Localized: Frame rate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060506
+    m_Localized: Unlimited
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060507
+    m_Localized: Lower values save battery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060508
+    m_Localized: VSync follows your screen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060509
+    m_Localized: Menu size
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060510
+    m_Localized: Menus and dialogs only
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060511
+    m_Localized: Preset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060512
+    m_Localized: Sets everything below
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060513
+    m_Localized: Low
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060514
+    m_Localized: Medium
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060515
+    m_Localized: High
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060516
+    m_Localized: Custom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060517
+    m_Localized: Particle density
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060518
+    m_Localized: Fewer sparks, flames and raindrops
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060519
+    m_Localized: Weather
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060520
+    m_Localized: Battle effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060521
+    m_Localized: Motion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060522
+    m_Localized: Menus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060523
+    m_Localized: Animated weather
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060524
+    m_Localized: 'Off: still pictures'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060525
+    m_Localized: Lightning and thunder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060526
+    m_Localized: In Skellige Storm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060527
+    m_Localized: Clear Weather's sun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060528
+    m_Localized: The light sweeping the weather away
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060529
+    m_Localized: Hero landing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060530
+    m_Localized: 'Off: the card''s edge flashes gold'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060531
+    m_Localized: Scorch fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060532
+    m_Localized: 'Off: the cards char, without fire'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060533
+    m_Localized: Ability flares
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060534
+    m_Localized: 'Off: the ability''s icon only'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060535
+    m_Localized: Medic flames
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060536
+    m_Localized: Over the discard pile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060537
+    m_Localized: Horn glow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060538
+    m_Localized: Along a horned row
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060539
+    m_Localized: Landing wisps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060540
+    m_Localized: As a card lands
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060541
+    m_Localized: Shine and pulsing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060542
+    m_Localized: The light across a card, pulsing frames
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060543
+    m_Localized: Menu animations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060544
+    m_Localized: The title, the rules coming in
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060545
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060546
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060547
+    m_Localized: Version {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060548
+    m_Localized: Build {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060549
+    m_Localized: This build's source on GitHub
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060550
+    m_Localized: "New version available \xB7 build {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060551
+    m_Localized: 'A LAN battle is still on: Multiplayer, then Local network, to rejoin it'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060552
+    m_Localized: Quit the game?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060553
+    m_Localized: Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060554
+    m_Localized: Paused
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060555
+    m_Localized: Main menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060556
+    m_Localized: Leave the battle? It counts as a loss.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060557
+    m_Localized: Leave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060558
+    m_Localized: Stay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060559
+    m_Localized: Stop watching
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060560
+    m_Localized: Back to the map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060561
+    m_Localized: Leave and go back to the map?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060562
+    m_Localized: Leave and go back to the main menu?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060563
+    m_Localized: Multiplayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060564
+    m_Localized: Needs the downloaded game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060565
+    m_Localized: Same Wi-Fi, cable or phone hotspot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060566
+    m_Localized: Not in a browser
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060567
+    m_Localized: Rejoin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060568
+    m_Localized: Online
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060569
+    m_Localized: Anyone, anywhere, through a server
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060570
+    m_Localized: Coming soon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060571
+    m_Localized: Story
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060572
+    m_Localized: Single match
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060573
+    m_Localized: 'Against the AI: choose your opponent'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060574
+    m_Localized: On your network, or online
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060575
+    m_Localized: Its save can't be read
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060576
+    m_Localized: The Witcher 3's Gwent, from its starter deck
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060577
+    m_Localized: "{0} \xB7 {1} of {2} cards"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060578
+    m_Localized: Random opponent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060579
+    m_Localized: A different deck every battle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060580
+    m_Localized: 'The battles you saved: Save replay, on a battle''s end screen, keeps one here.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060581
+    m_Localized: 'No replays yet: Save replay, on a battle''s end screen, keeps the battle here to watch again.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060582
+    m_Localized: Delete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060583
+    m_Localized: Delete this replay?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060584
+    m_Localized: Keep it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060585
+    m_Localized: You vs {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060586
+    m_Localized: '{0} vs {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060587
+    m_Localized: Gave up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060588
+    m_Localized: Opponent gave up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060589
+    m_Localized: '{0} left'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060590
+    m_Localized: Won
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060591
+    m_Localized: Lost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060592
+    m_Localized: Draw
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060593
+    m_Localized: '(yours: {0})'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060594
+    m_Localized: Later
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060595
+    m_Localized: "Downloading\u2026 {0} of {1}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060596
+    m_Localized: "Downloading\u2026 {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060597
+    m_Localized: "Checking the download\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060598
+    m_Localized: "Unpacking\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060599
+    m_Localized: Android asks you to confirm the update; once it's installed, open the game again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060600
+    m_Localized: "Reloading\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060601
+    m_Localized: "Restarting with the new version\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060602
+    m_Localized: Download it from the release's page.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060603
+    m_Localized: The page reloads with the new version.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060604
+    m_Localized: Android asks you to confirm it; then open the game again. Your settings and decks stay.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060605
+    m_Localized: The game restarts once updated. Your settings and decks stay.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060606
+    m_Localized: Download page
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060607
+    m_Localized: Reload
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060608
+    m_Localized: Install
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060609
+    m_Localized: Update
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060610
+    m_Localized: The update was cancelled.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060611
+    m_Localized: 'Android didn''t install it: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060612
+    m_Localized: 'The update failed: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060613
+    m_Localized: Allow installs from Gwent Legacy in Android's settings, then tap Install again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060614
+    m_Localized: 'Android couldn''t start installing it: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060615
+    m_Localized: 'The game''s folder can''t be written to ({0}): download the new version by hand.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060616
+    m_Localized: The downloaded version doesn't hold the game ({0}).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060617
+    m_Localized: 'The download failed: {0}.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060618
+    m_Localized: 'The download doesn''t match the release (its checksum differs): try again later.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060619
+    m_Localized: Keep it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060620
+    m_Localized: Abandon your battle with {0}? It can't be taken up again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060621
+    m_Localized: Copy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060622
+    m_Localized: Copied
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060623
+    m_Localized: Details
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060624
+    m_Localized: Hide details
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060625
+    m_Localized: Address, like 192.168.1.20
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060626
+    m_Localized: Up to {0} letters, numbers, spaces and - _ . '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060627
+    m_Localized: The default deck
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060628
+    m_Localized: "{0}  \xB7  {1} cards"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060629
+    m_Localized: 'Yours can''t be played: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060630
+    m_Localized: Your battle with {0} is still on
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060631
+    m_Localized: Left just now
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060632
+    m_Localized: Left 1 minute ago
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060633
+    m_Localized: Left {0} minutes ago
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060634
+    m_Localized: Left 1 hour ago
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060635
+    m_Localized: Left {0} hours ago
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060636
+    m_Localized: Searching
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060637
+    m_Localized: No network
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060638
+    m_Localized: You're not on a network. Join a Wi-Fi or a phone's hotspot to play on LAN.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060639
+    m_Localized: No battles yet. Players on your Wi-Fi or hotspot show up here.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060640
+    m_Localized: 'Another build of the game ({0}): can''t be joined'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060641
+    m_Localized: 'That battle runs another build of the game ({0}; yours: {1}). Both players need the same build.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060642
+    m_Localized: Type the address shown on the host's screen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060643
+    m_Localized: Your battle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060644
+    m_Localized: '{0}''s battle'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060645
+    m_Localized: Joining a battle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060646
+    m_Localized: '{0} is here. Start the battle when you''re ready.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060647
+    m_Localized: Waiting for {0} to start the battle.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060648
+    m_Localized: '{0} left.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060649
+    m_Localized: Host
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060650
+    m_Localized: Ready
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060651
+    m_Localized: Joining
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060652
+    m_Localized: Waiting for a player
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060653
+    m_Localized: "Joining\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060654
+    m_Localized: 'You''re not on a network: join a Wi-Fi or a phone''s hotspot.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060655
+    m_Localized: 'Your address: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060656
+    m_Localized: 'Your address: {0} (not listed: others join by address)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060657
+    m_Localized: or
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060658
+    m_Localized: Hotspot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060659
+    m_Localized: Network
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060660
+    m_Localized: 'Ports: {0} for the battle, {1} and {2} for the search (all UDP)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060661
+    m_Localized: Host a battle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060662
+    m_Localized: Start the battle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060663
+    m_Localized: Stop hosting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6579991060664
+    m_Localized: Leave
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
