@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Gwent.Core;
 using Gwent.UI;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,7 +38,7 @@ namespace Gwent.Battle
             if (current.stopped)
                 Time.timeScale = 0f;
 
-            string whose = is_player ? "Your discard pile" : "Your opponent's discard pile";
+            string whose = Loc.T(Loc.UI, is_player ? "pick.your_discard" : "pick.opp_discard");
             CardPicker picker = CardPicker.Open(root, whose + "  (" + cards.Count + ")", cards, null, () => UIOverlay.CloseModal(root.gameObject), cards.Count - 1);
             picker.StandIn(root.gameObject);
             UIOverlay.PushModal(root.gameObject, current.Closed);

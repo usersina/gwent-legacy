@@ -866,6 +866,1386 @@ MonoBehaviour:
     m_Localized: Leave
     m_Metadata:
       m_Items: []
+  - m_Id: 15369964593152
+    m_Localized: Player
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176064
+    m_Localized: Opponent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176065
+    m_Localized: Your selected deck can't be used ({0}). Playing with the default deck.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176066
+    m_Localized: Your opponent's leader cancels your leader ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176067
+    m_Localized: Your leader cancels your opponent's leader ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176068
+    m_Localized: '{0}''s leader cancels {1}''s leader ability'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176069
+    m_Localized: Opponent used the Scoia'tael faction ability to let you go first.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176070
+    m_Localized: '{0} used the Scoia''tael faction ability to let {1} go first.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176071
+    m_Localized: Opponent used the Scoia'tael faction ability to go first.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176072
+    m_Localized: '{0} used the Scoia''tael faction ability to go first.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176073
+    m_Localized: You will go first
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176074
+    m_Localized: Your opponent will go first
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176075
+    m_Localized: '{0} will go first'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176076
+    m_Localized: 'Out of time: you keep your hand'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176077
+    m_Localized: '{0} ran out of time and keeps the hand'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176078
+    m_Localized: Your opponent is still redrawing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176079
+    m_Localized: '{0} is still redrawing'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176080
+    m_Localized: Round Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176081
+    m_Localized: Your turn!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176082
+    m_Localized: Opponent's turn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176083
+    m_Localized: '{0}''s turn'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176084
+    m_Localized: Turn passed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176085
+    m_Localized: Your opponent has passed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176086
+    m_Localized: '{0} has passed'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176087
+    m_Localized: 'Nilfgaardian faction ability triggered: Nilfgaard wins the tie.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176088
+    m_Localized: 'Out of time: your opponent wins the round'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176089
+    m_Localized: 'Your opponent ran out of time: you win the round'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176090
+    m_Localized: '{0} ran out of time: {1} wins the round'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370368
+    m_Localized: You won the round!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370369
+    m_Localized: '{0} won the round!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370370
+    m_Localized: Your opponent won the round
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370371
+    m_Localized: '{0} won the round'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370372
+    m_Localized: The round ended in a draw
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370373
+    m_Localized: 'Monsters faction ability triggered: one randomly chosen Monster Unit Card stays on the battlefield.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370374
+    m_Localized: 'Northern Realms faction ability triggered: North draws an additional card.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370375
+    m_Localized: 'Skellige faction ability triggered: a unit from your discard pile returns to the battlefield.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370376
+    m_Localized: 'Skellige faction ability triggered: two units from your discard pile return to the battlefield.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370377
+    m_Localized: 'Skellige faction ability triggered: a unit from your opponent''s discard pile returns to the battlefield.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370378
+    m_Localized: 'Skellige faction ability triggered: two units from your opponent''s discard pile return to the battlefield.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370379
+    m_Localized: '{0} only exists on the board: a decoy can''t take it back'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370380
+    m_Localized: Decoy can only swap a non-hero unit on your side
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370381
+    m_Localized: 'Kambi was killed: Hemdall takes the field to avenge him'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370382
+    m_Localized: 'You killed the opponent''s Kambi: their Hemdall takes the field to avenge him'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370383
+    m_Localized: 'Kambi is discarded: Hemdall joins your close combat row next round, if the battle goes on'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370384
+    m_Localized: 'The opponent''s Kambi is discarded: their Hemdall comes next round, if the battle goes on'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370385
+    m_Localized: 'Your Cow was killed: the Bovine Defense Force takes the field to avenge it'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370386
+    m_Localized: 'You killed the opponent''s Cow: their Bovine Defense Force takes the field to avenge it'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370387
+    m_Localized: 'Your Cow is discarded: the Bovine Defense Force joins your close combat row next round, if the battle goes on'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370388
+    m_Localized: 'The opponent''s Cow is discarded: their Bovine Defense Force comes next round, if the battle goes on'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370389
+    m_Localized: '{0}''s Kambi was killed: Hemdall takes the field to avenge him'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370390
+    m_Localized: '{0}''s Kambi is discarded: Hemdall comes next round, if the battle goes on'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370391
+    m_Localized: '{0}''s Cow was killed: the Bovine Defense Force takes the field to avenge it'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370392
+    m_Localized: '{0}''s Cow is discarded: the Bovine Defense Force comes next round, if the battle goes on'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370393
+    m_Localized: Tap the glowing crown to use your leader ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370394
+    m_Localized: Click the glowing crown or press {Enter} to use your leader ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370395
+    m_Localized: Your leader ability was cancelled by the opponent's leader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370396
+    m_Localized: Your opponent is choosing who goes first
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370397
+    m_Localized: 'Discard two cards from your hand: double-tap each'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370398
+    m_Localized: 'Discard two cards from your hand: double-click each'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370399
+    m_Localized: This card has nowhere to go
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370400
+    m_Localized: "It fits more than one place: {Up} or {Down} chooses where   \xB7   {Enter} plays it"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370401
+    m_Localized: ', one round drawn'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370402
+    m_Localized: ', {0} rounds drawn'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370403
+    m_Localized: The opponent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370404
+    m_Localized: You won the battle, {0} to {1}{2}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370405
+    m_Localized: '{0} won the battle, {1} to {2}{3}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370406
+    m_Localized: Neither side came out ahead{0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370407
+    m_Localized: You gave up the battle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370408
+    m_Localized: '{0} gave up the battle'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370409
+    m_Localized: '{0} left the battle'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370410
+    m_Localized: '{0} ended the battle while you were away'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370411
+    m_Localized: 1 round
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370412
+    m_Localized: '{0} rounds'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370413
+    m_Localized: Round {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370414
+    m_Localized: Rematch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370415
+    m_Localized: Play again
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370416
+    m_Localized: Save replay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370417
+    m_Localized: Saved
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370418
+    m_Localized: The replay could not be saved
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370419
+    m_Localized: '{0} left'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370420
+    m_Localized: '{0} is away'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370421
+    m_Localized: Waiting for {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370422
+    m_Localized: '{0} wants a rematch'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370423
+    m_Localized: 'Fair play checked: the shuffle was shared, and every move followed the rules'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370424
+    m_Localized: Fair play check failed. {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370425
+    m_Localized: Watch again
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370426
+    m_Localized: Next round
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370427
+    m_Localized: Map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370428
+    m_Localized: Collect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370429
+    m_Localized: '{0} is over for this time: enter again from the map'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370430
+    m_Localized: 'Nothing lost: play them again whenever you like'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370431
+    m_Localized: '{0} complete'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370432
+    m_Localized: '{0} is open'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370433
+    m_Localized: 'Card Collector: every Gwent card is yours'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370434
+    m_Localized: 'Next: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370435
+    m_Localized: And {0} more cards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370436
+    m_Localized: '{0} cards'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370437
+    m_Localized: new leader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370438
+    m_Localized: new card
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370439
+    m_Localized: you have {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370440
+    m_Localized: "Quest reward \xB7 {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370441
+    m_Localized: Claim the win
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370442
+    m_Localized: Give up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370443
+    m_Localized: The battle can't go on. {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370444
+    m_Localized: The link to the other player is gone.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370445
+    m_Localized: 'Connection lost: waiting for {0} to come back{1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370446
+    m_Localized: 'Connection lost: reconnecting to {0}{1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370447
+    m_Localized: '{0} hasn''t come back. Keep waiting, or claim the win.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370448
+    m_Localized: '{0} hasn''t come back. Keep waiting, or give up (a loss).'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370449
+    m_Localized: Choose a weather card to play from your deck
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370450
+    m_Localized: Choose a unit to bring back from your discard pile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370451
+    m_Localized: Choose a unit to take from your opponent's discard pile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370452
+    m_Localized: Choose a unit to take back from your discard pile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370453
+    m_Localized: Choose a card to take from your deck
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370454
+    m_Localized: Randomly selected cards from your opponent's hand
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370455
+    m_Localized: Skip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370456
+    m_Localized: Keep choosing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370457
+    m_Localized: Play no weather card? Your leader ability is spent, and your turn ends.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370458
+    m_Localized: Bring no unit back? The medic stays, but its ability is lost, and your turn ends.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370459
+    m_Localized: Draw no card? The two cards you discarded are gone, and your turn ends.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370460
+    m_Localized: Take nothing from your opponent's discard pile? Your leader ability is spent, and your turn ends.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370461
+    m_Localized: Take no card back? Your leader ability is spent, and your turn ends.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370462
+    m_Localized: Now choose where to play {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370463
+    m_Localized: Your discard pile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370464
+    m_Localized: Your opponent's discard pile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370465
+    m_Localized: Scoia'tael perk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370466
+    m_Localized: You decide who takes the first turn.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370467
+    m_Localized: Going second lets you answer the opponent's first move.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370468
+    m_Localized: Go first
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370469
+    m_Localized: Go second
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370470
+    m_Localized: Done
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370471
+    m_Localized: Choose a card to redraw. {0}/2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370472
+    m_Localized: Switch sides
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370473
+    m_Localized: Round back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370474
+    m_Localized: Move back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370475
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370476
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370477
+    m_Localized: Next move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370478
+    m_Localized: Next round
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370479
+    m_Localized: Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370480
+    m_Localized: Chat window
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370481
+    m_Localized: Quick chat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370482
+    m_Localized: Chat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370483
+    m_Localized: '{0} muted'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370484
+    m_Localized: You
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370485
+    m_Localized: "Say something\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370486
+    m_Localized: Send
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370487
+    m_Localized: Nothing said yet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370488
+    m_Localized: Evening.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370489
+    m_Localized: Well played.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370490
+    m_Localized: Thanks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370491
+    m_Localized: Hmm...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370492
+    m_Localized: Medallion's humming.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370493
+    m_Localized: Bollocks!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370494
+    m_Localized: Wind's howling.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370495
+    m_Localized: Damn, you're ugly.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370496
+    m_Localized: Give up this battle? It counts as a loss.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370497
+    m_Localized: Give up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370498
+    m_Localized: Keep playing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370499
+    m_Localized: Hold to pass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370500
+    m_Localized: '{0}: empty'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370501
+    m_Localized: '{0} ({1}): {2}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370502
+    m_Localized: 1 card
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370503
+    m_Localized: tap to look through it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370504
+    m_Localized: click to look through it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370505
+    m_Localized: Cancelled by the other leader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370506
+    m_Localized: 'Passive: always in effect'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370507
+    m_Localized: Used
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370508
+    m_Localized: Ready to use
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370509
+    m_Localized: Not used yet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370510
+    m_Localized: Not used yet, not this round
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370511
+    m_Localized: Leader ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370512
+    m_Localized: Opponent's leader ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370513
+    m_Localized: '{0}: cancelled by the other leader'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370514
+    m_Localized: '{0}: passive, always in effect'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370515
+    m_Localized: '{0}: used'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370516
+    m_Localized: '{0}: not used yet'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370517
+    m_Localized: 'Leader ability: tap to use it'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370518
+    m_Localized: 'Leader ability: click to use it'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370519
+    m_Localized: 'Leader ability: tap your leader card to lift it, then tap this crown to use it'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370520
+    m_Localized: 'Leader ability: click your leader card to lift it, then click this crown to use it'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370521
+    m_Localized: Faction ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370522
+    m_Localized: None
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370523
+    m_Localized: 'Leader: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370524
+    m_Localized: in hand
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370525
+    m_Localized: in deck
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370526
+    m_Localized: discarded
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370527
+    m_Localized: 'A decoy takes the place of one of your units on the board: choose which'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370528
+    m_Localized: Weather and Scorch go on the weather board
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370529
+    m_Localized: Faction ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370530
+    m_Localized: Opponent's faction ability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370531
+    m_Localized: '{0} ({1}): {2}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370532
+    m_Localized: 'Weather: none in play. A weather card lands here and brings its row down to 1 on both sides; Clear Weather lifts it'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370533
+    m_Localized: 'Zoom out: the whole board'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370534
+    m_Localized: 'Unlock the board: taps play again'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370535
+    m_Localized: 'Lock the board: look and move around, taps do nothing'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370536
+    m_Localized: 'Board locked: taps do nothing'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370537
+    m_Localized: Board unlocked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370538
+    m_Localized: "{X} or {Enter} uses your leader ability   \xB7   {Esc} puts it back"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370539
+    m_Localized: Back to the main menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370540
+    m_Localized: Keep this name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370541
+    m_Localized: Name a copy of this preset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370542
+    m_Localized: Rename this deck
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370543
+    m_Localized: Leave the name as it was
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370544
+    m_Localized: Presets can't be deleted
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370545
+    m_Localized: Delete this deck
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370546
+    m_Localized: Choose a deck first
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370547
+    m_Localized: Name your new deck
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370548
+    m_Localized: Name your copy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370549
+    m_Localized: Deck name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370550
+    m_Localized: A deck's name needs a letter or a number
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370551
+    m_Localized: Another deck is already called "{0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370552
+    m_Localized: 'Saved as your own deck, "{0}": the preset stays as it was'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370553
+    m_Localized: Could not save the deck
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370554
+    m_Localized: Could not rename the deck
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370555
+    m_Localized: 'Delete the deck "{0}"?
+
+      This cannot be undone.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370556
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370557
+    m_Localized: Could not delete the deck
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370558
+    m_Localized: 'Too many copies of this preset: delete some first'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370559
+    m_Localized: 'Presets stay as they are: your changes are saved in your own deck, "{0}"'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370560
+    m_Localized: the starter deck
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370561
+    m_Localized: default (Northern Realms)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370562
+    m_Localized: (preset)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370563
+    m_Localized: 'Not battle-ready: {0}
+
+      Battle deck: {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370564
+    m_Localized: 'Battle deck: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370565
+    m_Localized: 'A preset: changing or naming it makes your own copy'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370566
+    m_Localized: + New empty deck
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370567
+    m_Localized: '{0} deck file(s) could not be read and were skipped'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370568
+    m_Localized: 'Create a deck first: type its name, then press +'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370569
+    m_Localized: '{0} does not belong to this deck''s faction'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370570
+    m_Localized: You own one {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370571
+    m_Localized: You own {0} copies of {1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370572
+    m_Localized: A deck can hold at most {0} special cards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370573
+    m_Localized: Tap to choose your leader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370574
+    m_Localized: Click to choose your leader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370575
+    m_Localized: 'Make a deck first: "{0}", at the end of the deck list'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370576
+    m_Localized: All Cards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370577
+    m_Localized: Close Units
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370578
+    m_Localized: Ranged Units
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370579
+    m_Localized: Siege Units
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370580
+    m_Localized: Heroes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370581
+    m_Localized: Weather
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370582
+    m_Localized: Specials
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370583
+    m_Localized: Choose your leader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370584
+    m_Localized: Journal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370585
+    m_Localized: Collection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370586
+    m_Localized: Travel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370587
+    m_Localized: Story
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370588
+    m_Localized: 'Search: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370589
+    m_Localized: 'Meet: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370590
+    m_Localized: 'Win: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370591
+    m_Localized: 'Beat: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370592
+    m_Localized: "\u2026 more to come"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370593
+    m_Localized: 'Reward: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370594
+    m_Localized: 'Reward: {0} (yours)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370595
+    m_Localized: Collect 'Em All
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370596
+    m_Localized: 'Every Gwent card: {0} of {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370597
+    m_Localized: Every Gwent card
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370598
+    m_Localized: Where they are
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370599
+    m_Localized: "{0} \xB7 not reached"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370600
+    m_Localized: Random cards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370601
+    m_Localized: By faction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370602
+    m_Localized: Special cards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370603
+    m_Localized: Neutral
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370604
+    m_Localized: Opens from the start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370605
+    m_Localized: Opens once {0} is done
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370606
+    m_Localized: 'Opens once beaten: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370607
+    m_Localized: You are here
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370608
+    m_Localized: '{0} to find'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370609
+    m_Localized: All found
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370610
+    m_Localized: 'Geralt''s Gwent, across The Witcher 3''s lands: beat its players, buy from its innkeepers, finish its quests, collect every card.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370611
+    m_Localized: The Witcher 3's starter deck, and a leader of four factions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370612
+    m_Localized: Begin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370613
+    m_Localized: Start over
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370614
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370615
+    m_Localized: '{0}. Start over sets it aside (it is kept, not deleted) and begins a new story.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370616
+    m_Localized: "{0} of {1} cards \xB7 {2} crowns \xB7 {3} of {4} quests"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370617
+    m_Localized: Begin a new story? This one is set aside (kept, not deleted).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370618
+    m_Localized: The story's save could not be read
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370619
+    m_Localized: The story was saved by a newer version of the game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370620
+    m_Localized: '{0} cards for sale'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370621
+    m_Localized: Sold out
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370622
+    m_Localized: Taken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370623
+    m_Localized: Something for you here
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370624
+    m_Localized: Won
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370625
+    m_Localized: 'Next: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370626
+    m_Localized: '{0} rounds'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370627
+    m_Localized: sells cards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370628
+    m_Localized: Beaten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370629
+    m_Localized: Crowns
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370630
+    m_Localized: A random card
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370631
+    m_Localized: 'Leader: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370632
+    m_Localized: Search
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370633
+    m_Localized: Take the deck
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370634
+    m_Localized: Accept
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370635
+    m_Localized: Next round
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370636
+    m_Localized: Enter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370637
+    m_Localized: Play again
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370638
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370639
+    m_Localized: 'Your battle deck can''t play ({0}): the starter deck will'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370640
+    m_Localized: A win pays {0} crowns
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370641
+    m_Localized: 'The entry fee: {0} crowns'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370642
+    m_Localized: Plays like a beginner
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370643
+    m_Localized: A good player
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370644
+    m_Localized: A master of the game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370645
+    m_Localized: A step of {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370646
+    m_Localized: '{0} decks only'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370647
+    m_Localized: A RANDOM CARD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370648
+    m_Localized: The Witcher 3's players of no particular renown give a random card the first time they lose
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370649
+    m_Localized: WON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370650
+    m_Localized: THE SKELLIGE DECK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370651
+    m_Localized: THE PRIZE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370652
+    m_Localized: '{0} cards, and their leader'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370653
+    m_Localized: THE ROUNDS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370654
+    m_Localized: Wins you {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370655
+    m_Localized: FOR SALE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370656
+    m_Localized: Sold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370657
+    m_Localized: Buy {0} for {1} crowns?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370658
+    m_Localized: Buy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370659
+    m_Localized: Not now
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370660
+    m_Localized: "{0} \xB7 you own {1}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370661
+    m_Localized: Nothing new
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370662
+    m_Localized: '{0} cards are yours'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370663
+    m_Localized: '{0} is yours'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370664
+    m_Localized: '{0} are yours'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370665
+    m_Localized: 'Crowns: wins pay them; innkeepers and merchants sell cards for them'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370666
+    m_Localized: The Gwent quests
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370667
+    m_Localized: 'Your collection: what is still to find'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370668
+    m_Localized: Your story decks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370669
+    m_Localized: 'On the map now: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370670
+    m_Localized: '{0} is open: Travel to go there'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370671
+    m_Localized: 'Card Collector: every Gwent card is yours'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370672
+    m_Localized: Total Units Strength
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370673
+    m_Localized: Hero Cards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370674
+    m_Localized: Number of Unit Cards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370675
+    m_Localized: Enter deck name...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370676
+    m_Localized: FACTION ABILITY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370677
+    m_Localized: Total cards in deck
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370678
+    m_Localized: Leader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370679
+    m_Localized: Special Cards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370680
+    m_Localized: Card Collection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370681
+    m_Localized: Show neutrals
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370682
+    m_Localized: Passed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370683
+    m_Localized: Press to pass
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

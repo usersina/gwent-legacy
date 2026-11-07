@@ -24,7 +24,8 @@ namespace Gwent.DeckBuilding
         public List<string> myPaths = new List<string>();
 
         // The list's last entry, after the decks: a new empty deck, named first (DeckBuilder.StartNewDeck)
-        public const string NewDeckOption = "+ New empty deck";
+        // The list's last entry, which opens the name field (the list is chosen by its place, not by this text)
+        public static string NewDeckOption { get { return Loc.T(Loc.UI, "deck.new_empty"); } }
 
         private async UniTaskVoid Start()
         {
@@ -85,12 +86,12 @@ namespace Gwent.DeckBuilding
                 }
                 myDecks.Add(auxdeck);
                 myPaths.Add(path);
-                decks_list_drop.Add(new TMP_Dropdown.OptionData(OpponentDecks.IsPreset(path) ? auxdeck.Name + " (preset)" : auxdeck.Name));
+                decks_list_drop.Add(new TMP_Dropdown.OptionData(OpponentDecks.IsPreset(path) ? auxdeck.Name + " " + Loc.T(Loc.UI, "deck.preset_tag") : auxdeck.Name));
             }
             decks_list_drop.Add(new TMP_Dropdown.OptionData(NewDeckOption));
             deckPicker.AddOptions(decks_list_drop);
             if (skipped > 0)
-                UIOverlay.Toast(skipped + " deck file(s) could not be read and were skipped");
+                UIOverlay.Toast(Loc.T(Loc.UI, "deck.skipped", skipped));
 
             // Reload the first deck just in case
             if (myDecks.Count > 0)

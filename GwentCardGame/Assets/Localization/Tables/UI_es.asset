@@ -866,6 +866,1382 @@ MonoBehaviour:
     m_Localized: Salir
     m_Metadata:
       m_Items: []
+  - m_Id: 15369964593152
+    m_Localized: Jugador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176064
+    m_Localized: Oponente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176065
+    m_Localized: No se puede usar el mazo que elegiste ({0}). Se juega con el mazo predeterminado.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176066
+    m_Localized: "El l\xEDder de tu oponente anula la habilidad de tu l\xEDder"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176067
+    m_Localized: "Tu l\xEDder anula la habilidad del l\xEDder de tu oponente"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176068
+    m_Localized: "El l\xEDder de {0} anula la habilidad del l\xEDder de {1}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176069
+    m_Localized: "El oponente us\xF3 la habilidad de la facci\xF3n Scoia'tael para dejarte empezar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176070
+    m_Localized: "{0} us\xF3 la habilidad de la facci\xF3n Scoia'tael para dejar empezar a {1}."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176071
+    m_Localized: "El oponente us\xF3 la habilidad de la facci\xF3n Scoia'tael para empezar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176072
+    m_Localized: "{0} us\xF3 la habilidad de la facci\xF3n Scoia'tael para empezar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176073
+    m_Localized: "Empiezas t\xFA"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176074
+    m_Localized: Empieza tu oponente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176075
+    m_Localized: Empieza {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176076
+    m_Localized: "Se acab\xF3 el tiempo: conservas tu mano"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176077
+    m_Localized: "A {0} se le acab\xF3 el tiempo y conserva su mano"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176078
+    m_Localized: "Tu oponente todav\xEDa est\xE1 cambiando cartas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176079
+    m_Localized: "{0} todav\xEDa est\xE1 cambiando cartas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176080
+    m_Localized: Comienza la ronda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176081
+    m_Localized: "\xA1Tu turno!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176082
+    m_Localized: Turno del oponente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176083
+    m_Localized: Turno de {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176084
+    m_Localized: Turno pasado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176085
+    m_Localized: Tu oponente ha pasado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176086
+    m_Localized: '{0} ha pasado'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176087
+    m_Localized: "Habilidad de la facci\xF3n nilfgaardiana activada: Nilfgaard gana el empate."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176088
+    m_Localized: "Se acab\xF3 el tiempo: tu oponente gana la ronda"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176089
+    m_Localized: "A tu oponente se le acab\xF3 el tiempo: ganas la ronda"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369977176090
+    m_Localized: "A {0} se le acab\xF3 el tiempo: {1} gana la ronda"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370368
+    m_Localized: "\xA1Ganaste la ronda!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370369
+    m_Localized: "\xA1{0} gan\xF3 la ronda!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370370
+    m_Localized: "Tu oponente gan\xF3 la ronda"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370371
+    m_Localized: "{0} gan\xF3 la ronda"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370372
+    m_Localized: "La ronda termin\xF3 en empate"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370373
+    m_Localized: "Habilidad de la facci\xF3n Monstruos activada: una carta de unidad Monstruo elegida al azar permanece en el campo de batalla."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370374
+    m_Localized: "Habilidad de la facci\xF3n Reinos del Norte activada: el Norte roba una carta adicional."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370375
+    m_Localized: "Habilidad de la facci\xF3n Skellige activada: una unidad de tu pila de descarte vuelve al campo de batalla."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370376
+    m_Localized: "Habilidad de la facci\xF3n Skellige activada: dos unidades de tu pila de descarte vuelven al campo de batalla."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370377
+    m_Localized: "Habilidad de la facci\xF3n Skellige activada: una unidad de la pila de descarte de tu oponente vuelve al campo de batalla."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370378
+    m_Localized: "Habilidad de la facci\xF3n Skellige activada: dos unidades de la pila de descarte de tu oponente vuelven al campo de batalla."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370379
+    m_Localized: "{0} solo existe en el tablero: un se\xF1uelo no puede recuperarla"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370380
+    m_Localized: "El se\xF1uelo solo puede cambiar una unidad de tu lado que no sea h\xE9roe"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370381
+    m_Localized: "Kambi muri\xF3: Hemdall entra al campo para vengarlo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370382
+    m_Localized: 'Mataste al Kambi del oponente: su Hemdall entra al campo para vengarlo'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370383
+    m_Localized: "Kambi fue descartado: Hemdall se une a tu fila cuerpo a cuerpo la pr\xF3xima ronda, si la batalla contin\xFAa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370384
+    m_Localized: "El Kambi del oponente fue descartado: su Hemdall llega la pr\xF3xima ronda, si la batalla contin\xFAa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370385
+    m_Localized: "Tu Vaca muri\xF3: la Fuerza de Defensa Bovina entra al campo para vengarla"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370386
+    m_Localized: 'Mataste a la Vaca del oponente: su Fuerza de Defensa Bovina entra al campo para vengarla'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370387
+    m_Localized: "Tu Vaca fue descartada: la Fuerza de Defensa Bovina se une a tu fila cuerpo a cuerpo la pr\xF3xima ronda, si la batalla contin\xFAa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370388
+    m_Localized: "La Vaca del oponente fue descartada: su Fuerza de Defensa Bovina llega la pr\xF3xima ronda, si la batalla contin\xFAa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370389
+    m_Localized: "El Kambi de {0} muri\xF3: Hemdall entra al campo para vengarlo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370390
+    m_Localized: "El Kambi de {0} fue descartado: Hemdall llega la pr\xF3xima ronda, si la batalla contin\xFAa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370391
+    m_Localized: "La Vaca de {0} muri\xF3: la Fuerza de Defensa Bovina entra al campo para vengarla"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370392
+    m_Localized: "La Vaca de {0} fue descartada: la Fuerza de Defensa Bovina llega la pr\xF3xima ronda, si la batalla contin\xFAa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370393
+    m_Localized: "Toca la corona brillante para usar la habilidad de tu l\xEDder"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370394
+    m_Localized: "Haz clic en la corona brillante o presiona {Enter} para usar la habilidad de tu l\xEDder"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370395
+    m_Localized: "El l\xEDder de tu oponente anul\xF3 la habilidad de tu l\xEDder"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370396
+    m_Localized: "Tu oponente est\xE1 eligiendo qui\xE9n empieza"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370397
+    m_Localized: 'Descarta dos cartas de tu mano: toca dos veces cada una'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370398
+    m_Localized: 'Descarta dos cartas de tu mano: haz doble clic en cada una'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370399
+    m_Localized: "Esta carta no tiene d\xF3nde ir"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370400
+    m_Localized: "Cabe en m\xE1s de un lugar: {Up} o {Down} elige d\xF3nde   \xB7   {Enter} la juega"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370401
+    m_Localized: ', una ronda empatada'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370402
+    m_Localized: ', {0} rondas empatadas'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370403
+    m_Localized: El oponente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370404
+    m_Localized: Ganaste la batalla, {0} a {1}{2}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370405
+    m_Localized: "{0} gan\xF3 la batalla, {1} a {2}{3}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370406
+    m_Localized: "Ning\xFAn bando se impuso{0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370407
+    m_Localized: Abandonaste la batalla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370408
+    m_Localized: "{0} abandon\xF3 la batalla"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370409
+    m_Localized: "{0} sali\xF3 de la batalla"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370410
+    m_Localized: "{0} termin\xF3 la batalla mientras no estabas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370411
+    m_Localized: 1 ronda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370412
+    m_Localized: '{0} rondas'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370413
+    m_Localized: Ronda {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370414
+    m_Localized: Revancha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370415
+    m_Localized: Jugar de nuevo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370416
+    m_Localized: "Guardar repetici\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370417
+    m_Localized: Guardada
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370418
+    m_Localized: "No se pudo guardar la repetici\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370419
+    m_Localized: '{0} se fue'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370420
+    m_Localized: "{0} no est\xE1"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370421
+    m_Localized: Esperando a {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370422
+    m_Localized: '{0} quiere la revancha'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370423
+    m_Localized: "Juego limpio verificado: la mezcla fue compartida y cada jugada sigui\xF3 las reglas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370424
+    m_Localized: "Fall\xF3 la verificaci\xF3n de juego limpio. {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370425
+    m_Localized: Ver de nuevo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370426
+    m_Localized: Siguiente ronda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370427
+    m_Localized: Mapa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370428
+    m_Localized: Recoger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370429
+    m_Localized: "{0} termin\xF3 por esta vez: vuelve a entrar desde el mapa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370430
+    m_Localized: "No se perdi\xF3 nada: puedes volver a jugar cuando quieras"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370431
+    m_Localized: "Misi\xF3n completada: {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370432
+    m_Localized: "Regi\xF3n abierta: {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370433
+    m_Localized: 'Coleccionista de cartas: todas las cartas de Gwent son tuyas'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370434
+    m_Localized: 'Siguiente: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370435
+    m_Localized: "Y {0} cartas m\xE1s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370436
+    m_Localized: '{0} cartas'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370437
+    m_Localized: "l\xEDder nuevo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370438
+    m_Localized: carta nueva
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370439
+    m_Localized: tienes {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370440
+    m_Localized: "Recompensa de misi\xF3n \xB7 {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370441
+    m_Localized: Reclamar la victoria
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370442
+    m_Localized: Rendirse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370443
+    m_Localized: La batalla no puede continuar. {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370444
+    m_Localized: "Se perdi\xF3 el enlace con el otro jugador."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370445
+    m_Localized: "Conexi\xF3n perdida: esperando a que {0} vuelva{1}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370446
+    m_Localized: "Conexi\xF3n perdida: reconectando con {0}{1}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370447
+    m_Localized: '{0} no ha vuelto. Sigue esperando o reclama la victoria.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370448
+    m_Localized: "{0} no ha vuelto. Sigue esperando o r\xEDndete (cuenta como derrota)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370449
+    m_Localized: Elige una carta de clima de tu mazo para jugarla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370450
+    m_Localized: Elige una unidad de tu pila de descarte para traerla de vuelta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370451
+    m_Localized: Elige una unidad de la pila de descarte de tu oponente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370452
+    m_Localized: Elige una unidad de tu pila de descarte para recuperarla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370453
+    m_Localized: Elige una carta de tu mazo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370454
+    m_Localized: Cartas elegidas al azar de la mano de tu oponente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370455
+    m_Localized: Omitir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370456
+    m_Localized: Seguir eligiendo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370457
+    m_Localized: "\xBFNo jugar ninguna carta de clima? Tu habilidad de l\xEDder se gasta y tu turno termina."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370458
+    m_Localized: "\xBFNo traer de vuelta ninguna unidad? El m\xE9dico se queda, pero pierde su habilidad y tu turno termina."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370459
+    m_Localized: "\xBFNo robar ninguna carta? Las dos cartas que descartaste se pierden y tu turno termina."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370460
+    m_Localized: "\xBFNo tomar nada de la pila de descarte de tu oponente? Tu habilidad de l\xEDder se gasta y tu turno termina."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370461
+    m_Localized: "\xBFNo recuperar ninguna carta? Tu habilidad de l\xEDder se gasta y tu turno termina."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370462
+    m_Localized: "Ahora elige d\xF3nde jugar {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370463
+    m_Localized: Tu pila de descarte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370464
+    m_Localized: La pila de descarte de tu oponente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370465
+    m_Localized: Ventaja de los Scoia'tael
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370466
+    m_Localized: "T\xFA decides qui\xE9n juega el primer turno."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370467
+    m_Localized: Jugar segundo te permite responder a la primera jugada del oponente.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370468
+    m_Localized: Jugar primero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370469
+    m_Localized: Jugar segundo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370470
+    m_Localized: Listo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370471
+    m_Localized: Elige una carta para cambiar. {0}/2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370472
+    m_Localized: Cambiar de lado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370473
+    m_Localized: Ronda anterior
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370474
+    m_Localized: Jugada anterior
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370475
+    m_Localized: Pausa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370476
+    m_Localized: Reproducir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370477
+    m_Localized: Jugada siguiente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370478
+    m_Localized: Ronda siguiente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370479
+    m_Localized: Velocidad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370480
+    m_Localized: Ventana de chat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370481
+    m_Localized: "Chat r\xE1pido"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370482
+    m_Localized: Chat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370483
+    m_Localized: '{0} silenciado'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370484
+    m_Localized: "T\xFA"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370485
+    m_Localized: "Escribe algo\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370486
+    m_Localized: Enviar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370487
+    m_Localized: "Todav\xEDa no se dijo nada"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370488
+    m_Localized: Buenas tardes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370489
+    m_Localized: Bien jugado.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370490
+    m_Localized: Gracias.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370491
+    m_Localized: Mmm...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370492
+    m_Localized: "El medall\xF3n vibra."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370493
+    m_Localized: "\xA1Maldici\xF3n!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370494
+    m_Localized: "El viento a\xFAlla."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370495
+    m_Localized: "Demonios, qu\xE9 feo eres."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370496
+    m_Localized: "\xBFAbandonar esta batalla? Cuenta como una derrota."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370497
+    m_Localized: Rendirse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370498
+    m_Localized: Seguir jugando
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370499
+    m_Localized: "Mant\xE9n para pasar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370500
+    m_Localized: "{0}: vac\xEDa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370501
+    m_Localized: '{0} ({1}): {2}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370502
+    m_Localized: 1 carta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370503
+    m_Localized: toca para verla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370504
+    m_Localized: haz clic para verla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370505
+    m_Localized: "Anulada por el otro l\xEDder"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370506
+    m_Localized: 'Pasiva: siempre activa'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370507
+    m_Localized: Usada
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370508
+    m_Localized: Lista para usar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370509
+    m_Localized: "A\xFAn sin usar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370510
+    m_Localized: "A\xFAn sin usar, no en esta ronda"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370511
+    m_Localized: "Habilidad del l\xEDder"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370512
+    m_Localized: "Habilidad del l\xEDder del oponente"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370513
+    m_Localized: "{0}: anulada por el otro l\xEDder"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370514
+    m_Localized: '{0}: pasiva, siempre activa'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370515
+    m_Localized: '{0}: usada'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370516
+    m_Localized: "{0}: a\xFAn sin usar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370517
+    m_Localized: "Habilidad del l\xEDder: toca para usarla"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370518
+    m_Localized: "Habilidad del l\xEDder: haz clic para usarla"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370519
+    m_Localized: "Habilidad del l\xEDder: toca tu carta de l\xEDder para levantarla y luego toca esta corona para usarla"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370520
+    m_Localized: "Habilidad del l\xEDder: haz clic en tu carta de l\xEDder para levantarla y luego haz clic en esta corona para usarla"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370521
+    m_Localized: "Habilidad de la facci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370522
+    m_Localized: Ninguna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370523
+    m_Localized: "L\xEDder: {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370524
+    m_Localized: en la mano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370525
+    m_Localized: en el mazo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370526
+    m_Localized: descartadas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370527
+    m_Localized: "Un se\xF1uelo ocupa el lugar de una de tus unidades en el tablero: elige cu\xE1l"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370528
+    m_Localized: El clima y Scorch van en el tablero de clima
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370529
+    m_Localized: "Habilidad de la facci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370530
+    m_Localized: "Habilidad de la facci\xF3n del oponente"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370531
+    m_Localized: '{0} ({1}): {2}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370532
+    m_Localized: "Clima: ninguno en juego. Una carta de clima cae aqu\xED y reduce su fila a 1 en ambos lados; Clima despejado lo quita"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370533
+    m_Localized: 'Alejar: todo el tablero'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370534
+    m_Localized: 'Desbloquear el tablero: los toques vuelven a jugar'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370535
+    m_Localized: "Bloquear el tablero: mira y despl\xE1zate, los toques no hacen nada"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370536
+    m_Localized: 'Tablero bloqueado: los toques no hacen nada'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370537
+    m_Localized: Tablero desbloqueado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370538
+    m_Localized: "{X} o {Enter} usa la habilidad de tu l\xEDder   \xB7   {Esc} la devuelve"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370539
+    m_Localized: "Volver al men\xFA principal"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370540
+    m_Localized: Conservar este nombre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370541
+    m_Localized: Ponerle nombre a una copia de este mazo predefinido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370542
+    m_Localized: Cambiar el nombre de este mazo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370543
+    m_Localized: Dejar el nombre como estaba
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370544
+    m_Localized: Los mazos predefinidos no se pueden eliminar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370545
+    m_Localized: Eliminar este mazo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370546
+    m_Localized: Primero elige un mazo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370547
+    m_Localized: Ponle nombre a tu mazo nuevo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370548
+    m_Localized: Ponle nombre a tu copia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370549
+    m_Localized: Nombre del mazo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370550
+    m_Localized: "El nombre de un mazo necesita una letra o un n\xFAmero"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370551
+    m_Localized: Ya hay otro mazo llamado "{0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370552
+    m_Localized: 'Guardado como tu propio mazo, "{0}": el mazo predefinido queda como estaba'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370553
+    m_Localized: No se pudo guardar el mazo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370554
+    m_Localized: No se pudo cambiar el nombre del mazo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370555
+    m_Localized: "\xBFEliminar el mazo \"{0}\"?\nEsto no se puede deshacer."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370556
+    m_Localized: Cancelar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370557
+    m_Localized: No se pudo eliminar el mazo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370558
+    m_Localized: 'Demasiadas copias de este mazo predefinido: elimina algunas primero'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370559
+    m_Localized: 'Los mazos predefinidos no cambian: tus cambios se guardan en tu propio mazo, "{0}"'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370560
+    m_Localized: el mazo inicial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370561
+    m_Localized: predeterminado (Reinos del Norte)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370562
+    m_Localized: (predefinido)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370563
+    m_Localized: "No est\xE1 listo para batallar: {0}\nMazo de batalla: {1}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370564
+    m_Localized: 'Mazo de batalla: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370565
+    m_Localized: 'Un mazo predefinido: si lo cambias o le pones nombre, se crea tu propia copia'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370566
+    m_Localized: "+ Mazo vac\xEDo nuevo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370567
+    m_Localized: No se pudieron leer {0} archivos de mazo y se omitieron
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370568
+    m_Localized: 'Primero crea un mazo: escribe su nombre y presiona +'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370569
+    m_Localized: "{0} no pertenece a la facci\xF3n de este mazo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370570
+    m_Localized: Tienes una copia de {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370571
+    m_Localized: Tienes {0} copias de {1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370572
+    m_Localized: "Un mazo puede tener como m\xE1ximo {0} cartas especiales"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370573
+    m_Localized: "Toca para elegir tu l\xEDder"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370574
+    m_Localized: "Haz clic para elegir tu l\xEDder"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370575
+    m_Localized: 'Primero crea un mazo: "{0}", al final de la lista de mazos'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370576
+    m_Localized: Todas las cartas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370577
+    m_Localized: Unidades cuerpo a cuerpo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370578
+    m_Localized: Unidades a distancia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370579
+    m_Localized: Unidades de asedio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370580
+    m_Localized: "H\xE9roes"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370581
+    m_Localized: Clima
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370582
+    m_Localized: Especiales
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370583
+    m_Localized: "Elige a tu l\xEDder"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370584
+    m_Localized: Diario
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370585
+    m_Localized: "Colecci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370586
+    m_Localized: Viajar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370587
+    m_Localized: Historia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370588
+    m_Localized: 'Busca: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370589
+    m_Localized: 'Encuentro con: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370590
+    m_Localized: 'Gana: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370591
+    m_Localized: 'Derrota a: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370592
+    m_Localized: "\u2026 m\xE1s por venir"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370593
+    m_Localized: 'Recompensa: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370594
+    m_Localized: 'Recompensa: {0} (conseguida)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370595
+    m_Localized: "Colecci\xF3nalas todas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370596
+    m_Localized: 'Todas las cartas de Gwent: {0} de {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370597
+    m_Localized: Todas las cartas de Gwent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370598
+    m_Localized: "D\xF3nde est\xE1n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370599
+    m_Localized: "{0} \xB7 sin visitar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370600
+    m_Localized: Cartas aleatorias
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370601
+    m_Localized: "Por facci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370602
+    m_Localized: Cartas especiales
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370603
+    m_Localized: Neutrales
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370604
+    m_Localized: Abierta desde el inicio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370605
+    m_Localized: Se abre al completar {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370606
+    m_Localized: 'Se abre al derrotar a: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370607
+    m_Localized: "Est\xE1s aqu\xED"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370608
+    m_Localized: '{0} por encontrar'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370609
+    m_Localized: Todo encontrado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370610
+    m_Localized: "El Gwent de Geralt por las tierras de The Witcher 3: vence a sus jugadores, compra a sus taberneros, completa sus misiones y re\xFAne todas las cartas."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370611
+    m_Localized: "El mazo inicial de The Witcher 3 y un l\xEDder de cuatro facciones"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370612
+    m_Localized: Comenzar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370613
+    m_Localized: Empezar de nuevo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370614
+    m_Localized: Continuar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370615
+    m_Localized: '{0}. Empezar de nuevo lo aparta (se conserva, no se borra) y comienza una historia nueva.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370616
+    m_Localized: "{0} de {1} cartas \xB7 {2} coronas \xB7 {3} de {4} misiones"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370617
+    m_Localized: "\xBFComenzar una historia nueva? Esta se aparta (se conserva, no se borra)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370618
+    m_Localized: No se pudo leer el guardado de la historia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370619
+    m_Localized: "La historia fue guardada por una versi\xF3n m\xE1s reciente del juego"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370620
+    m_Localized: '{0} cartas a la venta'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370621
+    m_Localized: Agotado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370622
+    m_Localized: Recogido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370623
+    m_Localized: "Hay algo para ti aqu\xED"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370624
+    m_Localized: Ganado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370625
+    m_Localized: 'Siguiente: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370626
+    m_Localized: '{0} rondas'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370627
+    m_Localized: vende cartas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370628
+    m_Localized: Derrotado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370629
+    m_Localized: Coronas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370630
+    m_Localized: Una carta aleatoria
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370631
+    m_Localized: "L\xEDder: {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370632
+    m_Localized: Buscar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370633
+    m_Localized: Tomar el mazo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370634
+    m_Localized: Aceptar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370635
+    m_Localized: Siguiente ronda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370636
+    m_Localized: Inscribirse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370637
+    m_Localized: Jugar de nuevo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370638
+    m_Localized: Jugar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370639
+    m_Localized: "Tu mazo de batalla no puede jugar ({0}): se usar\xE1 el mazo inicial"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370640
+    m_Localized: Una victoria paga {0} coronas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370641
+    m_Localized: "La cuota de inscripci\xF3n: {0} coronas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370642
+    m_Localized: Juega como un principiante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370643
+    m_Localized: Un buen jugador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370644
+    m_Localized: Un maestro del juego
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370645
+    m_Localized: Un paso de {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370646
+    m_Localized: Solo mazos de {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370647
+    m_Localized: UNA CARTA ALEATORIA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370648
+    m_Localized: Los jugadores de The Witcher 3 sin mayor renombre entregan una carta aleatoria la primera vez que pierden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370649
+    m_Localized: GANADA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370650
+    m_Localized: EL MAZO DE SKELLIGE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370651
+    m_Localized: EL PREMIO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370652
+    m_Localized: "{0} cartas y su l\xEDder"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370653
+    m_Localized: LAS RONDAS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370654
+    m_Localized: Te da {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370655
+    m_Localized: EN VENTA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370656
+    m_Localized: Vendido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370657
+    m_Localized: "\xBFComprar {0} por {1} coronas?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370658
+    m_Localized: Comprar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370659
+    m_Localized: Ahora no
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370660
+    m_Localized: "{0} \xB7 tienes {1}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370661
+    m_Localized: Nada nuevo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370662
+    m_Localized: Ahora tienes {0} cartas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370663
+    m_Localized: 'Ahora tienes: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370664
+    m_Localized: 'Ahora tienes: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370665
+    m_Localized: 'Coronas: las victorias las pagan; los taberneros y mercaderes venden cartas a cambio de ellas'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370666
+    m_Localized: Las misiones de Gwent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370667
+    m_Localized: "Tu colecci\xF3n: lo que a\xFAn falta por encontrar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370668
+    m_Localized: Tus mazos de la historia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370669
+    m_Localized: 'Ahora en el mapa: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370670
+    m_Localized: "{0} est\xE1 abierta: usa Viajar para ir"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370671
+    m_Localized: 'Coleccionista de cartas: ya tienes todas las cartas de Gwent'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370672
+    m_Localized: Fuerza total de unidades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370673
+    m_Localized: "Cartas de h\xE9roe"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370674
+    m_Localized: Cantidad de unidades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370675
+    m_Localized: Escribe el nombre del mazo...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370676
+    m_Localized: "HABILIDAD DE FACCI\xD3N"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370677
+    m_Localized: Total de cartas en el mazo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370678
+    m_Localized: "L\xEDder"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370679
+    m_Localized: Cartas especiales
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370680
+    m_Localized: "Colecci\xF3n de cartas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370681
+    m_Localized: Mostrar neutrales
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370682
+    m_Localized: "Pas\xF3"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15369981370683
+    m_Localized: Presiona para pasar
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

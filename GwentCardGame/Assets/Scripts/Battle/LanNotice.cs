@@ -1,4 +1,5 @@
 using System;
+using Gwent.Core;
 using Gwent.Net;
 using Gwent.UI;
 using TMPro;
@@ -33,7 +34,7 @@ namespace Gwent.Battle
             RectTransform band = BattleBanner.Band("Band", root);
             notice.text = BattleBanner.Text(band);
             notice.text.rectTransform.sizeDelta = new Vector2(1400, band.sizeDelta.y);
-            string label = over ? "Main menu" : session.Hosting ? "Claim the win" : "Give up";
+            string label = Loc.T(Loc.UI, over ? "pause.main_menu" : session.Hosting ? "lan.claim_win" : "lan.give_up");
             notice.wayOut = UIKit.Button(root, label, UIKit.ButtonStyle.Secondary, () => way_out(), new Vector2(320, 64));
             ((RectTransform)notice.wayOut.transform).Place(new Vector2(0.5f, 0.5f), new Vector2(0, -150), new Vector2(320, 64));
             notice.wayOut.gameObject.SetActive(over);
@@ -50,14 +51,14 @@ namespace Gwent.Battle
         {
             if (over)
             {
-                text.text = "The battle can't go on. " + (session.Problem ?? "The link to the other player is gone.");
+                text.text = Loc.T(Loc.UI, "lan.notice_over", session.Problem ?? Loc.T(Loc.UI, "lan.notice_gone"));
                 return;
             }
             int left = Mathf.Max(0, Mathf.CeilToInt(WayOutAfter - session.AwayFor));
             string time = left > 0 ? "  " + (left / 60).ToString("00") + ":" + (left % 60).ToString("00") : "";
             text.text = left > 0
-                ? "Connection lost: " + (session.Hosting ? "waiting for " + session.TheirName + " to come back" : "reconnecting to " + session.TheirName) + time
-                : session.TheirName + " hasn't come back. Keep waiting, or " + (session.Hosting ? "claim the win." : "give up (a loss).");
+                ? Loc.T(Loc.UI, session.Hosting ? "lan.notice_lost_host" : "lan.notice_lost_guest", session.TheirName, time)
+                : Loc.T(Loc.UI, session.Hosting ? "lan.notice_away_host" : "lan.notice_away_guest", session.TheirName);
             if (!wayOut.gameObject.activeSelf && session.AwayFor >= WayOutAfter)
             {
                 wayOut.gameObject.SetActive(true);

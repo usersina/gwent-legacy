@@ -86,7 +86,7 @@ namespace Gwent.Battle
             Image shield = UIKit.NewImage(panel, "Shield", SpriteCache.Load("Stats/faction/" + side.Faction.Code()), Color.white);
             shield.preserveAspect = true;
             shield.rectTransform.Place(new Vector2(0, 1), new Vector2(Pad, -y), new Vector2(52, 60), new Vector2(0, 1));
-            y = Section(panel, "Faction ability", side.Faction.Ability() ?? "None", y);
+            y = Section(panel, Loc.T(Loc.UI, "sheet.faction_ability"), side.Faction.Ability() ?? Loc.T(Loc.UI, "sheet.none"), y);
             y = Mathf.Max(y, row + 60) + 16;
 
             // The leader's ability and its state
@@ -101,7 +101,7 @@ namespace Gwent.Battle
             }
             Card leader = battle.GetCard(side.Leader);
             string ability = CardDescription.LeaderAbility(side.Leader) ?? "";
-            y = Section(panel, "Leader: " + (leader != null ? leader.DisplayName : "?"), ability, y);
+            y = Section(panel, Loc.T(Loc.UI, "sheet.leader", leader != null ? leader.DisplayName : "?"), ability, y);
             if (slot != null)
             {
                 bool usable;
@@ -115,13 +115,14 @@ namespace Gwent.Battle
 
             // Its cards
             y = Rule(panel, y);
-            string[] what = { "in hand", "in deck", "discarded" };
+            string[] what = { "in hand", "in deck", "discarded" }; // the elements' names: what shows is said below
+            string[] said = { Loc.T(Loc.UI, "sheet.in_hand"), Loc.T(Loc.UI, "sheet.in_deck"), Loc.T(Loc.UI, "sheet.discarded") };
             int[] counts = { side.HandList.Count, side.DeckList.Count, side.DiscardList.Count };
             float column = (Width - 2 * Pad) / 3;
             for (int i = 0; i < 3; i++)
             {
                 Line(panel, counts[i].ToString(), UIKit.TextStyle.Heading, 40, theme.text, Pad + i * column, y, column, false).name = "Count " + what[i];
-                Line(panel, what[i], UIKit.TextStyle.Caption, 22, theme.textSecondary, Pad + i * column, y + 48, column, false);
+                Line(panel, said[i], UIKit.TextStyle.Caption, 22, theme.textSecondary, Pad + i * column, y + 48, column, false);
             }
             y += 48 + 28 + Pad;
 

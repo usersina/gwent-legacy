@@ -842,7 +842,7 @@ namespace Gwent.Net
                 case Message.Emote when State == Stage.Battle:
                     int line = r.ReadByte();
                     if (line < Chat.Lines.Length)
-                        Hear(Chat.Lines[line]);
+                        Hear(Chat.Line(line));
                     break;
                 case Message.Text when State == Stage.Battle:
                     string text = Chat.Clean(r.ReadString());
@@ -885,7 +885,7 @@ namespace Gwent.Net
         {
             if (line < 0 || line >= Chat.Lines.Length || !Talking || !Send(Message.Emote, w => w.Write((byte)line)))
                 return null;
-            return Remember(true, Chat.Lines[line]);
+            return Remember(true, Chat.Line(line));
         }
 
         // A message of this player's (kept to Chat's rule) to the other: what was said, or null (nothing of it left, the

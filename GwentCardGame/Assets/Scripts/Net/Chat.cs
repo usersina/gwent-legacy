@@ -1,4 +1,5 @@
 using System.Text;
+using Gwent.Core;
 
 namespace Gwent.Net
 {
@@ -10,11 +11,18 @@ namespace Gwent.Net
     {
         public const int MaxLength = 100;
 
-        // The quick lines, by number over the link (both devices run the same version)
+        // The quick lines, by number over the link (both devices run the same version): Line says one in the language of
+        // whoever reads it, since only its number travels. Lines is the English they started from (the table "chat.quick_N"
+        // holds them now): what counts is how many there are.
         public static readonly string[] Lines =
         {
             "Evening.", "Well played.", "Thanks.", "Hmm...", "Medallion's humming.", "Bollocks!", "Wind's howling.", "Damn, you're ugly.",
         };
+
+        public static string Line(int number)
+        {
+            return Loc.T(Loc.UI, "chat.quick_" + number);
+        }
 
         // Printable Latin-1 (not the soft hyphen: it shows nothing, a message of them would be an empty bubble)
         public static bool Allowed(char c)

@@ -58,9 +58,9 @@ namespace Gwent.Battle
                         GameAudio.PlaySfx("invalid");
                         Card selected = controller.selectedCard.GetComponent<CardFace>().Card;
                         if (selected.ability == Ability.Decoy)
-                            UIOverlay.Toast("A decoy takes the place of one of your units on the board: choose which");
+                            UIOverlay.Toast(Loc.T(Loc.UI, "row.decoy"));
                         else if (selected.row == Row.Weather || selected._id == CardIds.Scorch)
-                            UIOverlay.Toast("Weather and Scorch go on the weather board");
+                            UIOverlay.Toast(Loc.T(Loc.UI, "row.weather"));
                     }
                 }
             }

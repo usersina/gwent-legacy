@@ -138,7 +138,7 @@ namespace Gwent.Battle
             string ability = faction.Ability();
             if (ability == null)
                 return null;
-            return (isPlayers ? "Faction ability" : "Opponent's faction ability") + " (" + deckText.text + "): " + ability;
+            return Loc.T(Loc.UI, "side.ability_tip", Loc.T(Loc.UI, isPlayers ? "side.faction_you" : "side.faction_opp"), deckText.text, ability);
         }
 
         // Player name, and the leader card's art in the round portrait frame (Avatar/Image masks Avatar/Image/Portrait)

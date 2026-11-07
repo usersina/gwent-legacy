@@ -31,10 +31,11 @@ namespace Gwent.Battle
             if (battle == null)
                 return null;
             int count = (isPlayer ? battle.PlayerInfo : battle.EnemyInfo).DiscardList.Count;
-            string pile = isPlayer ? "Your discard pile" : "Your opponent's discard pile";
+            string pile = Loc.T(Loc.UI, isPlayer ? "pick.your_discard" : "pick.opp_discard");
             if (count == 0)
-                return pile + ": empty";
-            return pile + " (" + count + (count == 1 ? " card" : " cards") + "): " + (GameInput.IsTouch ? "tap" : "click") + " to look through it";
+                return Loc.T(Loc.UI, "pile.empty", pile);
+            return Loc.T(Loc.UI, "pile.tooltip", pile, count == 1 ? Loc.T(Loc.UI, "pile.card_one") : Loc.T(Loc.UI, "end.cards", count),
+                Loc.T(Loc.UI, GameInput.IsTouch ? "pile.look_tap" : "pile.look_click"));
         }
 
         public void OnPointerClick(PointerEventData eventData)

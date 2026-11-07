@@ -71,20 +71,23 @@ namespace Gwent.Battle
             // Rounds as they were won (a drawn round counts for nobody, a Nilfgaard tie for Nilfgaard)
             int player_rounds = player.RoundsWon.Count(won => won), opponent_rounds = opponent.RoundsWon.Count(won => won);
             int drawn = player.RoundsScore.Count - player_rounds - opponent_rounds;
-            string drawn_text = drawn == 1 ? ", one round drawn" : drawn > 1 ? ", " + drawn + " rounds drawn" : "";
-            // A replay seen from the other side: the bottom side by its name, not "You"
-            string you = replay && Gwent.Replays.ReplayPlayer.Current != null && Gwent.Replays.ReplayPlayer.Current.Switched ? player.Name : "You";
-            string tally = outcome == BattleState.Won ? you + " won the battle, " + Rounds(player_rounds) + " to " + opponent_rounds + drawn_text
-                : outcome == BattleState.Lost ? (lan_battle || story != null ? opponent.Name : "The opponent") + " won the battle, " + Rounds(opponent_rounds) + " to " + player_rounds + drawn_text
-                : "Neither side came out ahead" + drawn_text;
+            string drawn_text = drawn == 1 ? Loc.T(Loc.UI, "end.drawn_one") : drawn > 1 ? Loc.T(Loc.UI, "end.drawn_many", drawn) : "";
+            // A replay seen from the other side: the bottom side by its name, not "You" (a sentence a form, as "You won"
+            // and "Ana won" are not one phrase with a hole in other languages)
+            bool named = replay && Gwent.Replays.ReplayPlayer.Current != null && Gwent.Replays.ReplayPlayer.Current.Switched;
+            string other = lan_battle || story != null ? opponent.Name : Loc.T(Loc.UI, "end.the_opponent");
+            string tally = outcome == BattleState.Won ? (named ? Loc.T(Loc.UI, "end.they_won", player.Name, Rounds(player_rounds), opponent_rounds, drawn_text)
+                    : Loc.T(Loc.UI, "end.you_won", Rounds(player_rounds), opponent_rounds, drawn_text))
+                : outcome == BattleState.Lost ? Loc.T(Loc.UI, "end.they_won", other, Rounds(opponent_rounds), player_rounds, drawn_text)
+                : Loc.T(Loc.UI, "end.draw", drawn_text);
             if (gave_up)
-                tally = you + " gave up the battle";
+                tally = named ? Loc.T(Loc.UI, "end.they_gave_up", player.Name) : Loc.T(Loc.UI, "end.you_gave_up");
             else if (opponent_gave_up)
-                tally = (lan_battle || story != null ? opponent.Name : "The opponent") + " gave up the battle";
+                tally = Loc.T(Loc.UI, "end.they_gave_up", other);
             else if (opponent_left)
-                tally = opponent.Name + " left the battle";
+                tally = Loc.T(Loc.UI, "end.left_battle", opponent.Name);
             else if (ended_away)
-                tally = opponent.Name + " ended the battle while you were away";
+                tally = Loc.T(Loc.UI, "end.ended_away", opponent.Name);
 
             // A faint light behind the emblem lifts it off the dimmed board (the emblem brings its own colour)
             Image glow = UIKit.NewImage(content, "Glow", theme.radial, UITheme.WithAlpha(theme.textBright, 0.1f));
@@ -118,16 +121,16 @@ namespace Gwent.Battle
             SaveReplayRing(summary, -RingOffset);
             if (menu_only)
             {
-                primary = Main(summary, "Main menu", ToMainMenu);
+                primary = Main(summary, Loc.T(Loc.UI, "pause.main_menu"), ToMainMenu);
                 UIKit.Focus(primary);
                 return;
             }
-            Ring(summary, "Main menu", "Main menu", theme.iconHome, "Esc", RingOffset, ToMainMenu);
+            Ring(summary, "Main menu", Loc.T(Loc.UI, "pause.main_menu"), theme.iconHome, "Esc", RingOffset, ToMainMenu);
             if (lan != null)
             {
                 battle = lan.Battle;
                 opponentName = opponent.Name;
-                rematch = primary = Main(summary, "Rematch", () => lan.AskRematch());
+                rematch = primary = Main(summary, Loc.T(Loc.UI, "end.rematch"), () => lan.AskRematch());
                 status = UIKit.Text(summary, "", UIKit.TextStyle.Body, TextAlignmentOptions.Center);
                 status.rectTransform.Place(new Vector2(0.5f, 0.5f), new Vector2(0, LineY), new Vector2(1200, 44));
                 if (!lan.Hosting)
@@ -139,7 +142,7 @@ namespace Gwent.Battle
                 UIKit.Focus(rematch);
                 return;
             }
-            primary = Main(summary, "Play again", PlayAgain);
+            primary = Main(summary, Loc.T(Loc.UI, "end.play_again"), PlayAgain);
             UIKit.Focus(primary);
         }
 
@@ -216,7 +219,7 @@ namespace Gwent.Battle
         //----------------------------------------Save replay----------------------------------------//
         private void SaveReplayRing(RectTransform parent, float x)
         {
-            saveReplay = Ring(parent, "Save replay", "Save replay", UITheme.Current.iconFilm, "S", x, SaveReplay);
+            saveReplay = Ring(parent, "Save replay", Loc.T(Loc.UI, "end.save_replay"), UITheme.Current.iconFilm, "S", x, SaveReplay);
             saveReplayIcon = saveReplay.transform.Find("Icon").GetComponent<Image>();
             saveReplayLabel = saveReplay.transform.Find("Label").GetComponent<TextMeshProUGUI>();
             ShowSaveReplay();
@@ -228,7 +231,7 @@ namespace Gwent.Battle
             if (battle_screen == null || !battle_screen.CanSaveReplay)
                 return;
             if (!battle_screen.SaveReplay())
-                UIOverlay.Toast("The replay could not be saved");
+                UIOverlay.Toast(Loc.T(Loc.UI, "end.save_failed"));
             ShowSaveReplay();
         }
 
@@ -242,7 +245,7 @@ namespace Gwent.Battle
             bool can = battle_screen != null && battle_screen.CanSaveReplay;
             if (saveReplay.interactable != can)
                 saveReplay.interactable = can;
-            string text = saved ? "Saved" : "Save replay";
+            string text = Loc.T(Loc.UI, saved ? "end.saved" : "end.save_replay");
             if (saveReplayLabel.text != text)
             {
                 saveReplayLabel.text = text;
@@ -277,16 +280,15 @@ namespace Gwent.Battle
             bool can = !gone && lan.Linked && lan.Over && !lan.AskedRematch;
             if (rematch.interactable != can)
                 rematch.interactable = can; // the keys stay on it (moved to Main menu, a second press would leave)
-            status.text = gone ? opponentName + " left"
-                : !lan.Linked ? opponentName + " is away"
-                : lan.AskedRematch ? "Waiting for " + opponentName
-                : lan.TheyAskedRematch ? opponentName + " wants a rematch"
+            status.text = gone ? Loc.T(Loc.UI, "end.opp_left", opponentName)
+                : !lan.Linked ? Loc.T(Loc.UI, "end.opp_away", opponentName)
+                : lan.AskedRematch ? Loc.T(Loc.UI, "end.waiting_for", opponentName)
+                : lan.TheyAskedRematch ? Loc.T(Loc.UI, "end.opp_wants_rematch", opponentName)
                 : "";
             status.color = !gone && lan.Linked && lan.TheyAskedRematch && !lan.AskedRematch ? theme.goldBright : theme.textMuted;
             if (fairPlay != null && !gone && lan.FairChecked)
             {
-                fairPlay.text = lan.FairProblem == null ? "Fair play checked: the shuffle was shared, and every move followed the rules"
-                    : "Fair play check failed. " + lan.FairProblem;
+                fairPlay.text = lan.FairProblem == null ? Loc.T(Loc.UI, "end.fair_ok") : Loc.T(Loc.UI, "end.fair_failed", lan.FairProblem);
                 fairPlay.color = lan.FairProblem == null ? theme.textMuted : new Color(0.9f, 0.42f, 0.36f);
             }
         }
@@ -300,7 +302,7 @@ namespace Gwent.Battle
 
             for (int round = 0; round < 3; round++)
             {
-                TextMeshProUGUI header = UIKit.Text(board, "Round " + (round + 1), UIKit.TextStyle.Tab, TextAlignmentOptions.Center);
+                TextMeshProUGUI header = UIKit.Text(board, Loc.T(Loc.UI, "end.round_n", round + 1), UIKit.TextStyle.Tab, TextAlignmentOptions.Center);
                 header.color = theme.textMuted;
                 header.rectTransform.Place(new Vector2(0, 1), new Vector2(30 + SideColumn + (round + 0.5f) * RoundColumn, -40), new Vector2(RoundColumn, 40));
             }
@@ -313,7 +315,7 @@ namespace Gwent.Battle
 
         private static string Rounds(int count)
         {
-            return count + (count == 1 ? " round" : " rounds");
+            return count == 1 ? Loc.T(Loc.UI, "end.round_one") : Loc.T(Loc.UI, "end.round_many", count);
         }
 
         private void AddRow(RectTransform board, int index, BattleController.BattleSide info, string name, BattleController.BattleSide other)
@@ -367,8 +369,8 @@ namespace Gwent.Battle
         // Watch it again from the start, or back to the replays (Esc)
         private void ShowReplayButtons(RectTransform parent)
         {
-            primary = Main(parent, "Watch again", () => Gwent.Replays.ReplayPlayer.Current?.Restart());
-            Ring(parent, "Replays", "Replays", UITheme.Current.iconFilm, "Esc", RingOffset, Gwent.Replays.ReplayPlayer.Leave);
+            primary = Main(parent, Loc.T(Loc.UI, "end.watch_again"), () => Gwent.Replays.ReplayPlayer.Current?.Restart());
+            Ring(parent, "Replays", Loc.T(Loc.UI, "menu.replays"), UITheme.Current.iconFilm, "Esc", RingOffset, Gwent.Replays.ReplayPlayer.Leave);
             UIKit.Focus(primary);
         }
 
@@ -401,22 +403,22 @@ namespace Gwent.Battle
             System.Action start = () => StoryBattle.Start(story.Place);
             if (story.Won && story.RoundsLeft)
             {
-                primary = Main(summary, "Next round", start);
+                primary = Main(summary, Loc.T(Loc.UI, "end.next_round"), start);
                 SaveReplayRing(summary, -RingOffset);
-                Ring(summary, "Back to the map", "Map", theme.iconMap, "Esc", RingOffset, ToMainMenu);
+                Ring(summary, "Back to the map", Loc.T(Loc.UI, "end.map"), theme.iconMap, "Esc", RingOffset, ToMainMenu);
             }
             else if (story.Won || story.Round != null)
             {
-                primary = Main(summary, "Back to the map", ToMainMenu);
+                primary = Main(summary, Loc.T(Loc.UI, "pause.back_map"), ToMainMenu);
                 if (story.Round == null)
-                    again = Ring(summary, "Play again", "Play again", theme.iconAgain, "R", -RingOffset, start);
+                    again = Ring(summary, "Play again", Loc.T(Loc.UI, "end.play_again"), theme.iconAgain, "R", -RingOffset, start);
                 SaveReplayRing(summary, story.Round == null ? RingOffset : -RingOffset);
             }
             else
             {
-                primary = Main(summary, "Play again", start);
+                primary = Main(summary, Loc.T(Loc.UI, "end.play_again"), start);
                 SaveReplayRing(summary, -RingOffset);
-                Ring(summary, "Back to the map", "Map", theme.iconMap, "Esc", RingOffset, ToMainMenu);
+                Ring(summary, "Back to the map", Loc.T(Loc.UI, "end.map"), theme.iconMap, "Esc", RingOffset, ToMainMenu);
             }
             ShowSpoils(summary, story);
             if (story.Won && story.Reward != null && story.Reward.Cards.Count > 0)
@@ -449,7 +451,7 @@ namespace Gwent.Battle
                 CardArt.Show(art, card);
             }
             if (reward.Cards.Count > 0)
-                line.Text(reward.Cards.Count <= 2 ? string.Join(", ", reward.Cards.Select(card => db.Get(card).DisplayName)) : reward.Cards.Count + " cards", theme.text);
+                line.Text(reward.Cards.Count <= 2 ? string.Join(", ", reward.Cards.Select(card => db.Get(card).DisplayName)) : Loc.T(Loc.UI, "end.cards", reward.Cards.Count), theme.text);
             if (reward.Crowns > 0)
             {
                 line.Picture("Coin", theme.iconCoin, theme.goldBright, new Vector2(34, 34));
@@ -464,7 +466,7 @@ namespace Gwent.Battle
         // What a loss means: a tournament's run over (enter again from the map), or nothing lost
         private static string StoryLossText(StoryBattle story)
         {
-            return story.Round != null ? story.Place.Name + " is over for this time: enter again from the map" : "Nothing lost: play them again whenever you like";
+            return story.Round != null ? Loc.T(Loc.UI, "end.story_over", story.Place.Name) : Loc.T(Loc.UI, "end.nothing_lost");
         }
 
         // What the battle opened (the quests done, the regions, the whole collection) and the tournament's next round;
@@ -476,16 +478,16 @@ namespace Gwent.Battle
             List<(Sprite, string)> lines = new List<(Sprite, string)>();
             if (reward != null && with_opened)
             {
-                lines.AddRange(reward.Quests.Select(quest => (theme.iconQuest, quest.Name + " complete")));
-                lines.AddRange(reward.Regions.Select(region => (theme.iconTravel, region.Name + " is open")));
+                lines.AddRange(reward.Quests.Select(quest => (theme.iconQuest, Loc.T(Loc.UI, "end.quest_done", quest.Name))));
+                lines.AddRange(reward.Regions.Select(region => (theme.iconTravel, Loc.T(Loc.UI, "end.region_open", region.Name))));
                 if (reward.Cards.Count > 0 && StoryGame.Progress.CollectionComplete)
-                    lines.Add((theme.iconCards, "Card Collector: every Gwent card is yours"));
+                    lines.Add((theme.iconCards, Loc.T(Loc.UI, "end.collector")));
             }
             if (story.Won && story.RoundsLeft)
             {
                 StoryRound next = StoryGame.Progress.NextRound(story.Place);
                 if (next != null)
-                    lines.Add((theme.iconGoblet, "Next: " + next.Name));
+                    lines.Add((theme.iconGoblet, Loc.T(Loc.UI, "end.next", next.Name)));
             }
             return lines;
         }
@@ -506,7 +508,7 @@ namespace Gwent.Battle
             List<int> cards = reward.Cards.Take(RewardCardsShown).ToList();
             List<(Sprite icon, string text)> lines = Opened(story);
             if (reward.Cards.Count > cards.Count)
-                lines.Insert(0, (theme.iconCards, "And " + (reward.Cards.Count - cards.Count) + " more cards"));
+                lines.Insert(0, (theme.iconCards, Loc.T(Loc.UI, "end.more_cards", reward.Cards.Count - cards.Count)));
             bool info = reward.Crowns > 0 || lines.Count > 0;
 
             float height = cards.Count <= 2 ? 360 : cards.Count == 3 ? 320 : 270;
@@ -565,7 +567,7 @@ namespace Gwent.Battle
                 }
             }
 
-            collect = Main(view, "Collect", () =>
+            collect = Main(view, Loc.T(Loc.UI, "end.collect"), () =>
             {
                 Destroy(view.gameObject);
                 collect = null;
@@ -580,9 +582,9 @@ namespace Gwent.Battle
         private static string WhatItIs(int card, StoryReward reward, CardDatabase db)
         {
             int owned = StoryGame.Progress != null ? StoryGame.Progress.Owned(card) : 1;
-            string fresh = owned <= 1 ? (db.Get(card).IsLeader ? "new leader" : "new card") : "you have " + owned;
+            string fresh = owned <= 1 ? Loc.T(Loc.UI, db.Get(card).IsLeader ? "end.new_leader" : "end.new_card") : Loc.T(Loc.UI, "end.you_have", owned);
             if (reward.Quests.Any(quest => quest.Reward.Contains(card)))
-                return "Quest reward · " + fresh;
+                return Loc.T(Loc.UI, "end.quest_reward", fresh);
             return char.ToUpper(fresh[0]) + fresh.Substring(1);
         }
 

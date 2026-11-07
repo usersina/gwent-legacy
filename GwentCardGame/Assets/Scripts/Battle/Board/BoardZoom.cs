@@ -128,12 +128,12 @@ namespace Gwent.Battle
             float gap = ButtonGap * zoom.size;
             Vector2 at = menu_button != null ? menu_button.anchoredPosition - new Vector2(0, gap) : new Vector2(-920, 420);
             zoom.button = zoom.Corner("ZoomOut", theme.iconZoomOut, ZoomOut, at, menu_button, 1, out zoom.buttonFade);
-            zoom.button.gameObject.AddComponent<UITooltip>().text = () => "Zoom out: the whole board" + (GameInput.IsTouch ? "" : " (Esc)");
+            zoom.button.gameObject.AddComponent<UITooltip>().text = () => Loc.T(Loc.UI, "zoom.out") + (GameInput.IsTouch ? "" : " (Esc)");
             zoom.lockButton = zoom.Corner("LockBoard", theme.iconUnlock, zoom.ToggleLock, at - new Vector2(0, gap), menu_button, 2, out zoom.lockFade);
             zoom.lockIcon = zoom.lockButton.transform.Find("Icon").GetComponent<Image>();
             zoom.lockButton.gameObject.AddComponent<UITooltip>().text = () => zoom.locked
-                ? "Unlock the board: taps play again"
-                : "Lock the board: look and move around, taps do nothing";
+                ? Loc.T(Loc.UI, "zoom.unlock")
+                : Loc.T(Loc.UI, "zoom.lock");
             zoom.ShowButtons(false, true);
         }
 
@@ -390,7 +390,7 @@ namespace Gwent.Battle
         private void ToggleLock()
         {
             SetLocked(!locked);
-            UIOverlay.Toast(locked ? "Board locked: taps do nothing" : "Board unlocked", 1.5f);
+            UIOverlay.Toast(Loc.T(Loc.UI, locked ? "zoom.locked" : "zoom.unlocked"), 1.5f);
         }
 
         private void SetLocked(bool on)

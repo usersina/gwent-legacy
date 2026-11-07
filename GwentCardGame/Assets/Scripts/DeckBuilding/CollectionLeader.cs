@@ -12,7 +12,7 @@ namespace Gwent.DeckBuilding
 
         private void Awake()
         {
-            gameObject.AddComponent<UITooltip>().text = () => (GameInput.IsTouch ? "Tap" : "Click") + " to choose your leader";
+            gameObject.AddComponent<UITooltip>().text = () => Loc.T(Loc.UI, GameInput.IsTouch ? "deck.leader_tap" : "deck.leader_click");
         }
 
         public void OnPointerClick(PointerEventData eventData)
@@ -26,7 +26,7 @@ namespace Gwent.DeckBuilding
             if (deckBuilder.my_deck.Name == Gwent.Rules.DeckRules.EmptyDeckName)
             {
                 GameAudio.PlaySfx("invalid");
-                UIOverlay.Toast("Make a deck first: \"" + DeckSummary.NewDeckOption + "\", at the end of the deck list");
+                UIOverlay.Toast(Loc.T(Loc.UI, "deck.make_first", DeckSummary.NewDeckOption));
                 return;
             }
             LeaderChoice.Open(deckBuilder);

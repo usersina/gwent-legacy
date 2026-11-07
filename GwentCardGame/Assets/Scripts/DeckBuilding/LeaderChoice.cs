@@ -36,7 +36,7 @@ namespace Gwent.DeckBuilding
             root.gameObject.AddComponent<Image>().color = new Color(0, 0, 0, 0.82f);
             current = root.gameObject;
             int front = Mathf.Max(0, Array.IndexOf(leaders, builder.my_deck.Leader));
-            Picker = CardPicker.Open(root, "Choose your leader", leaders, leader => Choose(builder, leader), Close, front);
+            Picker = CardPicker.Open(root, Loc.T(Loc.UI, "deck.choose_leader"), leaders, leader => Choose(builder, leader), Close, front);
             Picker.StandIn(root.gameObject);
             UIOverlay.PushModal(root.gameObject, Closed);
             GameAudio.PlaySfx("card_select");

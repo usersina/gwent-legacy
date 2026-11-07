@@ -77,6 +77,33 @@ namespace Gwent.DeckBuilding
                 collection.OpenOn(my_deck.Faction);
         }
 
+        // The scene's fixed labels (Deck.unity) say their English in the scene itself; no script owns them, so they are found
+        // by those words and given the player's language here, rather than editing the scene by hand
+        private static readonly Dictionary<string, string> SceneLabels = new Dictionary<string, string>
+        {
+            { "Total Units Strength", "deck.lbl_units_strength" },
+            { "Hero Cards", "deck.lbl_hero_cards" },
+            { "Number of Unit Cards", "deck.lbl_unit_cards" },
+            { "Enter deck name...", "deck.lbl_name_placeholder" },
+            { "FACTION ABILITY", "deck.lbl_faction_ability" },
+            { "Total cards in deck", "deck.lbl_total_cards" },
+            { "Leader", "deck.lbl_leader" },
+            { "Special Cards", "deck.lbl_special_cards" },
+            { "Card Collection", "deck.lbl_collection" },
+            { "Show neutrals", "deck.lbl_show_neutrals" },
+            { "All Cards", "deck.tab_all" },
+        };
+
+        private static void TranslateSceneLabels()
+        {
+            foreach (TMP_Text text in FindObjectsByType<TMP_Text>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+            {
+                string key;
+                if (SceneLabels.TryGetValue(text.text, out key))
+                    text.text = Loc.T(Loc.UI, key);
+            }
+        }
+
         private void OnDestroy()
         {
             if (Instance == this)
@@ -86,6 +113,7 @@ namespace Gwent.DeckBuilding
         private void Start()
         {
             GameAudio.PlayDeckMusic();
+            TranslateSceneLabels(); // before the layout: it measures the words
             ConfigureMobileDeckBuilder();
             LayOutDeckControls(); // after the touch sizes
             AddTooltips();
@@ -125,9 +153,9 @@ namespace Gwent.DeckBuilding
         private void AddTooltips()
         {
             string escape = GameInput.IsTouch ? "" : " (Esc)";
-            Tooltip("BackBtn", () => (DeckContext.InStory ? "Back to the map" : "Back to the main menu") + escape);
-            Tooltip("RenameBtn", () => naming ? "Keep this name" : ShowsPreset ? "Name a copy of this preset" : "Rename this deck");
-            Tooltip("DeleteBtn", () => naming ? "Leave the name as it was" : ShowsPreset ? "Presets can't be deleted" : "Delete this deck");
+            Tooltip("BackBtn", () => Loc.T(Loc.UI, DeckContext.InStory ? "pause.back_map" : "deck.back_menu") + escape);
+            Tooltip("RenameBtn", () => Loc.T(Loc.UI, naming ? "deck.keep_name" : ShowsPreset ? "deck.name_copy" : "deck.rename"));
+            Tooltip("DeleteBtn", () => Loc.T(Loc.UI, naming ? "deck.leave_name" : ShowsPreset ? "deck.preset_no_delete" : "deck.delete"));
         }
 
         private static void Tooltip(string control, System.Func<string> text)
@@ -336,7 +364,7 @@ namespace Gwent.DeckBuilding
         {
             if (nameField == null || !create && (currentDeckPath == EmptyDeckResourcePath || my_deck.Name == DeckRules.EmptyDeckName))
             {
-                RejectName("Choose a deck first");
+                RejectName(Loc.T(Loc.UI, "deck.choose_first"));
                 return;
             }
             naming = true;
@@ -344,7 +372,7 @@ namespace Gwent.DeckBuilding
             deckSummary.deckPicker.gameObject.SetActive(false);
             nameField.gameObject.SetActive(true);
             if (nameField.placeholder is TMP_Text placeholder)
-                placeholder.text = create ? "Name your new deck" : ShowsPreset ? "Name your copy" : "Deck name";
+                placeholder.text = Loc.T(Loc.UI, create ? "deck.name_new" : ShowsPreset ? "deck.name_your_copy" : "deck.name");
             nameField.text = create ? FreeNewDeckName() ?? "" : ShowsPreset ? FreeCopyName() ?? "" : my_deck.Name;
             pencilIcon.sprite = UITheme.Current.iconCheck != null ? UITheme.Current.iconCheck : pencilSprite;
             trashIcon.sprite = UITheme.Current.iconClose != null ? UITheme.Current.iconClose : trashSprite;
@@ -403,14 +431,14 @@ namespace Gwent.DeckBuilding
         {
             if (currentDeckPath == EmptyDeckResourcePath || my_deck.Name == DeckRules.EmptyDeckName)
             {
-                RejectName("Choose a deck first");
+                RejectName(Loc.T(Loc.UI, "deck.choose_first"));
                 return false;
             }
             string name = DeckRules.NormalizeDisplayName(typed);
             string file_name = DeckRules.ToFileName(name);
             if (file_name == null)
             {
-                RejectName("A deck's name needs a letter or a number");
+                RejectName(Loc.T(Loc.UI, "deck.name_needs_letter"));
                 return false;
             }
             if (System.Array.IndexOf(Factions.Playable, my_deck.Faction) < 0)
@@ -418,14 +446,14 @@ namespace Gwent.DeckBuilding
             bool preset = ShowsPreset;
             if (NameTaken(name, preset ? null : currentDeckPath))
             {
-                RejectName("Another deck is already called \"" + name + "\"");
+                RejectName(Loc.T(Loc.UI, "deck.name_taken", name));
                 return false;
             }
             if (!preset)
                 return Rename(name, file_name);
             if (!SaveCopy(name))
                 return false;
-            UIOverlay.Toast("Saved as your own deck, \"" + name + "\": the preset stays as it was", 4f);
+            UIOverlay.Toast(Loc.T(Loc.UI, "deck.saved_copy", name), 4f);
             return true;
         }
 
@@ -437,14 +465,14 @@ namespace Gwent.DeckBuilding
             string file_name = DeckRules.ToFileName(name);
             if (file_name == null)
             {
-                RejectName("A deck's name needs a letter or a number");
+                RejectName(Loc.T(Loc.UI, "deck.name_needs_letter"));
                 return false;
             }
             if (System.Array.IndexOf(Factions.Playable, my_deck.Faction) < 0)
                 return false;
             if (NameTaken(name, null))
             {
-                RejectName("Another deck is already called \"" + name + "\"");
+                RejectName(Loc.T(Loc.UI, "deck.name_taken", name));
                 return false;
             }
             Deck deck = new Deck
@@ -457,7 +485,7 @@ namespace Gwent.DeckBuilding
             string path = DeckStorage.PathFor(deck.Faction, file_name);
             if (!DeckStorage.Save(deck, path))
             {
-                RejectName("Could not save the deck");
+                RejectName(Loc.T(Loc.UI, "deck.save_failed"));
                 return false;
             }
             GameLog.Event(LogCategory.Deck, "deck_added", "path", path);
@@ -489,7 +517,7 @@ namespace Gwent.DeckBuilding
             // Write the new file first, then remove the old one: a failure never loses the deck
             if (!DeckStorage.Save(renamed, newPath))
             {
-                RejectName("Could not rename the deck");
+                RejectName(Loc.T(Loc.UI, "deck.rename_failed"));
                 return false;
             }
             if (!DeckStorage.SamePath(oldPath, newPath))
@@ -532,19 +560,19 @@ namespace Gwent.DeckBuilding
             if (ShowsPreset)
             {
                 GameAudio.PlaySfx("invalid");
-                UIOverlay.Toast("Presets can't be deleted");
+                UIOverlay.Toast(Loc.T(Loc.UI, "deck.preset_no_delete"));
                 return;
             }
 
             string filePath = currentDeckPath;
-            UIOverlay.Confirm("Delete the deck \"" + my_deck.Name + "\"?\nThis cannot be undone.", "Delete", "Cancel", () => ConfirmDelete(filePath));
+            UIOverlay.Confirm(Loc.T(Loc.UI, "deck.delete_ask", my_deck.Name), Loc.T(Loc.UI, "replays.delete"), Loc.T(Loc.UI, "deck.cancel"), () => ConfirmDelete(filePath));
         }
 
         public void ConfirmDelete(string filePath)
         {
             if (!DeckStorage.Delete(filePath))
             {
-                UIOverlay.Toast("Could not delete the deck");
+                UIOverlay.Toast(Loc.T(Loc.UI, "deck.delete_failed"));
                 return;
             }
             GameAudio.PlaySfx("deck_remove");
@@ -568,11 +596,11 @@ namespace Gwent.DeckBuilding
             string name = FreeCopyName();
             if (name == null)
             {
-                RejectName("Too many copies of this preset: delete some first");
+                RejectName(Loc.T(Loc.UI, "deck.too_many_copies"));
                 return;
             }
             if (SaveCopy(name))
-                UIOverlay.Toast("Presets stay as they are: your changes are saved in your own deck, \"" + name + "\"", 4f);
+                UIOverlay.Toast(Loc.T(Loc.UI, "deck.preset_changes", name), 4f);
         }
 
         // The first "(copy)" name of the deck shown that no deck of its faction has (null: too many)
@@ -594,7 +622,7 @@ namespace Gwent.DeckBuilding
             string path = DeckStorage.PathFor(copy.Faction, DeckRules.ToFileName(name));
             if (!DeckStorage.Save(copy, path))
             {
-                RejectName("Could not save the deck");
+                RejectName(Loc.T(Loc.UI, "deck.save_failed"));
                 return false;
             }
             GameLog.Event(LogCategory.Deck, "preset_copied", "path", path);
@@ -666,23 +694,23 @@ namespace Gwent.DeckBuilding
 
             string battle_path = DeckStorage.BattleDeckPath;
             Deck battle_deck = DeckStorage.Exists(battle_path) ? DeckStorage.Load(battle_path) : null;
-            string battle_name = battle_deck == null ? (DeckContext.InStory ? "the starter deck" : "default (Northern Realms)")
-                : battle_deck.Name + (OpponentDecks.IsPreset(battle_path) ? " (preset)" : "");
+            string battle_name = battle_deck == null ? Loc.T(Loc.UI, DeckContext.InStory ? "deck.starter" : "deck.default_nr")
+                : battle_deck.Name + (OpponentDecks.IsPreset(battle_path) ? " " + Loc.T(Loc.UI, "deck.preset_tag") : "");
 
             bool editing_real_deck = currentDeckPath != EmptyDeckResourcePath && my_deck.Name != DeckRules.EmptyDeckName;
             if (editing_real_deck && !IsDeckValid(my_deck))
             {
                 string problem = DeckRules.Validate(my_deck, Db).FirstOrDefault() ?? (DeckContext.InStory ? DeckContext.Story.DeckProblem(my_deck) : null);
-                battleDeckStatus.text = "Not battle-ready: " + problem + "\nBattle deck: " + battle_name;
+                battleDeckStatus.text = Loc.T(Loc.UI, "deck.not_ready", problem, battle_name);
                 battleDeckStatus.color = UITheme.Current.danger;
             }
             else
             {
-                battleDeckStatus.text = "Battle deck: " + battle_name;
+                battleDeckStatus.text = Loc.T(Loc.UI, "deck.battle_deck", battle_name);
                 battleDeckStatus.color = UIOverlay.Gold;
             }
             if (ShowsPreset)
-                battleDeckStatus.text += "\nA preset: changing or naming it makes your own copy";
+                battleDeckStatus.text += "\n" + Loc.T(Loc.UI, "deck.preset_note");
             UpdateDeckActions();
         }
 
@@ -698,7 +726,7 @@ namespace Gwent.DeckBuilding
             if (DeckStorage.Save(deck, file_path))
                 GameLog.Event(LogCategory.Deck, "deck_saved", "path", file_path, "cards", deck.Cards.Count, "leader", Db.Get(deck.Leader).name);
             else
-                UIOverlay.Toast("Could not save the deck");
+                UIOverlay.Toast(Loc.T(Loc.UI, "deck.save_failed"));
         }
 
         // Valid by the rules (in the story, made of the cards owned)

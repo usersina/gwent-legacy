@@ -94,7 +94,7 @@ namespace Gwent.Battle
             Unfocus();
             battle.LeaderKeyPressed();
             if (battle.LeaderSelected)
-                UIOverlay.Toast("{X} or {Enter} uses your leader ability   ·   {Esc} puts it back");
+                UIOverlay.Toast(Loc.T(Loc.UI, "battle.leader_keys"));
         }
 
         //----------------------------------------The hand----------------------------------------//
@@ -243,7 +243,7 @@ namespace Gwent.Battle
             if (places.Count != 1)
             {
                 GameAudio.PlaySfx("invalid");
-                UIOverlay.Toast(places.Count == 0 ? "This card has nowhere to go" : "It fits more than one place: {Up} or {Down} chooses where   ·   {Enter} plays it");
+                UIOverlay.Toast(Loc.T(Loc.UI, places.Count == 0 ? "battle.keys_nowhere" : "battle.keys_choose"));
                 return;
             }
             PlayOn(battle, places[0]);

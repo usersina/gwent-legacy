@@ -59,7 +59,7 @@ namespace Gwent.Battle
             RectTransform root = UIKit.Rect("MulliganPrompt", UIOverlay.Root).Stretch();
             // Space is Done too (as it passes in the battle: "I'm done")
             TextMeshProUGUI counter;
-            Band(root, "", "Done", GameInput.IsTouch ? null : "Space", controller.FinishCardExchange, out counter);
+            Band(root, "", Loc.T(Loc.UI, "redraw.done"), GameInput.IsTouch ? null : "Space", controller.FinishCardExchange, out counter);
 
             RedrawPicker picker = Create(root, controller, new Vector2(0, 50));
             picker.counter = counter;
@@ -102,7 +102,7 @@ namespace Gwent.Battle
             if (counter == null || counterShows == redrawn)
                 return;
             counterShows = redrawn;
-            counter.text = "Choose a card to redraw. " + redrawn + "/2";
+            counter.text = Loc.T(Loc.UI, "redraw.choose", redrawn);
         }
 
         //----------------------------------------Cards----------------------------------------//

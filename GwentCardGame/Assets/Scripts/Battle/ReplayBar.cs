@@ -59,7 +59,7 @@ namespace Gwent.Battle
             RectTransform hand = battle.BottomHand;
             Transform field = hand.parent;
             Button button = UIKit.RoundButton(field, "SwitchSide", null, UITheme.Current.iconSwitch, Deselecting(replay.SwitchSide), ButtonSize, true);
-            button.gameObject.AddComponent<UITooltip>().text = () => "Switch sides" + KeyName("S");
+            button.gameObject.AddComponent<UITooltip>().text = () => Loc.T(Loc.UI, "replay.switch") + KeyName("S");
             RectTransform rect = (RectTransform)button.transform;
             Vector3 hand_right = field.InverseTransformPoint(hand.TransformPoint(new Vector3(hand.rect.xMax, hand.rect.center.y, 0)));
             float scale = UIKit.PhoneScale;
@@ -82,23 +82,23 @@ namespace Gwent.Battle
             rect.sizeDelta = new Vector2(width, ButtonSize);
             string shift = GameInput.IsTouch ? "" : "Shift+";
             float x = -width / 2 + ButtonSize / 2;
-            AddButton(rect, "RoundBack", theme.iconRoundBack, replay.PreviousRound, x, () => "Round back" + KeyName(shift + "Left"));
+            AddButton(rect, "RoundBack", theme.iconRoundBack, replay.PreviousRound, x, () => Loc.T(Loc.UI, "replay.round_back") + KeyName(shift + "Left"));
             x += ButtonSize + Gap;
-            AddButton(rect, "MoveBack", theme.iconStepBack, replay.PreviousMove, x, () => "Move back" + KeyName("Left"));
+            AddButton(rect, "MoveBack", theme.iconStepBack, replay.PreviousMove, x, () => Loc.T(Loc.UI, "replay.move_back") + KeyName("Left"));
             x += ButtonSize + Gap;
-            Button play = AddButton(rect, "Play", theme.iconPause, replay.TogglePause, x, () => (Playing ? "Pause" : "Play") + KeyName("Space"));
+            Button play = AddButton(rect, "Play", theme.iconPause, replay.TogglePause, x, () => Loc.T(Loc.UI, Playing ? "replay.pause" : "replay.play") + KeyName("Space"));
             playIcon = play.transform.Find("Icon").GetComponent<Image>();
             x += ButtonSize + Gap;
-            AddButton(rect, "MoveForward", theme.iconStepForward, replay.NextMove, x, () => "Next move" + KeyName("Right"));
+            AddButton(rect, "MoveForward", theme.iconStepForward, replay.NextMove, x, () => Loc.T(Loc.UI, "replay.next_move") + KeyName("Right"));
             x += ButtonSize + Gap;
-            AddButton(rect, "RoundForward", theme.iconRoundForward, replay.NextRound, x, () => "Next round" + KeyName(shift + "Right"));
+            AddButton(rect, "RoundForward", theme.iconRoundForward, replay.NextRound, x, () => Loc.T(Loc.UI, "replay.next_round") + KeyName(shift + "Right"));
             x += ButtonSize + Gap;
             Button speed = UIKit.RoundButton(rect, "Speed", "1\u00D7", null, Deselecting(replay.NextSpeed), ButtonSize, true);
             PlaceButton(speed, x);
             speedText = speed.GetComponentInChildren<TextMeshProUGUI>();
             speedText.fontSize = ButtonSize * 0.5f;
             speedText.rectTransform.Stretch(0, 2, 0, 0);
-            speed.gameObject.AddComponent<UITooltip>().text = () => "Speed" + KeyName("Up/Down");
+            speed.gameObject.AddComponent<UITooltip>().text = () => Loc.T(Loc.UI, "replay.speed") + KeyName("Up/Down");
         }
 
         // How far: on the iron rod between the two halves of the board (in it: it moves with a zoom), the part shown in gold,
