@@ -13,21 +13,26 @@ namespace Gwent.Menus
     // rules on the right (they scroll when long), each beside the game's own pieces as on the printed Gwent rule cards
     // (matt77hias/Gwent): faction shields, the hand count, row emblems, the abilities' medallions, life gems, The Witcher 3's
     // notices, cards, keys. The factions show their ability and leaders (hover a leader, or hold a finger on it, to read its
-    // ability). A UI Toolkit dialog: Assets/UI/Toolkit/RulesPage.uxml, the topics and their rules made here.
+    // ability). A UI Toolkit dialog: Assets/UI/Toolkit/RulesPage.uxml, the topics and their rules made here, their words from the
+    // Rules table.
     public static class RulesPage
     {
-        // A rule: its pieces (see Piece), a term and its explanation
+        // A rule: its pieces (see Piece), and the Rules table keys of its term and its explanation. Id is the English term,
+        // kept apart from what is shown because it names the row (the autoplay test finds "Entry Spy" in any language).
         private struct Entry
         {
             public string[] Pieces;
-            public string Title;
-            public string Text;
+            public string Id;
+            public string TitleKey;
+            public string TextKey;
         }
 
+        // Id is the English name for the same reason; Key is the topic's part of its Rules keys (rules.<Key>.name)
         private struct Topic
         {
-            public string Name;
-            public string Intro;
+            public string Id;
+            public string Key;
+            public string IntroKey;
             public Entry[] Entries;
             public bool Factions;
         }
@@ -38,130 +43,147 @@ namespace Gwent.Menus
             public int[] Leaders;
         }
 
-        private static Entry E(string title, string text, params string[] pieces)
+        // key: the entry's part of its Rules keys, rules.<key>.title and rules.<key>.text
+        private static Entry E(string id, string key, params string[] pieces)
         {
-            return new Entry { Title = title, Text = text, Pieces = pieces };
+            return new Entry { Id = id, TitleKey = "rules." + key + ".title", TextKey = "rules." + key + ".text", Pieces = pieces };
         }
 
-        // Built when the page opens, so the controls follow the current input (touch or not)
+        // An entry whose explanation is worded differently with touch and with the pointer: rules.<key>.text.<variant>
+        private static Entry EV(string id, string key, string variant, params string[] pieces)
+        {
+            return new Entry { Id = id, TitleKey = "rules." + key + ".title", TextKey = "rules." + key + ".text." + variant, Pieces = pieces };
+        }
+
+        // Built when the page opens, so the controls follow the current input (touch or not). The words are the Rules table's
+        // (Assets/Localization/Source/Rules.csv): rules.<topic>.name and .intro, rules.<topic>.<entry>.title and .text.
+        // Controls and the touch / pointer wordings have a key of their own, because a gesture is not a click.
         private static Topic[] Topics()
         {
             bool touch = GameInput.IsTouch;
+            string input = touch ? "touch" : "pointer";
             return new[]
             {
                 new Topic
                 {
-                    Name = "The battle",
-                    Intro = "Gwent is a card game for two players. Win two rounds out of three: a round goes to the side whose cards on the board add up to more.",
+                    Id = "The battle",
+                    Key = "battle",
+                    IntroKey = "rules.battle.intro",
                     Entries = new[]
                     {
-                        E("Factions", "Each deck belongs to one of five factions, with its own ability and cards; neutral cards fit any deck.", "shield:NR", "shield:SC", "shield:M", "shield:NF", "shield:SK"),
-                        E("Hand cards", "You draw 10 cards and may redraw up to 2 of them before the first round. Nobody draws between rounds, so every card you play is one fewer for the rounds ahead; only spies, a few leaders and the Northern Realms ability bring more.", "cards", "num:10"),
-                        E("Your turn", "Do one thing: play a card, use your leader's ability, or pass. Playing a card ends your turn.", "notice:me_turn"),
-                        E("Combat rows", "Units go on the close combat, ranged or siege row, as shown on the card.", "emblem:0", "emblem:1", "emblem:2"),
-                        E("Special cards", "Weather, Commander's Horn, Decoy and Scorch, and your leader's ability, can turn a round around.", "medal:biting_frost", "medal:decoy", "medal:scorch"),
-                        E("Passing", "Passing is final for the round: you play nothing more in it, while your opponent may go on playing. Once both sides have passed, the higher total wins the round. A side with no card and no leader ability it could use passes on its own, and a side that starts a round with no card sits it out.", "notice:round_passed"),
-                        E("Life", "Each side has two gems and loses one with each round it loses; a drawn round costs both (unless Nilfgaard plays). Lose both and the battle is lost. The winner of a round starts the next one, and the board is cleared in between.", "gem", "gem"),
-                        E("Playing well", "Winning a round by a mile wastes cards. Letting a round go and keeping a strong hand for the other two is often the better play.", "notice:win_round"),
+                        E("Factions", "battle.factions", "shield:NR", "shield:SC", "shield:M", "shield:NF", "shield:SK"),
+                        E("Hand cards", "battle.hand", "cards", "num:10"),
+                        E("Your turn", "battle.turn", "notice:me_turn"),
+                        E("Combat rows", "battle.rows", "emblem:0", "emblem:1", "emblem:2"),
+                        E("Special cards", "battle.special", "medal:biting_frost", "medal:decoy", "medal:scorch"),
+                        E("Passing", "battle.passing", "notice:round_passed"),
+                        E("Life", "battle.life", "gem", "gem"),
+                        E("Playing well", "battle.well", "notice:win_round"),
                     },
                 },
                 new Topic
                 {
-                    Name = "The board",
-                    Intro = "Each side has three rows; yours are the lower half of the table.",
+                    Id = "The board",
+                    Key = "board",
+                    IntroKey = "rules.board.intro",
                     Entries = new[]
                     {
-                        E("Rows", "Close combat, ranged and siege, from the middle of the table out. A unit goes on the row shown on its card.", "emblem:0", "emblem:1", "emblem:2"),
-                        E("Strength", "A unit's strength is the number in its corner. Each row's total is on its left, each side's total by its portrait, the side ahead in a laurel.", "score:24", "total:61"),
-                        E("Agile", "An agile unit can go on the close combat or the ranged row.", "medal:agile"),
-                        E("Horn slot", "The slot at the left of each row takes one card: a Commander's Horn, or Skellige's Mardroeme.", "medal:commander_horn", "medal:mardroeme"),
-                        E("Weather board", "Weather cards and Scorch are played on the weather board, at the left of the table. Weather affects both sides.", "medal:biting_frost", "medal:impenetrable_fog", "medal:torrential_rain"),
-                        E("Whose turn", "The panel of the side whose turn it is is edged with glowing gold lines; a side that has passed is greyed out.", "notice:op_turn"),
-                        E("Discard piles", "Cards that leave the board go to their owner's discard pile, next to the deck. " + (touch ? "Tap" : "Click") + " a pile to look through it.", "back:NR", "back:M"),
+                        E("Rows", "board.rows", "emblem:0", "emblem:1", "emblem:2"),
+                        E("Strength", "board.strength", "score:24", "total:61"),
+                        E("Agile", "board.agile", "medal:agile"),
+                        E("Horn slot", "board.horn", "medal:commander_horn", "medal:mardroeme"),
+                        E("Weather board", "board.weather", "medal:biting_frost", "medal:impenetrable_fog", "medal:torrential_rain"),
+                        E("Whose turn", "board.turn", "notice:op_turn"),
+                        EV("Discard piles", "board.discard", input, "back:NR", "back:M"),
                     },
                 },
                 new Topic
                 {
-                    Name = "Cards",
-                    Intro = "A deck has one leader, at least 22 unit cards and at most 10 special cards, and holds each card at most as many times as it exists.",
+                    Id = "Cards",
+                    Key = "cards",
+                    IntroKey = "rules.cards.intro",
                     Entries = new[]
                     {
-                        E("Heroes", "The gold-framed units. Nothing changes them: no weather, horn, morale boost, scorch, decoy or medic. A hero can be in a deck only once.", "card:67", "card:14"),
-                        E("Units", "Everything else on the rows. Most exist once; a few, such as the Blue Stripes Commando, several times.", "card:7", "card:4"),
-                        E("Special cards", "Weather, Commander's Horn, Decoy and Scorch: they shape the board instead of adding strength.", "card:202", "card:203"),
-                        E("Leader", "One ability you can use once per battle: lift the leader card, and its crown glows; the crown uses it. The crown turns grey once used. A few leaders' abilities are always in effect instead.", "card:51", "crown"),
+                        E("Heroes", "cards.heroes", "card:67", "card:14"),
+                        E("Units", "cards.units", "card:7", "card:4"),
+                        E("Special cards", "cards.special", "card:202", "card:203"),
+                        E("Leader", "cards.leader", "card:51", "crown"),
                     },
                 },
                 new Topic
                 {
-                    Name = "Abilities",
-                    Intro = "Shown by the icons on a unit card.",
+                    Id = "Abilities",
+                    Key = "abilities",
+                    IntroKey = "rules.abilities.intro",
                     Entries = new[]
                     {
-                        E("Spy", "Goes on your opponent's side (adding to their total) and you draw 2 cards from your deck.", "medal:spy"),
-                        E("Medic", "Brings a unit back from your discard pile and plays it at once (no heroes or special cards). A medic brought back heals again.", "medal:medic"),
-                        E("Muster", "Plays every card of the same family from your deck and your hand at once.", "medal:muster"),
-                        E("Tight bond", "Copies of this card on the same row multiply each other's strength: two double it, three triple it.", "medal:tight_bond"),
-                        E("Morale boost", "Adds 1 to every other unit on its row.", "medal:morale_boost"),
-                        E("Commander's horn", "Doubles the other units on its row, unless the row already has a Commander's Horn.", "medal:commander_horn"),
-                        E("Scorch", "Destroys your opponent's strongest unit(s) on that row, if the row totals 10 or more. The Clan Dimun Pirate's scorch is the Scorch card's: the strongest unit(s) on the whole battlefield as he lands (never himself).", "medal:scorch"),
-                        E("Agile", "Close combat or ranged, your choice.", "medal:agile"),
-                        E("Berserker", "Skellige's Berserkers turn into bears on a row with a Mardroeme (the special card in its horn slot, or Ermion on it), whether it came first or they did: the Berserker (4) into the Transformed Vildkaarl (14, morale boost), the Young Berserker (2) into the Transformed Young Vildkaarl (8, tight bond). The Berserker goes to your discard pile as it turns: a medic can bring it back, to turn again. The bear only exists on the board, and vanishes when it leaves it.", "medal:berserker", "medal:mardroeme"),
-                        E("Avenger", "The Cow and Skellige's Kambi: killed by a scorch, they are avenged at once, the Bovine Defense Force (8) or Hemdall (11, a hero) taking the field in your close combat row. Discarded any other way (cleared at the end of a round, or from your hand by Destroyer of Worlds), the avenger joins your close combat row at the start of the next round; if the battle ends first, it never comes. A decoy taking them back to your hand calls nothing. The avengers only exist on the board: no decoy or medic brings them back, and they vanish when they leave it.", "card:16", "card:164", "medal:avenger"),
+                        E("Spy", "abilities.spy", "medal:spy"),
+                        E("Medic", "abilities.medic", "medal:medic"),
+                        E("Muster", "abilities.muster", "medal:muster"),
+                        E("Tight bond", "abilities.tight_bond", "medal:tight_bond"),
+                        E("Morale boost", "abilities.morale_boost", "medal:morale_boost"),
+                        E("Commander's horn", "abilities.horn", "medal:commander_horn"),
+                        E("Scorch", "abilities.scorch", "medal:scorch"),
+                        E("Agile", "abilities.agile", "medal:agile"),
+                        E("Berserker", "abilities.berserker", "medal:berserker", "medal:mardroeme"),
+                        E("Avenger", "abilities.avenger", "card:16", "card:164", "medal:avenger"),
                     },
                 },
                 new Topic
                 {
-                    Name = "Special cards",
-                    Intro = "Weather lowers every non-hero unit of its rows to 1, on both sides.",
+                    Id = "Special cards",
+                    Key = "special",
+                    IntroKey = "rules.special.intro",
                     Entries = new[]
                     {
-                        E("Biting Frost", "Weather on both close combat rows.", "medal:biting_frost"),
-                        E("Impenetrable Fog", "Weather on both ranged rows.", "medal:impenetrable_fog"),
-                        E("Torrential Rain", "Weather on both siege rows.", "medal:torrential_rain"),
-                        E("Skellige Storm", "Weather on both ranged and siege rows.", "medal:skellige_storm"),
-                        E("Clear Weather", "Removes all weather.", "medal:clear_weather"),
-                        E("Commander's Horn", "Doubles the strength of the units on a row of yours, one horn per row.", "medal:commander_horn"),
-                        E("Decoy", "Takes the place of one of your units, which goes back to your hand to be played again (not a hero, nor a summoned card such as the Bovine Defense Force).", "medal:decoy"),
-                        E("Scorch", "Destroys the strongest unit(s) on the whole battlefield, yours included (not heroes).", "medal:scorch"),
-                        E("Mardroeme", "Skellige's own: in a row's horn slot, it turns that row's Berserkers into bears.", "medal:mardroeme"),
+                        E("Biting Frost", "special.biting_frost", "medal:biting_frost"),
+                        E("Impenetrable Fog", "special.impenetrable_fog", "medal:impenetrable_fog"),
+                        E("Torrential Rain", "special.torrential_rain", "medal:torrential_rain"),
+                        E("Skellige Storm", "special.skellige_storm", "medal:skellige_storm"),
+                        E("Clear Weather", "special.clear_weather", "medal:clear_weather"),
+                        E("Commander's Horn", "special.horn", "medal:commander_horn"),
+                        E("Decoy", "special.decoy", "medal:decoy"),
+                        E("Scorch", "special.scorch", "medal:scorch"),
+                        E("Mardroeme", "special.mardroeme", "medal:mardroeme"),
                     },
                 },
                 new Topic
                 {
-                    Name = "Factions",
-                    Intro = "Every faction has its own ability, always in effect, and its leaders to choose from (Skellige's two came with Blood and Wine). " + (touch ? "Hold a finger on" : "Rest the pointer on") + " a leader to read its ability.",
+                    Id = "Factions",
+                    Key = "factions",
+                    IntroKey = "rules.factions.intro." + input,
                     Factions = true,
                 },
                 new Topic
                 {
-                    Name = "Controls",
-                    Intro = touch ? "Everything is done with taps; hold a finger on a card to look at it." : "The mouse does everything, and so do the keys.",
+                    Id = "Controls",
+                    Key = "controls",
+                    IntroKey = "rules.controls.intro." + input,
                     Entries = touch ? new[]
                     {
-                        E("Play a card", "Tap it in your hand (it shows large on the right), then tap where it lights up.", "card:7"),
-                        E("Leader", "Tap your leader, then its glowing crown; tap the empty place to put it back. Hold a finger on the crown to see whether it can still be used.", "crown"),
-                        E("Choose cards", "In the redraw, and when a card is to be chosen: tap a card to bring it forward, tap it again to take it. Done keeps the rest of your hand; × gives a choice up.", "card:7", "card:14"),
-                        E("Pass", "Hold the Hold to pass button.", "key:Hold to pass"),
-                        E("Look", "Hold a finger on any card (on the board, in your hand, a leader) to see it large; tap a discard pile to look through it.", "card:14"),
-                        E("Zoom", "Spread two fingers on the board to zoom in. Zoomed in, one finger moves the board, and the padlock under the menu button locks it: taps then do nothing, to look around safely. Double tap the table to zoom in there or back out; the magnifier zooms out too.", "key:Pinch"),
-                        E("A side at a glance", "Tap a side's band (its portrait, name, gems or score): its faction's ability, its leader's and whether it's used, its cards in hand, deck and discard pile.", "crown"),
-                        E("Chat", "In a LAN battle: tap your portrait for the quick lines, its badge for the chat.", "key:..."),
-                        E("Back", "The Android back button steps back one thing at a time: a window closes, a chosen card goes back, a choice is given up (asked first), the board zooms out; then the pause menu. On the main menu it asks to quit.", "key:Back"),
-                        E("Pause", "The menu button: resume, the rules, settings, leave the battle. The ? beside it opens these rules.", "key:?"),
-                        E("Give up", "In your turn, hold a finger on your deck, then confirm. It counts as a loss.", "back:NR"),
+                        E("Play a card", "controls.touch.play", "card:7"),
+                        E("Leader", "controls.touch.leader", "crown"),
+                        E("Choose cards", "controls.touch.choose", "card:7", "card:14"),
+                        E("Pass", "controls.touch.pass", "key:Hold to pass"),
+                        E("Look", "controls.touch.look", "card:14"),
+                        E("Zoom", "controls.touch.zoom", "key:Pinch"),
+                        E("A side at a glance", "controls.touch.glance", "crown"),
+                        E("Chat", "controls.touch.chat", "key:..."),
+                        E("Back", "controls.touch.back", "key:Back"),
+                        E("Pause", "controls.touch.pause", "key:?"),
+                        E("Give up", "controls.touch.give_up", "back:NR"),
                     } : new[]
                     {
-                        E("Play a card", "Click it in your hand, then where it lights up (a red sign shows where it can't go). Keys: Left and Right pick a card, Enter takes it, Up and Down choose its place, Enter plays it, Esc puts it back.", "key:<", "key:>", "key:Enter"),
-                        E("Leader", "Click your leader, then its glowing crown; click the empty place (or Esc) to put it back. Keys: X, then X or Enter.", "key:X", "crown"),
-                        E("Choose cards", "In the redraw, and when a card is to be chosen: click a card to bring it forward, click it again (or Enter) to take it. Space or Done keeps the rest of your hand; × gives a choice up.", "key:Space", "key:Enter"),
-                        E("Pass", "Hold Space, or the Hold to pass button.", "key:Space"),
-                        E("Look", "Hover a card to see it large; click a discard pile to look through it.", "card:14"),
-                        E("A side at a glance", "Click a side's band (its portrait, name, gems or score): its faction's ability, its leader's and whether it's used, its cards in hand, deck and discard pile.", "crown"),
-                        E("Chat", "In a LAN battle: E (or a click on your portrait) shows the quick lines, and 1 to 8 says one. T (or the portrait's badge) opens the chat: what was said, a message to type, mute.", "key:E", "key:T"),
-                        E("Back", "Esc steps back one thing at a time, everywhere: a window closes, a chosen card goes back, a choice is given up (asked first); then the pause menu. On the main menu it asks to quit (outside the browser).", "key:Esc"),
-                        E("Pause", "Esc or the menu button: resume, the rules, settings, leave the battle. The ? beside it opens these rules.", "key:?"),
-                        E("Give up", "Click your deck when the cursor over it turns into a hand, then confirm. It counts as a loss.", "back:NR"),
+                        E("Play a card", "controls.pointer.play", "key:<", "key:>", "key:Enter"),
+                        E("Leader", "controls.pointer.leader", "key:X", "crown"),
+                        E("Choose cards", "controls.pointer.choose", "key:Space", "key:Enter"),
+                        E("Pass", "controls.pointer.pass", "key:Space"),
+                        E("Look", "controls.pointer.look", "card:14"),
+                        E("A side at a glance", "controls.pointer.glance", "crown"),
+                        E("Chat", "controls.pointer.chat", "key:E", "key:T"),
+                        E("Back", "controls.pointer.back", "key:Esc"),
+                        E("Pause", "controls.pointer.pause", "key:?"),
+                        E("Give up", "controls.pointer.give_up", "back:NR"),
                     },
                 },
             };
@@ -174,33 +196,6 @@ namespace Gwent.Menus
             new FactionTopic { Faction = Faction.Scoiatael, Leaders = new[] { 57, 58, 59, 60, 61 } },
             new FactionTopic { Faction = Faction.Monsters, Leaders = new[] { 40, 41, 42, 43, 44 } },
             new FactionTopic { Faction = Faction.Skellige, Leaders = new[] { 157, 165 } },
-        };
-
-        // The leaders as The Witcher 3's cards name them (their abilities: CardDescription, as on their cards)
-        private static readonly Dictionary<int, string> LeaderNames = new Dictionary<int, string>
-        {
-            { 51, "Foltest: King of Temeria" },
-            { 52, "Foltest: Lord Commander of the North" },
-            { 53, "Foltest: Son of Medell" },
-            { 54, "Foltest: The Siegemaster" },
-            { 55, "Foltest: The Steel-Forged" },
-            { 33, "Emhyr var Emreis: Emperor of Nilfgaard" },
-            { 34, "Emhyr var Emreis: His Imperial Majesty" },
-            { 35, "Emhyr var Emreis: Invader of the North" },
-            { 36, "Emhyr var Emreis: The Relentless" },
-            { 37, "Emhyr var Emreis: The White Flame" },
-            { 57, "Francesca Findabair: Daisy of the Valley" },
-            { 58, "Francesca Findabair: Hope of the Aen Seidhe" },
-            { 59, "Francesca Findabair: Pureblood Elf" },
-            { 60, "Francesca Findabair: Queen of Dol Blathanna" },
-            { 61, "Francesca Findabair: The Beautiful" },
-            { 40, "Eredin Bréacc Glas: The Treacherous" },
-            { 41, "Eredin: Bringer of Death" },
-            { 42, "Eredin: Commander of the Red Riders" },
-            { 43, "Eredin: Destroyer of Worlds" },
-            { 44, "Eredin: King of the Wild Hunt" },
-            { 157, "Crach an Craite" },
-            { 165, "King Bran" },
         };
 
         // The pieces are drawn at this scale, so they sit in the page's icon column as its icons did
@@ -223,7 +218,8 @@ namespace Gwent.Menus
             for (int i = 0; i < topics.Length; i++)
             {
                 int index = i;
-                MenuEntry tab = new MenuEntry { name = "Item " + topics[i].Name, text = topics[i].Name };
+                // Named by the English id (the autoplay test finds it by name); the text is the current language's
+                MenuEntry tab = new MenuEntry { name = "Item " + topics[i].Id, text = Loc.T(Loc.Rules, "rules." + topics[i].Key + ".name") };
                 tab.AddToClassList("rules__topic");
                 tab.clicked += () => Show(view, topics[index], tabs, index);
                 list.Add(tab);
@@ -247,7 +243,7 @@ namespace Gwent.Menus
             for (int i = 0; i < tabs.Count; i++)
                 tabs[i].EnableInClassList("rules__topic--current", i == index);
             view.Clear();
-            Label intro = new Label(topic.Intro);
+            Label intro = new Label(Loc.T(Loc.Rules, topic.IntroKey));
             intro.AddToClassList("rules__intro");
             view.Add(intro);
 
@@ -260,7 +256,7 @@ namespace Gwent.Menus
                 foreach (Entry entry in topic.Entries)
                 {
                     VisualElement text;
-                    FadeIn(AddEntry(view, entry.Pieces, entry.Title, entry.Text, columns, out text), order++);
+                    FadeIn(AddEntry(view, entry.Id, entry.Pieces, Loc.T(Loc.Rules, entry.TitleKey), Loc.T(Loc.Rules, entry.TextKey), columns, out text), order++);
                 }
             // One column for the topic's pieces, as wide as its widest group: the texts line up, close to their pieces
             foreach (VisualElement column in columns.All)
@@ -268,10 +264,11 @@ namespace Gwent.Menus
             view.scrollOffset = Vector2.zero;
         }
 
-        // The rule's pieces beside its gold title and its text; text: the text's column (for more below it)
-        private static VisualElement AddEntry(VisualElement parent, string[] pieces, string title_text, string text_text, Columns columns, out VisualElement text)
+        // The rule's pieces beside its gold title and its text; id: the row's name (not what is shown, so it is the same in
+        // every language); text: the text's column (for more below it)
+        private static VisualElement AddEntry(VisualElement parent, string id, string[] pieces, string title_text, string text_text, Columns columns, out VisualElement text)
         {
-            VisualElement row = new VisualElement { name = "Entry " + title_text };
+            VisualElement row = new VisualElement { name = "Entry " + id };
             row.AddToClassList("rules__row");
             Cluster(row, pieces, columns);
 
@@ -461,13 +458,28 @@ namespace Gwent.Menus
             return number;
         }
 
-        // A key of the keyboard: a dark key with a gold outline; < and > show as chevrons
-        private static VisualElement Key(string label, out Vector2 size)
+        // What a key's cap says: the keys of the keyboard keep their names (Space, Enter and Esc read the same on the caps the
+        // battle draws), the words are the current language's
+        private static string KeyLabel(string id)
+        {
+            switch (id)
+            {
+                case "Hold to pass": return Loc.T(Loc.UI, "battle.hold_to_pass");
+                case "Pinch": return Loc.T(Loc.Rules, "rules.key.pinch");
+                case "Back": return Loc.T(Loc.Rules, "rules.key.back");
+                default: return id;
+            }
+        }
+
+        // A key of the keyboard: a dark key with a gold outline; < and > show as chevrons. id names the key (and tells the
+        // chevrons), what it says is KeyLabel's
+        private static VisualElement Key(string id, out Vector2 size)
         {
             UITheme theme = UITheme.Current;
-            Sprite chevron = label == "<" ? theme.chevronLeft : label == ">" ? theme.chevronRight : null;
+            string label = KeyLabel(id);
+            Sprite chevron = id == "<" ? theme.chevronLeft : id == ">" ? theme.chevronRight : null;
             size = new Vector2(chevron != null ? 62 : Mathf.Max(62, 34 + label.Length * 19), 60);
-            VisualElement key = Box("Key " + label, size);
+            VisualElement key = Box("Key " + id, size);
             key.AddToClassList("piece--key");
             if (chevron != null)
             {
@@ -493,7 +505,8 @@ namespace Gwent.Menus
         private static VisualElement AddFaction(VisualElement parent, FactionTopic faction, Columns columns)
         {
             VisualElement text;
-            VisualElement row = AddEntry(parent, new[] { "shield:" + faction.Faction.Code() }, faction.Faction.DisplayName(), faction.Faction.Ability(), columns, out text);
+            // The row is named by the English name; the name and the ability shown are the current language's
+            VisualElement row = AddEntry(parent, faction.Faction.DisplayName(), new[] { "shield:" + faction.Faction.Code() }, faction.Faction.LocalName(), faction.Faction.LocalAbility(), columns, out text);
             VisualElement leaders = new VisualElement { name = "Leaders" };
             leaders.AddToClassList("rules__leaders");
             foreach (int leader in faction.Leaders)
@@ -511,9 +524,10 @@ namespace Gwent.Menus
             art.AddToClassList("rules__leader-art");
             CardArt.ShowPortrait(art, leader_id);
             holder.Add(art);
-            string name;
+            // The name is the leader card's own, as its table entry says it (the deck builder and the battle show the same)
+            string name = CardLibrary.Get().Get(leader_id).LocalName();
             string ability = CardDescription.LeaderAbility(leader_id);
-            if (LeaderNames.TryGetValue(leader_id, out name) && ability != null)
+            if (ability != null)
                 ElementTooltip.Attach(holder, () => "<b>" + name + "</b>\n" + ability);
             return holder;
         }

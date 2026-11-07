@@ -14,7 +14,555 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
   m_TableCollectionName: Rules
   m_TableCollectionNameGuidString: c4ae92e5dae156342ab8e00e812fd1cf
-  m_Entries: []
+  m_Entries:
+  - m_Id: 19206813229056
+    m_Key: rules.battle.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337920
+    m_Key: rules.battle.intro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337921
+    m_Key: rules.battle.factions.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337922
+    m_Key: rules.battle.factions.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337923
+    m_Key: rules.battle.hand.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337924
+    m_Key: rules.battle.hand.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337925
+    m_Key: rules.battle.turn.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337926
+    m_Key: rules.battle.turn.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337927
+    m_Key: rules.battle.rows.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337928
+    m_Key: rules.battle.rows.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337929
+    m_Key: rules.battle.special.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337930
+    m_Key: rules.battle.special.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337931
+    m_Key: rules.battle.passing.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337932
+    m_Key: rules.battle.passing.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337933
+    m_Key: rules.battle.life.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337934
+    m_Key: rules.battle.life.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337935
+    m_Key: rules.battle.well.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337936
+    m_Key: rules.battle.well.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337937
+    m_Key: rules.board.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337938
+    m_Key: rules.board.intro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337939
+    m_Key: rules.board.rows.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337940
+    m_Key: rules.board.rows.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337941
+    m_Key: rules.board.strength.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337942
+    m_Key: rules.board.strength.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337943
+    m_Key: rules.board.agile.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337944
+    m_Key: rules.board.agile.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337945
+    m_Key: rules.board.horn.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337946
+    m_Key: rules.board.horn.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337947
+    m_Key: rules.board.weather.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337948
+    m_Key: rules.board.weather.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337949
+    m_Key: rules.board.turn.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337950
+    m_Key: rules.board.turn.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337951
+    m_Key: rules.board.discard.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337952
+    m_Key: rules.board.discard.text.touch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337953
+    m_Key: rules.board.discard.text.pointer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337954
+    m_Key: rules.cards.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337955
+    m_Key: rules.cards.intro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337956
+    m_Key: rules.cards.heroes.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337957
+    m_Key: rules.cards.heroes.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337958
+    m_Key: rules.cards.units.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337959
+    m_Key: rules.cards.units.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337960
+    m_Key: rules.cards.special.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337961
+    m_Key: rules.cards.special.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337962
+    m_Key: rules.cards.leader.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337963
+    m_Key: rules.cards.leader.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337964
+    m_Key: rules.abilities.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337965
+    m_Key: rules.abilities.intro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337966
+    m_Key: rules.abilities.spy.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337967
+    m_Key: rules.abilities.spy.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337968
+    m_Key: rules.abilities.medic.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337969
+    m_Key: rules.abilities.medic.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337970
+    m_Key: rules.abilities.muster.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337971
+    m_Key: rules.abilities.muster.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337972
+    m_Key: rules.abilities.tight_bond.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337973
+    m_Key: rules.abilities.tight_bond.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337974
+    m_Key: rules.abilities.morale_boost.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337975
+    m_Key: rules.abilities.morale_boost.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337976
+    m_Key: rules.abilities.horn.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337977
+    m_Key: rules.abilities.horn.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337978
+    m_Key: rules.abilities.scorch.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337979
+    m_Key: rules.abilities.scorch.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337980
+    m_Key: rules.abilities.agile.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337981
+    m_Key: rules.abilities.agile.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337982
+    m_Key: rules.abilities.berserker.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337983
+    m_Key: rules.abilities.berserker.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337984
+    m_Key: rules.abilities.avenger.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337985
+    m_Key: rules.abilities.avenger.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337986
+    m_Key: rules.special.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337987
+    m_Key: rules.special.intro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337988
+    m_Key: rules.special.biting_frost.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337989
+    m_Key: rules.special.biting_frost.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337990
+    m_Key: rules.special.impenetrable_fog.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337991
+    m_Key: rules.special.impenetrable_fog.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337992
+    m_Key: rules.special.torrential_rain.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337993
+    m_Key: rules.special.torrential_rain.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337994
+    m_Key: rules.special.skellige_storm.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337995
+    m_Key: rules.special.skellige_storm.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337996
+    m_Key: rules.special.clear_weather.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337997
+    m_Key: rules.special.clear_weather.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337998
+    m_Key: rules.special.horn.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337999
+    m_Key: rules.special.horn.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338000
+    m_Key: rules.special.decoy.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338001
+    m_Key: rules.special.decoy.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338002
+    m_Key: rules.special.scorch.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338003
+    m_Key: rules.special.scorch.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338004
+    m_Key: rules.special.mardroeme.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338005
+    m_Key: rules.special.mardroeme.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338006
+    m_Key: rules.factions.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338007
+    m_Key: rules.factions.intro.touch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338008
+    m_Key: rules.factions.intro.pointer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338009
+    m_Key: rules.controls.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338010
+    m_Key: rules.controls.intro.touch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338011
+    m_Key: rules.controls.intro.pointer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338012
+    m_Key: rules.controls.touch.play.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338013
+    m_Key: rules.controls.touch.play.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338014
+    m_Key: rules.controls.touch.leader.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338015
+    m_Key: rules.controls.touch.leader.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338016
+    m_Key: rules.controls.touch.choose.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338017
+    m_Key: rules.controls.touch.choose.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338018
+    m_Key: rules.controls.touch.pass.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338019
+    m_Key: rules.controls.touch.pass.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338020
+    m_Key: rules.controls.touch.look.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338021
+    m_Key: rules.controls.touch.look.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338022
+    m_Key: rules.controls.touch.zoom.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338023
+    m_Key: rules.controls.touch.zoom.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338024
+    m_Key: rules.controls.touch.glance.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338025
+    m_Key: rules.controls.touch.glance.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338026
+    m_Key: rules.controls.touch.chat.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532224
+    m_Key: rules.controls.touch.chat.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532225
+    m_Key: rules.controls.touch.back.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532226
+    m_Key: rules.controls.touch.back.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532227
+    m_Key: rules.controls.touch.pause.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532228
+    m_Key: rules.controls.touch.pause.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532229
+    m_Key: rules.controls.touch.give_up.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532230
+    m_Key: rules.controls.touch.give_up.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532231
+    m_Key: rules.controls.pointer.play.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532232
+    m_Key: rules.controls.pointer.play.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532233
+    m_Key: rules.controls.pointer.leader.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532234
+    m_Key: rules.controls.pointer.leader.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532235
+    m_Key: rules.controls.pointer.choose.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532236
+    m_Key: rules.controls.pointer.choose.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532237
+    m_Key: rules.controls.pointer.pass.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532238
+    m_Key: rules.controls.pointer.pass.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532239
+    m_Key: rules.controls.pointer.look.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532240
+    m_Key: rules.controls.pointer.look.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532241
+    m_Key: rules.controls.pointer.glance.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532242
+    m_Key: rules.controls.pointer.glance.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532243
+    m_Key: rules.controls.pointer.chat.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532244
+    m_Key: rules.controls.pointer.chat.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532245
+    m_Key: rules.controls.pointer.back.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532246
+    m_Key: rules.controls.pointer.back.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532247
+    m_Key: rules.controls.pointer.pause.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532248
+    m_Key: rules.controls.pointer.pause.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532249
+    m_Key: rules.controls.pointer.give_up.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532250
+    m_Key: rules.controls.pointer.give_up.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532251
+    m_Key: rules.key.pinch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532252
+    m_Key: rules.key.back
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

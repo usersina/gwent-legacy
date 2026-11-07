@@ -1,1 +1,138 @@
 key,en,es
+rules.battle.name,The battle,La batalla
+rules.battle.intro,Gwent is a card game for two players. Win two rounds out of three: a round goes to the side whose cards on the board add up to more.,Gwent es un juego de cartas para dos jugadores. Gana dos rondas de tres: la ronda es para el bando cuyas cartas en el tablero sumen más.
+rules.battle.factions.title,Factions,Facciones
+rules.battle.factions.text,"Each deck belongs to one of five factions, with its own ability and cards; neutral cards fit any deck.","Cada mazo pertenece a una de cinco facciones, con su propia habilidad y sus propias cartas; las cartas neutrales caben en cualquier mazo."
+rules.battle.hand.title,Hand cards,Cartas en mano
+rules.battle.hand.text,"You draw 10 cards and may redraw up to 2 of them before the first round. Nobody draws between rounds, so every card you play is one fewer for the rounds ahead; only spies, a few leaders and the Northern Realms ability bring more.","Robas 10 cartas y puedes cambiar hasta 2 de ellas antes de la primera ronda. Nadie roba entre rondas, así que cada carta que juegas es una menos para las rondas siguientes; solo los espías, algunos líderes y la habilidad de los Reinos del Norte dan más."
+rules.battle.turn.title,Your turn,Tu turno
+rules.battle.turn.text,"Do one thing: play a card, use your leader's ability, or pass. Playing a card ends your turn.","Haz una sola cosa: jugar una carta, usar la habilidad de tu líder o pasar. Jugar una carta termina tu turno."
+rules.battle.rows.title,Combat rows,Filas de combate
+rules.battle.rows.text,"Units go on the close combat, ranged or siege row, as shown on the card.","Las unidades van en la fila de combate cuerpo a cuerpo, a distancia o de asedio, según indique la carta."
+rules.battle.special.title,Special cards,Cartas especiales
+rules.battle.special.text,"Weather, Commander's Horn, Decoy and Scorch, and your leader's ability, can turn a round around.","El clima, el Cuerno de mando, el Señuelo y Abrasar, junto con la habilidad de tu líder, pueden darle la vuelta a una ronda."
+rules.battle.passing.title,Passing,Pasar
+rules.battle.passing.text,"Passing is final for the round: you play nothing more in it, while your opponent may go on playing. Once both sides have passed, the higher total wins the round. A side with no card and no leader ability it could use passes on its own, and a side that starts a round with no card sits it out.","Pasar es definitivo en la ronda: ya no juegas nada más en ella, mientras que tu oponente puede seguir jugando. Cuando ambos bandos han pasado, gana la ronda el total más alto. Un bando sin cartas y sin una habilidad de líder que pueda usar pasa por su cuenta, y un bando que empieza una ronda sin cartas se la salta."
+rules.battle.life.title,Life,Vida
+rules.battle.life.text,"Each side has two gems and loses one with each round it loses; a drawn round costs both (unless Nilfgaard plays). Lose both and the battle is lost. The winner of a round starts the next one, and the board is cleared in between.","Cada bando tiene dos gemas y pierde una por cada ronda que pierde; una ronda empatada cuesta una a ambos (salvo que juegue Nilfgaard). Si pierdes las dos, pierdes la batalla. Quien gana una ronda empieza la siguiente, y el tablero se limpia entre una y otra."
+rules.battle.well.title,Playing well,Jugar bien
+rules.battle.well.text,Winning a round by a mile wastes cards. Letting a round go and keeping a strong hand for the other two is often the better play.,Ganar una ronda por una gran diferencia desperdicia cartas. Ceder una ronda y guardar una mano fuerte para las otras dos suele ser la mejor jugada.
+rules.board.name,The board,El tablero
+rules.board.intro,Each side has three rows; yours are the lower half of the table.,Cada bando tiene tres filas; las tuyas son la mitad inferior de la mesa.
+rules.board.rows.title,Rows,Filas
+rules.board.rows.text,"Close combat, ranged and siege, from the middle of the table out. A unit goes on the row shown on its card.","Cuerpo a cuerpo, a distancia y de asedio, desde el centro de la mesa hacia afuera. Una unidad va en la fila que indica su carta."
+rules.board.strength.title,Strength,Fuerza
+rules.board.strength.text,"A unit's strength is the number in its corner. Each row's total is on its left, each side's total by its portrait, the side ahead in a laurel.","La fuerza de una unidad es el número de su esquina. El total de cada fila está a su izquierda, el total de cada bando junto a su retrato, y el bando que va adelante lleva un laurel."
+rules.board.agile.title,Agile,Ágil
+rules.board.agile.text,An agile unit can go on the close combat or the ranged row.,Una unidad ágil puede ir en la fila de combate cuerpo a cuerpo o en la de combate a distancia.
+rules.board.horn.title,Horn slot,Espacio del cuerno
+rules.board.horn.text,"The slot at the left of each row takes one card: a Commander's Horn, or Skellige's Mardroeme.",El espacio a la izquierda de cada fila admite una carta: un Cuerno de mando o el Mardroeme de Skellige.
+rules.board.weather.title,Weather board,Tablero del clima
+rules.board.weather.text,"Weather cards and Scorch are played on the weather board, at the left of the table. Weather affects both sides.","Las cartas de clima y Abrasar se juegan en el tablero del clima, a la izquierda de la mesa. El clima afecta a ambos bandos."
+rules.board.turn.title,Whose turn,De quién es el turno
+rules.board.turn.text,The panel of the side whose turn it is is edged with glowing gold lines; a side that has passed is greyed out.,El panel del bando al que le toca está bordeado con líneas doradas brillantes; un bando que ya pasó aparece en gris.
+rules.board.discard.title,Discard piles,Pilas de descarte
+rules.board.discard.text.touch,"Cards that leave the board go to their owner's discard pile, next to the deck. Tap a pile to look through it.","Las cartas que salen del tablero van a la pila de descarte de su dueño, junto al mazo. Toca una pila para revisarla."
+rules.board.discard.text.pointer,"Cards that leave the board go to their owner's discard pile, next to the deck. Click a pile to look through it.","Las cartas que salen del tablero van a la pila de descarte de su dueño, junto al mazo. Haz clic en una pila para revisarla."
+rules.cards.name,Cards,Cartas
+rules.cards.intro,"A deck has one leader, at least 22 unit cards and at most 10 special cards, and holds each card at most as many times as it exists.","Un mazo tiene un líder, al menos 22 cartas de unidad y como máximo 10 cartas especiales, y contiene cada carta, como máximo, tantas veces como existe."
+rules.cards.heroes.title,Heroes,Héroes
+rules.cards.heroes.text,"The gold-framed units. Nothing changes them: no weather, horn, morale boost, scorch, decoy or medic. A hero can be in a deck only once.","Las unidades con marco dorado. Nada las modifica: ni el clima, ni el cuerno, ni el impulso de moral, ni Abrasar, ni el señuelo, ni los médicos. Un héroe solo puede estar una vez en un mazo."
+rules.cards.units.title,Units,Unidades
+rules.cards.units.text,"Everything else on the rows. Most exist once; a few, such as the Blue Stripes Commando, several times.","Todo lo demás en las filas. La mayoría existe una vez; unas pocas, como el Comando Franjas Azules, varias veces."
+rules.cards.special.title,Special cards,Cartas especiales
+rules.cards.special.text,"Weather, Commander's Horn, Decoy and Scorch: they shape the board instead of adding strength.","Clima, Cuerno de mando, Señuelo y Abrasar: dan forma al tablero en lugar de sumar fuerza."
+rules.cards.leader.title,Leader,Líder
+rules.cards.leader.text,"One ability you can use once per battle: lift the leader card, and its crown glows; the crown uses it. The crown turns grey once used. A few leaders' abilities are always in effect instead.","Una habilidad que puedes usar una vez por batalla: levanta la carta del líder y su corona brillará; la corona la usa. La corona se pone gris una vez usada. En cambio, la habilidad de algunos líderes siempre está activa."
+rules.abilities.name,Abilities,Habilidades
+rules.abilities.intro,Shown by the icons on a unit card.,Se muestran con los íconos de una carta de unidad.
+rules.abilities.spy.title,Spy,Espía
+rules.abilities.spy.text,Goes on your opponent's side (adding to their total) and you draw 2 cards from your deck.,Va al lado de tu oponente (suma a su total) y robas 2 cartas de tu mazo.
+rules.abilities.medic.title,Medic,Médico
+rules.abilities.medic.text,Brings a unit back from your discard pile and plays it at once (no heroes or special cards). A medic brought back heals again.,Trae de vuelta una unidad de tu pila de descarte y la juega al instante (sin héroes ni cartas especiales). Un médico que regresa vuelve a curar.
+rules.abilities.muster.title,Muster,Convocar
+rules.abilities.muster.text,Plays every card of the same family from your deck and your hand at once.,Juega al instante todas las cartas de la misma familia de tu mazo y de tu mano.
+rules.abilities.tight_bond.title,Tight bond,Vínculo estrecho
+rules.abilities.tight_bond.text,"Copies of this card on the same row multiply each other's strength: two double it, three triple it.","Las copias de esta carta en la misma fila se multiplican entre sí: dos duplican su fuerza, tres la triplican."
+rules.abilities.morale_boost.title,Morale boost,Impulso de moral
+rules.abilities.morale_boost.text,Adds 1 to every other unit on its row.,Suma 1 a cada una de las demás unidades de su fila.
+rules.abilities.horn.title,Commander's horn,Cuerno de mando
+rules.abilities.horn.text,"Doubles the other units on its row, unless the row already has a Commander's Horn.","Duplica a las demás unidades de su fila, salvo que la fila ya tenga un Cuerno de mando."
+rules.abilities.scorch.title,Scorch,Abrasar
+rules.abilities.scorch.text,"Destroys your opponent's strongest unit(s) on that row, if the row totals 10 or more. The Clan Dimun Pirate's scorch is the Scorch card's: the strongest unit(s) on the whole battlefield as he lands (never himself).","Destruye a la unidad o unidades más fuertes de tu oponente en esa fila, si la fila suma 10 o más. El Abrasar del Pirata del Clan Dimun es el de la carta Abrasar: la unidad o unidades más fuertes de todo el campo de batalla cuando desembarca (nunca él mismo)."
+rules.abilities.agile.title,Agile,Ágil
+rules.abilities.agile.text,"Close combat or ranged, your choice.","Combate cuerpo a cuerpo o a distancia, a tu elección."
+rules.abilities.berserker.title,Berserker,Berserker
+rules.abilities.berserker.text,"Skellige's Berserkers turn into bears on a row with a Mardroeme (the special card in its horn slot, or Ermion on it), whether it came first or they did: the Berserker (4) into the Transformed Vildkaarl (14, morale boost), the Young Berserker (2) into the Transformed Young Vildkaarl (8, tight bond). The Berserker goes to your discard pile as it turns: a medic can bring it back, to turn again. The bear only exists on the board, and vanishes when it leaves it.","Los Berserkers de Skellige se convierten en osos en una fila con un Mardroeme (la carta especial en su espacio del cuerno, o Ermion en ella), ya sea que el Mardroeme llegara primero o ellos: el Berserker (4) en el Vildkaarl transformado (14, impulso de moral), el Joven Berserker (2) en el Joven Vildkaarl transformado (8, vínculo estrecho). El Berserker pasa a tu pila de descarte al transformarse: un médico puede traerlo de vuelta para que se transforme otra vez. El oso solo existe en el tablero y desaparece cuando lo deja."
+rules.abilities.avenger.title,Avenger,Vengador
+rules.abilities.avenger.text,"The Cow and Skellige's Kambi: killed by a scorch, they are avenged at once, the Bovine Defense Force (8) or Hemdall (11, a hero) taking the field in your close combat row. Discarded any other way (cleared at the end of a round, or from your hand by Destroyer of Worlds), the avenger joins your close combat row at the start of the next round; if the battle ends first, it never comes. A decoy taking them back to your hand calls nothing. The avengers only exist on the board: no decoy or medic brings them back, and they vanish when they leave it.","La Vaca y Kambi, de Skellige: si los mata un Abrasar, son vengados al instante, y la Fuerza de Defensa Bovina (8) o Hemdall (11, un héroe) entra en tu fila de combate cuerpo a cuerpo. Si se descartan de cualquier otra forma (se limpian al final de una ronda, o salen de tu mano por Eredin: Destructor de Mundos), el vengador se une a tu fila de combate cuerpo a cuerpo al inicio de la siguiente ronda; si la batalla termina antes, nunca llega. Un Señuelo que los devuelva a tu mano no invoca a nadie. Los vengadores solo existen en el tablero: ningún señuelo ni médico los trae de vuelta, y desaparecen cuando lo dejan."
+rules.special.name,Special cards,Cartas especiales
+rules.special.intro,"Weather lowers every non-hero unit of its rows to 1, on both sides.","El clima reduce a 1 a toda unidad que no sea héroe en sus filas, en ambos bandos."
+rules.special.biting_frost.title,Biting Frost,Escarcha mordiente
+rules.special.biting_frost.text,Weather on both close combat rows.,Clima en ambas filas de combate cuerpo a cuerpo.
+rules.special.impenetrable_fog.title,Impenetrable Fog,Niebla impenetrable
+rules.special.impenetrable_fog.text,Weather on both ranged rows.,Clima en ambas filas de combate a distancia.
+rules.special.torrential_rain.title,Torrential Rain,Lluvia torrencial
+rules.special.torrential_rain.text,Weather on both siege rows.,Clima en ambas filas de asedio.
+rules.special.skellige_storm.title,Skellige Storm,Tormenta de Skellige
+rules.special.skellige_storm.text,Weather on both ranged and siege rows.,Clima en las filas de combate a distancia y de asedio de ambos bandos.
+rules.special.clear_weather.title,Clear Weather,Clima despejado
+rules.special.clear_weather.text,Removes all weather.,Elimina todo el clima.
+rules.special.horn.title,Commander's Horn,Cuerno de mando
+rules.special.horn.text,"Doubles the strength of the units on a row of yours, one horn per row.","Duplica la fuerza de las unidades de una de tus filas, un cuerno por fila."
+rules.special.decoy.title,Decoy,Señuelo
+rules.special.decoy.text,"Takes the place of one of your units, which goes back to your hand to be played again (not a hero, nor a summoned card such as the Bovine Defense Force).","Ocupa el lugar de una de tus unidades, que vuelve a tu mano para jugarse de nuevo (no un héroe, ni una carta invocada como la Fuerza de Defensa Bovina)."
+rules.special.scorch.title,Scorch,Abrasar
+rules.special.scorch.text,"Destroys the strongest unit(s) on the whole battlefield, yours included (not heroes).","Destruye a la unidad o unidades más fuertes de todo el campo de batalla, incluidas las tuyas (no a los héroes)."
+rules.special.mardroeme.title,Mardroeme,Mardroeme
+rules.special.mardroeme.text,"Skellige's own: in a row's horn slot, it turns that row's Berserkers into bears.","Exclusivo de Skellige: en el espacio del cuerno de una fila, convierte en osos a los Berserkers de esa fila."
+rules.factions.name,Factions,Facciones
+rules.factions.intro.touch,"Every faction has its own ability, always in effect, and its leaders to choose from (Skellige's two came with Blood and Wine). Hold a finger on a leader to read its ability.","Cada facción tiene su propia habilidad, siempre activa, y sus líderes para elegir (los dos de Skellige llegaron con Blood and Wine). Mantén un dedo sobre un líder para leer su habilidad."
+rules.factions.intro.pointer,"Every faction has its own ability, always in effect, and its leaders to choose from (Skellige's two came with Blood and Wine). Rest the pointer on a leader to read its ability.","Cada facción tiene su propia habilidad, siempre activa, y sus líderes para elegir (los dos de Skellige llegaron con Blood and Wine). Deja el puntero sobre un líder para leer su habilidad."
+rules.controls.name,Controls,Controles
+rules.controls.intro.touch,Everything is done with taps; hold a finger on a card to look at it.,Todo se hace con toques; mantén un dedo sobre una carta para mirarla.
+rules.controls.intro.pointer,"The mouse does everything, and so do the keys.","El mouse lo hace todo, y las teclas también."
+rules.controls.touch.play.title,Play a card,Jugar una carta
+rules.controls.touch.play.text,"Tap it in your hand (it shows large on the right), then tap where it lights up.",Tócala en tu mano (se muestra grande a la derecha) y luego toca donde se ilumine.
+rules.controls.touch.leader.title,Leader,Líder
+rules.controls.touch.leader.text,"Tap your leader, then its glowing crown; tap the empty place to put it back. Hold a finger on the crown to see whether it can still be used.",Toca tu líder y luego su corona brillante; toca el lugar vacío para devolverlo. Mantén un dedo sobre la corona para ver si todavía se puede usar.
+rules.controls.touch.choose.title,Choose cards,Elegir cartas
+rules.controls.touch.choose.text,"In the redraw, and when a card is to be chosen: tap a card to bring it forward, tap it again to take it. Done keeps the rest of your hand; × gives a choice up.","En el cambio de cartas y cuando hay que elegir una carta: toca una carta para traerla al frente, tócala de nuevo para tomarla. Listo conserva el resto de tu mano; × renuncia a una elección."
+rules.controls.touch.pass.title,Pass,Pasar
+rules.controls.touch.pass.text,Hold the Hold to pass button.,Mantén presionado el botón Mantén para pasar.
+rules.controls.touch.look.title,Look,Mirar
+rules.controls.touch.look.text,"Hold a finger on any card (on the board, in your hand, a leader) to see it large; tap a discard pile to look through it.","Mantén un dedo sobre cualquier carta (en el tablero, en tu mano, un líder) para verla grande; toca una pila de descarte para revisarla."
+rules.controls.touch.zoom.title,Zoom,Zoom
+rules.controls.touch.zoom.text,"Spread two fingers on the board to zoom in. Zoomed in, one finger moves the board, and the padlock under the menu button locks it: taps then do nothing, to look around safely. Double tap the table to zoom in there or back out; the magnifier zooms out too.","Separa dos dedos sobre el tablero para acercar. Con el zoom, un dedo mueve el tablero, y el candado bajo el botón de menú lo bloquea: los toques no hacen nada, para mirar con seguridad. Toca dos veces la mesa para acercar ahí o volver a alejar; la lupa también aleja."
+rules.controls.touch.glance.title,A side at a glance,Un bando de un vistazo
+rules.controls.touch.glance.text,"Tap a side's band (its portrait, name, gems or score): its faction's ability, its leader's and whether it's used, its cards in hand, deck and discard pile.","Toca la banda de un bando (su retrato, nombre, gemas o puntaje): la habilidad de su facción, la de su líder y si ya la usó, sus cartas en mano, su mazo y su pila de descarte."
+rules.controls.touch.chat.title,Chat,Chat
+rules.controls.touch.chat.text,"In a LAN battle: tap your portrait for the quick lines, its badge for the chat.","En una batalla LAN: toca tu retrato para ver las frases rápidas, y su insignia para abrir el chat."
+rules.controls.touch.back.title,Back,Atrás
+rules.controls.touch.back.text,"The Android back button steps back one thing at a time: a window closes, a chosen card goes back, a choice is given up (asked first), the board zooms out; then the pause menu. On the main menu it asks to quit.","El botón Atrás de Android retrocede un paso a la vez: se cierra una ventana, una carta elegida vuelve, se renuncia a una elección (se pregunta antes), el tablero se aleja; después, el menú de pausa. En el menú principal pregunta si quieres salir."
+rules.controls.touch.pause.title,Pause,Pausa
+rules.controls.touch.pause.text,"The menu button: resume, the rules, settings, leave the battle. The ? beside it opens these rules.","El botón de menú: reanudar, las reglas, los ajustes, abandonar la batalla. El ? a su lado abre estas reglas."
+rules.controls.touch.give_up.title,Give up,Rendirse
+rules.controls.touch.give_up.text,"In your turn, hold a finger on your deck, then confirm. It counts as a loss.","En tu turno, mantén un dedo sobre tu mazo y luego confirma. Cuenta como una derrota."
+rules.controls.pointer.play.title,Play a card,Jugar una carta
+rules.controls.pointer.play.text,"Click it in your hand, then where it lights up (a red sign shows where it can't go). Keys: Left and Right pick a card, Enter takes it, Up and Down choose its place, Enter plays it, Esc puts it back.","Haz clic en ella en tu mano y luego donde se ilumine (una señal roja indica dónde no puede ir). Teclas: Izquierda y Derecha eligen una carta, Enter la toma, Arriba y Abajo eligen su lugar, Enter la juega, Esc la devuelve."
+rules.controls.pointer.leader.title,Leader,Líder
+rules.controls.pointer.leader.text,"Click your leader, then its glowing crown; click the empty place (or Esc) to put it back. Keys: X, then X or Enter.","Haz clic en tu líder y luego en su corona brillante; haz clic en el lugar vacío (o presiona Esc) para devolverlo. Teclas: X, y luego X o Enter."
+rules.controls.pointer.choose.title,Choose cards,Elegir cartas
+rules.controls.pointer.choose.text,"In the redraw, and when a card is to be chosen: click a card to bring it forward, click it again (or Enter) to take it. Space or Done keeps the rest of your hand; × gives a choice up.","En el cambio de cartas y cuando hay que elegir una carta: haz clic en una carta para traerla al frente, haz clic de nuevo (o presiona Enter) para tomarla. Space o Listo conserva el resto de tu mano; × renuncia a una elección."
+rules.controls.pointer.pass.title,Pass,Pasar
+rules.controls.pointer.pass.text,"Hold Space, or the Hold to pass button.","Mantén Space, o el botón Mantén para pasar."
+rules.controls.pointer.look.title,Look,Mirar
+rules.controls.pointer.look.text,Hover a card to see it large; click a discard pile to look through it.,Pasa el puntero sobre una carta para verla grande; haz clic en una pila de descarte para revisarla.
+rules.controls.pointer.glance.title,A side at a glance,Un bando de un vistazo
+rules.controls.pointer.glance.text,"Click a side's band (its portrait, name, gems or score): its faction's ability, its leader's and whether it's used, its cards in hand, deck and discard pile.","Haz clic en la banda de un bando (su retrato, nombre, gemas o puntaje): la habilidad de su facción, la de su líder y si ya la usó, sus cartas en mano, su mazo y su pila de descarte."
+rules.controls.pointer.chat.title,Chat,Chat
+rules.controls.pointer.chat.text,"In a LAN battle: E (or a click on your portrait) shows the quick lines, and 1 to 8 says one. T (or the portrait's badge) opens the chat: what was said, a message to type, mute.","En una batalla LAN: E (o un clic en tu retrato) muestra las frases rápidas, y de 1 a 8 dice una. T (o la insignia del retrato) abre el chat: lo que se dijo, un mensaje para escribir, silenciar."
+rules.controls.pointer.back.title,Back,Atrás
+rules.controls.pointer.back.text,"Esc steps back one thing at a time, everywhere: a window closes, a chosen card goes back, a choice is given up (asked first); then the pause menu. On the main menu it asks to quit (outside the browser).","Esc retrocede un paso a la vez, en todas partes: se cierra una ventana, una carta elegida vuelve, se renuncia a una elección (se pregunta antes); después, el menú de pausa. En el menú principal pregunta si quieres salir (fuera del navegador)."
+rules.controls.pointer.pause.title,Pause,Pausa
+rules.controls.pointer.pause.text,"Esc or the menu button: resume, the rules, settings, leave the battle. The ? beside it opens these rules.","Esc o el botón de menú: reanudar, las reglas, los ajustes, abandonar la batalla. El ? a su lado abre estas reglas."
+rules.controls.pointer.give_up.title,Give up,Rendirse
+rules.controls.pointer.give_up.text,"Click your deck when the cursor over it turns into a hand, then confirm. It counts as a loss.","Haz clic en tu mazo cuando el cursor sobre él se convierta en una mano, y luego confirma. Cuenta como una derrota."
+rules.key.pinch,Pinch,Pellizcar
+rules.key.back,Back,Atrás
