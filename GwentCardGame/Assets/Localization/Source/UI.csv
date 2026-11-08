@@ -536,6 +536,7 @@ story.buy_confirm,Buy {0} for {1} crowns?,¿Comprar {0} por {1} coronas?
 story.buy,Buy,Comprar
 story.not_now,Not now,Ahora no
 story.card_owned,{0} · you own {1},{0} · tienes {1}
+story.preview_hint,Right click to see the card,Clic derecho para ver la carta
 story.got_none,Nothing new,Nada nuevo
 story.got_many,{0} cards are yours,Ahora tienes {0} cartas
 story.got_one,{0} is yours,Ahora tienes: {0}

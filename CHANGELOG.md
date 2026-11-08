@@ -6,7 +6,12 @@ date, before pushing.
 
 ## 2026-11-07
 
-Spanish: the game speaks English and Spanish.
+Spanish: the game speaks English and Spanish. A card on sale in the story can be seen large.
+
+### Story
+
+- A card for sale in a place's sheet shows large, with its description, on a right click (a finger held on it, on touch); a click
+  still buys it, as before.
 
 ### Languages
 

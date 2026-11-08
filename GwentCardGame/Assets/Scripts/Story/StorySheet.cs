@@ -21,7 +21,8 @@ namespace Gwent.Story
     {
         public static void Open(StoryProgress story, StoryPlace place, Action<StoryReward> on_change, Action on_close)
         {
-            UIScreens.ShowDialog("StorySheet", UITheme.Current.storySheet, root => Bind(root, story, place, on_change), on_close);
+            // A card's preview takes Escape and the right click first (a card on sale is previewed by a right click)
+            UIScreens.ShowDialog("StorySheet", UITheme.Current.storySheet, root => Bind(root, story, place, on_change), on_close, may_close: () => !CardPreview.TakesCancel());
         }
 
         // Their trade, unless their name says it already ("The blacksmith of Blackbough": no "blacksmith" under it)
@@ -345,6 +346,9 @@ namespace Gwent.Story
             cell.Add(tag);
             Action buy = () =>
             {
+                // A finger held on the card to see it large is not a tap on it
+                if (CardPreview.OpenedByHold)
+                    return;
                 string why = story.CannotBuy(place, sale);
                 if (why != null)
                 {
@@ -365,7 +369,12 @@ namespace Gwent.Story
                 art.clicked += buy;
                 tag.clicked += buy;
             }
-            ElementTooltip.Attach(art, () => owned > 0 ? Loc.T(Loc.UI, "story.card_owned", card.LocalName(), owned) : card.LocalName());
+            // The card large, with its description: a right click, or a held finger (the dialogs' layer is above uGUI's, so
+            // the preview is drawn here, CardPreview). On the whole cell, so a sold card (disabled) can be seen too.
+            CardPreview.Attach(cell, () => card, root);
+            // A finger held on the card shows it large, not the tooltip too; the pointer's tooltip tells the gesture
+            ElementTooltip.Attach(art, () => GameInput.IsTouch ? null
+                : (owned > 0 ? Loc.T(Loc.UI, "story.card_owned", card.LocalName(), owned) : card.LocalName()) + "\n" + Loc.T(Loc.UI, "story.preview_hint"));
             return cell;
         }
 
