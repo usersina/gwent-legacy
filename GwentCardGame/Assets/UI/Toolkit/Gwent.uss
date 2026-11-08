@@ -2525,6 +2525,69 @@
     -unity-font-definition: var(--body-font);
 }
 
+/* A card shown large over a dialog (CardPreview): the card, and its description box beside it when it has one. The box is
+   DescriptionBox's, as The Witcher 3's: near black with a thin warm edge, a cream disc for the ability's icon, the title
+   and the text in muted gold. */
+.card-preview {
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--dimmer);
+}
+
+.card-preview__art {
+    width: 340px;
+    height: 530px;
+    -unity-background-scale-mode: stretch-to-fill;
+    border-radius: 10px;
+}
+
+.card-preview__box {
+    width: 380px;
+    margin-left: 28px;
+    padding: 18px 26px 22px 26px;
+    background-color: rgb(22, 23, 25);
+    border-width: 2px;
+    border-color: rgb(84, 74, 62);
+}
+
+.card-preview__head {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+}
+
+.card-preview__icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 12px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background-color: rgb(236, 226, 204);
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.card-preview__title {
+    flex-shrink: 1;
+    -unity-font-definition: var(--body-font);
+    -unity-font-style: bold;
+    font-size: 30px;
+    color: rgb(222, 190, 128);
+    white-space: normal;
+    -unity-text-align: middle-center;
+}
+
+.card-preview__text {
+    -unity-font-definition: var(--body-font);
+    font-size: 24px;
+    color: rgb(204, 180, 136);
+    white-space: normal;
+    -unity-text-align: upper-center;
+}
+
 /* A tournament's rounds: a line each, the next one lit, those won ticked */
 .story-round {
     flex-direction: row;

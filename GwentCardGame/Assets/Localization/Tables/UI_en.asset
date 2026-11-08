@@ -2310,6 +2310,10 @@ MonoBehaviour:
     m_Localized: This platform updates another way.
     m_Metadata:
       m_Items: []
+  - m_Id: 82333751812096
+    m_Localized: Right click to see the card
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

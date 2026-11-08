@@ -2306,6 +2306,10 @@ MonoBehaviour:
     m_Localized: Esta plataforma se actualiza de otra forma.
     m_Metadata:
       m_Items: []
+  - m_Id: 82333751812096
+    m_Localized: Clic derecho para ver la carta
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
