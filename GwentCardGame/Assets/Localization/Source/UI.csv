@@ -569,3 +569,9 @@ faction.nilfgaard.ability,Win any round that ends in a draw (unless your opponen
 faction.scoiatael.ability,Decide who goes first at the start of the battle.,Decide quién empieza al comienzo de la batalla.
 faction.monsters.ability,Keep one random unit on the board after each round.,Conserva una unidad al azar en el tablero después de cada ronda.
 faction.skellige.ability,Two random units of your discard pile (no heroes or spies) return to the board in the third round.,Dos unidades al azar de tu pila de descarte (sin héroes ni espías) vuelven al tablero en la tercera ronda.
+loading.battle,Preparing the battle,Preparando la batalla
+loading.replay,Preparing the replay,Preparando la repetición
+loading.generic,Loading,Cargando
+update.problem_layout,The game's files are not where a release puts them.,Los archivos del juego no están donde los deja una versión publicada.
+update.problem_translocated,"macOS runs this copy from a read-only place: move Gwent Legacy to Applications, open it from there, and update.","macOS ejecuta esta copia desde un lugar de solo lectura: mueve Gwent Legacy a Aplicaciones, ábrela desde ahí y actualiza."
+update.problem_platform,This platform updates another way.,Esta plataforma se actualiza de otra forma.

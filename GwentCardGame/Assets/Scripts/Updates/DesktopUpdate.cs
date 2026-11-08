@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Gwent.Core;
 
 namespace Gwent.Updates
 {
@@ -45,7 +46,7 @@ namespace Gwent.Updates
                     string data = Path.GetFileName(data_path);
                     if (folder == null || !data.EndsWith("_Data"))
                     {
-                        problem = "The game's files are not where a release puts them.";
+                        problem = Loc.T(Loc.UI, "update.problem_layout");
                         return null;
                     }
                     string executable = data.Substring(0, data.Length - "_Data".Length) + (platform == UpdatePlatform.Windows ? ".exe" : ".x86_64");
@@ -56,19 +57,19 @@ namespace Gwent.Updates
                     string app = Path.GetDirectoryName(data_path);
                     if (app == null || !app.EndsWith(".app"))
                     {
-                        problem = "The game's files are not where a release puts them.";
+                        problem = Loc.T(Loc.UI, "update.problem_layout");
                         return null;
                     }
                     // macOS runs an app it doesn't trust yet from a read-only copy until it is moved (App Translocation)
                     if (app.Contains("/AppTranslocation/"))
                     {
-                        problem = "macOS runs this copy from a read-only place: move Gwent Legacy to Applications, open it from there, and update.";
+                        problem = Loc.T(Loc.UI, "update.problem_translocated");
                         return null;
                     }
                     return new Layout { Platform = platform, Target = Path.GetDirectoryName(app), Launch = Path.GetFileName(app) };
                 }
                 default:
-                    problem = "This platform updates another way.";
+                    problem = Loc.T(Loc.UI, "update.problem_platform");
                     return null;
             }
         }

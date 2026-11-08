@@ -112,13 +112,14 @@ namespace Gwent.UI
                 }
                 BattleBanner.Emblem(band, -CrestX - ArtCentre, Crest(mine));
                 BattleBanner.Emblem(band, CrestX - ArtCentre, Crest(opponent));
-                BattleBanner.Text(band, replay != null ? "Preparing the replay" : "Preparing the battle");
+                BattleBanner.Text(band, Loc.T(Loc.UI, replay != null ? "loading.replay" : "loading.battle"));
             }
             else
             {
                 // The hourglass and the word, centred together
-                TextMeshProUGUI text = BattleBanner.Text(band, "Loading");
-                float width = text.GetPreferredValues("Loading").x;
+                string loading = Loc.T(Loc.UI, "loading.generic");
+                TextMeshProUGUI text = BattleBanner.Text(band, loading);
+                float width = text.GetPreferredValues(loading).x; // the word's own width in the current language, so the pair stays centred
                 float left = -(HourglassWidth + Gap + width) / 2;
                 BattleBanner.Emblem(band, left + HourglassWidth / 2 - ArtCentre, Resources.Load<Sprite>("W3/Notifications/" + BattleBanner.RoundStart));
                 text.alignment = TextAlignmentOptions.MidlineLeft;

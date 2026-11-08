@@ -30,7 +30,8 @@ Window > General > Test Runner > EditMode > Run All.
   rate and each region's and level's to `Logs/story-balance.txt`. On 2026-10-29: about 74% in Velen's first level, 58% in its
   second, 57% against the last level's innkeepers and merchants, 39% against the masters and the tournaments (the Hard AI).
 - **The content** (`Gwent.Content.Tests`, run with them): the Addressables content, and that every card has the description box it
-  should, with its icon.
+  should, with its icon. `LocalizationTests` read the translation tables' CSVs: every row has both languages, a translation keeps
+  the English's placeholders, and every key the code looks up is in its table (see [Localization](localization.md#checking-it)).
 - **LAN** (`Gwent.Net.Tests`): two players on this computer over its loopback network, with real sockets (see
   [LAN tests and bots](#lan-tests-and-bots)).
 

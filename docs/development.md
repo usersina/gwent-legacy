@@ -44,7 +44,8 @@ Everything in `Assets/Scripts` but the rules is the `Gwent.Game` assembly; the e
 | `Assets/Resources/W3` | The Witcher 3's interface art: notices' emblems, ability effects, the end of battle emblems (see `CREDITS.md`) |
 | `Assets/Tests/EditMode` | Unit tests for the rules and the AI's difficulties, a fuzz test that plays hundreds of random battles, and the story's (its content, a play-through to Collect 'Em All, and a balance report run by name: see [Testing](testing.md#unit-tests)) |
 | `Assets/Tests/Net` | LAN tests: two players on this computer over its loopback network (finding a game, joining it, the messages, a link's end) |
-| `Assets/Tests/Content` | Checks of the content: every card has its art and the description box it should (with its icon), every track its label, each group holds its whole folder, nothing is also in Resources |
+| `Assets/Localization` | The languages (see [Localization](localization.md)): `Source/*.csv` hold the texts (`key,en,es`), `Tables/` is made from them by **Gwent > Localization > Build Tables** (`Assets/Editor/GwentLocalization.cs`); `Loc` (in `Core`) looks a text up, and `CardText` gives the cards' and factions' names |
+| `Assets/Tests/Content` | Checks of the content: every card has its art and the description box it should (with its icon), every track its label, each group holds its whole folder, nothing is also in Resources, and the translation tables are complete (`LocalizationTests`) |
 | `Assets/Editor/GwentAutoplay.cs` | End-to-end smoke test that plays full battles |
 | `Assets/Editor/GwentMonkey.cs` | Monkey test: battles under a storm of random input |
 | `Assets/Editor/GwentBuild.cs`, `BuildStamp.cs` | The release builds, and the build's number they carry (see [Builds and releases](builds-and-releases.md)) |

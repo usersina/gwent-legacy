@@ -2282,6 +2282,30 @@ MonoBehaviour:
     m_Localized: "Dos unidades al azar de tu pila de descarte (sin h\xE9roes ni esp\xEDas) vuelven al tablero en la tercera ronda."
     m_Metadata:
       m_Items: []
+  - m_Id: 20997407744000
+    m_Localized: Preparando la batalla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20997470658560
+    m_Localized: "Preparando la repetici\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20997470658561
+    m_Localized: Cargando
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79033795059712
+    m_Localized: "Los archivos del juego no est\xE1n donde los deja una versi\xF3n publicada."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79033837002752
+    m_Localized: "macOS ejecuta esta copia desde un lugar de solo lectura: mueve Gwent Legacy a Aplicaciones, \xE1brela desde ah\xED y actualiza."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79033837002753
+    m_Localized: Esta plataforma se actualiza de otra forma.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

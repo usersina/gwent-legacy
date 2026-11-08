@@ -2286,6 +2286,30 @@ MonoBehaviour:
     m_Localized: Two random units of your discard pile (no heroes or spies) return to the board in the third round.
     m_Metadata:
       m_Items: []
+  - m_Id: 20997407744000
+    m_Localized: Preparing the battle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20997470658560
+    m_Localized: Preparing the replay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20997470658561
+    m_Localized: Loading
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79033795059712
+    m_Localized: The game's files are not where a release puts them.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79033837002752
+    m_Localized: 'macOS runs this copy from a read-only place: move Gwent Legacy to Applications, open it from there, and update.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 79033837002753
+    m_Localized: This platform updates another way.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
