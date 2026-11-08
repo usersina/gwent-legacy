@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Gwent.Core;
 using Gwent.Rules;
 
 namespace Gwent.Battle
@@ -6,23 +7,29 @@ namespace Gwent.Battle
     // What a card's description box says (DescriptionBox shows it), as The Witcher 3's: the ability's name and icon, then
     // what it does. A special card's box is the card's own; a leader's is its "Leader Ability", a hero's says what a hero
     // is (neither has an icon); a plain unit has none.
+    //
+    // The texts are keys of the Cards table, looked up when the box is drawn so that it follows the language: a special
+    // card's title is the card's own name (its id string), its text that plus ".text".
     public class CardDescription
     {
-        public readonly string Title;
-        public readonly string Text;
+        public readonly string TitleKey;
+        public readonly string TextKey;
         public readonly string Icon; // under Resources/Cards/DescriptionIcon, or null
+
+        public string Title { get { return Loc.T(Loc.Cards, TitleKey); } }
+        public string Text { get { return Loc.T(Loc.Cards, TextKey); } }
 
         // A leader's ability, as its description box and How to play say it (null for an id that is no leader)
         public static string LeaderAbility(int leader_id)
         {
-            string text;
-            return Leaders.TryGetValue(leader_id, out text) ? text : null;
+            string key;
+            return Leaders.TryGetValue(leader_id, out key) ? Loc.T(Loc.Cards, key) : null;
         }
 
-        private CardDescription(string title, string text, string icon = null)
+        private CardDescription(string title_key, string text_key, string icon = null)
         {
-            Title = title;
-            Text = text;
+            TitleKey = title_key;
+            TextKey = text_key;
             Icon = icon;
         }
 
@@ -33,12 +40,12 @@ namespace Gwent.Battle
             if (card.faction == Faction.Special)
                 return Specials.TryGetValue(card._idstr, out description) ? description : null;
             if (card.ability == Ability.Leader)
-                return Leaders.TryGetValue(card._id, out string text) ? new CardDescription("Leader Ability", text) : null;
+                return Leaders.TryGetValue(card._id, out string key) ? new CardDescription("ability.leader.title", key) : null;
             if (card.ability != Ability.None)
                 return Abilities.TryGetValue(card.ability, out description) ? description : null;
             int avenger = AbilityRules.AvengerOf(card._id);
             if (avenger != -1)
-                return Avenger(avenger == CardIds.Hemdall ? "Hemdall" : "the Bovine Defense Force");
+                return avenger == CardIds.Hemdall ? AvengerHemdall : AvengerCow;
             if (card.unique)
                 return Hero;
             if (card.row == Row.Agile)
@@ -46,91 +53,95 @@ namespace Gwent.Battle
             return null;
         }
 
-        private static readonly CardDescription Hero = new CardDescription("Hero",
-            "Not affected by any special cards or abilities.");
+        private static readonly CardDescription Hero = new CardDescription("ability.hero.title", "ability.hero.text");
 
-        private static readonly CardDescription Agile = new CardDescription("Agile",
-            "Can be placed in either the Close Combat or the Ranged Combat row.", "agile"); // Francesca, Hope of the Aen Seidhe moves it later
+        private static readonly CardDescription Agile = new CardDescription("ability.agile.title", "ability.agile.text", "agile"); // Francesca, Hope of the Aen Seidhe moves it later
 
-        // The Cow's and Kambi's
-        private static CardDescription Avenger(string avenger)
-        {
-            return new CardDescription("Avenger", "Killed by a scorch, it calls " + avenger + " to your Close Combat row at once. "
-                + "Discarded any other way, " + (avenger == "Hemdall" ? "he" : "it") + " comes at the start of the next round.", "avenger");
-        }
+        // The Cow's and Kambi's: a sentence each, since the name and the "he"/"it" after it change with the card
+        private static readonly CardDescription AvengerHemdall = new CardDescription("ability.avenger.title", "ability.avenger.hemdall", "avenger");
+        private static readonly CardDescription AvengerCow = new CardDescription("ability.avenger.title", "ability.avenger.cow", "avenger");
 
-        private static readonly CardDescription Mardroeme = new CardDescription("Mardroeme",
-            "Triggers transformation of all Berserker cards on the same row.", "mardroeme");
+        private static readonly CardDescription Mardroeme = Special("mardroeme");
 
-        private static readonly CardDescription CommanderHorn = new CardDescription("Commander's Horn",
-            "Doubles the strength of all unit cards in that row. Limited to 1 per row.", "commander_horn");
+        private static readonly CardDescription CommanderHorn = Special("commander_horn");
 
         // Dandelion: his horn doubles the others in his row (not himself), and a Commander's Horn may still join it
-        private static readonly CardDescription UnitHorn = new CardDescription("Commander's Horn",
-            "Doubles the strength of the other units in its row.", "commander_horn");
+        private static readonly CardDescription UnitHorn = new CardDescription("commander_horn", "ability.unit_horn.text", "commander_horn");
+
+        // A special card's own box: titled with its name, the icon is named as the card
+        private static CardDescription Special(string id)
+        {
+            return new CardDescription(id, id + ".text", id);
+        }
 
         // Special cards, by their id string
         private static readonly Dictionary<string, CardDescription> Specials = new Dictionary<string, CardDescription>
         {
-            { "biting_frost", new CardDescription("Biting Frost", "Sets the strength of all Close Combat cards to 1 for both players.", "biting_frost") },
-            { "impenetrable_fog", new CardDescription("Impenetrable Fog", "Sets the strength of all Ranged Combat cards to 1 for both players.", "impenetrable_fog") },
-            { "torrential_rain", new CardDescription("Torrential Rain", "Sets the strength of all Siege Combat cards to 1 for both players.", "torrential_rain") },
-            { "skellige_storm", new CardDescription("Skellige Storm", "Sets the strength of all Ranged and Siege Combat cards to 1 for both players.", "skellige_storm") },
-            { "clear_weather", new CardDescription("Clear Weather", "Removes all weather effects (Biting Frost, Impenetrable Fog, Torrential Rain and Skellige Storm).", "clear_weather") },
+            { "biting_frost", Special("biting_frost") },
+            { "impenetrable_fog", Special("impenetrable_fog") },
+            { "torrential_rain", Special("torrential_rain") },
+            { "skellige_storm", Special("skellige_storm") },
+            { "clear_weather", Special("clear_weather") },
             { "mardroeme", Mardroeme }, // in a row's horn slot
             { "commander_horn", CommanderHorn },
-            { "decoy", new CardDescription("Decoy", "Swap with a card on the battlefield to return it to your hand.", "decoy") },
-            { "scorch", new CardDescription("Scorch", "Discard after playing. Kills the strongest card(s) on the battlefield.", "scorch") },
+            { "decoy", Special("decoy") },
+            { "scorch", Special("scorch") },
         };
 
         // Units' abilities
         private static readonly Dictionary<Ability, CardDescription> Abilities = new Dictionary<Ability, CardDescription>
         {
-            { Ability.Spy, new CardDescription("Spy", "Place on your opponent's battlefield (counts towards your opponent's total) and draw 2 cards from your deck.", "spy") },
-            { Ability.Medic, new CardDescription("Medic", "Choose one card from your discard pile and play it instantly (no heroes or special cards).", "medic") },
-            { Ability.Muster, new CardDescription("Muster", "Find any cards with the same name in your deck and hand, and play them instantly.", "muster") },
-            { Ability.MoraleBoost, new CardDescription("Morale Boost", "Adds +1 to all units in the row (excluding itself).", "morale_boost") },
-            { Ability.TightBond, new CardDescription("Tight Bond", "Place next to a card with the same name to double the strength of both cards.", "tight_bond") },
+            { Ability.Spy, Unit("spy", "spy") },
+            { Ability.Medic, Unit("medic", "medic") },
+            { Ability.Muster, Unit("muster", "muster") },
+            { Ability.MoraleBoost, Unit("morale_boost", "morale_boost") },
+            { Ability.TightBond, Unit("tight_bond", "tight_bond") },
             { Ability.UnitHorn, UnitHorn },
-            { Ability.ScorchClose, RowScorch("Close Combat") },
-            { Ability.ScorchRange, RowScorch("Ranged Combat") },
-            { Ability.ScorchSiege, RowScorch("Siege") },
-            { Ability.Scorch, new CardDescription("Scorch", "Kills the strongest card(s) on the battlefield as it is played (never itself).", "scorch") }, // the Clan Dimun Pirate
-            { Ability.Berserker, new CardDescription("Berserker", "Transforms into a bear when a Mardroeme card is on its row.", "berserker") },
+            { Ability.ScorchClose, RowScorch("ability.scorch_close.text") },
+            { Ability.ScorchRange, RowScorch("ability.scorch_range.text") },
+            { Ability.ScorchSiege, RowScorch("ability.scorch_siege.text") },
+            { Ability.Scorch, RowScorch("ability.scorch.text") }, // the Clan Dimun Pirate
+            { Ability.Berserker, Unit("berserker", "berserker") },
             { Ability.Mardroeme, Mardroeme }, // Ermion
         };
 
-        private static CardDescription RowScorch(string row)
+        // An ability of its own: "ability.<id>.title" and ".text" in the table, the icon named by the id
+        private static CardDescription Unit(string id, string icon)
         {
-            return new CardDescription("Scorch", "Destroys your enemy's strongest " + row + " unit(s) if the combined strength of all their "
-                + row + " units is 10 or more.", "scorch");
+            return new CardDescription("ability." + id + ".title", "ability." + id + ".text", icon);
         }
 
-        // Leaders' abilities, by card id (LeaderIds)
+        // The Scorch units' boxes are titled with the Scorch card's name
+        private static CardDescription RowScorch(string text_key)
+        {
+            return new CardDescription("scorch", text_key, "scorch");
+        }
+
+        // Leaders' abilities, by card id (LeaderIds): the key of the Cards table
         private static readonly Dictionary<int, string> Leaders = new Dictionary<int, string>
         {
-            { LeaderIds.EmhyrEmperorOfNilfgaard, "Look at 3 random cards from your opponent's hand." },
-            { LeaderIds.EmhyrHisImperialMajesty, "Pick a Torrential Rain card from your deck and play it instantly." },
-            { LeaderIds.EmhyrInvaderOfTheNorth, "Medics and leader abilities that restore a unit pick a random one (a hero medic still chooses). Affects both players." },
-            { LeaderIds.EmhyrTheRelentless, "Draw a unit (not a hero) from your opponent's discard pile." },
-            { LeaderIds.EmhyrTheWhiteFlame, "Cancels your opponent's leader ability." },
-            { LeaderIds.EredinTheTreacherous, "Doubles the strength of all spy cards. Affects both players." },
-            { LeaderIds.EredinBringerOfDeath, "Restore a unit (not a hero) from your discard pile to your hand." },
-            { LeaderIds.EredinCommanderOfTheRedRiders, "Doubles the strength of all your Close Combat units (unless a Commander's Horn is also on that row)." },
-            { LeaderIds.EredinDestroyerOfWorlds, "Discard 2 cards and draw 1 card of your choice from your deck." },
-            { LeaderIds.EredinKingOfTheWildHunt, "Pick any weather card from your deck and play it instantly." },
-            { LeaderIds.FoltestKingOfTemeria, "Pick an Impenetrable Fog card from your deck and play it instantly." },
-            { LeaderIds.FoltestLordCommander, "Clears all weather effects (Biting Frost, Impenetrable Fog, Torrential Rain and Skellige Storm)." },
-            { LeaderIds.FoltestSonOfMedell, "Destroys your enemy's strongest Ranged Combat unit(s) if the combined strength of all their Ranged Combat units is 10 or more." },
-            { LeaderIds.FoltestTheSiegemaster, "Doubles the strength of all your Siege units (unless a Commander's Horn is also on that row)." },
-            { LeaderIds.FoltestTheSteelForged, "Destroys your enemy's strongest Siege unit(s) if the combined strength of all their Siege units is 10 or more." },
-            { LeaderIds.FrancescaDaisyOfTheValley, "Draw an extra card at the beginning of the battle." },
-            { LeaderIds.FrancescaHopeOfTheAenSeidhe, "Moves agile units to whichever valid row maximizes their strength (units already on their best row stay)." },
-            { LeaderIds.FrancescaPurebloodElf, "Pick a Biting Frost card from your deck and play it instantly." },
-            { LeaderIds.FrancescaQueenOfDolBlathanna, "Destroys your enemy's strongest Close Combat unit(s) if the combined strength of all their Close Combat units is 10 or more." },
-            { LeaderIds.FrancescaTheBeautiful, "Doubles the strength of all your Ranged Combat units (unless a Commander's Horn is also on that row)." },
-            { LeaderIds.CrachAnCraite, "Shuffles all cards from each player's discard pile back into their decks." },
-            { LeaderIds.KingBran, "Your units only lose half their strength in bad weather." },
+            { LeaderIds.EmhyrEmperorOfNilfgaard, "leader.emhyr_emperor" },
+            { LeaderIds.EmhyrHisImperialMajesty, "leader.emhyr_majesty" },
+            { LeaderIds.EmhyrInvaderOfTheNorth, "leader.emhyr_invader" },
+            { LeaderIds.EmhyrTheRelentless, "leader.emhyr_relentless" },
+            { LeaderIds.EmhyrTheWhiteFlame, "leader.emhyr_white_flame" },
+            { LeaderIds.EredinTheTreacherous, "leader.eredin_treacherous" },
+            { LeaderIds.EredinBringerOfDeath, "leader.eredin_bringer" },
+            { LeaderIds.EredinCommanderOfTheRedRiders, "leader.eredin_commander" },
+            { LeaderIds.EredinDestroyerOfWorlds, "leader.eredin_destroyer" },
+            { LeaderIds.EredinKingOfTheWildHunt, "leader.eredin_king" },
+            { LeaderIds.FoltestKingOfTemeria, "leader.foltest_king" },
+            { LeaderIds.FoltestLordCommander, "leader.foltest_lord" },
+            { LeaderIds.FoltestSonOfMedell, "leader.foltest_son" },
+            { LeaderIds.FoltestTheSiegemaster, "leader.foltest_siegemaster" },
+            { LeaderIds.FoltestTheSteelForged, "leader.foltest_steel" },
+            { LeaderIds.FrancescaDaisyOfTheValley, "leader.francesca_daisy" },
+            { LeaderIds.FrancescaHopeOfTheAenSeidhe, "leader.francesca_hope" },
+            { LeaderIds.FrancescaPurebloodElf, "leader.francesca_pureblood" },
+            { LeaderIds.FrancescaQueenOfDolBlathanna, "leader.francesca_queen" },
+            { LeaderIds.FrancescaTheBeautiful, "leader.francesca_beautiful" },
+            { LeaderIds.CrachAnCraite, "leader.crach" },
+            { LeaderIds.KingBran, "leader.bran" },
         };
     }
 }

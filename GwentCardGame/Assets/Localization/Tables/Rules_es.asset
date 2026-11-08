@@ -1,0 +1,571 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Rules_es
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: c4ae92e5dae156342ab8e00e812fd1cf, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 19206813229056
+    m_Localized: La batalla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337920
+    m_Localized: "Gwent es un juego de cartas para dos jugadores. Gana dos rondas de tres: la ronda es para el bando cuyas cartas en el tablero sumen m\xE1s."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337921
+    m_Localized: Facciones
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337922
+    m_Localized: Cada mazo pertenece a una de cinco facciones, con su propia habilidad y sus propias cartas; las cartas neutrales caben en cualquier mazo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337923
+    m_Localized: Cartas en mano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337924
+    m_Localized: "Robas 10 cartas y puedes cambiar hasta 2 de ellas antes de la primera ronda. Nadie roba entre rondas, as\xED que cada carta que juegas es una menos para las rondas siguientes; solo los esp\xEDas, algunos l\xEDderes y la habilidad de los Reinos del Norte dan m\xE1s."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337925
+    m_Localized: Tu turno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337926
+    m_Localized: "Haz una sola cosa: jugar una carta, usar la habilidad de tu l\xEDder o pasar. Jugar una carta termina tu turno."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337927
+    m_Localized: Filas de combate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337928
+    m_Localized: "Las unidades van en la fila de combate cuerpo a cuerpo, a distancia o de asedio, seg\xFAn indique la carta."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337929
+    m_Localized: Cartas especiales
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337930
+    m_Localized: "El clima, el Cuerno de mando, el Se\xF1uelo y Abrasar, junto con la habilidad de tu l\xEDder, pueden darle la vuelta a una ronda."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337931
+    m_Localized: Pasar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337932
+    m_Localized: "Pasar es definitivo en la ronda: ya no juegas nada m\xE1s en ella, mientras que tu oponente puede seguir jugando. Cuando ambos bandos han pasado, gana la ronda el total m\xE1s alto. Un bando sin cartas y sin una habilidad de l\xEDder que pueda usar pasa por su cuenta, y un bando que empieza una ronda sin cartas se la salta."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337933
+    m_Localized: Vida
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337934
+    m_Localized: Cada bando tiene dos gemas y pierde una por cada ronda que pierde; una ronda empatada cuesta una a ambos (salvo que juegue Nilfgaard). Si pierdes las dos, pierdes la batalla. Quien gana una ronda empieza la siguiente, y el tablero se limpia entre una y otra.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337935
+    m_Localized: Jugar bien
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337936
+    m_Localized: Ganar una ronda por una gran diferencia desperdicia cartas. Ceder una ronda y guardar una mano fuerte para las otras dos suele ser la mejor jugada.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337937
+    m_Localized: El tablero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337938
+    m_Localized: Cada bando tiene tres filas; las tuyas son la mitad inferior de la mesa.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337939
+    m_Localized: Filas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337940
+    m_Localized: Cuerpo a cuerpo, a distancia y de asedio, desde el centro de la mesa hacia afuera. Una unidad va en la fila que indica su carta.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337941
+    m_Localized: Fuerza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337942
+    m_Localized: "La fuerza de una unidad es el n\xFAmero de su esquina. El total de cada fila est\xE1 a su izquierda, el total de cada bando junto a su retrato, y el bando que va adelante lleva un laurel."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337943
+    m_Localized: "\xC1gil"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337944
+    m_Localized: "Una unidad \xE1gil puede ir en la fila de combate cuerpo a cuerpo o en la de combate a distancia."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337945
+    m_Localized: Espacio del cuerno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337946
+    m_Localized: 'El espacio a la izquierda de cada fila admite una carta: un Cuerno de mando o el Mardroeme de Skellige.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337947
+    m_Localized: Tablero del clima
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337948
+    m_Localized: Las cartas de clima y Abrasar se juegan en el tablero del clima, a la izquierda de la mesa. El clima afecta a ambos bandos.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337949
+    m_Localized: "De qui\xE9n es el turno"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337950
+    m_Localized: "El panel del bando al que le toca est\xE1 bordeado con l\xEDneas doradas brillantes; un bando que ya pas\xF3 aparece en gris."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337951
+    m_Localized: Pilas de descarte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337952
+    m_Localized: "Las cartas que salen del tablero van a la pila de descarte de su due\xF1o, junto al mazo. Toca una pila para revisarla."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337953
+    m_Localized: "Las cartas que salen del tablero van a la pila de descarte de su due\xF1o, junto al mazo. Haz clic en una pila para revisarla."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337954
+    m_Localized: Cartas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337955
+    m_Localized: "Un mazo tiene un l\xEDder, al menos 22 cartas de unidad y como m\xE1ximo 10 cartas especiales, y contiene cada carta, como m\xE1ximo, tantas veces como existe."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337956
+    m_Localized: "H\xE9roes"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337957
+    m_Localized: "Las unidades con marco dorado. Nada las modifica: ni el clima, ni el cuerno, ni el impulso de moral, ni Abrasar, ni el se\xF1uelo, ni los m\xE9dicos. Un h\xE9roe solo puede estar una vez en un mazo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337958
+    m_Localized: Unidades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337959
+    m_Localized: "Todo lo dem\xE1s en las filas. La mayor\xEDa existe una vez; unas pocas, como el Comando Franjas Azules, varias veces."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337960
+    m_Localized: Cartas especiales
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337961
+    m_Localized: "Clima, Cuerno de mando, Se\xF1uelo y Abrasar: dan forma al tablero en lugar de sumar fuerza."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337962
+    m_Localized: "L\xEDder"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337963
+    m_Localized: "Una habilidad que puedes usar una vez por batalla: levanta la carta del l\xEDder y su corona brillar\xE1; la corona la usa. La corona se pone gris una vez usada. En cambio, la habilidad de algunos l\xEDderes siempre est\xE1 activa."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337964
+    m_Localized: Habilidades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337965
+    m_Localized: "Se muestran con los \xEDconos de una carta de unidad."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337966
+    m_Localized: "Esp\xEDa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337967
+    m_Localized: Va al lado de tu oponente (suma a su total) y robas 2 cartas de tu mazo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337968
+    m_Localized: "M\xE9dico"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337969
+    m_Localized: "Trae de vuelta una unidad de tu pila de descarte y la juega al instante (sin h\xE9roes ni cartas especiales). Un m\xE9dico que regresa vuelve a curar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337970
+    m_Localized: Convocar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337971
+    m_Localized: Juega al instante todas las cartas de la misma familia de tu mazo y de tu mano.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337972
+    m_Localized: "V\xEDnculo estrecho"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337973
+    m_Localized: "Las copias de esta carta en la misma fila se multiplican entre s\xED: dos duplican su fuerza, tres la triplican."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337974
+    m_Localized: Impulso de moral
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337975
+    m_Localized: "Suma 1 a cada una de las dem\xE1s unidades de su fila."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337976
+    m_Localized: Cuerno de mando
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337977
+    m_Localized: "Duplica a las dem\xE1s unidades de su fila, salvo que la fila ya tenga un Cuerno de mando."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337978
+    m_Localized: Abrasar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337979
+    m_Localized: "Destruye a la unidad o unidades m\xE1s fuertes de tu oponente en esa fila, si la fila suma 10 o m\xE1s. El Abrasar del Pirata del Clan Dimun es el de la carta Abrasar: la unidad o unidades m\xE1s fuertes de todo el campo de batalla cuando desembarca (nunca \xE9l mismo)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337980
+    m_Localized: "\xC1gil"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337981
+    m_Localized: "Combate cuerpo a cuerpo o a distancia, a tu elecci\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337982
+    m_Localized: Berserker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337983
+    m_Localized: "Los Berserkers de Skellige se convierten en osos en una fila con un Mardroeme (la carta especial en su espacio del cuerno, o Ermion en ella), ya sea que el Mardroeme llegara primero o ellos: el Berserker (4) en el Vildkaarl transformado (14, impulso de moral), el Joven Berserker (2) en el Joven Vildkaarl transformado (8, v\xEDnculo estrecho). El Berserker pasa a tu pila de descarte al transformarse: un m\xE9dico puede traerlo de vuelta para que se transforme otra vez. El oso solo existe en el tablero y desaparece cuando lo deja."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337984
+    m_Localized: Vengador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337985
+    m_Localized: "La Vaca y Kambi, de Skellige: si los mata un Abrasar, son vengados al instante, y la Fuerza de Defensa Bovina (8) o Hemdall (11, un h\xE9roe) entra en tu fila de combate cuerpo a cuerpo. Si se descartan de cualquier otra forma (se limpian al final de una ronda, o salen de tu mano por Eredin: Destructor de Mundos), el vengador se une a tu fila de combate cuerpo a cuerpo al inicio de la siguiente ronda; si la batalla termina antes, nunca llega. Un Se\xF1uelo que los devuelva a tu mano no invoca a nadie. Los vengadores solo existen en el tablero: ning\xFAn se\xF1uelo ni m\xE9dico los trae de vuelta, y desaparecen cuando lo dejan."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337986
+    m_Localized: Cartas especiales
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337987
+    m_Localized: "El clima reduce a 1 a toda unidad que no sea h\xE9roe en sus filas, en ambos bandos."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337988
+    m_Localized: Escarcha mordiente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337989
+    m_Localized: Clima en ambas filas de combate cuerpo a cuerpo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337990
+    m_Localized: Niebla impenetrable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337991
+    m_Localized: Clima en ambas filas de combate a distancia.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337992
+    m_Localized: Lluvia torrencial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337993
+    m_Localized: Clima en ambas filas de asedio.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337994
+    m_Localized: Tormenta de Skellige
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337995
+    m_Localized: Clima en las filas de combate a distancia y de asedio de ambos bandos.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337996
+    m_Localized: Clima despejado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337997
+    m_Localized: Elimina todo el clima.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337998
+    m_Localized: Cuerno de mando
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337999
+    m_Localized: Duplica la fuerza de las unidades de una de tus filas, un cuerno por fila.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338000
+    m_Localized: "Se\xF1uelo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338001
+    m_Localized: "Ocupa el lugar de una de tus unidades, que vuelve a tu mano para jugarse de nuevo (no un h\xE9roe, ni una carta invocada como la Fuerza de Defensa Bovina)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338002
+    m_Localized: Abrasar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338003
+    m_Localized: "Destruye a la unidad o unidades m\xE1s fuertes de todo el campo de batalla, incluidas las tuyas (no a los h\xE9roes)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338004
+    m_Localized: Mardroeme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338005
+    m_Localized: 'Exclusivo de Skellige: en el espacio del cuerno de una fila, convierte en osos a los Berserkers de esa fila.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338006
+    m_Localized: Facciones
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338007
+    m_Localized: "Cada facci\xF3n tiene su propia habilidad, siempre activa, y sus l\xEDderes para elegir (los dos de Skellige llegaron con Blood and Wine). Mant\xE9n un dedo sobre un l\xEDder para leer su habilidad."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338008
+    m_Localized: "Cada facci\xF3n tiene su propia habilidad, siempre activa, y sus l\xEDderes para elegir (los dos de Skellige llegaron con Blood and Wine). Deja el puntero sobre un l\xEDder para leer su habilidad."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338009
+    m_Localized: Controles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338010
+    m_Localized: "Todo se hace con toques; mant\xE9n un dedo sobre una carta para mirarla."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338011
+    m_Localized: "El mouse lo hace todo, y las teclas tambi\xE9n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338012
+    m_Localized: Jugar una carta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338013
+    m_Localized: "T\xF3cala en tu mano (se muestra grande a la derecha) y luego toca donde se ilumine."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338014
+    m_Localized: "L\xEDder"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338015
+    m_Localized: "Toca tu l\xEDder y luego su corona brillante; toca el lugar vac\xEDo para devolverlo. Mant\xE9n un dedo sobre la corona para ver si todav\xEDa se puede usar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338016
+    m_Localized: Elegir cartas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338017
+    m_Localized: "En el cambio de cartas y cuando hay que elegir una carta: toca una carta para traerla al frente, t\xF3cala de nuevo para tomarla. Listo conserva el resto de tu mano; \xD7 renuncia a una elecci\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338018
+    m_Localized: Pasar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338019
+    m_Localized: "Mant\xE9n presionado el bot\xF3n Mant\xE9n para pasar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338020
+    m_Localized: Mirar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338021
+    m_Localized: "Mant\xE9n un dedo sobre cualquier carta (en el tablero, en tu mano, un l\xEDder) para verla grande; toca una pila de descarte para revisarla."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338022
+    m_Localized: Zoom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338023
+    m_Localized: "Separa dos dedos sobre el tablero para acercar. Con el zoom, un dedo mueve el tablero, y el candado bajo el bot\xF3n de men\xFA lo bloquea: los toques no hacen nada, para mirar con seguridad. Toca dos veces la mesa para acercar ah\xED o volver a alejar; la lupa tambi\xE9n aleja."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338024
+    m_Localized: Un bando de un vistazo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338025
+    m_Localized: "Toca la banda de un bando (su retrato, nombre, gemas o puntaje): la habilidad de su facci\xF3n, la de su l\xEDder y si ya la us\xF3, sus cartas en mano, su mazo y su pila de descarte."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338026
+    m_Localized: Chat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532224
+    m_Localized: "En una batalla LAN: toca tu retrato para ver las frases r\xE1pidas, y su insignia para abrir el chat."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532225
+    m_Localized: "Atr\xE1s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532226
+    m_Localized: "El bot\xF3n Atr\xE1s de Android retrocede un paso a la vez: se cierra una ventana, una carta elegida vuelve, se renuncia a una elecci\xF3n (se pregunta antes), el tablero se aleja; despu\xE9s, el men\xFA de pausa. En el men\xFA principal pregunta si quieres salir."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532227
+    m_Localized: Pausa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532228
+    m_Localized: "El bot\xF3n de men\xFA: reanudar, las reglas, los ajustes, abandonar la batalla. El ? a su lado abre estas reglas."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532229
+    m_Localized: Rendirse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532230
+    m_Localized: "En tu turno, mant\xE9n un dedo sobre tu mazo y luego confirma. Cuenta como una derrota."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532231
+    m_Localized: Jugar una carta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532232
+    m_Localized: "Haz clic en ella en tu mano y luego donde se ilumine (una se\xF1al roja indica d\xF3nde no puede ir). Teclas: Izquierda y Derecha eligen una carta, Enter la toma, Arriba y Abajo eligen su lugar, Enter la juega, Esc la devuelve."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532233
+    m_Localized: "L\xEDder"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532234
+    m_Localized: "Haz clic en tu l\xEDder y luego en su corona brillante; haz clic en el lugar vac\xEDo (o presiona Esc) para devolverlo. Teclas: X, y luego X o Enter."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532235
+    m_Localized: Elegir cartas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532236
+    m_Localized: "En el cambio de cartas y cuando hay que elegir una carta: haz clic en una carta para traerla al frente, haz clic de nuevo (o presiona Enter) para tomarla. Space o Listo conserva el resto de tu mano; \xD7 renuncia a una elecci\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532237
+    m_Localized: Pasar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532238
+    m_Localized: "Mant\xE9n Space, o el bot\xF3n Mant\xE9n para pasar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532239
+    m_Localized: Mirar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532240
+    m_Localized: Pasa el puntero sobre una carta para verla grande; haz clic en una pila de descarte para revisarla.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532241
+    m_Localized: Un bando de un vistazo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532242
+    m_Localized: "Haz clic en la banda de un bando (su retrato, nombre, gemas o puntaje): la habilidad de su facci\xF3n, la de su l\xEDder y si ya la us\xF3, sus cartas en mano, su mazo y su pila de descarte."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532243
+    m_Localized: Chat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532244
+    m_Localized: "En una batalla LAN: E (o un clic en tu retrato) muestra las frases r\xE1pidas, y de 1 a 8 dice una. T (o la insignia del retrato) abre el chat: lo que se dijo, un mensaje para escribir, silenciar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532245
+    m_Localized: "Atr\xE1s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532246
+    m_Localized: "Esc retrocede un paso a la vez, en todas partes: se cierra una ventana, una carta elegida vuelve, se renuncia a una elecci\xF3n (se pregunta antes); despu\xE9s, el men\xFA de pausa. En el men\xFA principal pregunta si quieres salir (fuera del navegador)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532247
+    m_Localized: Pausa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532248
+    m_Localized: "Esc o el bot\xF3n de men\xFA: reanudar, las reglas, los ajustes, abandonar la batalla. El ? a su lado abre estas reglas."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532249
+    m_Localized: Rendirse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532250
+    m_Localized: "Haz clic en tu mazo cuando el cursor sobre \xE9l se convierta en una mano, y luego confirma. Cuenta como una derrota."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532251
+    m_Localized: Pellizcar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532252
+    m_Localized: "Atr\xE1s"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

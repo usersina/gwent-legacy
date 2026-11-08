@@ -51,15 +51,15 @@ namespace Gwent.Updates
             get
             {
                 if (OfferPage)
-                    return "Download page";
+                    return Loc.T(Loc.UI, "update.action_page");
                 switch (platform)
                 {
-                    case UpdatePlatform.Web: return "Reload";
-                    case UpdatePlatform.Android: return File != null ? "Install" : "Download page";
+                    case UpdatePlatform.Web: return Loc.T(Loc.UI, "update.action_reload");
+                    case UpdatePlatform.Android: return Loc.T(Loc.UI, File != null ? "update.action_install" : "update.action_page");
                     case UpdatePlatform.Windows:
                     case UpdatePlatform.MacOS:
-                    case UpdatePlatform.Linux: return File != null ? "Update" : "Download page";
-                    default: return "Download page";
+                    case UpdatePlatform.Linux: return Loc.T(Loc.UI, File != null ? "update.action_update" : "update.action_page");
+                    default: return Loc.T(Loc.UI, "update.action_page");
                 }
             }
         }
@@ -100,10 +100,10 @@ namespace Gwent.Updates
             if (status == AndroidUpdate.Cancelled)
             {
                 State = Stage.Ready;
-                Problem = "The update was cancelled.";
+                Problem = Loc.T(Loc.UI, "update.cancelled");
             }
             else if (status > AndroidUpdate.Installed)
-                Fail("Android didn't install it: " + AndroidUpdate.Message, true);
+                Fail(Loc.T(Loc.UI, "update.android_failed", AndroidUpdate.Message), true);
         }
 
         private async UniTaskVoid Run(CancellationToken token)
@@ -138,7 +138,7 @@ namespace Gwent.Updates
             }
             catch (Exception e)
             {
-                Fail("The update failed: " + e.Message, true);
+                Fail(Loc.T(Loc.UI, "update.failed", e.Message), true);
                 GameLog.Event(LogCategory.Game, "update_failed", "error", e.ToString());
             }
         }
@@ -155,14 +155,14 @@ namespace Gwent.Updates
             {
                 AndroidUpdate.OpenInstallSettings();
                 State = Stage.Ready;
-                Problem = "Allow installs from Gwent Legacy in Android's settings, then tap Install again.";
+                Problem = Loc.T(Loc.UI, "update.android_allow");
                 return;
             }
             State = Stage.Confirming;
             confirmingSince = Time.realtimeSinceStartup;
             string problem = AndroidUpdate.Install(apk);
             if (problem != null)
-                Fail("Android couldn't start installing it: " + problem, true);
+                Fail(Loc.T(Loc.UI, "update.android_start", problem), true);
         }
 
         //----------------------------------------Computers----------------------------------------//
@@ -188,7 +188,7 @@ namespace Gwent.Updates
             }
             catch (Exception e) when (e is IOException || e is UnauthorizedAccessException)
             {
-                Fail("The game's folder can't be written to (" + layout.Target + "): download the new version by hand.", true);
+                Fail(Loc.T(Loc.UI, "update.read_only", layout.Target), true);
                 return;
             }
             if (!await Fetch(file, archive, token))
@@ -201,7 +201,7 @@ namespace Gwent.Updates
             List<KeyValuePair<string, string>> entries = DesktopUpdate.Entries(layout, content);
             if (entries.Count == 0 || !entries.Exists(e => e.Value == layout.Launch))
             {
-                Fail("The downloaded version doesn't hold the game (" + layout.Launch + ").", true);
+                Fail(Loc.T(Loc.UI, "update.no_game", layout.Launch), true);
                 return;
             }
 
@@ -275,7 +275,7 @@ namespace Gwent.Updates
                     Received = (long)request.downloadedBytes;
                     if (request.result != UnityWebRequest.Result.Success)
                     {
-                        Fail("The download failed: " + request.error + ".", true);
+                        Fail(Loc.T(Loc.UI, "update.download_failed", request.error), true);
                         return false;
                     }
                 }
@@ -289,7 +289,7 @@ namespace Gwent.Updates
             {
                 System.IO.File.Delete(path);
                 GameLog.Event(LogCategory.Game, "update_mismatch", "expected", expected, "actual", actual);
-                Fail("The download doesn't match the release (its checksum differs): try again later.", true);
+                Fail(Loc.T(Loc.UI, "update.checksum"), true);
                 return false;
             }
             return true;

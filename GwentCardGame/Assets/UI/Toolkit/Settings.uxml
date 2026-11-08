@@ -1,16 +1,16 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:l="UnityEngine.Localization" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Toolkit/Gwent.uss" />
     <!-- The settings: Game, Display, Graphics and Audio tabs (their rows are made in SettingsPanel, they depend on the platform) -->
     <ui:VisualElement name="Dimmer" class="dimmer">
         <ui:VisualElement name="Panel" class="panel settings">
             <ui:VisualElement class="settings__header">
-                <ui:Label text="Settings" class="heading" />
+                <ui:Label text="Settings" class="heading"><Bindings><l:LocalizedString property="text" table="UI" entry="settings.title" /></Bindings></ui:Label>
             </ui:VisualElement>
             <ui:VisualElement name="Tabs" class="settings__tabs">
-                <ui:Button name="Button Game" text="Game" class="tab"><ui:VisualElement class="tab__underline" picking-mode="Ignore" /></ui:Button>
-                <ui:Button name="Button Display" text="Display" class="tab"><ui:VisualElement class="tab__underline" picking-mode="Ignore" /></ui:Button>
-                <ui:Button name="Button Graphics" text="Graphics" class="tab"><ui:VisualElement class="tab__underline" picking-mode="Ignore" /></ui:Button>
-                <ui:Button name="Button Audio" text="Audio" class="tab"><ui:VisualElement class="tab__underline" picking-mode="Ignore" /></ui:Button>
+                <ui:Button name="Button Game" text="Game" class="tab"><Bindings><l:LocalizedString property="text" table="UI" entry="settings.tab.game" /></Bindings><ui:VisualElement class="tab__underline" picking-mode="Ignore" /></ui:Button>
+                <ui:Button name="Button Display" text="Display" class="tab"><Bindings><l:LocalizedString property="text" table="UI" entry="settings.tab.display" /></Bindings><ui:VisualElement class="tab__underline" picking-mode="Ignore" /></ui:Button>
+                <ui:Button name="Button Graphics" text="Graphics" class="tab"><Bindings><l:LocalizedString property="text" table="UI" entry="settings.tab.graphics" /></Bindings><ui:VisualElement class="tab__underline" picking-mode="Ignore" /></ui:Button>
+                <ui:Button name="Button Audio" text="Audio" class="tab"><Bindings><l:LocalizedString property="text" table="UI" entry="settings.tab.audio" /></Bindings><ui:VisualElement class="tab__underline" picking-mode="Ignore" /></ui:Button>
             </ui:VisualElement>
             <ui:VisualElement class="divider" />
             <ui:VisualElement name="Pages" class="settings__pages">
@@ -21,7 +21,7 @@
             </ui:VisualElement>
             <ui:VisualElement class="divider" />
             <ui:VisualElement class="settings__footer">
-                <Gwent.UI.DialogButton name="Button Reset to defaults" text="Reset to defaults" class="button--ghost settings__reset" />
+                <Gwent.UI.DialogButton name="Button Reset to defaults" text="Reset to defaults" class="button--ghost settings__reset"><Bindings><l:LocalizedString property="text" table="UI" entry="settings.reset" /></Bindings></Gwent.UI.DialogButton>
             </ui:VisualElement>
             <Gwent.UI.DialogButton name="Button Close" text="×" class="button--close" />
         </ui:VisualElement>

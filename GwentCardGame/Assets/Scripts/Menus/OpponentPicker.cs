@@ -22,15 +22,16 @@ namespace Gwent.Menus
             CardDatabase db = CardLibrary.Get();
             string chosen = OpponentDecks.Chosen;
             VisualElement entries = root.Q("Entries");
-            MenuEntry focus = Entry(entries, -1, "Random opponent", "A different deck every battle", "", chosen == "");
+            MenuEntry focus = Entry(entries, -1, "Random opponent", Loc.T(Loc.UI, "opponent.random.detail"), "", chosen == "");
+            focus.Q<Label>("Title").text = Loc.T(Loc.UI, "opponent.random");
             foreach (TextAsset file in OpponentDecks.All())
             {
                 Deck deck = CardLibrary.ParseDeck(file.text, file.name);
                 if (deck == null)
                     continue;
                 // The faction and the leader on a line each: on one, a long leader's name was cut short
-                string leader = db.Contains(deck.Leader) ? db.Get(deck.Leader).DisplayName : "";
-                MenuEntry entry = Entry(entries, deck.Leader, deck.Name, deck.Faction.DisplayName() + "\n" + leader, file.name, file.name == chosen);
+                string leader = db.Contains(deck.Leader) ? db.Get(deck.Leader).LocalName() : "";
+                MenuEntry entry = Entry(entries, deck.Leader, deck.Name, deck.Faction.LocalName() + "\n" + leader, file.name, file.name == chosen);
                 if (file.name == chosen)
                     focus = entry;
             }

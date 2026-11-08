@@ -1,0 +1,571 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Rules_en
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: c4ae92e5dae156342ab8e00e812fd1cf, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 19206813229056
+    m_Localized: The battle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337920
+    m_Localized: 'Gwent is a card game for two players. Win two rounds out of three: a round goes to the side whose cards on the board add up to more.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337921
+    m_Localized: Factions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337922
+    m_Localized: Each deck belongs to one of five factions, with its own ability and cards; neutral cards fit any deck.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337923
+    m_Localized: Hand cards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337924
+    m_Localized: You draw 10 cards and may redraw up to 2 of them before the first round. Nobody draws between rounds, so every card you play is one fewer for the rounds ahead; only spies, a few leaders and the Northern Realms ability bring more.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337925
+    m_Localized: Your turn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337926
+    m_Localized: 'Do one thing: play a card, use your leader''s ability, or pass. Playing a card ends your turn.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337927
+    m_Localized: Combat rows
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337928
+    m_Localized: Units go on the close combat, ranged or siege row, as shown on the card.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337929
+    m_Localized: Special cards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337930
+    m_Localized: Weather, Commander's Horn, Decoy and Scorch, and your leader's ability, can turn a round around.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337931
+    m_Localized: Passing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337932
+    m_Localized: 'Passing is final for the round: you play nothing more in it, while your opponent may go on playing. Once both sides have passed, the higher total wins the round. A side with no card and no leader ability it could use passes on its own, and a side that starts a round with no card sits it out.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337933
+    m_Localized: Life
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337934
+    m_Localized: Each side has two gems and loses one with each round it loses; a drawn round costs both (unless Nilfgaard plays). Lose both and the battle is lost. The winner of a round starts the next one, and the board is cleared in between.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337935
+    m_Localized: Playing well
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337936
+    m_Localized: Winning a round by a mile wastes cards. Letting a round go and keeping a strong hand for the other two is often the better play.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337937
+    m_Localized: The board
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337938
+    m_Localized: Each side has three rows; yours are the lower half of the table.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337939
+    m_Localized: Rows
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337940
+    m_Localized: Close combat, ranged and siege, from the middle of the table out. A unit goes on the row shown on its card.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337941
+    m_Localized: Strength
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337942
+    m_Localized: A unit's strength is the number in its corner. Each row's total is on its left, each side's total by its portrait, the side ahead in a laurel.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337943
+    m_Localized: Agile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337944
+    m_Localized: An agile unit can go on the close combat or the ranged row.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337945
+    m_Localized: Horn slot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337946
+    m_Localized: 'The slot at the left of each row takes one card: a Commander''s Horn, or Skellige''s Mardroeme.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337947
+    m_Localized: Weather board
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337948
+    m_Localized: Weather cards and Scorch are played on the weather board, at the left of the table. Weather affects both sides.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337949
+    m_Localized: Whose turn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337950
+    m_Localized: The panel of the side whose turn it is is edged with glowing gold lines; a side that has passed is greyed out.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337951
+    m_Localized: Discard piles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337952
+    m_Localized: Cards that leave the board go to their owner's discard pile, next to the deck. Tap a pile to look through it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337953
+    m_Localized: Cards that leave the board go to their owner's discard pile, next to the deck. Click a pile to look through it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337954
+    m_Localized: Cards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337955
+    m_Localized: A deck has one leader, at least 22 unit cards and at most 10 special cards, and holds each card at most as many times as it exists.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337956
+    m_Localized: Heroes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337957
+    m_Localized: 'The gold-framed units. Nothing changes them: no weather, horn, morale boost, scorch, decoy or medic. A hero can be in a deck only once.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337958
+    m_Localized: Units
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337959
+    m_Localized: Everything else on the rows. Most exist once; a few, such as the Blue Stripes Commando, several times.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337960
+    m_Localized: Special cards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337961
+    m_Localized: 'Weather, Commander''s Horn, Decoy and Scorch: they shape the board instead of adding strength.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337962
+    m_Localized: Leader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337963
+    m_Localized: 'One ability you can use once per battle: lift the leader card, and its crown glows; the crown uses it. The crown turns grey once used. A few leaders'' abilities are always in effect instead.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337964
+    m_Localized: Abilities
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337965
+    m_Localized: Shown by the icons on a unit card.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337966
+    m_Localized: Spy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337967
+    m_Localized: Goes on your opponent's side (adding to their total) and you draw 2 cards from your deck.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337968
+    m_Localized: Medic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337969
+    m_Localized: Brings a unit back from your discard pile and plays it at once (no heroes or special cards). A medic brought back heals again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337970
+    m_Localized: Muster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337971
+    m_Localized: Plays every card of the same family from your deck and your hand at once.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337972
+    m_Localized: Tight bond
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337973
+    m_Localized: 'Copies of this card on the same row multiply each other''s strength: two double it, three triple it.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337974
+    m_Localized: Morale boost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337975
+    m_Localized: Adds 1 to every other unit on its row.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337976
+    m_Localized: Commander's horn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337977
+    m_Localized: Doubles the other units on its row, unless the row already has a Commander's Horn.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337978
+    m_Localized: Scorch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337979
+    m_Localized: 'Destroys your opponent''s strongest unit(s) on that row, if the row totals 10 or more. The Clan Dimun Pirate''s scorch is the Scorch card''s: the strongest unit(s) on the whole battlefield as he lands (never himself).'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337980
+    m_Localized: Agile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337981
+    m_Localized: Close combat or ranged, your choice.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337982
+    m_Localized: Berserker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337983
+    m_Localized: 'Skellige''s Berserkers turn into bears on a row with a Mardroeme (the special card in its horn slot, or Ermion on it), whether it came first or they did: the Berserker (4) into the Transformed Vildkaarl (14, morale boost), the Young Berserker (2) into the Transformed Young Vildkaarl (8, tight bond). The Berserker goes to your discard pile as it turns: a medic can bring it back, to turn again. The bear only exists on the board, and vanishes when it leaves it.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337984
+    m_Localized: Avenger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337985
+    m_Localized: 'The Cow and Skellige''s Kambi: killed by a scorch, they are avenged at once, the Bovine Defense Force (8) or Hemdall (11, a hero) taking the field in your close combat row. Discarded any other way (cleared at the end of a round, or from your hand by Destroyer of Worlds), the avenger joins your close combat row at the start of the next round; if the battle ends first, it never comes. A decoy taking them back to your hand calls nothing. The avengers only exist on the board: no decoy or medic brings them back, and they vanish when they leave it.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337986
+    m_Localized: Special cards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337987
+    m_Localized: Weather lowers every non-hero unit of its rows to 1, on both sides.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337988
+    m_Localized: Biting Frost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337989
+    m_Localized: Weather on both close combat rows.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337990
+    m_Localized: Impenetrable Fog
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337991
+    m_Localized: Weather on both ranged rows.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337992
+    m_Localized: Torrential Rain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337993
+    m_Localized: Weather on both siege rows.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337994
+    m_Localized: Skellige Storm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337995
+    m_Localized: Weather on both ranged and siege rows.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337996
+    m_Localized: Clear Weather
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337997
+    m_Localized: Removes all weather.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337998
+    m_Localized: Commander's Horn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880337999
+    m_Localized: Doubles the strength of the units on a row of yours, one horn per row.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338000
+    m_Localized: Decoy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338001
+    m_Localized: Takes the place of one of your units, which goes back to your hand to be played again (not a hero, nor a summoned card such as the Bovine Defense Force).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338002
+    m_Localized: Scorch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338003
+    m_Localized: Destroys the strongest unit(s) on the whole battlefield, yours included (not heroes).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338004
+    m_Localized: Mardroeme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338005
+    m_Localized: 'Skellige''s own: in a row''s horn slot, it turns that row''s Berserkers into bears.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338006
+    m_Localized: Factions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338007
+    m_Localized: Every faction has its own ability, always in effect, and its leaders to choose from (Skellige's two came with Blood and Wine). Hold a finger on a leader to read its ability.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338008
+    m_Localized: Every faction has its own ability, always in effect, and its leaders to choose from (Skellige's two came with Blood and Wine). Rest the pointer on a leader to read its ability.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338009
+    m_Localized: Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338010
+    m_Localized: Everything is done with taps; hold a finger on a card to look at it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338011
+    m_Localized: The mouse does everything, and so do the keys.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338012
+    m_Localized: Play a card
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338013
+    m_Localized: Tap it in your hand (it shows large on the right), then tap where it lights up.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338014
+    m_Localized: Leader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338015
+    m_Localized: Tap your leader, then its glowing crown; tap the empty place to put it back. Hold a finger on the crown to see whether it can still be used.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338016
+    m_Localized: Choose cards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338017
+    m_Localized: "In the redraw, and when a card is to be chosen: tap a card to bring it forward, tap it again to take it. Done keeps the rest of your hand; \xD7 gives a choice up."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338018
+    m_Localized: Pass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338019
+    m_Localized: Hold the Hold to pass button.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338020
+    m_Localized: Look
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338021
+    m_Localized: Hold a finger on any card (on the board, in your hand, a leader) to see it large; tap a discard pile to look through it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338022
+    m_Localized: Zoom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338023
+    m_Localized: 'Spread two fingers on the board to zoom in. Zoomed in, one finger moves the board, and the padlock under the menu button locks it: taps then do nothing, to look around safely. Double tap the table to zoom in there or back out; the magnifier zooms out too.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338024
+    m_Localized: A side at a glance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338025
+    m_Localized: 'Tap a side''s band (its portrait, name, gems or score): its faction''s ability, its leader''s and whether it''s used, its cards in hand, deck and discard pile.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206880338026
+    m_Localized: Chat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532224
+    m_Localized: 'In a LAN battle: tap your portrait for the quick lines, its badge for the chat.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532225
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532226
+    m_Localized: 'The Android back button steps back one thing at a time: a window closes, a chosen card goes back, a choice is given up (asked first), the board zooms out; then the pause menu. On the main menu it asks to quit.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532227
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532228
+    m_Localized: 'The menu button: resume, the rules, settings, leave the battle. The ? beside it opens these rules.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532229
+    m_Localized: Give up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532230
+    m_Localized: In your turn, hold a finger on your deck, then confirm. It counts as a loss.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532231
+    m_Localized: Play a card
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532232
+    m_Localized: 'Click it in your hand, then where it lights up (a red sign shows where it can''t go). Keys: Left and Right pick a card, Enter takes it, Up and Down choose its place, Enter plays it, Esc puts it back.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532233
+    m_Localized: Leader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532234
+    m_Localized: 'Click your leader, then its glowing crown; click the empty place (or Esc) to put it back. Keys: X, then X or Enter.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532235
+    m_Localized: Choose cards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532236
+    m_Localized: "In the redraw, and when a card is to be chosen: click a card to bring it forward, click it again (or Enter) to take it. Space or Done keeps the rest of your hand; \xD7 gives a choice up."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532237
+    m_Localized: Pass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532238
+    m_Localized: Hold Space, or the Hold to pass button.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532239
+    m_Localized: Look
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532240
+    m_Localized: Hover a card to see it large; click a discard pile to look through it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532241
+    m_Localized: A side at a glance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532242
+    m_Localized: 'Click a side''s band (its portrait, name, gems or score): its faction''s ability, its leader''s and whether it''s used, its cards in hand, deck and discard pile.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532243
+    m_Localized: Chat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532244
+    m_Localized: 'In a LAN battle: E (or a click on your portrait) shows the quick lines, and 1 to 8 says one. T (or the portrait''s badge) opens the chat: what was said, a message to type, mute.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532245
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532246
+    m_Localized: 'Esc steps back one thing at a time, everywhere: a window closes, a chosen card goes back, a choice is given up (asked first); then the pause menu. On the main menu it asks to quit (outside the browser).'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532247
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532248
+    m_Localized: 'Esc or the menu button: resume, the rules, settings, leave the battle. The ? beside it opens these rules.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532249
+    m_Localized: Give up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532250
+    m_Localized: Click your deck when the cursor over it turns into a hand, then confirm. It counts as a loss.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532251
+    m_Localized: Pinch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19206884532252
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

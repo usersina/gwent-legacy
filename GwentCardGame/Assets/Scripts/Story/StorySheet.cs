@@ -38,18 +38,19 @@ namespace Gwent.Story
             {
                 case StoryPlaceKind.Shop:
                     int left = place.Sells.Where((sale, i) => !story.Bought(place, i)).Count();
-                    return left > 0 ? left + " cards for sale" : "Sold out";
+                    return left > 0 ? Loc.T(Loc.UI, "story.cards_for_sale", left) : Loc.T(Loc.UI, "story.sold_out");
                 case StoryPlaceKind.Found:
                 case StoryPlaceKind.Event:
-                    return story.IsDone(place) ? "Taken" : "Something for you here";
+                    return Loc.T(Loc.UI, story.IsDone(place) ? "story.taken" : "story.something_here");
                 case StoryPlaceKind.Tournament:
-                    return story.IsDone(place) ? "Won" : story.Entered(place) ? "Next: " + story.NextRound(place).Name : place.Rounds.Count + " rounds";
+                    return story.IsDone(place) ? Loc.T(Loc.UI, "story.won") : story.Entered(place) ? Loc.T(Loc.UI, "story.next_round_is", story.NextRound(place).Name)
+                        : Loc.T(Loc.UI, "story.n_rounds", place.Rounds.Count);
                 default:
-                    string sells = place.Sells.Where((sale, i) => !story.Bought(place, i)).Any() ? " · sells cards" : "";
+                    string sells = place.Sells.Where((sale, i) => !story.Bought(place, i)).Any() ? " · " + Loc.T(Loc.UI, "story.sells_cards") : "";
                     if (story.Wins(place.Id) > 0)
-                        return "Beaten" + sells;
+                        return Loc.T(Loc.UI, "story.beaten") + sells;
                     List<int> prize = story.PrizeOf(place);
-                    return (prize.Count == 0 ? "Crowns" : place.Random ? "A random card" : db.Get(prize[0]).DisplayName) + sells;
+                    return (prize.Count == 0 ? Loc.T(Loc.UI, "story.crowns") : place.Random ? Loc.T(Loc.UI, "story.random_card") : db.Get(prize[0]).LocalName()) + sells;
             }
         }
 
@@ -67,7 +68,7 @@ namespace Gwent.Story
             {
                 CardArt.ShowPortrait(art, theirs.Leader);
                 icon.style.display = DisplayStyle.None;
-                ElementTooltip.Attach(root.Q("Portrait"), () => "Leader: " + db.Get(theirs.Leader).DisplayName);
+                ElementTooltip.Attach(root.Q("Portrait"), () => Loc.T(Loc.UI, "story.leader_tip", db.Get(theirs.Leader).LocalName()));
             }
             else
             {
@@ -92,7 +93,7 @@ namespace Gwent.Story
                     break;
                 case StoryPlaceKind.Found:
                 case StoryPlaceKind.Event:
-                    text = story.IsDone(place) ? "Taken" : place.Type == StoryPlaceKind.Found ? "Search" : place.Gives.Count > 0 ? "Take the deck" : "Accept";
+                    text = Loc.T(Loc.UI, story.IsDone(place) ? "story.taken" : place.Type == StoryPlaceKind.Found ? "story.act_search" : place.Gives.Count > 0 ? "story.act_take_deck" : "story.act_accept");
                     why = story.IsDone(place) ? "" : null;
                     act = () =>
                     {
@@ -103,13 +104,13 @@ namespace Gwent.Story
                     };
                     break;
                 case StoryPlaceKind.Tournament:
-                    text = story.Entered(place) ? "Next round" : "Enter";
+                    text = Loc.T(Loc.UI, story.Entered(place) ? "story.act_next_round" : "story.act_enter");
                     pays = story.Entered(place) ? story.CrownsFor(place, round) : -place.Fee;
                     why = story.CannotEnter(place) ?? story.CannotPlayWith(place, mine);
                     act = () => StoryBattle.Start(place);
                     break;
                 default:
-                    text = story.Wins(place.Id) > 0 ? "Play again" : "Play";
+                    text = Loc.T(Loc.UI, story.Wins(place.Id) > 0 ? "story.act_play_again" : "story.act_play");
                     pays = story.CrownsFor(place);
                     why = story.CannotPlayWith(place, mine);
                     act = () => StoryBattle.Start(place);
@@ -127,7 +128,7 @@ namespace Gwent.Story
                         act();
                 };
             }
-            note.text = !string.IsNullOrEmpty(why) ? why : deck_problem != null ? "Your battle deck can't play (" + deck_problem + "): the starter deck will" : "";
+            note.text = !string.IsNullOrEmpty(why) ? why : deck_problem != null ? Loc.T(Loc.UI, "story.deck_cant_play", deck_problem) : "";
             note.style.display = note.text.Length > 0 ? DisplayStyle.Flex : DisplayStyle.None;
 
             ShowList(root, story, place, on_change, db);
@@ -153,7 +154,7 @@ namespace Gwent.Story
             Label number = new Label(Mathf.Abs(crowns).ToString()) { pickingMode = PickingMode.Ignore };
             number.AddToClassList("story-sheet__play-text");
             button.Add(number);
-            ElementTooltip.Attach(button, () => crowns > 0 ? "A win pays " + crowns + " crowns" : "The entry fee: " + (-crowns) + " crowns");
+            ElementTooltip.Attach(button, () => crowns > 0 ? Loc.T(Loc.UI, "story.win_pays", crowns) : Loc.T(Loc.UI, "story.entry_fee", -crowns));
         }
 
         private static VisualElement Coin(string style)
@@ -170,17 +171,17 @@ namespace Gwent.Story
         {
             if (theirs != null)
             {
-                Chip(chips, theirs.Faction.DisplayName(), null, null);
+                Chip(chips, theirs.Faction.LocalName(), null, null);
                 int level = place.Difficulty == AiDifficulty.Easy ? 1 : place.Difficulty == AiDifficulty.Normal ? 2 : 3;
                 string pips = new string('●', level) + new string('○', 3 - level);
-                string how = level == 1 ? "Plays like a beginner" : level == 2 ? "A good player" : "A master of the game";
+                string how = Loc.T(Loc.UI, "story.skill_" + level);
                 Chip(chips, pips, null, how).AddToClassList("story-chip--pips");
             }
             StoryQuest quest = story.Content.QuestsOf(place).FirstOrDefault(q => !story.QuestDone(q));
             if (quest != null && !story.IsDone(place))
-                Chip(chips, quest.Name, UITheme.Current.iconQuest, "A step of " + quest.Name).AddToClassList("story-chip--quest");
+                Chip(chips, quest.Name, UITheme.Current.iconQuest, Loc.T(Loc.UI, "story.step_of", quest.Name)).AddToClassList("story-chip--quest");
             if (place.OnlyDecks != Faction.Neutral)
-                Chip(chips, place.OnlyDecks.DisplayName() + " decks only", null, null);
+                Chip(chips, Loc.T(Loc.UI, "story.decks_only", place.OnlyDecks.LocalName()), null, null);
         }
 
         private static VisualElement Chip(VisualElement chips, string text, Sprite icon, string tooltip)
@@ -231,17 +232,17 @@ namespace Gwent.Story
             }
             if (place.Random && !done && prize.Count > 0)
             {
-                title.text = "A RANDOM CARD";
+                title.text = Loc.T(Loc.UI, "story.prize_random");
                 card.style.backgroundImage = new StyleBackground(SpriteCache.Load("Cards/Back/" + place.DeckFaction.Code()));
-                ElementTooltip.Attach(card, () => "The Witcher 3's players of no particular renown give a random card the first time they lose");
+                ElementTooltip.Attach(card, () => Loc.T(Loc.UI, "story.prize_random_tip"));
             }
             else if (prize.Count > 0)
             {
-                title.text = done ? "WON" : place.Gives.Count > 0 ? "THE SKELLIGE DECK" : "THE PRIZE";
+                title.text = Loc.T(Loc.UI, done ? "story.prize_won" : place.Gives.Count > 0 ? "story.prize_skellige" : "story.prize");
                 CardArt.Show(card, prize[0]);
                 card.EnableInClassList("story-sheet__card--won", done);
                 if (place.Gives.Count > 0)
-                    ElementTooltip.Attach(card, () => place.Gives.Count + " cards, and their leader");
+                    ElementTooltip.Attach(card, () => Loc.T(Loc.UI, "story.gives_deck", place.Gives.Count));
             }
             else
                 box.style.display = DisplayStyle.None; // nothing left but crowns: the button says them
@@ -256,7 +257,7 @@ namespace Gwent.Story
             list.Clear();
             if (place.Type == StoryPlaceKind.Tournament)
             {
-                title.text = "THE ROUNDS";
+                title.text = Loc.T(Loc.UI, "story.rounds");
                 list.AddToClassList("story-sheet__list--rounds");
                 StoryRound next = story.NextRound(place);
                 for (int i = 0; i < place.Rounds.Count; i++)
@@ -270,11 +271,11 @@ namespace Gwent.Story
                     Label name = new Label((won ? "✓  " : (i + 1) + "  ") + round.Name);
                     name.AddToClassList("story-round__name");
                     row.Add(name);
-                    Label faction = new Label(round.DeckFaction.DisplayName());
+                    Label faction = new Label(round.DeckFaction.LocalName());
                     faction.AddToClassList("story-round__faction");
                     row.Add(faction);
                     if (round.Prize.Count > 0)
-                        ElementTooltip.Attach(row, () => "Wins you " + string.Join(", ", round.Prize.Select(id => db.Get(id).DisplayName)));
+                        ElementTooltip.Attach(row, () => Loc.T(Loc.UI, "story.round_wins", string.Join(", ", round.Prize.Select(id => db.Get(id).LocalName()))));
                     list.Add(row);
                 }
                 return;
@@ -284,7 +285,7 @@ namespace Gwent.Story
                 box.style.display = DisplayStyle.None;
                 return;
             }
-            title.text = "FOR SALE";
+            title.text = Loc.T(Loc.UI, "story.for_sale");
             // Rows made here, not a wrapping container: a scroll view measures wrapped cards one per row, a tall empty list
             int per_row = root.Q("PrizeBox").style.display == DisplayStyle.None ? SalesPerWideRow : SalesPerRow;
             VisualElement cards = null;
@@ -327,7 +328,7 @@ namespace Gwent.Story
             tag.AddToClassList("story-sale__tag");
             if (sold)
             {
-                Label label = new Label("Sold") { pickingMode = PickingMode.Ignore };
+                Label label = new Label(Loc.T(Loc.UI, "story.sold")) { pickingMode = PickingMode.Ignore };
                 label.AddToClassList("story-sale__price");
                 tag.Add(label);
                 tag.SetEnabled(false);
@@ -351,7 +352,7 @@ namespace Gwent.Story
                     UIOverlay.Toast(why);
                     return;
                 }
-                UIOverlay.Confirm("Buy " + card.DisplayName + " for " + item.Price + " crowns?", "Buy", "Not now", () =>
+                UIOverlay.Confirm(Loc.T(Loc.UI, "story.buy_confirm", card.LocalName(), item.Price), Loc.T(Loc.UI, "story.buy"), Loc.T(Loc.UI, "story.not_now"), () =>
                 {
                     StoryReward reward = story.Buy(place, sale);
                     GameAudio.PlaySfx("deck_add");
@@ -364,7 +365,7 @@ namespace Gwent.Story
                 art.clicked += buy;
                 tag.clicked += buy;
             }
-            ElementTooltip.Attach(art, () => card.DisplayName + (owned > 0 ? " · you own " + owned : ""));
+            ElementTooltip.Attach(art, () => owned > 0 ? Loc.T(Loc.UI, "story.card_owned", card.LocalName(), owned) : card.LocalName());
             return cell;
         }
 
@@ -372,10 +373,10 @@ namespace Gwent.Story
         private static string Got(StoryReward reward, CardDatabase db)
         {
             if (reward.Cards.Count == 0)
-                return "Nothing new";
+                return Loc.T(Loc.UI, "story.got_none");
             if (reward.Cards.Count > 3)
-                return reward.Cards.Count + " cards are yours";
-            return string.Join(", ", reward.Cards.Select(id => db.Get(id).DisplayName)) + (reward.Cards.Count == 1 ? " is yours" : " are yours");
+                return Loc.T(Loc.UI, "story.got_many", reward.Cards.Count);
+            return Loc.T(Loc.UI, reward.Cards.Count == 1 ? "story.got_one" : "story.got_few", string.Join(", ", reward.Cards.Select(id => db.Get(id).LocalName())));
         }
     }
 }

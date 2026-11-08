@@ -163,6 +163,8 @@ Main menu or pause menu > **Settings**:
 - **Audio** and **Display**. **Display > Menu size** sizes the menus and dialogs. On a phone they start a size larger (by the
   screen's measured size, a tablet's not), as large as the largest menu size, with a larger × and larger battle corner
   buttons; a smaller menu size still shrinks them.
+- **Game > Language** (English, Español) changes the language of the menus, the battle and the cards at once, and is kept
+  (see [Localization](localization.md)).
 - **Game > Game speed** (Slow, Normal, Fast) sets how fast cards move, notices pass and the opponent plays.
 - **Game > Difficulty** (Easy, Normal, Hard) sets how well the opponent plays (see [The AI](ai.md)).
 - **Game > Check for updates** (on by default) looks for a newer version as the game starts. When there is one, the main

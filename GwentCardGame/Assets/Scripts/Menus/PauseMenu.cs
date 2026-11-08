@@ -50,8 +50,8 @@ namespace Gwent.Menus
 
         private static void Bind(VisualElement root)
         {
-            if (InLanBattle)
-                root.Q<Label>(className: "title").text = "Menu";
+            root.Q<Label>(className: "title").text = Loc.T(Loc.UI, InLanBattle ? "pause.menu" : "pause.paused");
+            root.Q<MenuEntry>("Item Main menu").text = Loc.T(Loc.UI, "pause.main_menu");
             MenuEntry resume = root.Q<MenuEntry>("Item Resume");
             resume.clicked += Close;
             MenuEntry settings = root.Q<MenuEntry>("Item Settings");
@@ -61,24 +61,24 @@ namespace Gwent.Menus
             BattleController battle = BattleController.Instance;
             bool watching = battle != null && battle.Replaying;
             bool battle_on = battle != null && !battle.IsBattleOver && !watching;
-            Entry(root, "Item Leave battle", battle_on, () => UIOverlay.Confirm("Leave the battle? It counts as a loss.", "Leave", "Stay", GiveUpAndLeave));
+            Entry(root, "Item Leave battle", battle_on, () => UIOverlay.Confirm(Loc.T(Loc.UI, "pause.leave_ask"), Loc.T(Loc.UI, "pause.leave_yes"), Loc.T(Loc.UI, "pause.stay"), GiveUpAndLeave));
             if (watching)
             {
                 MenuEntry stop = root.Q<MenuEntry>("Item Main menu");
-                stop.text = "Stop watching";
+                stop.text = Loc.T(Loc.UI, "pause.stop_watching");
                 stop.clicked += Gwent.Replays.ReplayPlayer.Leave;
             }
             else if (Gwent.Story.StoryBattle.Current != null)
             {
                 // A story's battle: back to its map
                 MenuEntry map = root.Q<MenuEntry>("Item Main menu");
-                map.text = "Back to the map";
-                Entry(root, "Item Main menu", !battle_on, () => UIOverlay.Confirm("Leave and go back to the map?", "Leave", "Stay", LeaveBattle));
+                map.text = Loc.T(Loc.UI, "pause.back_map");
+                Entry(root, "Item Main menu", !battle_on, () => UIOverlay.Confirm(Loc.T(Loc.UI, "pause.map_ask"), Loc.T(Loc.UI, "pause.leave_yes"), Loc.T(Loc.UI, "pause.stay"), LeaveBattle));
             }
             else
-                Entry(root, "Item Main menu", !battle_on, () => UIOverlay.Confirm("Leave and go back to the main menu?", "Leave", "Stay", LeaveBattle));
+                Entry(root, "Item Main menu", !battle_on, () => UIOverlay.Confirm(Loc.T(Loc.UI, "pause.main_ask"), Loc.T(Loc.UI, "pause.leave_yes"), Loc.T(Loc.UI, "pause.stay"), LeaveBattle));
             // As the main menu's Quit: everywhere but in a browser, whose tab is closed, not quit
-            Entry(root, "Item Quit game", !GameSettings.IsWeb, () => UIOverlay.Confirm("Quit the game?", "Quit", "Cancel", Application.Quit));
+            Entry(root, "Item Quit game", !GameSettings.IsWeb, () => UIOverlay.Confirm(Loc.T(Loc.UI, "menu.quit_ask"), Loc.T(Loc.UI, "common.quit"), Loc.T(Loc.UI, "common.cancel"), Application.Quit));
             root.schedule.Execute(() => UIScreens.Focus(resume));
         }
 

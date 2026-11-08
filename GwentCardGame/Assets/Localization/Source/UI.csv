@@ -1,0 +1,577 @@
+key,en,es
+menu.play,Play,Jugar
+menu.deck,Deck builder,Armar mazo
+menu.replays,Replays,Repeticiones
+menu.rules,How to play,Cómo jugar
+menu.settings,Settings,Ajustes
+menu.quit,Quit game,Salir del juego
+menu.note,"Fan project, not affiliated with CD PROJEKT RED","Proyecto de fans, sin afiliación con CD PROJEKT RED"
+settings.language,Language,Idioma
+settings.language.caption,Takes effect at once,Se aplica al instante
+lan.title,Local network,Red local
+lan.change_deck,Change deck,Cambiar mazo
+lan.abandon,Abandon,Abandonar
+lan.battles,Battles on your network,Batallas en tu red
+lan.join,Join,Unirse
+lan.join_address,Join by address,Unirse por dirección
+lan.vpn_note,"Friends on your VPN (Tailscale, ZeroTier, Hamachi...) can join from anywhere with its address.","Tus amigos en tu VPN (Tailscale, ZeroTier, Hamachi...) pueden unirse desde cualquier lugar con su dirección."
+pause.resume,Resume,Reanudar
+pause.leave,Leave battle,Abandonar batalla
+opponent.title,Choose your opponent,Elige a tu oponente
+settings.title,Settings,Ajustes
+settings.tab.game,Game,Juego
+settings.tab.display,Display,Pantalla
+settings.tab.graphics,Graphics,Gráficos
+settings.tab.audio,Audio,Audio
+settings.reset,Reset to defaults,Restablecer valores
+update.title,A new version,Una versión nueva
+settings.speed,Game speed,Velocidad del juego
+settings.speed.caption,"Cards, notices and the opponent","Cartas, avisos y el oponente"
+settings.speed.slow,Slow,Lenta
+settings.speed.normal,Normal,Normal
+settings.speed.fast,Fast,Rápida
+settings.difficulty,Difficulty,Dificultad
+settings.difficulty.easy,Easy,Fácil
+settings.difficulty.normal,Normal,Normal
+settings.difficulty.hard,Hard,Difícil
+settings.difficulty.easy.caption,Your opponent plays like a beginner,Tu oponente juega como un principiante
+settings.difficulty.normal.caption,Your opponent saves cards for later rounds,Tu oponente guarda cartas para las rondas siguientes
+settings.difficulty.hard.caption,Your opponent thinks the battle through,Tu oponente planea toda la batalla
+settings.censored,Censored artwork,Arte censurado
+settings.censored.caption,Covered versions of some cards' art,Versiones cubiertas del arte de algunas cartas
+settings.updates,Check for updates,Buscar actualizaciones
+settings.updates.caption,"On launch, from the game's page on GitHub","Al iniciar, desde la página del juego en GitHub"
+settings.volume.master,Master volume,Volumen general
+settings.volume.music,Music,Música
+settings.volume.sfx,Sound effects,Efectos de sonido
+settings.mute,Mute when in the background,Silenciar en segundo plano
+settings.mute.caption,When another window is in front,Cuando hay otra ventana al frente
+settings.fullscreen,Fullscreen,Pantalla completa
+settings.fullscreen.caption,Esc leaves it,Esc para salir
+settings.window,Window,Ventana
+settings.windowed,Windowed,En ventana
+settings.resolution,Resolution,Resolución
+settings.framerate,Frame rate,Velocidad de fotogramas
+settings.framerate.unlimited,Unlimited,Sin límite
+settings.framerate.battery,Lower values save battery,Los valores bajos ahorran batería
+settings.framerate.vsync,VSync follows your screen,VSync sigue a tu pantalla
+settings.menusize,Menu size,Tamaño del menú
+settings.menusize.caption,Menus and dialogs only,Solo menús y diálogos
+settings.preset,Preset,Preajuste
+settings.preset.caption,Sets everything below,Define todo lo de abajo
+settings.preset.low,Low,Bajo
+settings.preset.medium,Medium,Medio
+settings.preset.high,High,Alto
+settings.preset.custom,Custom,Personalizado
+settings.particles,Particle density,Densidad de partículas
+settings.particles.caption,"Fewer sparks, flames and raindrops","Menos chispas, llamas y gotas de lluvia"
+settings.group.weather,Weather,Clima
+settings.group.battle,Battle effects,Efectos de batalla
+settings.group.motion,Motion,Movimiento
+settings.group.menus,Menus,Menús
+settings.fx.weather,Animated weather,Clima animado
+settings.fx.weather.caption,Off: still pictures,Apagado: imágenes fijas
+settings.fx.storm,Lightning and thunder,Rayos y truenos
+settings.fx.storm.caption,In Skellige Storm,En Tormenta de Skellige
+settings.fx.sun,Clear Weather's sun,Sol de Clima despejado
+settings.fx.sun.caption,The light sweeping the weather away,La luz que disipa el clima
+settings.fx.hero,Hero landing,Aterrizaje de héroes
+settings.fx.hero.caption,Off: the card's edge flashes gold,Apagado: el borde de la carta destella en dorado
+settings.fx.scorch,Scorch fire,Fuego de Abrasar
+settings.fx.scorch.caption,"Off: the cards char, without fire","Apagado: las cartas se carbonizan, sin fuego"
+settings.fx.flares,Ability flares,Destellos de habilidad
+settings.fx.flares.caption,Off: the ability's icon only,Apagado: solo el ícono de la habilidad
+settings.fx.medic,Medic flames,Llamas de Médico
+settings.fx.medic.caption,Over the discard pile,Sobre la pila de descarte
+settings.fx.horn,Horn glow,Brillo del cuerno
+settings.fx.horn.caption,Along a horned row,A lo largo de una fila con cuerno
+settings.fx.wisps,Landing wisps,Volutas al aterrizar
+settings.fx.wisps.caption,As a card lands,Cuando cae una carta
+settings.fx.shine,Shine and pulsing,Brillo y pulso
+settings.fx.shine.caption,"The light across a card, pulsing frames",La luz sobre la carta y los marcos que pulsan
+settings.fx.menu,Menu animations,Animaciones de menú
+settings.fx.menu.caption,"The title, the rules coming in",El título y la entrada de las reglas
+common.quit,Quit,Salir
+common.cancel,Cancel,Cancelar
+menu.version,Version {0},Versión {0}
+menu.build,Build {0},Compilación {0}
+menu.commit_tooltip,This build's source on GitHub,El código fuente de esta compilación en GitHub
+menu.update,New version available · build {0},Nueva versión disponible · compilación {0}
+menu.lan_rejoin,"A LAN battle is still on: Multiplayer, then Local network, to rejoin it","Hay una batalla LAN en curso: Multijugador, luego Red local, para volver a entrar"
+menu.quit_ask,Quit the game?,¿Salir del juego?
+pause.menu,Menu,Menú
+pause.paused,Paused,En pausa
+pause.main_menu,Main menu,Menú principal
+pause.leave_ask,Leave the battle? It counts as a loss.,¿Abandonar la batalla? Cuenta como una derrota.
+pause.leave_yes,Leave,Salir
+pause.stay,Stay,Quedarme
+pause.stop_watching,Stop watching,Dejar de mirar
+pause.back_map,Back to the map,Volver al mapa
+pause.map_ask,Leave and go back to the map?,¿Salir y volver al mapa?
+pause.main_ask,Leave and go back to the main menu?,¿Salir y volver al menú principal?
+mp.title,Multiplayer,Multijugador
+mp.lan.web,Needs the downloaded game,Requiere el juego descargado
+mp.lan.detail,"Same Wi-Fi, cable or phone hotspot","Mismo Wi-Fi, cable o punto de acceso del teléfono"
+mp.lan.not_web,Not in a browser,No disponible en el navegador
+mp.lan.rejoin,Rejoin,Volver a entrar
+mp.online,Online,En línea
+mp.online.detail,"Anyone, anywhere, through a server","Con cualquiera, en cualquier lugar, mediante un servidor"
+mp.online.soon,Coming soon,Próximamente
+play.story,Story,Historia
+play.match,Single match,Partida individual
+play.match.detail,Against the AI: choose your opponent,Contra la IA: elige a tu oponente
+play.multiplayer.detail,"On your network, or online",En tu red o en línea
+play.story.unreadable,Its save can't be read,No se puede leer su partida guardada
+play.story.begin,"The Witcher 3's Gwent, from its starter deck","El Gwent de The Witcher 3, desde su mazo inicial"
+play.story.progress,{0} · {1} of {2} cards,{0} · {1} de {2} cartas
+opponent.random,Random opponent,Oponente aleatorio
+opponent.random.detail,A different deck every battle,Un mazo distinto en cada batalla
+replays.caption,"The battles you saved: Save replay, on a battle's end screen, keeps one here.","Las batallas que guardaste: Guardar repetición, en la pantalla final de una batalla, deja una aquí."
+replays.empty,"No replays yet: Save replay, on a battle's end screen, keeps the battle here to watch again.","Todavía no hay repeticiones: Guardar repetición, en la pantalla final de una batalla, deja la batalla aquí para verla de nuevo."
+replays.delete,Delete,Eliminar
+replays.delete_ask,Delete this replay?,¿Eliminar esta repetición?
+replays.keep,Keep it,Conservarla
+replays.you_vs,You vs {0},Tú vs {0}
+replays.vs,{0} vs {1},{0} vs {1}
+replays.gave_up,Gave up,Abandonaste
+replays.they_gave_up,Opponent gave up,El oponente abandonó
+replays.left,{0} left,{0} se fue
+replays.won,Won,Ganaste
+replays.lost,Lost,Perdiste
+replays.draw,Draw,Empate
+update.yours,(yours: {0}),(la tuya: {0})
+update.later,Later,Más tarde
+update.downloading_of,Downloading… {0} of {1},Descargando… {0} de {1}
+update.downloading,Downloading… {0},Descargando… {0}
+update.checking,Checking the download…,Verificando la descarga…
+update.unpacking,Unpacking…,Descomprimiendo…
+update.android_confirming,"Android asks you to confirm the update; once it's installed, open the game again.","Android te pide confirmar la actualización; cuando termine de instalarse, abre el juego otra vez."
+update.reloading,Reloading…,Recargando…
+update.restarting,Restarting with the new version…,Reiniciando con la nueva versión…
+update.page,Download it from the release's page.,Descárgala desde la página de la versión.
+update.web_ready,The page reloads with the new version.,La página se recarga con la nueva versión.
+update.android_ready,Android asks you to confirm it; then open the game again. Your settings and decks stay.,Android te pide confirmarla; después abre el juego otra vez. Tus ajustes y mazos se conservan.
+update.desktop_ready,The game restarts once updated. Your settings and decks stay.,El juego se reinicia al terminar la actualización. Tus ajustes y mazos se conservan.
+update.action_page,Download page,Página de descarga
+update.action_reload,Reload,Recargar
+update.action_install,Install,Instalar
+update.action_update,Update,Actualizar
+update.cancelled,The update was cancelled.,Se canceló la actualización.
+update.android_failed,Android didn't install it: {0},Android no la instaló: {0}
+update.failed,The update failed: {0},La actualización falló: {0}
+update.android_allow,"Allow installs from Gwent Legacy in Android's settings, then tap Install again.",Permite instalar desde Gwent Legacy en los ajustes de Android y toca Instalar otra vez.
+update.android_start,Android couldn't start installing it: {0},Android no pudo empezar a instalarla: {0}
+update.read_only,The game's folder can't be written to ({0}): download the new version by hand.,No se puede escribir en la carpeta del juego ({0}): descarga la nueva versión a mano.
+update.no_game,The downloaded version doesn't hold the game ({0}).,La versión descargada no contiene el juego ({0}).
+update.download_failed,The download failed: {0}.,La descarga falló: {0}.
+update.checksum,The download doesn't match the release (its checksum differs): try again later.,La descarga no coincide con la versión publicada (su suma de verificación difiere): inténtalo más tarde.
+lan.keep,Keep it,Conservarla
+lan.abandon_ask,Abandon your battle with {0}? It can't be taken up again.,¿Abandonar tu batalla con {0}? No se puede retomar.
+lan.copy,Copy,Copiar
+lan.copied,Copied,Copiado
+lan.details,Details,Detalles
+lan.hide_details,Hide details,Ocultar detalles
+lan.address_placeholder,"Address, like 192.168.1.20","Dirección, por ejemplo 192.168.1.20"
+lan.name_rule,"Up to {0} letters, numbers, spaces and - _ . '","Hasta {0} letras, números, espacios y - _ . '"
+lan.default_deck,The default deck,El mazo predeterminado
+lan.deck_cards,{0}  ·  {1} cards,{0}  ·  {1} cartas
+lan.deck_unplayable,Yours can't be played: {0},Tu mazo no se puede usar: {0}
+lan.rejoin_title,Your battle with {0} is still on,Tu batalla con {0} sigue en curso
+lan.left_now,Left just now,Saliste hace un momento
+lan.left_minute,Left 1 minute ago,Saliste hace 1 minuto
+lan.left_minutes,Left {0} minutes ago,Saliste hace {0} minutos
+lan.left_hour,Left 1 hour ago,Saliste hace 1 hora
+lan.left_hours,Left {0} hours ago,Saliste hace {0} horas
+lan.searching,Searching,Buscando
+lan.no_network,No network,Sin red
+lan.empty_offline,You're not on a network. Join a Wi-Fi or a phone's hotspot to play on LAN.,No estás en una red. Conéctate a un Wi-Fi o al punto de acceso de un teléfono para jugar en red local.
+lan.empty,No battles yet. Players on your Wi-Fi or hotspot show up here.,Todavía no hay batallas. Los jugadores de tu Wi-Fi o punto de acceso aparecen aquí.
+lan.other_build,Another build of the game ({0}): can't be joined,Otra compilación del juego ({0}): no se puede entrar
+lan.other_build_refused,That battle runs another build of the game ({0}; yours: {1}). Both players need the same build.,Esa batalla usa otra compilación del juego ({0}; la tuya: {1}). Ambos jugadores necesitan la misma compilación.
+lan.type_address,Type the address shown on the host's screen.,Escribe la dirección que aparece en la pantalla del anfitrión.
+lan.room_yours,Your battle,Tu batalla
+lan.room_theirs,{0}'s battle,Batalla de {0}
+lan.room_joining,Joining a battle,Uniéndote a una batalla
+lan.room_ready_host,{0} is here. Start the battle when you're ready.,{0} ya está aquí. Inicia la batalla cuando quieras.
+lan.room_ready_guest,Waiting for {0} to start the battle.,Esperando a que {0} inicie la batalla.
+lan.room_left,{0} left.,{0} se fue.
+lan.tag_host,Host,Anfitrión
+lan.tag_ready,Ready,Listo
+lan.tag_joining,Joining,Uniéndose
+lan.seat_waiting,Waiting for a player,Esperando a un jugador
+lan.seat_joining,Joining…,Uniéndose…
+lan.reach_none,You're not on a network: join a Wi-Fi or a phone's hotspot.,No estás en una red: conéctate a un Wi-Fi o al punto de acceso de un teléfono.
+lan.reach_address,Your address: {0},Tu dirección: {0}
+lan.reach_unlisted,Your address: {0} (not listed: others join by address),Tu dirección: {0} (no aparece en las listas: los demás se unen por dirección)
+lan.or,or,o
+lan.kind_hotspot,Hotspot,Punto de acceso
+lan.kind_network,Network,Red
+lan.ports,"Ports: {0} for the battle, {1} and {2} for the search (all UDP)","Puertos: {0} para la batalla, {1} y {2} para la búsqueda (todos UDP)"
+lan.host,Host a battle,Organizar una batalla
+lan.start,Start the battle,Iniciar la batalla
+lan.stop_hosting,Stop hosting,Dejar de organizar
+lan.leave,Leave,Salir
+battle.player,Player,Jugador
+battle.opponent,Opponent,Oponente
+battle.deck_unusable,Your selected deck can't be used ({0}). Playing with the default deck.,No se puede usar el mazo que elegiste ({0}). Se juega con el mazo predeterminado.
+battle.leader_cancels_you,Your opponent's leader cancels your leader ability,El líder de tu oponente anula la habilidad de tu líder
+battle.leader_cancels_opp,Your leader cancels your opponent's leader ability,Tu líder anula la habilidad del líder de tu oponente
+battle.r_leader_cancels,{0}'s leader cancels {1}'s leader ability,El líder de {0} anula la habilidad del líder de {1}
+battle.scoia_you_first,Opponent used the Scoia'tael faction ability to let you go first.,El oponente usó la habilidad de la facción Scoia'tael para dejarte empezar.
+battle.r_scoia_other_first,{0} used the Scoia'tael faction ability to let {1} go first.,{0} usó la habilidad de la facción Scoia'tael para dejar empezar a {1}.
+battle.scoia_opp_first,Opponent used the Scoia'tael faction ability to go first.,El oponente usó la habilidad de la facción Scoia'tael para empezar.
+battle.r_scoia_first,{0} used the Scoia'tael faction ability to go first.,{0} usó la habilidad de la facción Scoia'tael para empezar.
+battle.you_first,You will go first,Empiezas tú
+battle.opp_first,Your opponent will go first,Empieza tu oponente
+battle.r_first,{0} will go first,Empieza {0}
+battle.timeout_hand,Out of time: you keep your hand,Se acabó el tiempo: conservas tu mano
+battle.r_timeout_hand,{0} ran out of time and keeps the hand,A {0} se le acabó el tiempo y conserva su mano
+battle.opp_redrawing,Your opponent is still redrawing,Tu oponente todavía está cambiando cartas
+battle.r_redrawing,{0} is still redrawing,{0} todavía está cambiando cartas
+battle.round_start,Round Start,Comienza la ronda
+battle.your_turn,Your turn!,¡Tu turno!
+battle.opp_turn,Opponent's turn,Turno del oponente
+battle.r_turn,{0}'s turn,Turno de {0}
+battle.turn_passed,Turn passed,Turno pasado
+battle.opp_passed,Your opponent has passed,Tu oponente ha pasado
+battle.r_passed,{0} has passed,{0} ha pasado
+battle.nilfgaard_tie,Nilfgaardian faction ability triggered: Nilfgaard wins the tie.,Habilidad de la facción nilfgaardiana activada: Nilfgaard gana el empate.
+battle.timeout_lost,Out of time: your opponent wins the round,Se acabó el tiempo: tu oponente gana la ronda
+battle.timeout_won,Your opponent ran out of time: you win the round,A tu oponente se le acabó el tiempo: ganas la ronda
+battle.r_timeout,{0} ran out of time: {1} wins the round,A {0} se le acabó el tiempo: {1} gana la ronda
+battle.round_won,You won the round!,¡Ganaste la ronda!
+battle.r_round_won,{0} won the round!,¡{0} ganó la ronda!
+battle.round_lost,Your opponent won the round,Tu oponente ganó la ronda
+battle.r_round_lost,{0} won the round,{0} ganó la ronda
+battle.round_draw,The round ended in a draw,La ronda terminó en empate
+battle.monsters_kept,Monsters faction ability triggered: one randomly chosen Monster Unit Card stays on the battlefield.,Habilidad de la facción Monstruos activada: una carta de unidad Monstruo elegida al azar permanece en el campo de batalla.
+battle.north_draw,Northern Realms faction ability triggered: North draws an additional card.,Habilidad de la facción Reinos del Norte activada: el Norte roba una carta adicional.
+battle.skellige_one_you,Skellige faction ability triggered: a unit from your discard pile returns to the battlefield.,Habilidad de la facción Skellige activada: una unidad de tu pila de descarte vuelve al campo de batalla.
+battle.skellige_two_you,Skellige faction ability triggered: two units from your discard pile return to the battlefield.,Habilidad de la facción Skellige activada: dos unidades de tu pila de descarte vuelven al campo de batalla.
+battle.skellige_one_opp,Skellige faction ability triggered: a unit from your opponent's discard pile returns to the battlefield.,Habilidad de la facción Skellige activada: una unidad de la pila de descarte de tu oponente vuelve al campo de batalla.
+battle.skellige_two_opp,Skellige faction ability triggered: two units from your opponent's discard pile return to the battlefield.,Habilidad de la facción Skellige activada: dos unidades de la pila de descarte de tu oponente vuelven al campo de batalla.
+battle.decoy_summoned,{0} only exists on the board: a decoy can't take it back,{0} solo existe en el tablero: un señuelo no puede recuperarla
+battle.decoy_target,Decoy can only swap a non-hero unit on your side,El señuelo solo puede cambiar una unidad de tu lado que no sea héroe
+battle.kambi_killed_you,Kambi was killed: Hemdall takes the field to avenge him,Kambi murió: Hemdall entra al campo para vengarlo
+battle.kambi_killed_opp,You killed the opponent's Kambi: their Hemdall takes the field to avenge him,Mataste al Kambi del oponente: su Hemdall entra al campo para vengarlo
+battle.kambi_discarded_you,"Kambi is discarded: Hemdall joins your close combat row next round, if the battle goes on","Kambi fue descartado: Hemdall se une a tu fila cuerpo a cuerpo la próxima ronda, si la batalla continúa"
+battle.kambi_discarded_opp,"The opponent's Kambi is discarded: their Hemdall comes next round, if the battle goes on","El Kambi del oponente fue descartado: su Hemdall llega la próxima ronda, si la batalla continúa"
+battle.cow_killed_you,Your Cow was killed: the Bovine Defense Force takes the field to avenge it,Tu Vaca murió: la Fuerza de Defensa Bovina entra al campo para vengarla
+battle.cow_killed_opp,You killed the opponent's Cow: their Bovine Defense Force takes the field to avenge it,Mataste a la Vaca del oponente: su Fuerza de Defensa Bovina entra al campo para vengarla
+battle.cow_discarded_you,"Your Cow is discarded: the Bovine Defense Force joins your close combat row next round, if the battle goes on","Tu Vaca fue descartada: la Fuerza de Defensa Bovina se une a tu fila cuerpo a cuerpo la próxima ronda, si la batalla continúa"
+battle.cow_discarded_opp,"The opponent's Cow is discarded: their Bovine Defense Force comes next round, if the battle goes on","La Vaca del oponente fue descartada: su Fuerza de Defensa Bovina llega la próxima ronda, si la batalla continúa"
+battle.r_kambi_killed,{0}'s Kambi was killed: Hemdall takes the field to avenge him,El Kambi de {0} murió: Hemdall entra al campo para vengarlo
+battle.r_kambi_discarded,"{0}'s Kambi is discarded: Hemdall comes next round, if the battle goes on","El Kambi de {0} fue descartado: Hemdall llega la próxima ronda, si la batalla continúa"
+battle.r_cow_killed,{0}'s Cow was killed: the Bovine Defense Force takes the field to avenge it,La Vaca de {0} murió: la Fuerza de Defensa Bovina entra al campo para vengarla
+battle.r_cow_discarded,"{0}'s Cow is discarded: the Bovine Defense Force comes next round, if the battle goes on","La Vaca de {0} fue descartada: la Fuerza de Defensa Bovina llega la próxima ronda, si la batalla continúa"
+battle.leader_hint_touch,Tap the glowing crown to use your leader ability,Toca la corona brillante para usar la habilidad de tu líder
+battle.leader_hint,Click the glowing crown or press {Enter} to use your leader ability,Haz clic en la corona brillante o presiona {Enter} para usar la habilidad de tu líder
+battle.leader_cancelled,Your leader ability was cancelled by the opponent's leader,El líder de tu oponente anuló la habilidad de tu líder
+battle.opp_choosing,Your opponent is choosing who goes first,Tu oponente está eligiendo quién empieza
+battle.discard_two_touch,Discard two cards from your hand: double-tap each,Descarta dos cartas de tu mano: toca dos veces cada una
+battle.discard_two,Discard two cards from your hand: double-click each,Descarta dos cartas de tu mano: haz doble clic en cada una
+battle.keys_nowhere,This card has nowhere to go,Esta carta no tiene dónde ir
+battle.keys_choose,It fits more than one place: {Up} or {Down} chooses where   ·   {Enter} plays it,Cabe en más de un lugar: {Up} o {Down} elige dónde   ·   {Enter} la juega
+end.drawn_one,", one round drawn",", una ronda empatada"
+end.drawn_many,", {0} rounds drawn",", {0} rondas empatadas"
+end.the_opponent,The opponent,El oponente
+end.you_won,"You won the battle, {0} to {1}{2}","Ganaste la batalla, {0} a {1}{2}"
+end.they_won,"{0} won the battle, {1} to {2}{3}","{0} ganó la batalla, {1} a {2}{3}"
+end.draw,Neither side came out ahead{0},Ningún bando se impuso{0}
+end.you_gave_up,You gave up the battle,Abandonaste la batalla
+end.they_gave_up,{0} gave up the battle,{0} abandonó la batalla
+end.left_battle,{0} left the battle,{0} salió de la batalla
+end.ended_away,{0} ended the battle while you were away,{0} terminó la batalla mientras no estabas
+end.round_one,1 round,1 ronda
+end.round_many,{0} rounds,{0} rondas
+end.round_n,Round {0},Ronda {0}
+end.rematch,Rematch,Revancha
+end.play_again,Play again,Jugar de nuevo
+end.save_replay,Save replay,Guardar repetición
+end.saved,Saved,Guardada
+end.save_failed,The replay could not be saved,No se pudo guardar la repetición
+end.opp_left,{0} left,{0} se fue
+end.opp_away,{0} is away,{0} no está
+end.waiting_for,Waiting for {0},Esperando a {0}
+end.opp_wants_rematch,{0} wants a rematch,{0} quiere la revancha
+end.fair_ok,"Fair play checked: the shuffle was shared, and every move followed the rules",Juego limpio verificado: la mezcla fue compartida y cada jugada siguió las reglas
+end.fair_failed,Fair play check failed. {0},Falló la verificación de juego limpio. {0}
+end.watch_again,Watch again,Ver de nuevo
+end.next_round,Next round,Siguiente ronda
+end.map,Map,Mapa
+end.collect,Collect,Recoger
+end.story_over,{0} is over for this time: enter again from the map,{0} terminó por esta vez: vuelve a entrar desde el mapa
+end.nothing_lost,Nothing lost: play them again whenever you like,No se perdió nada: puedes volver a jugar cuando quieras
+end.quest_done,{0} complete,Misión completada: {0}
+end.region_open,{0} is open,Región abierta: {0}
+end.collector,Card Collector: every Gwent card is yours,Coleccionista de cartas: todas las cartas de Gwent son tuyas
+end.next,Next: {0},Siguiente: {0}
+end.more_cards,And {0} more cards,Y {0} cartas más
+end.cards,{0} cards,{0} cartas
+end.new_leader,new leader,líder nuevo
+end.new_card,new card,carta nueva
+end.you_have,you have {0},tienes {0}
+end.quest_reward,Quest reward · {0},Recompensa de misión · {0}
+lan.claim_win,Claim the win,Reclamar la victoria
+lan.give_up,Give up,Rendirse
+lan.notice_over,The battle can't go on. {0},La batalla no puede continuar. {0}
+lan.notice_gone,The link to the other player is gone.,Se perdió el enlace con el otro jugador.
+lan.notice_lost_host,Connection lost: waiting for {0} to come back{1},Conexión perdida: esperando a que {0} vuelva{1}
+lan.notice_lost_guest,Connection lost: reconnecting to {0}{1},Conexión perdida: reconectando con {0}{1}
+lan.notice_away_host,"{0} hasn't come back. Keep waiting, or claim the win.",{0} no ha vuelto. Sigue esperando o reclama la victoria.
+lan.notice_away_guest,"{0} hasn't come back. Keep waiting, or give up (a loss).",{0} no ha vuelto. Sigue esperando o ríndete (cuenta como derrota).
+pick.weather_deck,Choose a weather card to play from your deck,Elige una carta de clima de tu mazo para jugarla
+pick.revive,Choose a unit to bring back from your discard pile,Elige una unidad de tu pila de descarte para traerla de vuelta
+pick.take_opp_discard,Choose a unit to take from your opponent's discard pile,Elige una unidad de la pila de descarte de tu oponente
+pick.take_discard,Choose a unit to take back from your discard pile,Elige una unidad de tu pila de descarte para recuperarla
+pick.take_deck,Choose a card to take from your deck,Elige una carta de tu mazo
+pick.look_hand,Randomly selected cards from your opponent's hand,Cartas elegidas al azar de la mano de tu oponente
+pick.skip,Skip,Omitir
+pick.keep_choosing,Keep choosing,Seguir eligiendo
+pick.skip_weather,"Play no weather card? Your leader ability is spent, and your turn ends.",¿No jugar ninguna carta de clima? Tu habilidad de líder se gasta y tu turno termina.
+pick.skip_revive,"Bring no unit back? The medic stays, but its ability is lost, and your turn ends.","¿No traer de vuelta ninguna unidad? El médico se queda, pero pierde su habilidad y tu turno termina."
+pick.skip_draw,"Draw no card? The two cards you discarded are gone, and your turn ends.",¿No robar ninguna carta? Las dos cartas que descartaste se pierden y tu turno termina.
+pick.skip_opp_discard,"Take nothing from your opponent's discard pile? Your leader ability is spent, and your turn ends.",¿No tomar nada de la pila de descarte de tu oponente? Tu habilidad de líder se gasta y tu turno termina.
+pick.skip_take,"Take no card back? Your leader ability is spent, and your turn ends.",¿No recuperar ninguna carta? Tu habilidad de líder se gasta y tu turno termina.
+pick.where_to_play,Now choose where to play {0},Ahora elige dónde jugar {0}
+pick.your_discard,Your discard pile,Tu pila de descarte
+pick.opp_discard,Your opponent's discard pile,La pila de descarte de tu oponente
+first.title,Scoia'tael perk,Ventaja de los Scoia'tael
+first.body,You decide who takes the first turn.,Tú decides quién juega el primer turno.
+first.hint,Going second lets you answer the opponent's first move.,Jugar segundo te permite responder a la primera jugada del oponente.
+first.go_first,Go first,Jugar primero
+first.go_second,Go second,Jugar segundo
+redraw.done,Done,Listo
+redraw.choose,Choose a card to redraw. {0}/2,Elige una carta para cambiar. {0}/2
+replay.switch,Switch sides,Cambiar de lado
+replay.round_back,Round back,Ronda anterior
+replay.move_back,Move back,Jugada anterior
+replay.pause,Pause,Pausa
+replay.play,Play,Reproducir
+replay.next_move,Next move,Jugada siguiente
+replay.next_round,Next round,Ronda siguiente
+replay.speed,Speed,Velocidad
+chat.window,Chat window,Ventana de chat
+chat.quick,Quick chat,Chat rápido
+chat.title,Chat,Chat
+chat.muted,{0} muted,{0} silenciado
+chat.you,You,Tú
+chat.say,Say something…,Escribe algo…
+chat.send,Send,Enviar
+chat.nothing,Nothing said yet,Todavía no se dijo nada
+chat.quick_0,Evening.,Buenas tardes.
+chat.quick_1,Well played.,Bien jugado.
+chat.quick_2,Thanks.,Gracias.
+chat.quick_3,Hmm...,Mmm...
+chat.quick_4,Medallion's humming.,El medallón vibra.
+chat.quick_5,Bollocks!,¡Maldición!
+chat.quick_6,Wind's howling.,El viento aúlla.
+chat.quick_7,"Damn, you're ugly.","Demonios, qué feo eres."
+battle.give_up_ask,Give up this battle? It counts as a loss.,¿Abandonar esta batalla? Cuenta como una derrota.
+battle.give_up,Give up,Rendirse
+battle.keep_playing,Keep playing,Seguir jugando
+battle.hold_to_pass,Hold to pass,Mantén para pasar
+pile.empty,{0}: empty,{0}: vacía
+pile.tooltip,{0} ({1}): {2},{0} ({1}): {2}
+pile.card_one,1 card,1 carta
+pile.look_tap,tap to look through it,toca para verla
+pile.look_click,click to look through it,haz clic para verla
+leader.cancelled,Cancelled by the other leader,Anulada por el otro líder
+leader.passive,Passive: always in effect,Pasiva: siempre activa
+leader.used,Used,Usada
+leader.ready,Ready to use,Lista para usar
+leader.not_used,Not used yet,Aún sin usar
+leader.not_this_round,"Not used yet, not this round","Aún sin usar, no en esta ronda"
+leader.whose_you,Leader ability,Habilidad del líder
+leader.whose_opp,Opponent's leader ability,Habilidad del líder del oponente
+leader.tip_cancelled,{0}: cancelled by the other leader,{0}: anulada por el otro líder
+leader.tip_passive,"{0}: passive, always in effect","{0}: pasiva, siempre activa"
+leader.tip_used,{0}: used,{0}: usada
+leader.tip_unused,{0}: not used yet,{0}: aún sin usar
+leader.use_tap,Leader ability: tap to use it,Habilidad del líder: toca para usarla
+leader.use_click,Leader ability: click to use it,Habilidad del líder: haz clic para usarla
+leader.lift_tap,"Leader ability: tap your leader card to lift it, then tap this crown to use it",Habilidad del líder: toca tu carta de líder para levantarla y luego toca esta corona para usarla
+leader.lift_click,"Leader ability: click your leader card to lift it, then click this crown to use it",Habilidad del líder: haz clic en tu carta de líder para levantarla y luego haz clic en esta corona para usarla
+sheet.faction_ability,Faction ability,Habilidad de la facción
+sheet.none,None,Ninguna
+sheet.leader,Leader: {0},Líder: {0}
+sheet.in_hand,in hand,en la mano
+sheet.in_deck,in deck,en el mazo
+sheet.discarded,discarded,descartadas
+row.decoy,A decoy takes the place of one of your units on the board: choose which,Un señuelo ocupa el lugar de una de tus unidades en el tablero: elige cuál
+row.weather,Weather and Scorch go on the weather board,El clima y Abrasar van en el tablero de clima
+side.faction_you,Faction ability,Habilidad de la facción
+side.faction_opp,Opponent's faction ability,Habilidad de la facción del oponente
+side.ability_tip,{0} ({1}): {2},{0} ({1}): {2}
+weather.none,Weather: none in play. A weather card lands here and brings its row down to 1 on both sides; Clear Weather lifts it,Clima: ninguno en juego. Una carta de clima cae aquí y reduce su fila a 1 en ambos lados; Clima despejado lo quita
+zoom.out,Zoom out: the whole board,Alejar: todo el tablero
+zoom.unlock,Unlock the board: taps play again,Desbloquear el tablero: los toques vuelven a jugar
+zoom.lock,"Lock the board: look and move around, taps do nothing","Bloquear el tablero: mira y desplázate, los toques no hacen nada"
+zoom.locked,Board locked: taps do nothing,Tablero bloqueado: los toques no hacen nada
+zoom.unlocked,Board unlocked,Tablero desbloqueado
+battle.leader_keys,{X} or {Enter} uses your leader ability   ·   {Esc} puts it back,{X} o {Enter} usa la habilidad de tu líder   ·   {Esc} la devuelve
+deck.back_menu,Back to the main menu,Volver al menú principal
+deck.keep_name,Keep this name,Conservar este nombre
+deck.name_copy,Name a copy of this preset,Ponerle nombre a una copia de este mazo predefinido
+deck.rename,Rename this deck,Cambiar el nombre de este mazo
+deck.leave_name,Leave the name as it was,Dejar el nombre como estaba
+deck.preset_no_delete,Presets can't be deleted,Los mazos predefinidos no se pueden eliminar
+deck.delete,Delete this deck,Eliminar este mazo
+deck.choose_first,Choose a deck first,Primero elige un mazo
+deck.name_new,Name your new deck,Ponle nombre a tu mazo nuevo
+deck.name_your_copy,Name your copy,Ponle nombre a tu copia
+deck.name,Deck name,Nombre del mazo
+deck.name_needs_letter,A deck's name needs a letter or a number,El nombre de un mazo necesita una letra o un número
+deck.name_taken,"Another deck is already called ""{0}""","Ya hay otro mazo llamado ""{0}"""
+deck.saved_copy,"Saved as your own deck, ""{0}"": the preset stays as it was","Guardado como tu propio mazo, ""{0}"": el mazo predefinido queda como estaba"
+deck.save_failed,Could not save the deck,No se pudo guardar el mazo
+deck.rename_failed,Could not rename the deck,No se pudo cambiar el nombre del mazo
+deck.delete_ask,"Delete the deck ""{0}""?
+This cannot be undone.","¿Eliminar el mazo ""{0}""?
+Esto no se puede deshacer."
+deck.cancel,Cancel,Cancelar
+deck.delete_failed,Could not delete the deck,No se pudo eliminar el mazo
+deck.too_many_copies,Too many copies of this preset: delete some first,Demasiadas copias de este mazo predefinido: elimina algunas primero
+deck.preset_changes,"Presets stay as they are: your changes are saved in your own deck, ""{0}""","Los mazos predefinidos no cambian: tus cambios se guardan en tu propio mazo, ""{0}"""
+deck.starter,the starter deck,el mazo inicial
+deck.default_nr,default (Northern Realms),predeterminado (Reinos del Norte)
+deck.preset_tag,(preset),(predefinido)
+deck.not_ready,"Not battle-ready: {0}
+Battle deck: {1}","No está listo para batallar: {0}
+Mazo de batalla: {1}"
+deck.battle_deck,Battle deck: {0},Mazo de batalla: {0}
+deck.preset_note,A preset: changing or naming it makes your own copy,"Un mazo predefinido: si lo cambias o le pones nombre, se crea tu propia copia"
+deck.new_empty,+ New empty deck,+ Mazo vacío nuevo
+deck.skipped,{0} deck file(s) could not be read and were skipped,No se pudieron leer {0} archivos de mazo y se omitieron
+deck.create_first,"Create a deck first: type its name, then press +",Primero crea un mazo: escribe su nombre y presiona +
+deck.wrong_faction,{0} does not belong to this deck's faction,{0} no pertenece a la facción de este mazo
+deck.own_one,You own one {0},Tienes una copia de {0}
+deck.own_many,You own {0} copies of {1},Tienes {0} copias de {1}
+deck.max_specials,A deck can hold at most {0} special cards,Un mazo puede tener como máximo {0} cartas especiales
+deck.leader_tap,Tap to choose your leader,Toca para elegir tu líder
+deck.leader_click,Click to choose your leader,Haz clic para elegir tu líder
+deck.make_first,"Make a deck first: ""{0}"", at the end of the deck list","Primero crea un mazo: ""{0}"", al final de la lista de mazos"
+deck.tab_all,All Cards,Todas las cartas
+deck.tab_close,Close Units,Unidades cuerpo a cuerpo
+deck.tab_ranged,Ranged Units,Unidades a distancia
+deck.tab_siege,Siege Units,Unidades de asedio
+deck.tab_heroes,Heroes,Héroes
+deck.tab_weather,Weather,Clima
+deck.tab_specials,Specials,Especiales
+deck.choose_leader,Choose your leader,Elige a tu líder
+story.journal,Journal,Diario
+story.collection,Collection,Colección
+story.travel,Travel,Viajar
+story.title,Story,Historia
+story.step_found,Search: {0},Busca: {0}
+story.step_event,Meet: {0},Encuentro con: {0}
+story.step_tournament,Win: {0},Gana: {0}
+story.step_beat,Beat: {0},Derrota a: {0}
+story.more_to_come,… more to come,… más por venir
+story.reward,Reward: {0},Recompensa: {0}
+story.reward_done,Reward: {0} (yours),Recompensa: {0} (conseguida)
+story.collect_all,Collect 'Em All,Colecciónalas todas
+story.every_card_count,Every Gwent card: {0} of {1},Todas las cartas de Gwent: {0} de {1}
+story.every_card,Every Gwent card,Todas las cartas de Gwent
+story.where,Where they are,Dónde están
+story.not_reached,{0} · not reached,{0} · sin visitar
+story.random_cards,Random cards,Cartas aleatorias
+story.by_faction,By faction,Por facción
+story.special_cards,Special cards,Cartas especiales
+story.neutral,Neutral,Neutrales
+story.opens_start,Opens from the start,Abierta desde el inicio
+story.opens_quest,Opens once {0} is done,Se abre al completar {0}
+story.opens_place,Opens once beaten: {0},Se abre al derrotar a: {0}
+story.here,You are here,Estás aquí
+story.to_find,{0} to find,{0} por encontrar
+story.all_found,All found,Todo encontrado
+story.begin_caption,"Geralt's Gwent, across The Witcher 3's lands: beat its players, buy from its innkeepers, finish its quests, collect every card.","El Gwent de Geralt por las tierras de The Witcher 3: vence a sus jugadores, compra a sus taberneros, completa sus misiones y reúne todas las cartas."
+story.begin_deck,"The Witcher 3's starter deck, and a leader of four factions",El mazo inicial de The Witcher 3 y un líder de cuatro facciones
+story.btn_begin,Begin,Comenzar
+story.btn_start_over,Start over,Empezar de nuevo
+story.btn_continue,Continue,Continuar
+story.unreadable_caption,"{0}. Start over sets it aside (it is kept, not deleted) and begins a new story.","{0}. Empezar de nuevo lo aparta (se conserva, no se borra) y comienza una historia nueva."
+story.saved_summary,{0} of {1} cards · {2} crowns · {3} of {4} quests,{0} de {1} cartas · {2} coronas · {3} de {4} misiones
+story.confirm_new,"Begin a new story? This one is set aside (kept, not deleted).","¿Comenzar una historia nueva? Esta se aparta (se conserva, no se borra)."
+story.save_unreadable,The story's save could not be read,No se pudo leer el guardado de la historia
+story.save_newer,The story was saved by a newer version of the game,La historia fue guardada por una versión más reciente del juego
+story.cards_for_sale,{0} cards for sale,{0} cartas a la venta
+story.sold_out,Sold out,Agotado
+story.taken,Taken,Recogido
+story.something_here,Something for you here,Hay algo para ti aquí
+story.won,Won,Ganado
+story.next_round_is,Next: {0},Siguiente: {0}
+story.n_rounds,{0} rounds,{0} rondas
+story.sells_cards,sells cards,vende cartas
+story.beaten,Beaten,Derrotado
+story.crowns,Crowns,Coronas
+story.random_card,A random card,Una carta aleatoria
+story.leader_tip,Leader: {0},Líder: {0}
+story.act_search,Search,Buscar
+story.act_take_deck,Take the deck,Tomar el mazo
+story.act_accept,Accept,Aceptar
+story.act_next_round,Next round,Siguiente ronda
+story.act_enter,Enter,Inscribirse
+story.act_play_again,Play again,Jugar de nuevo
+story.act_play,Play,Jugar
+story.deck_cant_play,Your battle deck can't play ({0}): the starter deck will,Tu mazo de batalla no puede jugar ({0}): se usará el mazo inicial
+story.win_pays,A win pays {0} crowns,Una victoria paga {0} coronas
+story.entry_fee,The entry fee: {0} crowns,La cuota de inscripción: {0} coronas
+story.skill_1,Plays like a beginner,Juega como un principiante
+story.skill_2,A good player,Un buen jugador
+story.skill_3,A master of the game,Un maestro del juego
+story.step_of,A step of {0},Un paso de {0}
+story.decks_only,{0} decks only,Solo mazos de {0}
+story.prize_random,A RANDOM CARD,UNA CARTA ALEATORIA
+story.prize_random_tip,The Witcher 3's players of no particular renown give a random card the first time they lose,Los jugadores de The Witcher 3 sin mayor renombre entregan una carta aleatoria la primera vez que pierden
+story.prize_won,WON,GANADA
+story.prize_skellige,THE SKELLIGE DECK,EL MAZO DE SKELLIGE
+story.prize,THE PRIZE,EL PREMIO
+story.gives_deck,"{0} cards, and their leader",{0} cartas y su líder
+story.rounds,THE ROUNDS,LAS RONDAS
+story.round_wins,Wins you {0},Te da {0}
+story.for_sale,FOR SALE,EN VENTA
+story.sold,Sold,Vendido
+story.buy_confirm,Buy {0} for {1} crowns?,¿Comprar {0} por {1} coronas?
+story.buy,Buy,Comprar
+story.not_now,Not now,Ahora no
+story.card_owned,{0} · you own {1},{0} · tienes {1}
+story.got_none,Nothing new,Nada nuevo
+story.got_many,{0} cards are yours,Ahora tienes {0} cartas
+story.got_one,{0} is yours,Ahora tienes: {0}
+story.got_few,{0} are yours,Ahora tienes: {0}
+story.purse_tip,Crowns: wins pay them; innkeepers and merchants sell cards for them,Coronas: las victorias las pagan; los taberneros y mercaderes venden cartas a cambio de ellas
+story.tip_journal,The Gwent quests,Las misiones de Gwent
+story.tip_collection,Your collection: what is still to find,Tu colección: lo que aún falta por encontrar
+story.tip_deck,Your story decks,Tus mazos de la historia
+story.on_map,On the map now: {0},Ahora en el mapa: {0}
+story.region_open,{0} is open: Travel to go there,{0} está abierta: usa Viajar para ir
+story.collector,Card Collector: every Gwent card is yours,Coleccionista de cartas: ya tienes todas las cartas de Gwent
+deck.lbl_units_strength,Total Units Strength,Fuerza total de unidades
+deck.lbl_hero_cards,Hero Cards,Cartas de héroe
+deck.lbl_unit_cards,Number of Unit Cards,Cantidad de unidades
+deck.lbl_name_placeholder,Enter deck name...,Escribe el nombre del mazo...
+deck.lbl_faction_ability,FACTION ABILITY,HABILIDAD DE FACCIÓN
+deck.lbl_total_cards,Total cards in deck,Total de cartas en el mazo
+deck.lbl_leader,Leader,Líder
+deck.lbl_special_cards,Special Cards,Cartas especiales
+deck.lbl_collection,Card Collection,Colección de cartas
+deck.lbl_show_neutrals,Show neutrals,Mostrar neutrales
+battle.passed_label,Passed,Pasó
+battle.press_to_pass,Press to pass,Presiona para pasar
+faction.northern_realms,Northern Realms,Reinos del Norte
+faction.nilfgaard,Nilfgaardian Empire,Imperio nilfgaardiano
+faction.scoiatael,Scoia'tael,Scoia'tael
+faction.monsters,Monsters,Monstruos
+faction.skellige,Skellige,Skellige
+faction.northern_realms.ability,Draw a card from your deck whenever you win a round.,Roba una carta de tu mazo cada vez que ganes una ronda.
+faction.nilfgaard.ability,Win any round that ends in a draw (unless your opponent is Nilfgaard too).,Gana cualquier ronda que termine en empate (salvo que tu oponente también sea Nilfgaard).
+faction.scoiatael.ability,Decide who goes first at the start of the battle.,Decide quién empieza al comienzo de la batalla.
+faction.monsters.ability,Keep one random unit on the board after each round.,Conserva una unidad al azar en el tablero después de cada ronda.
+faction.skellige.ability,Two random units of your discard pile (no heroes or spies) return to the board in the third round.,Dos unidades al azar de tu pila de descarte (sin héroes ni espías) vuelven al tablero en la tercera ronda.
+loading.battle,Preparing the battle,Preparando la batalla
+loading.replay,Preparing the replay,Preparando la repetición
+loading.generic,Loading,Cargando
+update.problem_layout,The game's files are not where a release puts them.,Los archivos del juego no están donde los deja una versión publicada.
+update.problem_translocated,"macOS runs this copy from a read-only place: move Gwent Legacy to Applications, open it from there, and update.","macOS ejecuta esta copia desde un lugar de solo lectura: mueve Gwent Legacy a Aplicaciones, ábrela desde ahí y actualiza."
+update.problem_platform,This platform updates another way.,Esta plataforma se actualiza de otra forma.

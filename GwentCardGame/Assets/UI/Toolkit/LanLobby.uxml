@@ -1,11 +1,11 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:l="UnityEngine.Localization" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Toolkit/Gwent.uss" />
     <!-- Multiplayer > Local network (LanLobby): who you are and what you play; then either the battles on your network (or one at an
          address) and hosting your own, or, hosting or joined, the room: both players face to face. A battle still on is
          offered first. -->
     <ui:VisualElement name="Dimmer" class="dimmer">
         <ui:VisualElement name="Panel" class="panel lan">
-            <ui:Label text="Local network" class="title" />
+            <ui:Label text="Local network" class="title"><Bindings><l:LocalizedString property="text" table="UI" entry="lan.title" /></Bindings></ui:Label>
             <ui:VisualElement class="ornament lan__ornament" />
 
             <!-- You: your name (as the other player sees it; the rule under it while it is typed) and the deck you play -->
@@ -25,7 +25,7 @@
                     <ui:Label name="DeckName" class="lan__deck-name" />
                     <ui:Label name="YouDeck" class="lan__detail" />
                 </ui:VisualElement>
-                <Gwent.UI.DialogButton name="Button Deck" text="Change deck" class="button--secondary lan__small-button" />
+                <Gwent.UI.DialogButton name="Button Deck" text="Change deck" class="button--secondary lan__small-button"><Bindings><l:LocalizedString property="text" table="UI" entry="lan.change_deck" /></Bindings></Gwent.UI.DialogButton>
             </ui:VisualElement>
 
             <ui:Label name="Problem" class="lan__problem" />
@@ -39,13 +39,13 @@
                     <ui:Label name="RejoinTitle" class="lan__card-title" />
                     <ui:Label name="RejoinDetail" class="lan__detail" />
                 </ui:VisualElement>
-                <Gwent.UI.DialogButton name="Button Abandon" text="Abandon" class="button--secondary lan__small-button" />
+                <Gwent.UI.DialogButton name="Button Abandon" text="Abandon" class="button--secondary lan__small-button"><Bindings><l:LocalizedString property="text" table="UI" entry="lan.abandon" /></Bindings></Gwent.UI.DialogButton>
             </ui:VisualElement>
 
             <!-- The battles hosted on the network -->
             <ui:VisualElement name="Browse" class="lan__browse">
                 <ui:VisualElement class="lan__section-head">
-                    <ui:Label text="Battles on your network" class="lan__heading" />
+                    <ui:Label text="Battles on your network" class="lan__heading"><Bindings><l:LocalizedString property="text" table="UI" entry="lan.battles" /></Bindings></ui:Label>
                     <ui:VisualElement name="Live" class="lan__live" picking-mode="Ignore" />
                     <ui:Label name="LiveText" text="Searching" class="lan__live-text" />
                 </ui:VisualElement>
@@ -55,9 +55,9 @@
                 </ui:VisualElement>
                 <ui:VisualElement name="AddressRow" class="lan__address">
                     <ui:TextField name="Address" max-length="64" class="lan__field lan__address-field" />
-                    <Gwent.UI.DialogButton name="Button Join" text="Join" class="button--secondary lan__small-button" />
+                    <Gwent.UI.DialogButton name="Button Join" text="Join" class="button--secondary lan__small-button"><Bindings><l:LocalizedString property="text" table="UI" entry="lan.join" /></Bindings></Gwent.UI.DialogButton>
                 </ui:VisualElement>
-                <Gwent.UI.DialogButton name="Button Address" text="Join by address" class="button--ghost lan__link" />
+                <Gwent.UI.DialogButton name="Button Address" text="Join by address" class="button--ghost lan__link"><Bindings><l:LocalizedString property="text" table="UI" entry="lan.join_address" /></Bindings></Gwent.UI.DialogButton>
             </ui:VisualElement>
 
             <!-- A battle hosted or joined: both players face to face -->
@@ -78,7 +78,7 @@
                 <ui:VisualElement name="Details" class="lan__details">
                     <ui:VisualElement name="Networks" />
                     <ui:Label name="Ports" class="lan__details-note" />
-                    <ui:Label text="Friends on your VPN (Tailscale, ZeroTier, Hamachi...) can join from anywhere with its address." class="lan__details-note" />
+                    <ui:Label text="Friends on your VPN (Tailscale, ZeroTier, Hamachi...) can join from anywhere with its address." class="lan__details-note"><Bindings><l:LocalizedString property="text" table="UI" entry="lan.vpn_note" /></Bindings></ui:Label>
                 </ui:VisualElement>
             </ui:VisualElement>
 

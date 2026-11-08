@@ -19,11 +19,11 @@ namespace Gwent.Menus
 
         private static void Bind(VisualElement root)
         {
-            root.Q<Label>("Title").text = "Play";
+            root.Q<Label>("Title").text = Loc.T(Loc.UI, "menu.play");
             VisualElement entries = root.Q("Entries");
-            MenuEntry story = Entry(entries, "Story", "story", StoryLine());
-            MenuEntry match = Entry(entries, "Single match", "match", "Against the AI: choose your opponent");
-            MenuEntry multiplayer = Entry(entries, "Multiplayer", "multiplayer", "On your network, or online");
+            MenuEntry story = Entry(entries, "Story", Loc.T(Loc.UI, "play.story"), "story", StoryLine());
+            MenuEntry match = Entry(entries, "Single match", Loc.T(Loc.UI, "play.match"), "match", Loc.T(Loc.UI, "play.match.detail"));
+            MenuEntry multiplayer = Entry(entries, "Multiplayer", Loc.T(Loc.UI, "mp.title"), "multiplayer", Loc.T(Loc.UI, "play.multiplayer.detail"));
             story.clicked += () => Into(root, story, back => StoryPages.Begin(back));
             match.clicked += () => Into(root, match, back => OpponentPicker.Open(back));
             multiplayer.clicked += () => Into(root, multiplayer, back => MultiplayerPicker.Open(back));
@@ -49,14 +49,14 @@ namespace Gwent.Menus
         {
             Gwent.Rules.StoryProgress story = StoryGame.Load();
             if (story == null)
-                return StoryGame.Problem != null ? "Its save can't be read" : "The Witcher 3's Gwent, from its starter deck";
-            return story.Current.Name + " · " + story.State.Cards.Count + " of " + StoryPages.AllCards + " cards";
+                return Loc.T(Loc.UI, StoryGame.Problem != null ? "play.story.unreadable" : "play.story.begin");
+            return Loc.T(Loc.UI, "play.story.progress", story.Current.Name, story.State.Cards.Count, StoryPages.AllCards);
         }
 
-        private static MenuEntry Entry(VisualElement entries, string title, string icon, string detail)
+        private static MenuEntry Entry(VisualElement entries, string id, string title, string icon, string detail)
         {
             MenuEntry entry = UITheme.Current.opponentEntry.Instantiate().Q<MenuEntry>();
-            entry.name = "Mode " + title;
+            entry.name = "Mode " + id;
             entry.Q<Label>("Title").text = title;
             entry.Q<Label>("Detail").text = detail;
             entry.Q("Art").RemoveFromHierarchy();

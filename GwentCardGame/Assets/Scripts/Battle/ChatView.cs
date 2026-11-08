@@ -172,12 +172,12 @@ namespace Gwent.Battle
                 area.rectTransform.Place(new Vector2(0.5f, 0.5f), new Vector2(-12, 10) * scale, new Vector2(80, 66) * scale);
                 area.transform.SetAsFirstSibling();
             }
-            rect.gameObject.AddComponent<UITooltip>().text = () => "Chat window" + KeyName("T");
+            rect.gameObject.AddComponent<UITooltip>().text = () => Loc.T(Loc.UI, "chat.window") + KeyName("T");
             // The board portrait's silver ring lies over it and takes the pointer: the tooltip is the ring's there
             Transform ring = picture.parent.Find("Border");
             GameObject hovered = ring != null ? ring.gameObject : picture.gameObject;
             if (hovered.GetComponent<UITooltip>() == null)
-                hovered.AddComponent<UITooltip>().text = () => "Quick chat" + KeyName("E");
+                hovered.AddComponent<UITooltip>().text = () => Loc.T(Loc.UI, "chat.quick") + KeyName("E");
             mark = TalkMark(picture, scale);
             return rect.gameObject;
         }
@@ -205,7 +205,7 @@ namespace Gwent.Battle
                 area.transform.SetAsFirstSibling();
             }
             disc.gameObject.AddComponent<MarkClick>().view = this;
-            disc.gameObject.AddComponent<UITooltip>().text = () => "Quick chat" + KeyName("E");
+            disc.gameObject.AddComponent<UITooltip>().text = () => Loc.T(Loc.UI, "chat.quick") + KeyName("E");
             return disc.gameObject;
         }
 
@@ -303,7 +303,7 @@ namespace Gwent.Battle
             for (int i = 0; i < Chat.Lines.Length; i++)
             {
                 int line = i;
-                lines.Add(Line(box, Chat.Lines[i], GameInput.IsTouch ? null : (i + 1).ToString(), QuickPad, QuickPad + i * QuickLine, QuickWidth - 2 * QuickPad,
+                lines.Add(Line(box, Chat.Line(i), GameInput.IsTouch ? null : (i + 1).ToString(), QuickPad, QuickPad + i * QuickLine, QuickWidth - 2 * QuickPad,
                     QuickLine, theme.text, () => Emote(line)));
             }
             quick = root.gameObject;
@@ -397,7 +397,7 @@ namespace Gwent.Battle
             if (title == null)
                 return;
             UITheme theme = UITheme.Current;
-            title.text = "Chat" + (lan.Muted ? "<size=20><color=#" + ColorUtility.ToHtmlStringRGB(theme.textMuted) + ">   ·   " + lan.TheirName + " muted</color></size>" : "");
+            title.text = Loc.T(Loc.UI, "chat.title") + (lan.Muted ? "<size=20><color=#" + ColorUtility.ToHtmlStringRGB(theme.textMuted) + ">   ·   " + Loc.T(Loc.UI, "chat.muted", lan.TheirName) + "</color></size>" : "");
         }
 
         // The window's foot at the screen's, over your hand and as wide (its tray's edges too; within the screen)
@@ -468,7 +468,7 @@ namespace Gwent.Battle
             UITheme theme = UITheme.Current;
             IReadOnlyList<LanSession.Said> talk = lan.Talk;
             if (talk.Count == 0)
-                Entry("Nothing said yet", theme.textMuted, TextAlignmentOptions.Center).name = "Nothing";
+                Entry(Loc.T(Loc.UI, "chat.nothing"), theme.textMuted, TextAlignmentOptions.Center).name = "Nothing";
             foreach (LanSession.Said said in talk)
                 Entry(said);
             ScrollToFoot();
@@ -495,7 +495,7 @@ namespace Gwent.Battle
         private void Entry(LanSession.Said said)
         {
             UITheme theme = UITheme.Current;
-            string who = said.Mine ? ColorUtility.ToHtmlStringRGB(theme.textSecondary) + ">You" : ColorUtility.ToHtmlStringRGB(theme.goldBright) + ">" + lan.TheirName;
+            string who = said.Mine ? ColorUtility.ToHtmlStringRGB(theme.textSecondary) + ">" + Loc.T(Loc.UI, "chat.you") : ColorUtility.ToHtmlStringRGB(theme.goldBright) + ">" + lan.TheirName;
             Entry("<color=#" + who + "</color>  <noparse>" + Regex.Replace(said.Text, "</noparse>", "", RegexOptions.IgnoreCase) + "</noparse>",
                 theme.text, TextAlignmentOptions.TopLeft);
         }
@@ -524,7 +524,7 @@ namespace Gwent.Battle
             UIKit.NewImage(well, "Outline", theme.panelOutline, theme.line).rectTransform.Stretch();
             RectTransform area = UIKit.Rect("Text Area", well).Stretch(16, 16, 4, 4);
             area.gameObject.AddComponent<RectMask2D>();
-            TextMeshProUGUI hint = UIKit.Text(area, GameInput.IsTouch ? "Say something…" : "Say something…  (T)", UIKit.TextStyle.Body, TextAlignmentOptions.MidlineLeft);
+            TextMeshProUGUI hint = UIKit.Text(area, Loc.T(Loc.UI, "chat.say") + (GameInput.IsTouch ? "" : "  (T)"), UIKit.TextStyle.Body, TextAlignmentOptions.MidlineLeft);
             hint.fontSize = 24;
             hint.color = theme.textMuted;
             hint.rectTransform.Stretch();
@@ -551,7 +551,7 @@ namespace Gwent.Battle
             field.onSubmit.AddListener(_ => SendTyped());
             well.gameObject.SetActive(true);
 
-            send = UIKit.Button(box, "Send", UIKit.ButtonStyle.Secondary, SendTyped, new Vector2(SendWidth, FieldHeight));
+            send = UIKit.Button(box, Loc.T(Loc.UI, "chat.send"), UIKit.ButtonStyle.Secondary, SendTyped, new Vector2(SendWidth, FieldHeight));
             TopLeft((RectTransform)send.transform, Pad + width + 10, y, SendWidth, FieldHeight);
         }
 

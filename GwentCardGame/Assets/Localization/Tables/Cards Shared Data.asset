@@ -1,0 +1,988 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Cards Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: Cards
+  m_TableCollectionNameGuidString: 0ff5237a339fbbb47a54cceb963aef9c
+  m_Entries:
+  - m_Id: 17695500640256
+    m_Key: albrich
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777600
+    m_Key: arachas_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777601
+    m_Key: arachas_behemoth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777602
+    m_Key: assire_var_anahid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777603
+    m_Key: ballista_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777604
+    m_Key: barclay_els
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777605
+    m_Key: black_infantry_archer_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777606
+    m_Key: blue_stripes_commando_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777607
+    m_Key: botchling
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777608
+    m_Key: bovine_defense_force
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777609
+    m_Key: cahir_mawr_dyffryn_aep_ceallach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777610
+    m_Key: catapult_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777611
+    m_Key: celaeno_harpy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777612
+    m_Key: ciaran_aep_easnillien
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777613
+    m_Key: cirilla_fiona_elen_rianno_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777614
+    m_Key: cockatrice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777615
+    m_Key: cow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777616
+    m_Key: crinfrid_reavers_dragon_hunter_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777617
+    m_Key: crone_brewess
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777618
+    m_Key: crone_weavess
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777619
+    m_Key: crone_whispess
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777620
+    m_Key: cynthia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777621
+    m_Key: dandelion_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777622
+    m_Key: dennis_cranmer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777623
+    m_Key: dethmold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777624
+    m_Key: dol_blathanna_archer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777625
+    m_Key: dol_blathanna_scout_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777626
+    m_Key: draug
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777627
+    m_Key: dun_banner_medic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777628
+    m_Key: dwarven_skirmisher_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777629
+    m_Key: earth_elemental
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777630
+    m_Key: eithne
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777631
+    m_Key: elven_skirmisher_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777632
+    m_Key: emhyr_var_emreis_emperor_of_nilfgaard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777633
+    m_Key: emhyr_var_emreis_his_imperial_majesty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777634
+    m_Key: emhyr_var_emreis_invader_of_the_north
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777635
+    m_Key: emhyr_var_emreis_the_relentless
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777636
+    m_Key: emhyr_var_emreis_the_white_flame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777637
+    m_Key: emiel_regis_rohellec_terzieff_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777638
+    m_Key: endrega
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777639
+    m_Key: eredin_breacc_glas_the_treacherous
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777640
+    m_Key: eredin_bringer_of_death
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777641
+    m_Key: eredin_commander_of_the_red_riders
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777642
+    m_Key: eredin_destroyer_of_worlds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777643
+    m_Key: eredin_king_of_the_wild_hunt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777644
+    m_Key: esterad_thyssen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777645
+    m_Key: etolian_auxiliary_archers_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777646
+    m_Key: fiend
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777647
+    m_Key: filavandrel_aen_fidhail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777648
+    m_Key: fire_elemental
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777649
+    m_Key: foglet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777650
+    m_Key: foltest_king_of_temeria
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777651
+    m_Key: foltest_lord_commander_of_the_north
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777652
+    m_Key: foltest_son_of_medell
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777653
+    m_Key: foltest_the_siegemaster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777654
+    m_Key: foltest_the_steel_forged
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777655
+    m_Key: forktail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777656
+    m_Key: francesca_findabair_daisy_of_the_valle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777657
+    m_Key: francesca_findabair_hope_of_the_aen_seidhe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777658
+    m_Key: francesca_findabair_pureblood_elf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777659
+    m_Key: francesca_findabair_queen_of_dol_blathanna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777660
+    m_Key: francesca_findabair_the_beautiful
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777661
+    m_Key: frightener
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777662
+    m_Key: fringilla_vigo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777663
+    m_Key: gargoyle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777664
+    m_Key: gaunter_odimm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777665
+    m_Key: gaunter_odimm_darkness_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777666
+    m_Key: geralt_of_rivia_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777667
+    m_Key: ghoul_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777668
+    m_Key: grave_hag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777669
+    m_Key: griffin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777670
+    m_Key: harpy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777671
+    m_Key: havekar_healer_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777672
+    m_Key: havekar_smuggler_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777673
+    m_Key: heavy_zerrikanian_fire_scorpion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777674
+    m_Key: ice_giant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777675
+    m_Key: ida_emean_aep_sivney
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777676
+    m_Key: imlerith
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777677
+    m_Key: impera_brigade_guard_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777678
+    m_Key: iorveth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777679
+    m_Key: isengrim_faolitarna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777680
+    m_Key: john_natalis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777681
+    m_Key: kaedweni_siege_expert_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777682
+    m_Key: kayran
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777683
+    m_Key: keira_metz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777684
+    m_Key: leshen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777685
+    m_Key: letho_of_gulet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777686
+    m_Key: mahakaman_defender_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777687
+    m_Key: menno_coehoorn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777688
+    m_Key: milva
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777689
+    m_Key: morteisen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777690
+    m_Key: morvran_voorhis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777691
+    m_Key: mysterious_elf_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777692
+    m_Key: nausicaa_cavalry_rider_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777693
+    m_Key: nekker_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777694
+    m_Key: olgierd_von_everec
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777695
+    m_Key: philippa_eilhart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777696
+    m_Key: plague_maiden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777697
+    m_Key: poor_fucking_infantry_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777698
+    m_Key: prince_stennis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777699
+    m_Key: puttkammer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777700
+    m_Key: rainfarn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777701
+    m_Key: redanian_foot_soldier_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777702
+    m_Key: renuald_aep_matsen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777703
+    m_Key: riordain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777704
+    m_Key: rotten_mangonel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777705
+    m_Key: sabrina_glevissig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777706
+    m_Key: saesenthessis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777707
+    m_Key: schirru
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777708
+    m_Key: shelden_skaggs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777709
+    m_Key: shilard_fitz_oesterlen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777710
+    m_Key: siege_engineer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777711
+    m_Key: siege_technician
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777712
+    m_Key: siege_tower_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777713
+    m_Key: siegfried_of_denesle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777714
+    m_Key: sigismund_dijkstra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777715
+    m_Key: sile_de_tansarville
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777716
+    m_Key: stefan_skellen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777717
+    m_Key: sweers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777718
+    m_Key: thaler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777719
+    m_Key: tibor_eggebracht
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777720
+    m_Key: toad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777721
+    m_Key: toruviel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777722
+    m_Key: trebuchet_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777723
+    m_Key: triss_merigold_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777724
+    m_Key: vampire_bruxa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777725
+    m_Key: vampire_ekimmara
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777726
+    m_Key: vampire_fleder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777727
+    m_Key: vampire_garkain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777728
+    m_Key: vampire_katakan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777729
+    m_Key: vanhemar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777730
+    m_Key: vattier_de_rideaux
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777731
+    m_Key: vernon_roche
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777732
+    m_Key: ves
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777733
+    m_Key: vesemir_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777734
+    m_Key: villentretenmerth_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777735
+    m_Key: vreemde
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777736
+    m_Key: vrihedd_brigade_recruit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777737
+    m_Key: vrihedd_brigade_veteran_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777738
+    m_Key: werewolf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777739
+    m_Key: wyvern
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777740
+    m_Key: yaevinn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777741
+    m_Key: yarpen_zigrin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777742
+    m_Key: yennefer_of_vengerberg_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777743
+    m_Key: young_emissary_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777744
+    m_Key: zerrikanian_fire_scorpion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777745
+    m_Key: zoltan_chivay_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777746
+    m_Key: berserker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777747
+    m_Key: birna_bran
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777748
+    m_Key: blueboy_lugos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777749
+    m_Key: cerys
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777750
+    m_Key: clan_an_craite_warrior
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777751
+    m_Key: clan_brokvar_archer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777752
+    m_Key: clan_dimun_pirate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777753
+    m_Key: clan_drummond_shield_maiden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777754
+    m_Key: clan_heymaey_skald
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777755
+    m_Key: clan_tordarroch_armorsmith
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777756
+    m_Key: crach_an_craite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777757
+    m_Key: donar_an_hindar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777758
+    m_Key: draig_bon_dhu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777759
+    m_Key: ermion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777760
+    m_Key: hemdall
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777761
+    m_Key: hjalmar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777762
+    m_Key: holger_blackhand
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777763
+    m_Key: kambi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777764
+    m_Key: king_bran
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777765
+    m_Key: light_longship
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777766
+    m_Key: madman_lugos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777767
+    m_Key: olaf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777768
+    m_Key: svanrige
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777769
+    m_Key: transformed_vildkaarl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777770
+    m_Key: transformed_young_vildkaarl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777771
+    m_Key: udalryk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777772
+    m_Key: war_longship
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777773
+    m_Key: young_berserker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777774
+    m_Key: biting_frost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777775
+    m_Key: clear_weather
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777776
+    m_Key: commander_horn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777777
+    m_Key: decoy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777778
+    m_Key: impenetrable_fog
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777779
+    m_Key: scorch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777780
+    m_Key: torrential_rain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777781
+    m_Key: mardroeme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777782
+    m_Key: skellige_storm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777783
+    m_Key: ability.leader.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777784
+    m_Key: ability.hero.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777785
+    m_Key: ability.hero.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777786
+    m_Key: ability.agile.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777787
+    m_Key: ability.agile.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777788
+    m_Key: ability.avenger.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777789
+    m_Key: ability.avenger.hemdall
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777790
+    m_Key: ability.avenger.cow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777791
+    m_Key: mardroeme.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777792
+    m_Key: commander_horn.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777793
+    m_Key: ability.unit_horn.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777794
+    m_Key: biting_frost.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777795
+    m_Key: impenetrable_fog.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777796
+    m_Key: torrential_rain.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777797
+    m_Key: skellige_storm.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777798
+    m_Key: clear_weather.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777799
+    m_Key: decoy.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777800
+    m_Key: scorch.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777801
+    m_Key: ability.spy.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777802
+    m_Key: ability.spy.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777803
+    m_Key: ability.medic.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777804
+    m_Key: ability.medic.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777805
+    m_Key: ability.muster.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777806
+    m_Key: ability.muster.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777807
+    m_Key: ability.morale_boost.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777808
+    m_Key: ability.morale_boost.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777809
+    m_Key: ability.tight_bond.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777810
+    m_Key: ability.tight_bond.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777811
+    m_Key: ability.scorch_close.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777812
+    m_Key: ability.scorch_range.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777813
+    m_Key: ability.scorch_siege.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777814
+    m_Key: ability.scorch.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777815
+    m_Key: ability.berserker.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777816
+    m_Key: ability.berserker.text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777817
+    m_Key: leader.emhyr_emperor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777818
+    m_Key: leader.emhyr_majesty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777819
+    m_Key: leader.emhyr_invader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777820
+    m_Key: leader.emhyr_relentless
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777821
+    m_Key: leader.emhyr_white_flame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777822
+    m_Key: leader.eredin_treacherous
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777823
+    m_Key: leader.eredin_bringer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777824
+    m_Key: leader.eredin_commander
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777825
+    m_Key: leader.eredin_destroyer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777826
+    m_Key: leader.eredin_king
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777827
+    m_Key: leader.foltest_king
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777828
+    m_Key: leader.foltest_lord
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777829
+    m_Key: leader.foltest_son
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777830
+    m_Key: leader.foltest_siegemaster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777831
+    m_Key: leader.foltest_steel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777832
+    m_Key: leader.francesca_daisy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777833
+    m_Key: leader.francesca_hope
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777834
+    m_Key: leader.francesca_pureblood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777835
+    m_Key: leader.francesca_queen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777836
+    m_Key: leader.francesca_beautiful
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777837
+    m_Key: leader.crach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777838
+    m_Key: leader.bran
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 2352279959430496481
+  references:
+    version: 2
+    RefIds:
+    - rid: 2352279959430496481
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1794077319446

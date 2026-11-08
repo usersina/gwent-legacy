@@ -139,13 +139,13 @@ namespace Gwent.Battle
         {
             usable = false;
             if (cancelled)
-                return "Cancelled by the other leader";
+                return Loc.T(Loc.UI, "leader.cancelled");
             if (type == Row.LeaderPassive)
-                return "Passive: always in effect";
+                return Loc.T(Loc.UI, "leader.passive");
             if (used)
-                return "Used";
+                return Loc.T(Loc.UI, "leader.used");
             usable = ready;
-            return ready ? (IsPlayers ? "Ready to use" : "Not used yet") : "Not used yet, not this round";
+            return Loc.T(Loc.UI, ready ? (IsPlayers ? "leader.ready" : "leader.not_used") : "leader.not_this_round");
         }
 
         // The crown's picture (gold), for the player sheet
@@ -160,18 +160,19 @@ namespace Gwent.Battle
 
         private string TooltipText()
         {
-            string whose = IsPlayers ? "Leader ability" : "Opponent's leader ability";
+            string whose = Loc.T(Loc.UI, IsPlayers ? "leader.whose_you" : "leader.whose_opp");
             if (cancelled)
-                return whose + ": cancelled by the other leader";
+                return Loc.T(Loc.UI, "leader.tip_cancelled", whose);
             if (type == Row.LeaderPassive)
-                return whose + ": passive, always in effect";
+                return Loc.T(Loc.UI, "leader.tip_passive", whose);
             if (used)
-                return whose + ": used";
+                return Loc.T(Loc.UI, "leader.tip_used", whose);
             if (!IsPlayers)
-                return whose + ": not used yet";
-            string press = GameInput.IsTouch ? "tap" : "click";
-            return lifted ? "Leader ability: " + press + " to use it"
-                : "Leader ability: " + press + " your leader card to lift it, then " + press + " this crown to use it";
+                return Loc.T(Loc.UI, "leader.tip_unused", whose);
+            // One key a sentence: the verb changes with the input (a tap, a click), and the words around it with it
+            if (GameInput.IsTouch)
+                return Loc.T(Loc.UI, lifted ? "leader.use_tap" : "leader.lift_tap");
+            return Loc.T(Loc.UI, lifted ? "leader.use_click" : "leader.lift_click");
         }
 
         // Reference: the crown's button (Activate). It uses the lifted leader; the controller marks the crown used once the

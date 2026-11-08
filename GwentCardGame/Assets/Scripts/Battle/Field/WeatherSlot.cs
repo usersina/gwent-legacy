@@ -24,7 +24,7 @@ namespace Gwent.Battle
                 BattleController battle = BattleController.Instance;
                 if (battle == null || battle.weatherList.Count > 0)
                     return null;
-                return "Weather: none in play. A weather card lands here and brings its row down to 1 on both sides; Clear Weather lifts it";
+                return Loc.T(Loc.UI, "weather.none");
             };
         }
 

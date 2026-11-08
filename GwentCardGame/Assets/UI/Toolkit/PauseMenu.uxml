@@ -1,15 +1,15 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:l="UnityEngine.Localization" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Toolkit/Gwent.uss" />
     <!-- The battle's pause menu: time stops while it is open -->
     <ui:VisualElement name="Dimmer" class="dimmer">
         <ui:VisualElement name="Panel" class="panel pause-menu">
             <ui:Label text="Paused" class="title" />
             <ui:VisualElement class="ornament pause-menu__ornament" />
-            <Gwent.UI.MenuEntry name="Item Resume" text="Resume" class="menu-item--centered" />
-            <Gwent.UI.MenuEntry name="Item Settings" text="Settings" class="menu-item--centered" />
-            <Gwent.UI.MenuEntry name="Item Leave battle" text="Leave battle" class="menu-item--centered" />
+            <Gwent.UI.MenuEntry name="Item Resume" text="Resume" class="menu-item--centered"><Bindings><l:LocalizedString property="text" table="UI" entry="pause.resume" /></Bindings></Gwent.UI.MenuEntry>
+            <Gwent.UI.MenuEntry name="Item Settings" text="Settings" class="menu-item--centered"><Bindings><l:LocalizedString property="text" table="UI" entry="menu.settings" /></Bindings></Gwent.UI.MenuEntry>
+            <Gwent.UI.MenuEntry name="Item Leave battle" text="Leave battle" class="menu-item--centered"><Bindings><l:LocalizedString property="text" table="UI" entry="pause.leave" /></Bindings></Gwent.UI.MenuEntry>
             <Gwent.UI.MenuEntry name="Item Main menu" text="Main menu" class="menu-item--centered" />
-            <Gwent.UI.MenuEntry name="Item Quit game" text="Quit game" class="menu-item--centered" />
+            <Gwent.UI.MenuEntry name="Item Quit game" text="Quit game" class="menu-item--centered"><Bindings><l:LocalizedString property="text" table="UI" entry="menu.quit" /></Bindings></Gwent.UI.MenuEntry>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

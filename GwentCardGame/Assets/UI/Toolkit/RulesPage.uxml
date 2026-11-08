@@ -1,9 +1,9 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:l="UnityEngine.Localization" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Toolkit/Gwent.uss" />
     <!-- How to play: the topics on the left, the topic's rules on the right (made in RulesPage) -->
     <ui:VisualElement name="Dimmer" class="dimmer">
         <ui:VisualElement name="Panel" class="panel rules">
-            <ui:Label text="How to play" class="title" />
+            <ui:Label text="How to play" class="title"><Bindings><l:LocalizedString property="text" table="UI" entry="menu.rules" /></Bindings></ui:Label>
             <ui:VisualElement class="ornament rules__ornament" />
             <ui:VisualElement class="rules__body">
                 <ui:VisualElement name="Topics" class="rules__topics" />

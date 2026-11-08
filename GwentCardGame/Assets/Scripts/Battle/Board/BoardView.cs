@@ -119,6 +119,9 @@ namespace Gwent.Battle
                 LeaderHolder = t.Find("Leader").Find("Holder").gameObject;
                 LeadMarker = t.Find("Stats").Find("Total").Find("Laurel").gameObject;
                 PassedLabel = t.Find("Stats").Find("Passed").gameObject;
+                TMP_Text passed_text = PassedLabel.GetComponentInChildren<TMP_Text>(true);
+                if (passed_text != null)
+                    passed_text.text = Loc.T(Loc.UI, "battle.passed_label"); // the scene says "Passed" itself
                 foreach (Row row in Gwent.Rules.Rows.Units)
                 {
                     Transform row_t = t.Find(row.ToString()); // the rows' objects are named Close, Range and Siege

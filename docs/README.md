@@ -26,6 +26,8 @@ The full details of the game and of how it is made. For a quick look at the proj
   - [Unit tests](testing.md#unit-tests) · [Autoplay smoke test](testing.md#autoplay-smoke-test) · [Monkey test](testing.md#monkey-test) · [Touch controls in the editor](testing.md#touch-controls-in-the-editor) · [LAN tests and bots](testing.md#lan-tests-and-bots) · [From the command line](testing.md#from-the-command-line)
 - **[The game log](game-log.md)**: every event as a line of JSON, for people and AI agents
   - [Where it is](game-log.md#where-it-is) · [What a line holds](game-log.md#what-a-line-holds) · [Events](game-log.md#events) · [Reading it with jq](game-log.md#reading-it-with-jq)
+- **[Localization](localization.md)**: the languages, where the texts live, adding a text or a language
+  - [What is translated](localization.md#what-is-translated) · [Where the texts live](localization.md#where-the-texts-live) · [Adding or changing a text](localization.md#adding-or-changing-a-text) · [Adding a language](localization.md#adding-a-language) · [Checking it](localization.md#checking-it)
 - **[Builds and releases](builds-and-releases.md)**: building every platform, the build number, releasing
   - [Building the game](builds-and-releases.md#building-the-game) · [Platform notes](builds-and-releases.md#platform-notes) · [The build number](builds-and-releases.md#the-build-number) · [Releases](builds-and-releases.md#releases)
 - **[Changelog](../CHANGELOG.md)**: what each release brought

@@ -140,7 +140,7 @@ namespace Gwent.Battle
                 rect.localScale = new Vector3(phone, phone, 1);
                 rect.SetSiblingIndex(menu_rect.GetSiblingIndex() + 1); // under the pickers and the end screen
                 UIKit.GrowTouchArea(rect, new Vector2(70, 110)); // not over the menu button's
-                help.gameObject.AddComponent<UITooltip>().text = () => "How to play";
+                help.gameObject.AddComponent<UITooltip>().text = () => Loc.T(Loc.UI, "menu.rules");
                 // The round button's text sits a little high for a "×"; a "?" is centred as it is
                 help.GetComponentInChildren<TMPro.TextMeshProUGUI>().rectTransform.Stretch(0, 2, 2.4f, 0);
             }
@@ -212,8 +212,8 @@ namespace Gwent.Battle
                 View(true).Deck.gameObject.AddComponent<DeckGiveUp>(); // a hand laid on your deck gives up
             GameAudio.PlayGameMusic();
             Time.timeScale = PlayingTimeScale;
-            PlayerInfo.Name = replay != null ? replay.MyName : lan != null ? lan.MyName : story != null ? StoryBattle.PlayerName : "Player";
-            EnemyInfo.Name = replay != null ? replay.TheirName : lan != null ? lan.TheirName : story != null ? story.Name : "Opponent";
+            PlayerInfo.Name = replay != null ? replay.MyName : lan != null ? lan.MyName : story != null ? StoryBattle.PlayerName : Loc.T(Loc.UI, "battle.player");
+            EnemyInfo.Name = replay != null ? replay.TheirName : lan != null ? lan.TheirName : story != null ? story.Name : Loc.T(Loc.UI, "battle.opponent");
 
             UIOverlay.SetEscapeAction(OnEscape);
             battleState = BattleState.Start;
@@ -240,7 +240,7 @@ namespace Gwent.Battle
             GameAudio.PlaySfx("game_start"); // as it shows, the hands dealt (the loading screen may take a while on a phone)
             GameAudio.PlaySfx("card_draw");
             if (deckProblem != null)
-                UIOverlay.Toast("Your selected deck can't be used (" + deckProblem + "). Playing with the default deck.", 4f);
+                UIOverlay.Toast(Loc.T(Loc.UI, "battle.deck_unusable", deckProblem), 4f);
 
             if (whiteFlameNotice != null && (replay == null || replay.StartAt <= 1)) // not for a replay shown from further on
             {
@@ -464,8 +464,8 @@ namespace Gwent.Battle
                 if (info.leaderDisabled)
                 {
                     View(is_player).Leader.MarkCancelled();
-                    whiteFlameNotice = Said(is_player ? "Your opponent's leader cancels your leader ability" : "Your leader cancels your opponent's leader ability",
-                        NameOf(!is_player) + "'s leader cancels " + NameOf(is_player) + "'s leader ability");
+                    whiteFlameNotice = Said(Loc.T(Loc.UI, is_player ? "battle.leader_cancels_you" : "battle.leader_cancels_opp"),
+                        Loc.T(Loc.UI, "battle.r_leader_cancels", NameOf(!is_player), NameOf(is_player)));
                 }
             }
         }
@@ -696,11 +696,11 @@ namespace Gwent.Battle
             bool opponents_perk = e.Flag && EnemyInfo.Faction == Faction.Scoiatael;
             if (opponents_perk)
                 BattleBanner.Show(BattleBanner.FactionEmblem(Faction.Scoiatael), player_first
-                    ? Said("Opponent used the Scoia'tael faction ability to let you go first.", NameOf(false) + " used the Scoia'tael faction ability to let " + NameOf(true) + " go first.")
-                    : Said("Opponent used the Scoia'tael faction ability to go first.", NameOf(false) + " used the Scoia'tael faction ability to go first."));
+                    ? Said(Loc.T(Loc.UI, "battle.scoia_you_first"), Loc.T(Loc.UI, "battle.r_scoia_other_first", NameOf(false), NameOf(true)))
+                    : Said(Loc.T(Loc.UI, "battle.scoia_opp_first"), Loc.T(Loc.UI, "battle.r_scoia_first", NameOf(false))));
             else
                 BattleBanner.Show(player_first ? BattleBanner.YouFirst : BattleBanner.OpponentFirst,
-                    Said(player_first ? "You will go first" : "Your opponent will go first", NameOf(player_first) + " will go first"));
+                    Said(Loc.T(Loc.UI, player_first ? "battle.you_first" : "battle.opp_first"), Loc.T(Loc.UI, "battle.r_first", NameOf(player_first))));
             await While(() => BattleBanner.Busy, ct);
 
             battleState = BattleState.Start; // the redraw (an opponent choosing first had it look like its turn)
@@ -715,14 +715,14 @@ namespace Gwent.Battle
         {
             ApplyView(e.State, all);
             if (e.Seat && e.Why == PassReason.TimedOut)
-                UIOverlay.Toast(Said("Out of time: you keep your hand", NameOf(true) + " ran out of time and keeps the hand"), 3f);
+                UIOverlay.Toast(Said(Loc.T(Loc.UI, "battle.timeout_hand"), Loc.T(Loc.UI, "battle.r_timeout_hand", NameOf(true))), 3f);
             if (!e.Seat || !EnemyInfo.CanExchange)
                 return;
             await While(() => RedrawPicker.IsAnimating, ct);
             if (mulliganPrompt != null)
                 Destroy(mulliganPrompt);
             mulliganPrompt = null;
-            OpponentsMove(Said("Your opponent is still redrawing", NameOf(false) + " is still redrawing"));
+            OpponentsMove(Said(Loc.T(Loc.UI, "battle.opp_redrawing"), Loc.T(Loc.UI, "battle.r_redrawing", NameOf(false))));
         }
 
         // The screen waits for the opponent outside its turns (its redraw, its choice of who goes first): as on its turn,
@@ -752,7 +752,7 @@ namespace Gwent.Battle
                 Destroy(mulliganPrompt);
             ApplyView(e.State, all);
 
-            BattleBanner.Show(BattleBanner.RoundStart, "Round Start");
+            BattleBanner.Show(BattleBanner.RoundStart, Loc.T(Loc.UI, "battle.round_start"));
             await While(() => BattleBanner.Busy, ct);
             roundOpening = true;
             lastTurnWasPlayer = null;
@@ -798,7 +798,7 @@ namespace Gwent.Battle
             bool shown = lastTurnWasPlayer != is_player && !Opponent(is_player).hasPassed;
             if (shown)
                 BattleBanner.Show(is_player ? BattleBanner.YourTurn : BattleBanner.OpponentsTurn,
-                    Said(is_player ? "Your turn!" : "Opponent's turn", NameOf(is_player) + "'s turn"),
+                    Said(Loc.T(Loc.UI, is_player ? "battle.your_turn" : "battle.opp_turn"), Loc.T(Loc.UI, "battle.r_turn", NameOf(is_player))),
                     BattleBanner.Turn, is_player ? "turn_player" : "turn_enemy");
             lastTurnWasPlayer = is_player;
             return shown;
@@ -817,7 +817,7 @@ namespace Gwent.Battle
             // A pass that ends the round is followed by the round's result instead; at the opening of a round the
             // other side's "Round N" notice says it all. Its sound goes with its notice (which may wait behind another).
             if (!Opponent(is_player).hasPassed && !roundOpening)
-                BattleBanner.Show(BattleBanner.Passed, Said(is_player ? "Turn passed" : "Your opponent has passed", NameOf(is_player) + " has passed"), BattleBanner.Turn, "pass");
+                BattleBanner.Show(BattleBanner.Passed, Said(Loc.T(Loc.UI, is_player ? "battle.turn_passed" : "battle.opp_passed"), Loc.T(Loc.UI, "battle.r_passed", NameOf(is_player))), BattleBanner.Turn, "pass");
             else
                 GameAudio.PlaySfx("pass");
             if (is_player)
@@ -936,19 +936,19 @@ namespace Gwent.Battle
             if (timed_out && e.Seat)
                 DropInput(); // what the player was doing goes with the round
             if (e.Flag)
-                BattleBanner.Show(BattleBanner.FactionEmblem(Faction.Nilfgaard), "Nilfgaardian faction ability triggered: Nilfgaard wins the tie.");
+                BattleBanner.Show(BattleBanner.FactionEmblem(Faction.Nilfgaard), Loc.T(Loc.UI, "battle.nilfgaard_tie"));
             string sound = RoundOutcomeSound(e.Winner);
             int result;
             if (timed_out)
                 result = BattleBanner.Show(e.Seat ? BattleBanner.RoundLost : BattleBanner.RoundWon,
-                    Said(e.Seat ? "Out of time: your opponent wins the round" : "Your opponent ran out of time: you win the round",
-                        NameOf(e.Seat) + " ran out of time: " + NameOf(!e.Seat) + " wins the round"), BattleBanner.Long, sound);
+                    Said(Loc.T(Loc.UI, e.Seat ? "battle.timeout_lost" : "battle.timeout_won"),
+                        Loc.T(Loc.UI, "battle.r_timeout", NameOf(e.Seat), NameOf(!e.Seat))), BattleBanner.Long, sound);
             else if (e.Winner == RoundWinner.Player)
-                result = BattleBanner.Show(BattleBanner.RoundWon, Said("You won the round!", NameOf(true) + " won the round!"), BattleBanner.Long, sound);
+                result = BattleBanner.Show(BattleBanner.RoundWon, Said(Loc.T(Loc.UI, "battle.round_won"), Loc.T(Loc.UI, "battle.r_round_won", NameOf(true))), BattleBanner.Long, sound);
             else if (e.Winner == RoundWinner.Enemy)
-                result = BattleBanner.Show(BattleBanner.RoundLost, Said("Your opponent won the round", NameOf(false) + " won the round"), BattleBanner.Long, sound);
+                result = BattleBanner.Show(BattleBanner.RoundLost, Said(Loc.T(Loc.UI, "battle.round_lost"), Loc.T(Loc.UI, "battle.r_round_lost", NameOf(false))), BattleBanner.Long, sound);
             else
-                result = BattleBanner.Show(BattleBanner.RoundDrawn, "The round ended in a draw", BattleBanner.Long, sound);
+                result = BattleBanner.Show(BattleBanner.RoundDrawn, Loc.T(Loc.UI, "battle.round_draw"), BattleBanner.Long, sound);
 
             await While(() => !BattleBanner.Begun(result), ct);
             List<UniTask> shatters = new List<UniTask>();
@@ -986,14 +986,14 @@ namespace Gwent.Battle
                 if (kept == -1)
                     continue;
                 GameLog.Event(LogCategory.Battle, "monsters_kept", "side", is_player ? "player" : "enemy", "card", Db.Get(kept).name);
-                BattleBanner.Show(BattleBanner.FactionEmblem(Faction.Monsters), "Monsters faction ability triggered: one randomly chosen Monster Unit Card stays on the battlefield.");
+                BattleBanner.Show(BattleBanner.FactionEmblem(Faction.Monsters), Loc.T(Loc.UI, "battle.monsters_kept"));
             }
             foreach (bool is_player in new[] { true, false })
             {
                 if (!(is_player ? e.PlayerDrew : e.EnemyDrew))
                     continue;
                 GameLog.Event(LogCategory.Battle, "northern_realms_draw", "side", is_player ? "player" : "enemy");
-                BattleBanner.Show(BattleBanner.FactionEmblem(Faction.NorthernRealms), "Northern Realms faction ability triggered: North draws an additional card.");
+                BattleBanner.Show(BattleBanner.FactionEmblem(Faction.NorthernRealms), Loc.T(Loc.UI, "battle.north_draw"));
             }
             RefreshBoard(round_clear: true);
             BoardChange change = board.EndChange();
@@ -1012,8 +1012,9 @@ namespace Gwent.Battle
                 if (placed.Count == 0)
                     continue;
                 GameLog.Event(LogCategory.Battle, "skellige_reinforcements", "side", is_player ? "player" : "enemy", "cards", string.Join(", ", placed.Select(id => Db.Get(id).name)));
-                BattleBanner.Show(BattleBanner.FactionEmblem(Faction.Skellige), "Skellige faction ability triggered: " + (placed.Count == 1 ? "a unit" : "two units")
-                    + " from " + (is_player ? "your" : "your opponent's") + " discard pile " + (placed.Count == 1 ? "returns" : "return") + " to the battlefield.");
+                // One key a variant (one unit or two, whose pile): the words around them change with each
+                BattleBanner.Show(BattleBanner.FactionEmblem(Faction.Skellige),
+                    Loc.T(Loc.UI, (placed.Count == 1 ? "battle.skellige_one" : "battle.skellige_two") + (is_player ? "_you" : "_opp")));
             }
             RefreshBoard();
             BoardChange change = board.EndChange();
@@ -1328,8 +1329,8 @@ namespace Gwent.Battle
             {
                 GameAudio.PlaySfx("invalid");
                 UIOverlay.Toast(CardIds.IsSummoned(targetStats._id) && targetCard.CompareTag("Player")
-                    ? targetStats.DisplayName + " only exists on the board: a decoy can't take it back"
-                    : "Decoy can only swap a non-hero unit on your side");
+                    ? Loc.T(Loc.UI, "battle.decoy_summoned", targetStats.LocalName())
+                    : Loc.T(Loc.UI, "battle.decoy_target"));
                 return true;
             }
 
@@ -1502,26 +1503,13 @@ namespace Gwent.Battle
         // In a replay: the side named
         private string ReplayAvengerNotice(bool kambi, bool is_player, bool killed)
         {
-            string side = NameOf(is_player) + (kambi ? "'s Kambi" : "'s Cow");
-            string avenger = kambi ? "Hemdall" : "the Bovine Defense Force";
-            return killed ? side + " was killed: " + avenger + " takes the field to avenge " + (kambi ? "him" : "it")
-                : side + " is discarded: " + avenger + " comes next round, if the battle goes on";
+            return Loc.T(Loc.UI, "battle.r_" + (kambi ? "kambi" : "cow") + (killed ? "_killed" : "_discarded"), NameOf(is_player));
         }
 
         private static string AvengerNotice(bool kambi, bool is_player, bool killed)
         {
-            if (kambi)
-            {
-                if (killed)
-                    return is_player ? "Kambi was killed: Hemdall takes the field to avenge him" : "You killed the opponent's Kambi: their Hemdall takes the field to avenge him";
-                return is_player ? "Kambi is discarded: Hemdall joins your close combat row next round, if the battle goes on"
-                    : "The opponent's Kambi is discarded: their Hemdall comes next round, if the battle goes on";
-            }
-            if (killed)
-                return is_player ? "Your Cow was killed: the Bovine Defense Force takes the field to avenge it"
-                    : "You killed the opponent's Cow: their Bovine Defense Force takes the field to avenge it";
-            return is_player ? "Your Cow is discarded: the Bovine Defense Force joins your close combat row next round, if the battle goes on"
-                : "The opponent's Cow is discarded: their Bovine Defense Force comes next round, if the battle goes on";
+            // One key for each of the eight sentences: who it is about, what happened to whom, and the avenger's pronoun change them
+            return Loc.T(Loc.UI, "battle." + (kambi ? "kambi" : "cow") + (killed ? "_killed" : "_discarded") + (is_player ? "_you" : "_opp"));
         }
 
         private void SetDeckObject(BattleSide info, bool is_player_deck) { board.SetDeck(info, is_player_deck); }

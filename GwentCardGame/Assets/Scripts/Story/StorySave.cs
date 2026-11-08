@@ -33,18 +33,19 @@ namespace Gwent.Story
             {
                 StoryState state = JsonUtility.FromJson<StoryState>(File.ReadAllText(FilePath));
                 if (state == null || state.Cards == null || state.Cards.Count == 0)
-                    problem = "The story's save could not be read";
+                    problem = "story.save_unreadable";
                 else if (state.Format > StoryState.CurrentFormat)
-                    problem = "The story was saved by a newer version of the game";
+                    problem = "story.save_newer";
                 else
                     return state;
             }
             catch (Exception e) when (e is IOException || e is UnauthorizedAccessException || e is ArgumentException)
             {
-                problem = "The story's save could not be read";
+                problem = "story.save_unreadable";
                 Debug.LogWarning("[story] " + FilePath + ": " + e.Message);
             }
             GameLog.Event(LogCategory.Game, "story_unreadable", "problem", problem);
+            problem = Loc.T(Loc.UI, problem); // the log keeps the key; the player gets the words, in their language
             return null;
         }
 

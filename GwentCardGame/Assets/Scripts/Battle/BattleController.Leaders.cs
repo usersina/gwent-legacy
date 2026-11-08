@@ -59,7 +59,7 @@ namespace Gwent.Battle
         public void HintLeaderCrown()
         {
             GameAudio.PlaySfx("invalid");
-            UIOverlay.Toast(GameInput.IsTouch ? "Tap the glowing crown to use your leader ability" : "Click the glowing crown or press {Enter} to use your leader ability");
+            UIOverlay.Toast(Loc.T(Loc.UI, GameInput.IsTouch ? "battle.leader_hint_touch" : "battle.leader_hint"));
         }
 
         private void SelectLeader()
@@ -68,7 +68,7 @@ namespace Gwent.Battle
             {
                 GameAudio.PlaySfx("invalid");
                 if (PlayerInfo.leaderDisabled && replay == null) // a replay takes no input: nothing to say
-                    UIOverlay.Toast("Your leader ability was cancelled by the opponent's leader");
+                    UIOverlay.Toast(Loc.T(Loc.UI, "battle.leader_cancelled"));
                 return;
             }
             // An ability that would do nothing is not chosen: why, at once
@@ -147,7 +147,7 @@ namespace Gwent.Battle
             {
                 GameAudio.PlaySfx("invalid");
                 if (PlayerInfo.leaderDisabled && replay == null) // a replay takes no input: nothing to say
-                    UIOverlay.Toast("Your leader ability was cancelled by the opponent's leader");
+                    UIOverlay.Toast(Loc.T(Loc.UI, "battle.leader_cancelled"));
                 return;
             }
             string reason = LeaderProblem();

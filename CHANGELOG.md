@@ -4,6 +4,22 @@ Every push to `main` is a release: it replaces the one GitHub release, `latest`,
 notes. A push to `main` is only released when this file has a new section since the last release: add one, headed by the
 date, before pushing.
 
+## 2026-11-07
+
+Spanish: the game speaks English and Spanish.
+
+### Languages
+
+- **Settings > Game > Language** switches the whole game between English and Español (neutral Latin American Spanish) at once, and
+  keeps the choice. The game starts in English; it never follows the system's language.
+- Translated: the menus, the battle, the deck builder, the settings, the LAN lobby, the story's screens, the cards' names and
+  descriptions, the leaders' abilities and the How to play page. The story's own content (the places, the quests, the players' lines)
+  stays in English.
+- Two players on a LAN may play in different languages: a quick chat line is sent by its number and said in the language of
+  whoever reads it. Replays, the game log and the deck files are language-free.
+- Built on Unity's Localization package; the texts are CSVs (`Assets/Localization/Source`) and `LocalizationTests` check them (see
+  [Localization](docs/localization.md)).
+
 ## 2026-10-29
 
 Story: The Witcher 3's Gwent as Geralt played it, on The Witcher 3's own maps.

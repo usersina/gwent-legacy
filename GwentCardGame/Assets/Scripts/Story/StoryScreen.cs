@@ -56,14 +56,14 @@ namespace Gwent.Story
             root = document;
             crowns = root.Q<Label>("Crowns");
             hint = root.Q<Label>("Hint");
-            ElementTooltip.Attach(root.Q("Purse"), () => "Crowns: wins pay them; innkeepers and merchants sell cards for them");
+            ElementTooltip.Attach(root.Q("Purse"), () => Loc.T(Loc.UI, "story.purse_tip"));
             UITheme theme = UITheme.Current;
             VisualElement tools = root.Q("Tools");
-            Tool(tools, "Journal", theme.iconJournal, "J", OpenJournal, "The Gwent quests");
-            Tool(tools, "Collection", theme.iconCards, "C", OpenCollection, "Your collection: what is still to find");
-            Tool(tools, "Deck", theme.iconDeck, "D", OpenDecks, "Your story decks");
-            Tool(tools, "Travel", theme.iconTravel, "M", OpenTravel, "Travel");
-            Button("Button Close", ToMainMenu, "Back to the main menu" + (GameInput.IsTouch ? "" : " (Esc)"));
+            Tool(tools, "Journal", theme.iconJournal, "J", OpenJournal, Loc.T(Loc.UI, "story.tip_journal"));
+            Tool(tools, "Collection", theme.iconCards, "C", OpenCollection, Loc.T(Loc.UI, "story.tip_collection"));
+            Tool(tools, "Deck", theme.iconDeck, "D", OpenDecks, Loc.T(Loc.UI, "story.tip_deck"));
+            Tool(tools, "Travel", theme.iconTravel, "M", OpenTravel, Loc.T(Loc.UI, "story.travel"));
+            Button("Button Close", ToMainMenu, Loc.T(Loc.UI, "deck.back_menu") + (GameInput.IsTouch ? "" : " (Esc)"));
             map = new MapView();
             root.Q("Map").Add(map);
             Show(story.Current);
@@ -283,7 +283,7 @@ namespace Gwent.Story
                 return;
             crowns.text = story.State.Crowns.ToString();
             int left = story.StillIn(region).Count;
-            hint.text = left > 0 ? left + " to find" : "All found";
+            hint.text = left > 0 ? Loc.T(Loc.UI, "story.to_find", left) : Loc.T(Loc.UI, "story.all_found");
             foreach (KeyValuePair<string, Button> pair in markers)
             {
                 StoryPlace place = story.Content.Place(pair.Key);
@@ -301,11 +301,11 @@ namespace Gwent.Story
             List<string> lines = new List<string>();
             List<StoryPlace> here = reward.Revealed.Where(place => place.Region == region?.Id || region == null).ToList();
             if (here.Count > 0)
-                lines.Add("On the map now: " + string.Join(", ", here.Select(place => place.Name)));
+                lines.Add(Loc.T(Loc.UI, "story.on_map", string.Join(", ", here.Select(place => place.Name))));
             foreach (StoryRegion opened in reward.Regions)
-                lines.Add(opened.Name + " is open: Travel to go there");
+                lines.Add(Loc.T(Loc.UI, "story.region_open", opened.Name));
             if (reward.Cards.Count > 0 && story.CollectionComplete)
-                lines.Add("Card Collector: every Gwent card is yours");
+                lines.Add(Loc.T(Loc.UI, "story.collector"));
             if (lines.Count > 0)
                 UIOverlay.Toast(string.Join("\n", lines), 4.5f);
         }

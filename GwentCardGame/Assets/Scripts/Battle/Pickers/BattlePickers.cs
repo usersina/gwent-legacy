@@ -78,13 +78,13 @@ namespace Gwent.Battle
             switch (mode)
             {
                 case Mode.Play:
-                    return field == PickSource.Deck ? "Choose a weather card to play from your deck" : "Choose a unit to bring back from your discard pile";
+                    return Loc.T(Loc.UI, field == PickSource.Deck ? "pick.weather_deck" : "pick.revive");
                 case Mode.Draw:
                     if (field == PickSource.OpponentDiscard)
-                        return "Choose a unit to take from your opponent's discard pile";
-                    return field == PickSource.Discard ? "Choose a unit to take back from your discard pile" : "Choose a card to take from your deck";
+                        return Loc.T(Loc.UI, "pick.take_opp_discard");
+                    return Loc.T(Loc.UI, field == PickSource.Discard ? "pick.take_discard" : "pick.take_deck");
                 default:
-                    return "Randomly selected cards from your opponent's hand"; // The Witcher 3's words
+                    return Loc.T(Loc.UI, "pick.look_hand"); // The Witcher 3's words
             }
         }
 
@@ -105,22 +105,21 @@ namespace Gwent.Battle
                 BattleController.Instance.CancelPanel();
                 return;
             }
-            UIOverlay.Confirm(SkipQuestion(mode, field), "Skip", "Keep choosing", () => BattleController.Instance.CancelPanel());
+            UIOverlay.Confirm(SkipQuestion(mode, field), Loc.T(Loc.UI, "pick.skip"), Loc.T(Loc.UI, "pick.keep_choosing"), () => BattleController.Instance.CancelPanel());
         }
 
         private static string SkipQuestion(Mode mode, PickSource field)
         {
             if (mode == Mode.Play)
-                return field == PickSource.Deck ? "Play no weather card? Your leader ability is spent, and your turn ends."
-                    : "Bring no unit back? The medic stays, but its ability is lost, and your turn ends.";
+                return Loc.T(Loc.UI, field == PickSource.Deck ? "pick.skip_weather" : "pick.skip_revive");
             switch (field)
             {
                 case PickSource.Deck:
-                    return "Draw no card? The two cards you discarded are gone, and your turn ends.";
+                    return Loc.T(Loc.UI, "pick.skip_draw");
                 case PickSource.OpponentDiscard:
-                    return "Take nothing from your opponent's discard pile? Your leader ability is spent, and your turn ends.";
+                    return Loc.T(Loc.UI, "pick.skip_opp_discard");
                 default:
-                    return "Take no card back? Your leader ability is spent, and your turn ends.";
+                    return Loc.T(Loc.UI, "pick.skip_take");
             }
         }
 
@@ -142,7 +141,7 @@ namespace Gwent.Battle
                     controller.ShowcasePicked(card_id, field, isPlayerCard);
                     controller.SetHider(true);
                     gameObject.SetActive(false);
-                    UIOverlay.Toast("Now choose where to play " + controller.GetCard(card_id).name);
+                    UIOverlay.Toast(Loc.T(Loc.UI, "pick.where_to_play", controller.GetCard(card_id).LocalName()));
                     break;
 
                 // A leader's pick: the card goes to the hand and the turn ends

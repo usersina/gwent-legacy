@@ -20,7 +20,7 @@ namespace Gwent.Story
         //----------------------------------------The journal----------------------------------------//
         public static void Journal(StoryProgress story, Action on_close)
         {
-            Open("Journal", root =>
+            Open("story.journal", root =>
             {
                 CardDatabase db = CardLibrary.Get();
                 ScrollView entries = root.Q<ScrollView>("Entries");
@@ -43,54 +43,50 @@ namespace Gwent.Story
                         Line(entry, (step_done ? "✓ " : "• ") + Step(place), step_done);
                     }
                     if (hidden)
-                        Line(entry, "• … more to come", false);
+                        Line(entry, "• " + Loc.T(Loc.UI, "story.more_to_come"), false);
                     if (quest.Reward.Count > 0)
-                        Line(entry, "Reward: " + string.Join(", ", quest.Reward.Select(id => db.Get(id).DisplayName)) + (done ? " (yours)" : ""), done);
+                        Line(entry, Loc.T(Loc.UI, done ? "story.reward_done" : "story.reward", string.Join(", ", quest.Reward.Select(id => db.Get(id).LocalName()))), done);
                 }
-                VisualElement collect = Entry(entries, "Collect 'Em All", story.CollectionComplete);
-                Line(collect, (story.CollectionComplete ? "✓ " : "• ") + "Every Gwent card: " + story.State.Cards.Count + " of " + AllCards, story.CollectionComplete);
+                VisualElement collect = Entry(entries, Loc.T(Loc.UI, "story.collect_all"), story.CollectionComplete);
+                Line(collect, (story.CollectionComplete ? "✓ " : "• ") + Loc.T(Loc.UI, "story.every_card_count", story.State.Cards.Count, AllCards), story.CollectionComplete);
             }, on_close);
         }
 
+        // The place's name stays as the story gives it (story.json is not translated), so it comes after a colon, whole:
+        // no sentence bends around it, whatever the language
         private static string Step(StoryPlace place)
         {
             switch (place.Type)
             {
-                case StoryPlaceKind.Found: return "Search " + Lower(place.Name);
-                case StoryPlaceKind.Event: return "Meet " + Lower(place.Name);
-                case StoryPlaceKind.Tournament: return "Win " + Lower(place.Name);
-                default: return "Beat " + Lower(place.Name);
+                case StoryPlaceKind.Found: return Loc.T(Loc.UI, "story.step_found", place.Name);
+                case StoryPlaceKind.Event: return Loc.T(Loc.UI, "story.step_event", place.Name);
+                case StoryPlaceKind.Tournament: return Loc.T(Loc.UI, "story.step_tournament", place.Name);
+                default: return Loc.T(Loc.UI, "story.step_beat", place.Name);
             }
-        }
-
-        // "The innkeeper of…" inside a sentence: "the innkeeper of…" (a name's own capital stays)
-        private static string Lower(string name)
-        {
-            return name.StartsWith("A ") || name.StartsWith("The ") ? char.ToLower(name[0]) + name.Substring(1) : name;
         }
 
         //----------------------------------------The collection----------------------------------------//
         public static void Collection(StoryProgress story, Action on_close)
         {
-            Open("Collection", root =>
+            Open("story.collection", root =>
             {
                 CardDatabase db = CardLibrary.Get();
                 ScrollView entries = root.Q<ScrollView>("Entries");
-                Bar(entries, "Every Gwent card", story.State.Cards.Count, AllCards, true);
-                Heading(entries, "Where they are");
+                Bar(entries, Loc.T(Loc.UI, "story.every_card"), story.State.Cards.Count, AllCards, true);
+                Heading(entries, Loc.T(Loc.UI, "story.where"));
                 foreach (StoryRegion region in story.Content.Regions)
                 {
                     int left = story.StillIn(region).Count, total = Gives(story, region);
-                    Bar(entries, story.IsOpen(region) ? region.Name : region.Name + " · not reached", total - left, total, false);
+                    Bar(entries, story.IsOpen(region) ? region.Name : Loc.T(Loc.UI, "story.not_reached", region.Name), total - left, total, false);
                 }
                 int pool = story.Content.File.Pool.Count;
-                Bar(entries, "Random cards", pool - story.PoolLeft, pool, false);
-                Heading(entries, "By faction");
+                Bar(entries, Loc.T(Loc.UI, "story.random_cards"), pool - story.PoolLeft, pool, false);
+                Heading(entries, Loc.T(Loc.UI, "story.by_faction"));
                 foreach (Faction faction in new[] { Faction.NorthernRealms, Faction.Nilfgaard, Faction.Scoiatael, Faction.Monsters, Faction.Skellige, Faction.Neutral, Faction.Special })
                 {
                     List<Card> cards = db.All.Where(card => card.faction == faction && card.copies > 0).ToList();
                     int have = cards.Sum(card => story.Owned(card._id)), total = cards.Sum(card => card.copies);
-                    Bar(entries, faction == Faction.Special ? "Special cards" : faction == Faction.Neutral ? "Neutral" : faction.DisplayName(), have, total, false);
+                    Bar(entries, faction == Faction.Special ? Loc.T(Loc.UI, "story.special_cards") : faction == Faction.Neutral ? Loc.T(Loc.UI, "story.neutral") : faction.LocalName(), have, total, false);
                 }
             }, on_close);
         }
@@ -135,7 +131,7 @@ namespace Gwent.Story
         //----------------------------------------Travel----------------------------------------//
         public static void Travel(StoryProgress story, Action<StoryRegion> travel, Action on_close)
         {
-            Open("Travel", root =>
+            Open("story.travel", root =>
             {
                 ScrollView entries = root.Q<ScrollView>("Entries");
                 MenuEntry focus = null;
@@ -146,8 +142,8 @@ namespace Gwent.Story
                     entry.name = "Region " + region.Id;
                     entry.Q<Label>("Title").text = region.Name;
                     int left = story.StillIn(region).Count;
-                    entry.Q<Label>("Detail").text = !open ? "Opens " + Opens(story, region.Opens)
-                        : (here ? "You are here · " : "") + (left > 0 ? left + " to find" : "All found");
+                    entry.Q<Label>("Detail").text = !open ? Opens(story, region.Opens)
+                        : (here ? Loc.T(Loc.UI, "story.here") + " · " : "") + (left > 0 ? Loc.T(Loc.UI, "story.to_find", left) : Loc.T(Loc.UI, "story.all_found"));
                     entry.Q("Chosen").style.visibility = here ? Visibility.Visible : Visibility.Hidden;
                     entry.Q("Art").RemoveFromHierarchy();
                     entry.Q<Label>("Question").text = open ? "→" : "?";
@@ -167,15 +163,15 @@ namespace Gwent.Story
             }, on_close);
         }
 
-        // "once the White Orchard scholar is beaten": what a region's or a place's condition waits for
+        // "Opens once beaten: the White Orchard scholar": what a region's or a place's condition waits for
         private static string Opens(StoryProgress story, string condition)
         {
             string kind, id;
             if (!StoryContent.Condition(condition, out kind, out id))
-                return "from the start";
+                return Loc.T(Loc.UI, "story.opens_start");
             if (kind == "quest")
-                return "once " + story.Content.Quest(id).Name + " is done";
-            return "once " + Lower(story.Content.Place(id).Name) + " is beaten";
+                return Loc.T(Loc.UI, "story.opens_quest", story.Content.Quest(id).Name);
+            return Loc.T(Loc.UI, "story.opens_place", story.Content.Place(id).Name);
         }
 
         //----------------------------------------The story's start----------------------------------------//
@@ -185,29 +181,30 @@ namespace Gwent.Story
         {
             StoryProgress story = StoryGame.Load();
             string problem = StoryGame.Problem;
-            Open("Story", root =>
+            Open("story.title", root =>
             {
                 VisualElement buttons = root.Q("Buttons");
                 ScrollView entries = root.Q<ScrollView>("Entries");
                 if (story == null && problem == null)
                 {
-                    Caption(root, "Geralt's Gwent, across The Witcher 3's lands: beat its players, buy from its innkeepers, finish its quests, collect every card.");
+                    Caption(root, Loc.T(Loc.UI, "story.begin_caption"));
                     VisualElement entry = Entry(entries, "White Orchard", false);
-                    Line(entry, "The Witcher 3's starter deck, and a leader of four factions", false);
-                    Button(buttons, "Begin", true, () => Start(true));
+                    Line(entry, Loc.T(Loc.UI, "story.begin_deck"), false);
+                    Button(buttons, "Begin", Loc.T(Loc.UI, "story.btn_begin"), true, () => Start(true));
                     return;
                 }
                 if (story == null)
                 {
-                    Caption(root, problem + ". Start over sets it aside (it is kept, not deleted) and begins a new story.");
-                    Button(buttons, "Start over", true, () => Start(true));
+                    Caption(root, Loc.T(Loc.UI, "story.unreadable_caption", problem));
+                    Button(buttons, "Start over", Loc.T(Loc.UI, "story.btn_start_over"), true, () => Start(true));
                     return;
                 }
                 VisualElement saved = Entry(entries, story.Current.Name, false);
-                Line(saved, story.State.Cards.Count + " of " + AllCards + " cards · " + story.State.Crowns + " crowns · "
-                    + story.Content.Quests.Count(story.QuestDone) + " of " + story.Content.Quests.Count + " quests", false);
-                Button(buttons, "Start over", false, () => UIOverlay.Confirm("Begin a new story? This one is set aside (kept, not deleted).", "Start over", "Cancel", () => Start(true)));
-                Button(buttons, "Continue", true, () => Start(false));
+                Line(saved, Loc.T(Loc.UI, "story.saved_summary", story.State.Cards.Count, AllCards, story.State.Crowns,
+                    story.Content.Quests.Count(story.QuestDone), story.Content.Quests.Count), false);
+                Button(buttons, "Start over", Loc.T(Loc.UI, "story.btn_start_over"), false, () => UIOverlay.Confirm(Loc.T(Loc.UI, "story.confirm_new"),
+                    Loc.T(Loc.UI, "story.btn_start_over"), Loc.T(Loc.UI, "common.cancel"), () => Start(true)));
+                Button(buttons, "Continue", Loc.T(Loc.UI, "story.btn_continue"), true, () => Start(false));
             }, on_close);
         }
 
@@ -221,11 +218,11 @@ namespace Gwent.Story
         }
 
         //----------------------------------------Pieces----------------------------------------//
-        private static void Open(string title, Action<VisualElement> fill, Action on_close)
+        private static void Open(string title_key, Action<VisualElement> fill, Action on_close)
         {
             UIScreens.ShowDialog("StoryPage", UITheme.Current.storyPage, root =>
             {
-                root.Q<Label>("Title").text = title;
+                root.Q<Label>("Title").text = Loc.T(Loc.UI, title_key);
                 root.Q<Label>("Caption").style.display = DisplayStyle.None; // a page says only what it must
                 root.Q<Button>("Button Close").clicked += () => UIScreens.Close(root);
                 fill(root);
@@ -264,9 +261,10 @@ namespace Gwent.Story
             entry.Add(line);
         }
 
-        private static void Button(VisualElement buttons, string text, bool primary, Action on_click)
+        // The name is the button's id (English, stable); the text is what the player reads
+        private static void Button(VisualElement buttons, string id, string text, bool primary, Action on_click)
         {
-            DialogButton button = new DialogButton { name = "Button " + text, text = text };
+            DialogButton button = new DialogButton { name = "Button " + id, text = text };
             button.AddToClassList(primary ? "button--primary" : "button--secondary");
             button.clicked += on_click;
             buttons.Add(button);

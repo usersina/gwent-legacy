@@ -1,0 +1,983 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Cards_es
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: 0ff5237a339fbbb47a54cceb963aef9c, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 17695500640256
+    m_Localized: Albrich
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777600
+    m_Localized: Arachas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777601
+    m_Localized: Arachas Behemot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777602
+    m_Localized: Assire var Anahid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777603
+    m_Localized: Balista
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777604
+    m_Localized: Barclay Els
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777605
+    m_Localized: "Arquero de la Infanter\xEDa Negra"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777606
+    m_Localized: Comando Franjas Azules
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777607
+    m_Localized: "Abort\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777608
+    m_Localized: Fuerza de Defensa Bovina
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777609
+    m_Localized: Cahir Mawr Dyffryn aep Ceallach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777610
+    m_Localized: Catapulta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777611
+    m_Localized: "Arp\xEDa Celaeno"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777612
+    m_Localized: Ciaran aep Easnillien
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777613
+    m_Localized: Cirilla Fiona Elen Riannon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777614
+    m_Localized: Cocatriz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777615
+    m_Localized: Vaca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777616
+    m_Localized: Cazadragones de Crinfrid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777617
+    m_Localized: Anciana Brewess
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777618
+    m_Localized: Anciana Weavess
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777619
+    m_Localized: Anciana Whispess
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777620
+    m_Localized: Cynthia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777621
+    m_Localized: Jaskier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777622
+    m_Localized: Dennis Cranmer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777623
+    m_Localized: Dethmold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777624
+    m_Localized: Arquero de Dol Blathanna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777625
+    m_Localized: Explorador de Dol Blathanna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777626
+    m_Localized: Draug
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777627
+    m_Localized: "M\xE9dico del Estandarte Pardo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777628
+    m_Localized: Escaramuzador enano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777629
+    m_Localized: Elemental de tierra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777630
+    m_Localized: "Eithn\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777631
+    m_Localized: Escaramuzador elfo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777632
+    m_Localized: 'Emhyr var Emreis: Emperador de Nilfgaard'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777633
+    m_Localized: 'Emhyr var Emreis: Su Majestad Imperial'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777634
+    m_Localized: 'Emhyr var Emreis: Invasor del Norte'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777635
+    m_Localized: 'Emhyr var Emreis: El Implacable'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777636
+    m_Localized: 'Emhyr var Emreis: La Llama Blanca'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777637
+    m_Localized: Emiel Regis Rohellec Terzieff
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777638
+    m_Localized: Endriaga
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777639
+    m_Localized: "Eredin Br\xE9acc Glas: El Traicionero"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777640
+    m_Localized: 'Eredin: Portador de la Muerte'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777641
+    m_Localized: 'Eredin: Comandante de los Jinetes Rojos'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777642
+    m_Localized: 'Eredin: Destructor de Mundos'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777643
+    m_Localized: "Eredin: Rey de la Cacer\xEDa Salvaje"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777644
+    m_Localized: Esterad Thyssen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777645
+    m_Localized: Arqueros auxiliares etolianos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777646
+    m_Localized: Quimera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777647
+    m_Localized: Filavandrel aen Fidhail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777648
+    m_Localized: Elemental de fuego
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777649
+    m_Localized: Neblinoso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777650
+    m_Localized: 'Foltest: Rey de Temeria'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777651
+    m_Localized: 'Foltest: Lord Comandante del Norte'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777652
+    m_Localized: 'Foltest: Hijo de Medell'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777653
+    m_Localized: 'Foltest: El Maestro de Asedio'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777654
+    m_Localized: 'Foltest: El Forjado en Acero'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777655
+    m_Localized: "Colab\xEDfida"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777656
+    m_Localized: 'Francesca Findabair: Margarita del Valle'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777657
+    m_Localized: 'Francesca Findabair: Esperanza de los Aen Seidhe'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777658
+    m_Localized: 'Francesca Findabair: Elfa de Sangre Pura'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777659
+    m_Localized: 'Francesca Findabair: Reina de Dol Blathanna'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777660
+    m_Localized: 'Francesca Findabair: La Hermosa'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777661
+    m_Localized: Espantador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777662
+    m_Localized: Fringilla Vigo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777663
+    m_Localized: "G\xE1rgola"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777664
+    m_Localized: Gaunter O'Dimm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777665
+    m_Localized: 'Gaunter O''Dimm: Oscuridad'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777666
+    m_Localized: Geralt de Rivia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777667
+    m_Localized: "Necr\xF3fago"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777668
+    m_Localized: Vieja de las Tumbas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777669
+    m_Localized: Grifo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777670
+    m_Localized: "Arp\xEDa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777671
+    m_Localized: Curandero de Havekar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777672
+    m_Localized: Contrabandista de Havekar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777673
+    m_Localized: "Escorpi\xF3n de fuego zerricano pesado"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777674
+    m_Localized: Gigante de hielo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777675
+    m_Localized: Ida Emean aep Sivney
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777676
+    m_Localized: Imlerith
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777677
+    m_Localized: Guardia de la Brigada Impera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777678
+    m_Localized: Iorveth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777679
+    m_Localized: Isengrim Faoiltiarna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777680
+    m_Localized: John Natalis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777681
+    m_Localized: Experto en asedio de Kaedwen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777682
+    m_Localized: Kayran
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777683
+    m_Localized: Keira Metz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777684
+    m_Localized: Leshen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777685
+    m_Localized: Letho de Gulet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777686
+    m_Localized: Defensor de Mahakam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777687
+    m_Localized: Menno Coehoorn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777688
+    m_Localized: Milva
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777689
+    m_Localized: Morteisen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777690
+    m_Localized: Morvran Voorhis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777691
+    m_Localized: Elfo misterioso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777692
+    m_Localized: "Jinete de caballer\xEDa de Nausicaa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777693
+    m_Localized: Nekker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777694
+    m_Localized: Olgierd von Everec
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777695
+    m_Localized: Philippa Eilhart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777696
+    m_Localized: Doncella de la Peste
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777697
+    m_Localized: "Pobre maldita infanter\xEDa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777698
+    m_Localized: "Pr\xEDncipe Stennis"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777699
+    m_Localized: Puttkammer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777700
+    m_Localized: Rainfarn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777701
+    m_Localized: "Soldado de infanter\xEDa de Redania"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777702
+    m_Localized: Renuald aep Matsen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777703
+    m_Localized: Riordain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777704
+    m_Localized: Mangonel podrido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777705
+    m_Localized: Sabrina Glevissig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777706
+    m_Localized: Saesenthessis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777707
+    m_Localized: Schirru
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777708
+    m_Localized: Sheldon Skaggs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777709
+    m_Localized: Shilard Fitz-Oesterlen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777710
+    m_Localized: Ingeniero de asedio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777711
+    m_Localized: "T\xE9cnico de asedio"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777712
+    m_Localized: Torre de asedio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777713
+    m_Localized: Siegfried de Denesle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777714
+    m_Localized: Sigismund Dijkstra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777715
+    m_Localized: Sile de Tansarville
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777716
+    m_Localized: Stefan Skellen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777717
+    m_Localized: Sweers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777718
+    m_Localized: Thaler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777719
+    m_Localized: Tibor Eggebracht
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777720
+    m_Localized: Sapo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777721
+    m_Localized: Toruviel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777722
+    m_Localized: Trabuquete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777723
+    m_Localized: Triss Merigold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777724
+    m_Localized: Vampiro Bruxa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777725
+    m_Localized: Vampiro Ekimmara
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777726
+    m_Localized: Vampiro Fleder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777727
+    m_Localized: Vampiro Garkain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777728
+    m_Localized: Vampiro Katakan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777729
+    m_Localized: Vanhemar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777730
+    m_Localized: Vattier de Rideaux
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777731
+    m_Localized: Vernon Roche
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777732
+    m_Localized: Ves
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777733
+    m_Localized: Vesemir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777734
+    m_Localized: Villentretenmerth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777735
+    m_Localized: Vreemde
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777736
+    m_Localized: Recluta de la Brigada Vrihedd
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777737
+    m_Localized: Veterano de la Brigada Vrihedd
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777738
+    m_Localized: Hombre lobo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777739
+    m_Localized: Guiverno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777740
+    m_Localized: Yaevinn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777741
+    m_Localized: Yarpen Zigrin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777742
+    m_Localized: Yennefer de Vengerberg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777743
+    m_Localized: Joven emisario
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777744
+    m_Localized: "Escorpi\xF3n de fuego zerricano"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777745
+    m_Localized: Zoltan Chivay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777746
+    m_Localized: Berserker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777747
+    m_Localized: Birna Bran
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777748
+    m_Localized: Blueboy Lugos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777749
+    m_Localized: Cerys
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777750
+    m_Localized: Guerrero del Clan an Craite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777751
+    m_Localized: Arquero del Clan Brokvar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777752
+    m_Localized: Pirata del Clan Dimun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777753
+    m_Localized: Doncella de escudo del Clan Drummond
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777754
+    m_Localized: Escaldo del Clan Heymaey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777755
+    m_Localized: Armero del Clan Tordarroch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777756
+    m_Localized: Crach an Craite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777757
+    m_Localized: Donar an Hindar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777758
+    m_Localized: Draig Bon-Dhu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777759
+    m_Localized: Ermion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777760
+    m_Localized: Hemdall
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777761
+    m_Localized: Hjalmar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777762
+    m_Localized: Holger Mano Negra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777763
+    m_Localized: Kambi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777764
+    m_Localized: Rey Bran
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777765
+    m_Localized: Drakkar ligero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777766
+    m_Localized: Lugos el Loco
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777767
+    m_Localized: Olaf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777768
+    m_Localized: Svanrige
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777769
+    m_Localized: Vildkaarl transformado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777770
+    m_Localized: Joven Vildkaarl transformado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777771
+    m_Localized: Udalryk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777772
+    m_Localized: Drakkar de guerra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777773
+    m_Localized: Joven Berserker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777774
+    m_Localized: Escarcha mordiente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777775
+    m_Localized: Clima despejado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777776
+    m_Localized: Cuerno de mando
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777777
+    m_Localized: "Se\xF1uelo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777778
+    m_Localized: Niebla impenetrable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777779
+    m_Localized: Abrasar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777780
+    m_Localized: Lluvia torrencial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777781
+    m_Localized: Mardroeme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777782
+    m_Localized: Tormenta de Skellige
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777783
+    m_Localized: "Habilidad del l\xEDder"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777784
+    m_Localized: "H\xE9roe"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777785
+    m_Localized: No le afectan las cartas especiales ni las habilidades.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777786
+    m_Localized: "\xC1gil"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777787
+    m_Localized: Puede colocarse en la fila de combate cuerpo a cuerpo o en la de combate a distancia.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777788
+    m_Localized: Vengador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777789
+    m_Localized: Si muere por Abrasar, llama de inmediato a Hemdall a tu fila de combate cuerpo a cuerpo. Si se descarta de cualquier otra forma, llega al inicio de la siguiente ronda.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777790
+    m_Localized: Si muere por Abrasar, llama de inmediato a la Fuerza de Defensa Bovina a tu fila de combate cuerpo a cuerpo. Si se descarta de cualquier otra forma, llega al inicio de la siguiente ronda.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777791
+    m_Localized: "Activa la transformaci\xF3n de todas las cartas de Berserker de la misma fila."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777792
+    m_Localized: Duplica la fuerza de todas las cartas de unidad de esa fila. Limitado a 1 por fila.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777793
+    m_Localized: "Duplica la fuerza de las dem\xE1s unidades de su fila."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777794
+    m_Localized: Reduce a 1 la fuerza de todas las cartas de combate cuerpo a cuerpo de ambos jugadores.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777795
+    m_Localized: Reduce a 1 la fuerza de todas las cartas de combate a distancia de ambos jugadores.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777796
+    m_Localized: Reduce a 1 la fuerza de todas las cartas de asedio de ambos jugadores.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777797
+    m_Localized: Reduce a 1 la fuerza de todas las cartas de combate a distancia y de asedio de ambos jugadores.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777798
+    m_Localized: Elimina todos los efectos del clima (Escarcha mordiente, Niebla impenetrable, Lluvia torrencial y Tormenta de Skellige).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777799
+    m_Localized: "C\xE1mbiala por una carta del campo de batalla para devolverla a tu mano."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777800
+    m_Localized: "Se descarta despu\xE9s de jugarla. Mata a la carta o cartas m\xE1s fuertes del campo de batalla."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777801
+    m_Localized: "Esp\xEDa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777802
+    m_Localized: "Col\xF3cala en el campo de batalla de tu oponente (cuenta para el total de tu oponente) y roba 2 cartas de tu mazo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777803
+    m_Localized: "M\xE9dico"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777804
+    m_Localized: "Elige una carta de tu pila de descarte y ju\xE9gala al instante (sin h\xE9roes ni cartas especiales)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777805
+    m_Localized: Convocar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777806
+    m_Localized: "Busca en tu mazo y en tu mano todas las cartas con el mismo nombre y ju\xE9galas al instante."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777807
+    m_Localized: Impulso de moral
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777808
+    m_Localized: "Suma +1 a todas las unidades de la fila (sin contarse a s\xED misma)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777809
+    m_Localized: "V\xEDnculo estrecho"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777810
+    m_Localized: "Col\xF3cala junto a una carta con el mismo nombre para duplicar la fuerza de ambas."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777811
+    m_Localized: "Destruye a la unidad o unidades de combate cuerpo a cuerpo m\xE1s fuertes de tu enemigo si la fuerza combinada de todas sus unidades de combate cuerpo a cuerpo es de 10 o m\xE1s."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777812
+    m_Localized: "Destruye a la unidad o unidades de combate a distancia m\xE1s fuertes de tu enemigo si la fuerza combinada de todas sus unidades de combate a distancia es de 10 o m\xE1s."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777813
+    m_Localized: "Destruye a la unidad o unidades de asedio m\xE1s fuertes de tu enemigo si la fuerza combinada de todas sus unidades de asedio es de 10 o m\xE1s."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777814
+    m_Localized: "Mata a la carta o cartas m\xE1s fuertes del campo de batalla al jugarse (nunca a s\xED misma)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777815
+    m_Localized: Berserker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777816
+    m_Localized: Se transforma en oso cuando hay una carta de Mardroeme en su fila.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777817
+    m_Localized: Mira 3 cartas al azar de la mano de tu oponente.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777818
+    m_Localized: "Elige una carta de Lluvia torrencial de tu mazo y ju\xE9gala al instante."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777819
+    m_Localized: "Los m\xE9dicos y las habilidades de l\xEDder que restauran una unidad eligen una al azar (un m\xE9dico h\xE9roe sigue eligiendo). Afecta a ambos jugadores."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777820
+    m_Localized: "Toma una unidad (no un h\xE9roe) de la pila de descarte de tu oponente."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777821
+    m_Localized: "Anula la habilidad del l\xEDder de tu oponente."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777822
+    m_Localized: "Duplica la fuerza de todas las cartas de esp\xEDa. Afecta a ambos jugadores."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777823
+    m_Localized: "Devuelve a tu mano una unidad (no un h\xE9roe) de tu pila de descarte."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777824
+    m_Localized: "Duplica la fuerza de todas tus unidades de combate cuerpo a cuerpo (salvo que haya tambi\xE9n un Cuerno de mando en esa fila)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777825
+    m_Localized: "Descarta 2 cartas y roba 1 carta de tu mazo a tu elecci\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777826
+    m_Localized: "Elige cualquier carta de clima de tu mazo y ju\xE9gala al instante."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777827
+    m_Localized: "Elige una carta de Niebla impenetrable de tu mazo y ju\xE9gala al instante."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777828
+    m_Localized: Elimina todos los efectos del clima (Escarcha mordiente, Niebla impenetrable, Lluvia torrencial y Tormenta de Skellige).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777829
+    m_Localized: "Destruye a la unidad o unidades de combate a distancia m\xE1s fuertes de tu enemigo si la fuerza combinada de todas sus unidades de combate a distancia es de 10 o m\xE1s."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777830
+    m_Localized: "Duplica la fuerza de todas tus unidades de asedio (salvo que haya tambi\xE9n un Cuerno de mando en esa fila)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777831
+    m_Localized: "Destruye a la unidad o unidades de asedio m\xE1s fuertes de tu enemigo si la fuerza combinada de todas sus unidades de asedio es de 10 o m\xE1s."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777832
+    m_Localized: Roba una carta adicional al comienzo de la batalla.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777833
+    m_Localized: "Mueve las unidades \xE1giles a la fila v\xE1lida que maximice su fuerza (las que ya est\xE1n en su mejor fila se quedan)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777834
+    m_Localized: "Elige una carta de Escarcha mordiente de tu mazo y ju\xE9gala al instante."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777835
+    m_Localized: "Destruye a la unidad o unidades de combate cuerpo a cuerpo m\xE1s fuertes de tu enemigo si la fuerza combinada de todas sus unidades de combate cuerpo a cuerpo es de 10 o m\xE1s."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777836
+    m_Localized: "Duplica la fuerza de todas tus unidades de combate a distancia (salvo que haya tambi\xE9n un Cuerno de mando en esa fila)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777837
+    m_Localized: Baraja de nuevo en los mazos todas las cartas de la pila de descarte de cada jugador.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17695546777838
+    m_Localized: Tus unidades solo pierden la mitad de su fuerza con mal clima.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

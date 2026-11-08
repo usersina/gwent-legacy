@@ -41,7 +41,7 @@ namespace Gwent.Battle
         private static void Ask()
         {
             GameLog.Event(LogCategory.Ui, "give_up_asked");
-            UIOverlay.Confirm("Give up this battle? It counts as a loss.", "Give up", "Keep playing", () =>
+            UIOverlay.Confirm(Loc.T(Loc.UI, "battle.give_up_ask"), Loc.T(Loc.UI, "battle.give_up"), Loc.T(Loc.UI, "battle.keep_playing"), () =>
             {
                 if (BattleController.Instance != null)
                     BattleController.Instance.GiveUp();

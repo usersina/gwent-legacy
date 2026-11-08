@@ -52,13 +52,17 @@ namespace Gwent.Battle
         {
             // A thin bar: a finger holds it over a taller strip
             UIKit.GrowTouchArea((RectTransform)transform, new Vector2(280, 76));
+            // The prefab says "Press to pass" in English; a keyboard replaces it below, with its key
+            TMPro.TextMeshProUGUI hint = GetComponentInChildren<TMPro.TextMeshProUGUI>();
+            if (hint != null)
+                hint.text = Loc.T(Loc.UI, "battle.press_to_pass");
             // The Witcher 3's "[SPACE] [HOLD] Pass" hint, on keyboards: its key in a cap before the words, both centred
             if (GameInput.IsTouch)
                 return;
             TMPro.TextMeshProUGUI label = GetComponentInChildren<TMPro.TextMeshProUGUI>();
             if (label == null)
                 return;
-            label.text = "Hold to pass";
+            label.text = Loc.T(Loc.UI, "battle.hold_to_pass");
             RectTransform cap = UIKit.KeyCap(transform, "Space", 26);
             float words = label.GetPreferredValues(label.text).x;
             float together = cap.sizeDelta.x + 12 + words;

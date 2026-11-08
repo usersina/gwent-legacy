@@ -99,7 +99,7 @@ namespace Gwent.DeckBuilding
                 shield_rect.anchorMin = shield_rect.anchorMax = shield_rect.pivot = new Vector2(0, 0.5f);
                 shield_rect.anchoredPosition = Vector2.zero;
                 shield_rect.sizeDelta = new Vector2(ShieldWidth, BannerHeight);
-                TextMeshProUGUI name = UIKit.Text(banner, faction.DisplayName(), UIKit.TextStyle.Heading, TextAlignmentOptions.Center);
+                TextMeshProUGUI name = UIKit.Text(banner, faction.LocalName(), UIKit.TextStyle.Heading, TextAlignmentOptions.Center);
                 name.rectTransform.Stretch(ShieldWidth + 8, 0, 0, 0);
                 name.enableAutoSizing = true;
                 name.fontSizeMin = 26;

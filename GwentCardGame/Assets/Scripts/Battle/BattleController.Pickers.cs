@@ -29,7 +29,7 @@ namespace Gwent.Battle
             {
                 // A LAN battle's other player choosing who goes first takes its time (the AI answers at once)
                 if (choice != null && choice.Kind == ChoiceKind.FirstPlayer && lan != null)
-                    OpponentsMove("Your opponent is choosing who goes first");
+                    OpponentsMove(Loc.T(Loc.UI, "battle.opp_choosing"));
                 return;
             }
             switch (choice.Kind)
@@ -54,7 +54,7 @@ namespace Gwent.Battle
                     break;
                 case ChoiceKind.Discard:
                     pendingAction = PendingAction.DiscardCards;
-                    UIOverlay.Toast("Discard two cards from your hand: " + (GameInput.IsTouch ? "double-tap" : "double-click") + " each", 4f);
+                    UIOverlay.Toast(Loc.T(Loc.UI, GameInput.IsTouch ? "battle.discard_two_touch" : "battle.discard_two"), 4f);
                     break;
                 case ChoiceKind.DeckPick:
                     OpenPanel().ShowToDraw(PickSource.Deck, choice.Options, true);

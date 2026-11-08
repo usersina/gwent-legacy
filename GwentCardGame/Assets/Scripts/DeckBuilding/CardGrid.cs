@@ -43,7 +43,8 @@ namespace Gwent.DeckBuilding
         public const int SpecialTab = 6;
 
         // The tabs' names: the list's subtitle, and the tab's tooltip
-        private static readonly string[] TabNames = { "All Cards", "Close Units", "Ranged Units", "Siege Units", "Heroes", "Weather", "Specials" };
+        // The tabs' keys in the UI table (what each is called is looked up where it shows)
+        private static readonly string[] TabNames = { "deck.tab_all", "deck.tab_close", "deck.tab_ranged", "deck.tab_siege", "deck.tab_heroes", "deck.tab_weather", "deck.tab_specials" };
         private const float TabSize = 84;
 
         private async UniTaskVoid Start()
@@ -87,7 +88,7 @@ namespace Gwent.DeckBuilding
             // UI: Text and Icon
             currentSprites[index].sprite = selectedSprites[index];
             if (index >= 0 && index < TabNames.Length)
-                subtitle.text = TabNames[index];
+                subtitle.text = Loc.T(Loc.UI, TabNames[index]);
             switch (index)
             {
                 case 0:
@@ -262,7 +263,7 @@ namespace Gwent.DeckBuilding
             for (int i = 0; i < currentSprites.Count; i++)
             {
                 string tab_name = TabNames[i];
-                currentSprites[i].gameObject.AddComponent<UITooltip>().text = () => tab_name;
+                currentSprites[i].gameObject.AddComponent<UITooltip>().text = () => Loc.T(Loc.UI, tab_name);
             }
         }
 
@@ -463,7 +464,7 @@ namespace Gwent.DeckBuilding
                 return;
             faction = deck_faction;
             if (factionPerk != null)
-                factionPerk.text = faction.Ability();
+                factionPerk.text = faction.LocalAbility();
             if (header != null)
                 header.startingPanel = panel;
         }
@@ -475,7 +476,7 @@ namespace Gwent.DeckBuilding
             if (panel >= 0 && panel < HeaderFactions.Length)
             {
                 faction = HeaderFactions[panel];
-                factionPerk.text = faction.Ability();
+                factionPerk.text = faction.LocalAbility();
                 Select(selectedTab);
             }
 
