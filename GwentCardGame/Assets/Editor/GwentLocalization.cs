@@ -28,7 +28,7 @@ namespace Gwent.EditorTools
         private const string SettingsPath = Root + "/LocalizationSettings.asset";
 
         // The column of each language in the CSVs, and the language the game starts in
-        private static readonly string[] Codes = { "en", "es" };
+        private static readonly string[] Codes = { "en", "es", "ru" };
         private const string StartCode = "en";
 
         private static readonly string[] Tables = { Loc.UI, Loc.Cards, Loc.Rules };
@@ -94,7 +94,14 @@ namespace Gwent.EditorTools
             string source = SourceFolder + "/" + name + ".csv";
             List<string[]> rows = Csv(File.ReadAllText(source, Encoding.UTF8));
             string[] header = rows[0];
-            Dictionary<string, int> columns = Codes.ToDictionary(code => code, code => System.Array.IndexOf(header, code));
+            int fallbackColumn = System.Array.IndexOf(header, StartCode);
+            Dictionary<string, int> columns = Codes.ToDictionary(
+                code => code,
+                code =>
+                {
+                    int idx = System.Array.IndexOf(header, code);
+                    return idx >= 0 ? idx : fallbackColumn;
+                });
             foreach (KeyValuePair<string, int> column in columns)
                 if (column.Value < 0)
                     throw new System.Exception(source + " has no " + column.Key + " column");

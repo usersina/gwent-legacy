@@ -18,7 +18,7 @@ namespace Gwent.Content.Tests
 
         private struct Row
         {
-            public string Key, English, Spanish;
+            public string Key, English, Spanish, Russian;
         }
 
         private static string Source(string table)
@@ -79,7 +79,13 @@ namespace Gwent.Content.Tests
 
         private static List<Row> Rows(string table)
         {
-            return Parse(table).Where(columns => columns.Count == 3).Select(columns => new Row { Key = columns[0], English = columns[1], Spanish = columns[2] }).ToList();
+            return Parse(table).Where(columns => columns.Count >= 3).Select(columns => new Row
+            {
+                Key = columns[0],
+                English = columns[1],
+                Spanish = columns[2],
+                Russian = columns.Count > 3 ? columns[3] : ""
+            }).ToList();
         }
 
         private static HashSet<string> Keys(string table)
@@ -88,15 +94,19 @@ namespace Gwent.Content.Tests
         }
 
         [Test]
-        public void EveryRowHasAKeyAndTwoLanguages()
+        public void EveryRowHasAKeyAndLanguages()
         {
             foreach (string table in TableNames)
             {
+                int expected = (table == "UI" || table == "Cards") ? 4 : 3;
                 List<List<string>> rows = Parse(table);
-                Assert.IsEmpty(rows.Where(columns => columns.Count != 3).Select(columns => string.Join("|", columns)).ToList(), table + ": rows that are not key,en,es");
+                Assert.IsEmpty(rows.Where(columns => columns.Count != expected).Select(columns => string.Join("|", columns)).ToList(),
+                    table + ": rows that are not " + (expected == 4 ? "key,en,es,ru" : "key,en,es"));
                 Assert.IsEmpty(Rows(table).Where(row => string.IsNullOrWhiteSpace(row.Key) || string.IsNullOrWhiteSpace(row.English)).Select(row => row.Key).ToList(),
                     table + ": rows with no key or no English");
                 Assert.IsEmpty(Rows(table).Where(row => string.IsNullOrWhiteSpace(row.Spanish)).Select(row => row.Key).ToList(), table + ": rows with no Spanish");
+                if (table == "UI" || table == "Cards")
+                    Assert.IsEmpty(Rows(table).Where(row => string.IsNullOrWhiteSpace(row.Russian)).Select(row => row.Key).ToList(), table + ": rows with no Russian");
             }
         }
 
@@ -126,6 +136,22 @@ namespace Gwent.Content.Tests
                         differ.Add(table + "/" + row.Key + ": " + string.Join(" ", english) + " vs " + string.Join(" ", spanish));
                 }
             Assert.IsEmpty(differ, "Rows whose placeholders differ between the languages");
+        }
+
+        [Test]
+        public void TheRussianKeepsTheEnglishsPlaceholders()
+        {
+            Regex placeholder = new Regex(@"\{[^{}]+\}");
+            List<string> differ = new List<string>();
+            foreach (string table in new[] { "UI", "Cards" })
+                foreach (Row row in Rows(table))
+                {
+                    string[] english = placeholder.Matches(row.English).Cast<Match>().Select(match => match.Value).OrderBy(value => value).ToArray();
+                    string[] russian = placeholder.Matches(row.Russian).Cast<Match>().Select(match => match.Value).OrderBy(value => value).ToArray();
+                    if (!english.SequenceEqual(russian))
+                        differ.Add(table + "/" + row.Key + ": " + string.Join(" ", english) + " vs " + string.Join(" ", russian));
+                }
+            Assert.IsEmpty(differ, "Rows whose placeholders differ between English and Russian");
         }
 
         // The code's lookups: Loc.T(Loc.<Table>, <key>...). The keys that sit as literals in the first argument are checked (also
