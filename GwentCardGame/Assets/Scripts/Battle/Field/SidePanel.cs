@@ -106,31 +106,26 @@ namespace Gwent.Battle
                 }
             this.faction = faction;
             isPlayers = is_player;
-            string faction_name = faction.Code();
             switch (faction)
             {
                 case Faction.Monsters:
-                    faction_name = "Monsters";
                     factionShield.sprite = factionShields[0];
                     break;
                 case Faction.Nilfgaard:
-                    faction_name = "Nilfgaard";
                     factionShield.sprite = factionShields[1];
                     break;
                 case Faction.NorthernRealms:
-                    faction_name = "Northern Realms";
                     factionShield.sprite = factionShields[2];
                     break;
                 case Faction.Scoiatael:
-                    faction_name = "Scoia'tael";
                     factionShield.sprite = factionShields[3];
                     break;
                 case Faction.Skellige:
-                    faction_name = "Skellige";
                     factionShield.sprite = factionShields[4];
                     break;
             }
-            deckText.text = faction_name;
+            // In the current language; Nilfgaard by its short name, as the panel has room for
+            deckText.text = faction == Faction.Nilfgaard ? Loc.T(Loc.UI, "faction.nilfgaard.short") : faction.LocalName();
         }
 
         private string AbilityTooltip()

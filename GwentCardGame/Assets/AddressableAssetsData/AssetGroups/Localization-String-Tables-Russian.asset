@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-String-Tables-Russian
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Localization-String-Tables-Russian
+  m_GUID: a70fa41e3948466d388d0f007344e74b
+  m_SerializeEntries:
+  - m_GUID: 140642fdb7f9868ff87badb8a8989304
+    m_Address: Cards_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 99002aa0f02787de8bba862deac5a90a
+    m_Address: Rules_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e36882fc524c1b52085940704c0879ea
+    m_Address: UI_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: f501d7e5487ad7a6d81a1c97cb901b43, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: a278c7535ccc99e0c9b457d19ed5980a, type: 2}
+    - {fileID: 11400000, guid: 7535f0a1d5f77d8ee8bec56872dc8c82, type: 2}
+    - {fileID: 11400000, guid: 261d37ab47a442493a1661b48ddb21c6, type: 2}

@@ -49,7 +49,7 @@ Hunt; all credit goes to its owner, CD PROJEKT RED. This is a non-commercial fan
 
 - I made the original interface in Adobe Photoshop. Today most of it is drawn by the game's own sprite generator
   (`Assets/Editor/UISpriteGenerator.cs`), next to The Witcher 3's interface art above.
-- The fonts keep their own licenses: Cinzel and Alegreya Sans (SIL Open Font License 1.1); see
+- The fonts keep their own licenses: Cinzel, Alegreya Sans and Cormorant SC (SIL Open Font License 1.1); see
   `GwentCardGame/Assets/Fonts/FONTS-LICENSE.md`.
 - The table under the board is "Dark Wood" from [Poly Haven](https://polyhaven.com/a/dark_wood) (CC0); see
   `GwentCardGame/Assets/UI/Board/Sources/CREDITS.md`.

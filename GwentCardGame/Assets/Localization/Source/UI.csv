@@ -35,8 +35,8 @@ settings.difficulty.easy,Easy,Fácil,Легкая
 settings.difficulty.normal,Normal,Normal,Обычная
 settings.difficulty.hard,Hard,Difícil,Высокая
 settings.difficulty.easy.caption,Your opponent plays like a beginner,Tu oponente juega como un principiante,Противник играет как новичок
-settings.difficulty.normal.caption,Your opponent saves cards for later rounds,Tu oponente guarda cartas para las rondas siguientes,Противник приберегает карты для следующих раундов
-settings.difficulty.hard.caption,Your opponent thinks the battle through,Tu oponente planea toda la batalla,Противник тщательно продумывает всю битву
+settings.difficulty.normal.caption,Your opponent saves cards for later rounds,Tu oponente guarda cartas para las rondas siguientes,Противник бережет карты на потом
+settings.difficulty.hard.caption,Your opponent thinks the battle through,Tu oponente planea toda la batalla,Противник продумывает всю битву
 settings.censored,Censored artwork,Arte censurado,Цензурные иллюстрации
 settings.censored.caption,Covered versions of some cards' art,Versiones cubiertas del arte de algunas cartas,Закрытые версии иллюстраций некоторых карт
 settings.updates,Check for updates,Buscar actualizaciones,Проверять обновления
@@ -564,6 +564,7 @@ battle.passed_label,Passed,Pasó,Пас
 battle.press_to_pass,Press to pass,Presiona para pasar,"Нажмите, чтобы спасовать"
 faction.northern_realms,Northern Realms,Reinos del Norte,Королевства Севера
 faction.nilfgaard,Nilfgaardian Empire,Imperio nilfgaardiano,Нильфгаардская империя
+faction.nilfgaard.short,Nilfgaard,Nilfgaard,Нильфгаард
 faction.scoiatael,Scoia'tael,Scoia'tael,Скоя'таэли
 faction.monsters,Monsters,Monstruos,Чудовища
 faction.skellige,Skellige,Skellige,Скеллиге

@@ -4,7 +4,18 @@ Every push to `main` is a release: it replaces the one GitHub release, `latest`,
 notes. A push to `main` is only released when this file has a new section since the last release: add one, headed by the
 date, before pushing.
 
-## 2026-11-07
+## 2026-11-13
+
+Russian: the game speaks English, Spanish and Russian.
+
+### Languages
+
+- **Settings > Game > Language** now has Русский: the menus, the battle, the deck builder, the settings, the LAN lobby, the
+  story's screens, the cards' names and descriptions, the leaders' abilities and the How to play page. As in Spanish, the story's
+  own content stays in English.
+- Cyrillic letters come from fallback fonts: Alegreya Sans's own, and Cormorant SC (SIL Open Font License) for the headings, as
+  Cinzel has none.
+- The battle's side panels name the faction in the game's language (they stayed in English before, in Spanish too).
 
 Spanish: the game speaks English and Spanish. A card on sale in the story can be seen large.
 
