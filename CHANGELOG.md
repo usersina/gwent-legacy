@@ -15,6 +15,8 @@ Russian: the game speaks English, Spanish and Russian.
   own content stays in English.
 - Cyrillic letters come from fallback fonts: Alegreya Sans's own, and Cormorant SC (SIL Open Font License) for the headings, as
   Cinzel has none.
+- The menus' and dialogs' headings in Russian now show their letters in the browser too (boxes there before): they took
+  Cyrillic from the computer's own fonts, which the web has none of, and now take it from Cormorant SC as the battle does.
 - The battle's side panels name the faction in the game's language (they stayed in English before, in Spanish too).
 
 Spanish: the game speaks English and Spanish. A card on sale in the story can be seen large.

@@ -82,6 +82,10 @@ What to know:
    a dynamic fallback, `<font> Cyrillic SDF.asset`, made by Build Tables from a font that has the letters (`Fallbacks` in
    `GwentLocalization.cs`: Alegreya Sans for itself, Cormorant SC for Cinzel, which has no Cyrillic). A script none of them covers
    (Greek, Chinese…) needs a font file with it and a fallback of its own there; check a font's letters before choosing it.
+   The menus (UI Toolkit) draw from the font files themselves (`Gwent.uss`), not those assets: their fallback is
+   `CormorantSC-SemiBold UI.asset`, in the panels' text settings (`MenusText.asset`, also made by Build Tables). Check a new
+   script with the computer's fonts out of reach (`bwrap --dev-bind / / --tmpfs /usr/share/fonts ./GwentLegacy.x86_64`) or in the
+   browser: otherwise a missing letter is quietly drawn from an installed font.
 4. Add its code to `Languages` in `LocalizationTests`: every row must then have a text in it, with the English's placeholders.
 
 ## Checking it
