@@ -2307,6 +2307,10 @@ MonoBehaviour:
     m_Key: story.preview_hint
     m_Metadata:
       m_Items: []
+  - m_Id: 2139878716030976
+    m_Key: faction.nilfgaard.short
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

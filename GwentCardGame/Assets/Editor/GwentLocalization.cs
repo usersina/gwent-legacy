@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Gwent.Core;
+using TMPro;
 using UnityEditor;
 using UnityEditor.Localization;
 using UnityEngine;
@@ -13,7 +14,7 @@ using UnityEngine.Localization.Tables;
 namespace Gwent.EditorTools
 {
     // The game's languages (Gwent > Localization > Build Tables): makes the Localization package's settings, the locales and
-    // the string tables in Assets/Localization from the texts in Assets/Localization/Source, one CSV a table (key,en,es: the
+    // the string tables in Assets/Localization from the texts in Assets/Localization/Source, one CSV a table (key,en,es,ru: the
     // key, then the text in each language). The CSVs are where texts are written and translated; the tables are made from
     // them, as many times as needed (an entry gone from its CSV leaves its table).
     //
@@ -33,6 +34,15 @@ namespace Gwent.EditorTools
 
         private static readonly string[] Tables = { Loc.UI, Loc.Cards, Loc.Rules };
 
+        // The game's fonts are static atlases (ASCII and Latin-1); the letters they lack (Cyrillic) are drawn by a dynamic
+        // fallback beside each, made from a font that has them: Alegreya Sans its own, Cormorant SC for Cinzel (none of its own)
+        private static readonly (string Font, string Source)[] Fallbacks =
+        {
+            ("Assets/Fonts/Cinzel SDF.asset", "Assets/Fonts/CormorantSC-SemiBold.ttf"),
+            ("Assets/Fonts/AlegreyaSans-Regular SDF.asset", "Assets/Fonts/AlegreyaSans-Regular.ttf"),
+            ("Assets/Fonts/AlegreyaSans-Medium SDF.asset", "Assets/Fonts/AlegreyaSans-Medium.ttf"),
+        };
+
         [MenuItem("Gwent/Localization/Build Tables")]
         public static void BuildTables()
         {
@@ -42,8 +52,42 @@ namespace Gwent.EditorTools
             int entries = 0;
             foreach (string table in Tables)
                 entries += Fill(table, locales);
+            FontFallbacks();
             AssetDatabase.SaveAssets();
             Debug.Log("Localization: " + entries + " entries in " + Tables.Length + " tables, " + Codes.Length + " languages");
+        }
+
+        // Each font's fallback ("<font> Cyrillic SDF.asset"), made once at the font's own size, padding and render mode; its
+        // glyphs are drawn as the game needs them, and cleared from the build (the source font goes with it)
+        private static void FontFallbacks()
+        {
+            foreach ((string font_path, string source_path) in Fallbacks)
+            {
+                TMP_FontAsset font = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(font_path);
+                string path = font_path.Replace(" SDF.asset", " Cyrillic SDF.asset");
+                TMP_FontAsset fallback = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(path);
+                if (fallback == null)
+                {
+                    Font source = AssetDatabase.LoadAssetAtPath<Font>(source_path);
+                    fallback = TMP_FontAsset.CreateFontAsset(source, (int)font.faceInfo.pointSize, font.atlasPadding, font.atlasRenderMode,
+                        font.atlasWidth, font.atlasHeight, AtlasPopulationMode.Dynamic, true);
+                    fallback.name = Path.GetFileNameWithoutExtension(path);
+                    AssetDatabase.CreateAsset(fallback, path);
+                    fallback.atlasTextures[0].name = fallback.name + " Atlas";
+                    AssetDatabase.AddObjectToAsset(fallback.atlasTextures[0], fallback);
+                    fallback.material.name = fallback.name + " Material";
+                    AssetDatabase.AddObjectToAsset(fallback.material, fallback);
+                }
+                SerializedObject serialized = new SerializedObject(fallback); // not public in this TextMeshPro
+                serialized.FindProperty("m_ClearDynamicDataOnBuild").boolValue = true;
+                serialized.ApplyModifiedPropertiesWithoutUndo();
+                if (font.fallbackFontAssetTable == null)
+                    font.fallbackFontAssetTable = new List<TMP_FontAsset>();
+                if (!font.fallbackFontAssetTable.Contains(fallback))
+                    font.fallbackFontAssetTable.Add(fallback);
+                EditorUtility.SetDirty(fallback);
+                EditorUtility.SetDirty(font);
+            }
         }
 
         private static LocalizationSettings Settings()
@@ -94,14 +138,7 @@ namespace Gwent.EditorTools
             string source = SourceFolder + "/" + name + ".csv";
             List<string[]> rows = Csv(File.ReadAllText(source, Encoding.UTF8));
             string[] header = rows[0];
-            int fallbackColumn = System.Array.IndexOf(header, StartCode);
-            Dictionary<string, int> columns = Codes.ToDictionary(
-                code => code,
-                code =>
-                {
-                    int idx = System.Array.IndexOf(header, code);
-                    return idx >= 0 ? idx : fallbackColumn;
-                });
+            Dictionary<string, int> columns = Codes.ToDictionary(code => code, code => System.Array.IndexOf(header, code));
             foreach (KeyValuePair<string, int> column in columns)
                 if (column.Value < 0)
                     throw new System.Exception(source + " has no " + column.Key + " column");

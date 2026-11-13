@@ -2314,6 +2314,10 @@ MonoBehaviour:
     m_Localized: Right click to see the card
     m_Metadata:
       m_Items: []
+  - m_Id: 2139878716030976
+    m_Localized: Nilfgaard
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

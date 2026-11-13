@@ -2,9 +2,9 @@
 
 [Docs](README.md) › Localization
 
-The game speaks English and Spanish (neutral Latin American Spanish), through Unity's Localization package
+The game speaks English, Spanish (neutral Latin American Spanish) and Russian, through Unity's Localization package
 (`com.unity.localization`). It starts in English, never in the system's language; **Settings > Game > Language** changes it at
-once, and the game keeps the choice. For a build or a test, `-language=es` on the command line picks the language at start.
+once, and the game keeps the choice. For a build or a test, `-language=es` (or `ru`) on the command line picks the language at start.
 
 ## Contents
 
@@ -38,7 +38,7 @@ Assets/Localization/
   Locales/, LocalizationSettings.asset
 ```
 
-Each CSV is one table and has three columns, `key,en,es` (RFC 4180, UTF-8: a text with a comma or a line break goes in quotes):
+Each CSV is one table and has a column per language after the key, `key,en,es,ru` (RFC 4180, UTF-8: a text with a comma or a line break goes in quotes):
 
 | Table | `Loc` | What it holds | Keys |
 | --- | --- | --- | --- |
@@ -46,14 +46,14 @@ Each CSV is one table and has three columns, `key,en,es` (RFC 4180, UTF-8: a tex
 | `Cards` | `Loc.Cards` | The cards' names, the abilities' and special cards' descriptions, the leaders' abilities | A card's name is its `_idstr` in `cards_db.json` (the JSON is not touched); descriptions are `ability.spy.text`, `leader.foltest_king`… |
 | `Rules` | `Loc.Rules` | The How to play page | `rules.<topic>.name`, `.intro`; `rules.<topic>.<entry>.title`, `.text` |
 
-**Gwent > Localization > Build Tables** (`GwentLocalization.cs`) makes the settings, the two locales and the tables from the CSVs
+**Gwent > Localization > Build Tables** (`GwentLocalization.cs`) makes the settings, the locales, the tables and the fonts' fallbacks (see below) from the CSVs
 and logs how many entries it made. Run it every time a CSV changes; the tables it writes are committed. An entry gone from its CSV
 leaves its table. The tables are preloaded, so a lookup is answered at once, on the web too (which cannot wait for a load);
 the main menu waits for `Loc.Ready()` before it shows.
 
 ## Adding or changing a text
 
-1. Add a row to the right CSV: a key, the English, the Spanish. Keys are lower case with dots and underscores.
+1. Add a row to the right CSV: a key, then the text in every language. Keys are lower case with dots and underscores.
 2. Show it with `Loc.T(Loc.UI, "menu.play")`; `{0}`, `{1}` are filled by the arguments (`Loc.T(Loc.UI, "end.cards", count)`).
    A UXML text can be bound instead: `<Bindings><l:LocalizedString property="text" table="UI" entry="menu.play" /></Bindings>`
    inside the element (keep its `name`).
@@ -75,21 +75,24 @@ What to know:
 
 ## Adding a language
 
-1. Add its column to the three CSVs (`key,en,es,fr`), translating every row.
-2. Add its code to `Codes` in `Assets/Editor/GwentLocalization.cs` (`{ "en", "es", "fr" }`) and run **Build Tables**. The language
+1. Add its column to the three CSVs (`key,en,es,ru,fr`), translating every row.
+2. Add its code to `Codes` in `Assets/Editor/GwentLocalization.cs` (`{ "en", "es", "ru", "fr" }`) and run **Build Tables**. The language
    appears in Settings under its own name (`CultureInfo.NativeName`).
-3. Make sure the game's fonts have its letters (TextMeshPro fonts under `Resources`).
-4. Extend `LocalizationTests` to the new column: it reads `English` and `Spanish` of every row.
+3. Make sure the game's fonts can draw its letters. The font assets in `Assets/Fonts` are static atlases of Latin letters; each has
+   a dynamic fallback, `<font> Cyrillic SDF.asset`, made by Build Tables from a font that has the letters (`Fallbacks` in
+   `GwentLocalization.cs`: Alegreya Sans for itself, Cormorant SC for Cinzel, which has no Cyrillic). A script none of them covers
+   (Greek, Chinese…) needs a font file with it and a fallback of its own there; check a font's letters before choosing it.
+4. Add its code to `Languages` in `LocalizationTests`: every row must then have a text in it, with the English's placeholders.
 
 ## Checking it
 
 `Assets/Tests/Content/LocalizationTests.cs` runs with the EditMode tests (see [Testing](testing.md#unit-tests)) and reads the CSVs,
 not the built tables, so a text is checked before Build Tables is run. It fails when:
 
-- a row is not `key,en,es`, has an empty English or Spanish, or repeats a key;
+- a CSV's header is not `key,en,es,ru`, a row has another shape or an empty text in any language, or repeats a key;
 - a translation loses or adds a placeholder (`{0}`, `{Enter}`…);
 - the code looks up (`Loc.T(Loc.<Table>, "literal.key")`) a key its table lacks, or the rules page lists a topic or entry whose
   keys the `Rules` table lacks, or a quick chat line has no text. A key put together at run time (`"battle." + name`) is not seen;
 - a card has no name in `Cards.csv`, or a description key `Cards.csv` lacks (`CardDescriptionTests`).
 
-By hand: switch the language in Settings and walk the screens; `-language=es` starts a build in Spanish.
+By hand: switch the language in Settings and walk the screens; `-language=es` or `-language=ru` starts a build in Spanish or Russian.
