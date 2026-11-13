@@ -10,6 +10,7 @@ using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Localization.Tables;
+using UnityEngine.UIElements;
 
 namespace Gwent.EditorTools
 {
@@ -43,6 +44,13 @@ namespace Gwent.EditorTools
             ("Assets/Fonts/AlegreyaSans-Medium SDF.asset", "Assets/Fonts/AlegreyaSans-Medium.ttf"),
         };
 
+        // UI Toolkit draws the theme's fonts from their TTFs (Gwent.uss), not from the SDF assets above: Alegreya Sans has its
+        // own Cyrillic, Cinzel none. The menus' panels fall back to Cormorant SC through their text settings; without it
+        // they would fall back to the system's fonts, which the web has none of
+        private const string PanelSettingsPath = "Assets/UI/Toolkit/Menus.asset";
+        private const string PanelTextPath = "Assets/UI/Toolkit/MenusText.asset";
+        private const string PanelFallbackPath = "Assets/Fonts/CormorantSC-SemiBold UI.asset";
+
         [MenuItem("Gwent/Localization/Build Tables")]
         public static void BuildTables()
         {
@@ -53,6 +61,7 @@ namespace Gwent.EditorTools
             foreach (string table in Tables)
                 entries += Fill(table, locales);
             FontFallbacks();
+            PanelFallback();
             AssetDatabase.SaveAssets();
             Debug.Log("Localization: " + entries + " entries in " + Tables.Length + " tables, " + Codes.Length + " languages");
         }
@@ -88,6 +97,49 @@ namespace Gwent.EditorTools
                 EditorUtility.SetDirty(fallback);
                 EditorUtility.SetDirty(font);
             }
+        }
+
+        // The menus' text settings, with the UI Toolkit fallback (a dynamic font asset, cleared from the build as the others)
+        private static void PanelFallback()
+        {
+            UnityEngine.TextCore.Text.FontAsset fallback = AssetDatabase.LoadAssetAtPath<UnityEngine.TextCore.Text.FontAsset>(PanelFallbackPath);
+            if (fallback == null)
+            {
+                TMP_FontAsset like = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(Fallbacks[0].Font);
+                Font source = AssetDatabase.LoadAssetAtPath<Font>(Fallbacks[0].Source);
+                fallback = UnityEngine.TextCore.Text.FontAsset.CreateFontAsset(source, (int)like.faceInfo.pointSize, like.atlasPadding,
+                    like.atlasRenderMode, like.atlasWidth, like.atlasHeight);
+                fallback.name = Path.GetFileNameWithoutExtension(PanelFallbackPath);
+                AssetDatabase.CreateAsset(fallback, PanelFallbackPath);
+                fallback.atlasTextures[0].name = fallback.name + " Atlas";
+                AssetDatabase.AddObjectToAsset(fallback.atlasTextures[0], fallback);
+                if (fallback.material != null)
+                {
+                    fallback.material.name = fallback.name + " Material";
+                    AssetDatabase.AddObjectToAsset(fallback.material, fallback);
+                }
+            }
+            SerializedObject serialized = new SerializedObject(fallback); // not public, as in TextMeshPro
+            serialized.FindProperty("m_ClearDynamicDataOnBuild").boolValue = true;
+            serialized.ApplyModifiedPropertiesWithoutUndo();
+            EditorUtility.SetDirty(fallback);
+
+            PanelTextSettings text = AssetDatabase.LoadAssetAtPath<PanelTextSettings>(PanelTextPath);
+            if (text == null)
+            {
+                text = ScriptableObject.CreateInstance<PanelTextSettings>();
+                text.name = Path.GetFileNameWithoutExtension(PanelTextPath);
+                AssetDatabase.CreateAsset(text, PanelTextPath);
+            }
+            if (text.fallbackFontAssets == null)
+                text.fallbackFontAssets = new List<UnityEngine.TextCore.Text.FontAsset>();
+            if (!text.fallbackFontAssets.Contains(fallback))
+                text.fallbackFontAssets.Add(fallback);
+            EditorUtility.SetDirty(text);
+
+            PanelSettings panel = AssetDatabase.LoadAssetAtPath<PanelSettings>(PanelSettingsPath);
+            panel.textSettings = text;
+            EditorUtility.SetDirty(panel);
         }
 
         private static LocalizationSettings Settings()
